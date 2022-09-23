@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: use/manage-users.html 
+keywords: invite users, add users, remove users, delete users 
+summary: Invitez les utilisateurs à rejoindre votre compte Astra Control et supprimez les utilisateurs qui ne devraient plus avoir accès à votre compte. 
+---
+= Inviter et supprimer des utilisateurs
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+Invitez les utilisateurs à rejoindre votre compte Astra Control et supprimez les utilisateurs qui ne devraient plus avoir accès au compte.
+
+
+
+== Inviter des utilisateurs
+
+Les propriétaires et administrateurs de comptes peuvent inviter d'autres utilisateurs à rejoindre le compte Astra Control.
+
+.Étapes
+. Assurez-vous que l'utilisateur dispose d'un link:../get-started/register.html["Connexion à Cloud Central"].
+. Sélectionnez *compte*.
+. Dans l'onglet *utilisateurs*, sélectionnez *inviter*.
+. Entrez le nom, l'adresse e-mail et le rôle de l'utilisateur.
++
+Notez ce qui suit :
+
++
+** L'adresse e-mail doit correspondre à l'adresse que l'utilisateur a utilisée pour s'inscrire à Cloud Central.
+** Chaque rôle offre les autorisations suivantes :
++
+*** Un *propriétaire* possède des autorisations d'administration et peut supprimer des comptes.
+*** Un *Admin* dispose des autorisations de membre et peut inviter d'autres utilisateurs.
+*** Un *membre* peut gérer entièrement les applications et les clusters.
+*** Un *Viewer* peut afficher les ressources.
+
+
+
+
+. Pour ajouter des contraintes à un utilisateur avec un rôle membre ou visualiseur, activez la case à cocher *restreindre le rôle aux contraintes*.
++
+Pour plus d'informations sur l'ajout de contraintes, voir link:manage-roles.html["Gérez les rôles"].
+
+. Pour inviter un autre utilisateur, sélectionnez *Ajouter un autre utilisateur* et entrez les informations pour le nouvel utilisateur.
++
+Vous pouvez inviter jusqu'à 10 utilisateurs à la fois. Vous pouvez naviguer entre les utilisateurs que vous invitez sur le côté gauche de la boîte de dialogue *inviter utilisateurs*.
+
+. Sélectionnez *inviter des utilisateurs*.
+
+
+L'utilisateur ou les utilisateurs recevront un e-mail les invitant à rejoindre votre compte.
+
+
+
+== Modifier le rôle d'un utilisateur
+
+Un propriétaire de compte peut modifier le rôle de tous les utilisateurs, tandis qu'un administrateur de compte peut modifier le rôle des utilisateurs qui ont le rôle Admin, Member ou Viewer.
+
+.Étapes
+. Sélectionnez *compte*.
+. Dans l'onglet *utilisateurs*, sélectionnez le menu dans la colonne *actions* de l'utilisateur.
+. Sélectionnez *Modifier le rôle*.
+. Sélectionnez un nouveau rôle.
+. Pour ajouter des contraintes à un utilisateur avec un rôle membre ou visualiseur, activez la case à cocher *restreindre le rôle aux contraintes*.
++
+Pour plus d'informations sur l'ajout de contraintes, voir link:manage-roles.html["Gérez les rôles"].
+
+. Sélectionnez *confirmer*.
+
+
+Astra Control met à jour les autorisations de l'utilisateur en fonction du nouveau rôle que vous avez sélectionné.
+
+
+
+== Supprimer des utilisateurs
+
+Un utilisateur ayant le rôle propriétaire peut à tout moment supprimer d'autres utilisateurs du compte.
+
+.Étapes
+. Sélectionnez *compte*.
+. Dans l'onglet *utilisateurs*, sélectionnez les utilisateurs que vous souhaitez supprimer.
+. Sélectionnez le menu dans la colonne *actions* et sélectionnez *Supprimer l'utilisateur*.
+. Lorsque vous y êtes invité, confirmez la suppression en tapant « Supprimer », puis sélectionnez *Oui, Supprimer l'utilisateur*.
+
+
+Astra Control supprime l'utilisateur du compte.

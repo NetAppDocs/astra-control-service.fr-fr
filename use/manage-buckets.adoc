@@ -1,0 +1,159 @@
+---
+sidebar: sidebar 
+permalink: use/manage-buckets.html 
+keywords: bucket, buckets, add buckets, change default bucket, default, default bucket, remove bucket, delete bucket, S3, s3, storage, object storage, object store, store, object 
+summary: Gérez les compartiments utilisés par Astra pour les sauvegardes et les clones en ajoutant des compartiments supplémentaires et en changeant le compartiment par défaut pour les clusters de votre fournisseur de cloud. 
+---
+= Gestion des compartiments
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+Gérez les compartiments utilisés par Astra pour les sauvegardes et les clones en ajoutant des compartiments supplémentaires et en changeant le compartiment par défaut pour les clusters Kubernetes de votre fournisseur cloud.
+
+Seuls les administrateurs peuvent ajouter et modifier des compartiments.
+
+
+
+== Utilisation des seaux par Astra Control
+
+Lorsque vous commencez à gérer votre premier cluster Kubernetes, Astra Control Service crée un compartiment par défaut pour votre fournisseur de cloud, dans le même emplacement que le cluster géré.
+
+Astra Control Service utilise ce compartiment par défaut pour les sauvegardes et les clones que vous créez. Vous pouvez ensuite utiliser les sauvegardes pour restaurer et cloner des applications entre les clusters.
+
+Si vous ajoutez des compartiments supplémentaires au service de contrôle Astra, vous pouvez choisir parmi ces compartiments lorsque vous créez une règle de protection. Vous pouvez également modifier le compartiment par défaut qu'Astra Control Service utilise pour les sauvegardes et les clones ad hoc. Vous ne pouvez pas cloner un compartiment d'un fournisseur cloud à un autre fournisseur cloud. Pour migrer des données d'un fournisseur de cloud à un autre, clonez l'application associée à la place.
+
+
+TIP: Le service de contrôle Astra vérifie si un compartiment de destination est accessible avant de démarrer une sauvegarde ou un clone.
+
+
+
+== Afficher les compartiments existants
+
+Consultez la liste des compartiments accessibles par le service de contrôle Astra afin de déterminer leur état et d'identifier le compartiment par défaut pour votre fournisseur de cloud.
+
+Un godet peut avoir l'un des États suivants :
+
+En attente:: Après avoir ajouté un compartiment, il commence à l'état en attente, tandis qu'Astra Control le regarde pour la première fois.
+Disponibilité:: Le godet peut être utilisé par Astra Control.
+Supprimé:: Le godet n'est pas opérationnel actuellement. Passez votre souris sur l'icône d'état pour identifier le problème.
++
+--
+Si un compartiment est retiré, vous pouvez toujours le définir comme compartiment par défaut et l'affecter à une planification de protection. Mais si le compartiment n'est pas disponible au moment où une opération de protection des données démarre, cette opération échoue.
+
+--
+
+
+.Étape
+. Sous *gérer votre stockage*, sélectionnez *seaux*.
++
+La liste des godets disponibles pour le service Astra Control s'affiche.
+
+
+
+
+
+== Ajouter un godet supplémentaire
+
+Une fois que vous avez commencé à gérer un cluster dans votre fournisseur cloud, vous pouvez ajouter des compartiments à tout moment. Vous pouvez ainsi choisir entre plusieurs compartiments lors de la création d'une règle de protection et modifier le compartiment par défaut pour les sauvegardes et les clones ad hoc.
+
+Notez qu'Astra Control Service ne vous permet pas de retirer un godet après l'avoir ajouté.
+
+.Ce dont vous avez besoin, 8217;ll
+* Nom d'une compartiment existant dans votre fournisseur cloud.
+
+
+ifdef::azure[]
+
+* Si votre compartiment est dans Azure, il doit appartenir au groupe de ressources nommé _astra-backup-rg_.
+
+
+endif::azure[]
+
+.Étapes
+. Sous *gérer votre stockage*, sélectionnez *seaux*.
+. Sélectionnez *Ajouter* et suivez les invites pour ajouter le compartiment.
++
+** *Type* : Choisissez votre fournisseur cloud.
++
+Votre fournisseur de cloud n'est disponible qu'une fois qu'Astra Control Service a commencé à gérer un cluster qui s'exécute chez ce fournisseur cloud.
+
+** *Nom de compartiment existant* : saisissez le nom du compartiment.
+** *Description* : saisissez éventuellement une description du godet.
+
+
+
+
+ifdef::azure[]
+
+* *Compte de stockage* (Azure uniquement) : saisissez le nom de votre compte de stockage Azure. Ce compartiment doit appartenir au groupe de ressources nommé _astra-backup-rg_.
+
+
+endif::azure[]
+
+ifdef::aws[]
+
+* *Nom du serveur S3 ou adresse IP* (AWS uniquement) : saisissez le nom de domaine complet du noeud final S3 qui correspond à votre région, sans `https://`. Voir https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
+
+
+endif::aws[]
+
+* *Faire de ce compartiment le compartiment par défaut pour ce Cloud* : Choisissez si vous souhaitez utiliser ce compartiment comme compartiment par défaut pour les sauvegardes et les clones ad hoc.
+* *Sélectionner les informations d'identification* : Choisissez les informations d'identification qui fournissent au service de contrôle Astra les autorisations dont il a besoin pour gérer le compartiment.
++
+.. Sélectionnez *Ajouter* pour ajouter le compartiment.
+
+
+
+
+Astra Control Service ajoute le godet supplémentaire. Vous pouvez désormais choisir le compartiment lors de la création d'une règle de protection.
+
+
+
+== Modifier le compartiment par défaut
+
+Modifiez le compartiment par défaut qu'Astra Control Service doit utiliser pour les sauvegardes et les clones. Chaque fournisseur cloud dispose de son propre compartiment par défaut.
+
+Astra Control Service utilise le compartiment par défaut pour un fournisseur de cloud pour les sauvegardes ad hoc et pour les clones ad hoc lorsque vous n'avez pas le choix entre le clonage à partir d'une sauvegarde existante.
+
+.Étapes
+. Sous *gérer votre stockage*, sélectionnez *seaux*.
+. Sélectionnez la liste déroulante dans la colonne *actions* pour le compartiment que vous souhaitez modifier.
+. Sélectionnez *faire de ce compartiment le compartiment par défaut pour ce nuage*.
+. Sélectionnez *mettre à jour*.
+
+
+
+
+== Déposer un godet
+
+Il est possible de retirer un godet qui n'est plus utilisé ou qui n'est pas en bon état. Pour simplifier et à jour la configuration du magasin d'objets,
+
+Vous ne pouvez pas supprimer un compartiment par défaut. Si vous souhaitez retirer ce compartiment, sélectionnez tout d'abord un autre compartiment comme valeur par défaut.
+
+.Ce dont vous avez besoin, 8217;ll
+* Avant de commencer, assurez-vous qu'aucune sauvegarde n'est en cours d'exécution ou terminée pour ce compartiment.
+* Vérifiez que le compartiment n'est pas utilisé pour les sauvegardes planifiées.
+
+
+Si c'est le cas, vous ne pourrez pas continuer.
+
+.Étapes
+. Dans la navigation à gauche, sélectionnez *seaux*.
+. Dans le menu *actions*, sélectionnez *Supprimer*.
++
+
+NOTE: Astra Control veille à l'absence de règles de planification qui utilise le compartiment pour les sauvegardes et à l'absence de sauvegardes actives dans le compartiment.
+
+. Tapez « Supprimer » pour confirmer l'action.
+. Sélectionnez *Oui, retirez le godet*.
+
+
+
+
+== Trouvez plus d'informations
+
+* https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^]
+

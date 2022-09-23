@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: get-started/videos.html 
+keywords: videos, Astra Control Service videos 
+summary: 'De nombreuses pages de ce site comprennent des vidéos montrant comment effectuer une tâche à l"aide d"Astra Control Service. Si vous êtes seulement intéressé par les vidéos, nous vous l"avons rendu plus facile en collectant toutes les vidéos sur cette seule page (comme une liste de lecture).' 
+---
+= Vidéos sur le service Astra Control
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+De nombreuses pages de ce site comprennent des vidéos qui vous montrent comment effectuer une tâche pour Astra Control Service. Si vous êtes seulement intéressé par les vidéos, nous avons simplifié votre choix en collectant toutes les vidéos sur cette seule page (comme une liste de lecture).
+
+ifdef::gcp[]
+
+
+
+== Vidéos pour la configuration de Google Cloud
+
+Les vidéos ci-dessous expliquent comment répondre aux exigences de configuration dans Google Cloud avant de découvrir les clusters Kubernetes exécutés dans GCP.
+
+
+
+=== Activez les API
+
+Votre projet nécessite des autorisations pour accéder à des API Google Cloud spécifiques. La vidéo suivante montre comment activer les API à partir de la console Google Cloud. link:set-up-google-cloud.html#enable-apis-in-your-project["En savoir plus sur l'activation des API"].
+
+video::get-started/video-enable-gcp-apis.mp4[width=848,height=480]
+
+
+=== Créez un compte de service
+
+Astra Control Service utilise un compte de service Google Cloud pour faciliter la gestion des données applicatives Kubernetes pour votre compte. La vidéo suivante montre comment créer un compte de service à partir de la console Google Cloud. link:set-up-google-cloud.html#create-a-service-account["En savoir plus sur la création d'un compte de service"].
+
+video::get-started/video-create-gcp-service-account.mp4[width=848,height=480]
+
+
+=== Créez une clé de compte de service
+
+Astra Control Service utilise une clé de compte de service pour établir l'identité du compte de service que vous venez de configurer. La vidéo suivante montre comment créer la clé de compte de service à partir de la console Google Cloud. link:set-up-google-cloud.html#create-a-service-account-key-2["En savoir plus sur la création d'une clé de compte de service"].
+
+video::get-started/video-create-gcp-service-account-key.mp4[width=848,height=480]
+endif::gcp[]
+
+
+
+== Vidéos pour l'utilisation d'Astra Control
+
+Les vidéos suivantes expliquent comment réaliser des tâches courantes avec Astra Control.
+
+
+
+=== Gérez les clusters à partir d'Astra Control
+
+Une fois connecté à Astra Control Service, la première étape consiste à ajouter le calcul de Kubernetes. link:add-first-cluster.html["En savoir plus sur la gestion des clusters"].
+
+video::get-started/video-manage-cluster.mp4[width=848,height=480]
+
+
+=== Configurer une règle de protection
+
+Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver. link:../use/protect-apps.html["En savoir plus sur la configuration des règles de protection"].
+
+video::use/video-set-protection-policy.mp4[width=848,height=480]

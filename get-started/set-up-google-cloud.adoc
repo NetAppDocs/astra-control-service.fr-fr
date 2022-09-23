@@ -1,0 +1,272 @@
+---
+sidebar: sidebar 
+permalink: get-started/set-up-google-cloud.html 
+keywords: google cloud, google cloud platform, gcp, set up google cloud, set up gcp, set up service account, create service account, project, gcp project, permissions gcp permissions, service account permissions, key, service account key, json, key json, roles, service account roles, gcp roles, cvs, cvs for aws, cloud volumes service apis, apis, networking, cvs networking, cloud volumes service networking, private service access, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, google cloud regions, gcp regions, kubernetes version, ubuntu, image type, networking, container os 
+summary: Il vous faut quelques étapes pour préparer votre projet Google Cloud avant de gérer des clusters Google Kubernetes Engine avec Astra Control Service. 
+---
+= Configurez Google Cloud
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+Il vous faut quelques étapes pour préparer votre projet Google Cloud avant de gérer des clusters Google Kubernetes Engine avec Astra Control Service.
+
+
+NOTE: Si vous ne démarrez pas à l'aide de Google Cloud Volumes Service pour Google Cloud en tant que backend de stockage, mais que vous prévoyez de l'utiliser ultérieurement, vous devez terminer les étapes nécessaires à la configuration de Google Cloud Volumes Service pour Google Cloud maintenant. Si vous créez un compte de service ultérieurement, vous risquez de perdre l'accès à vos compartiments de stockage existants.
+
+
+
+== Démarrage rapide pour la configuration de Google Cloud
+
+Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir plus de détails.
+
+
+
+=== Lisez les exigences d'Astra Control Service pour Google Kubernetes Engine
+
+[role="quick-margin-para"]
+Assurez-vous que les clusters fonctionnent correctement et qu'une version Kubernetes prise en charge fonctionne, que les nœuds workers sont en ligne et exécutent Ubuntu ou un système d'exploitation optimisé pour un conteneur, etc.  cluster requirements,En savoir plus sur cette étape.
+
+
+
+=== (Facultatif) : achat d'Cloud Volumes Service pour Google Cloud
+
+[role="quick-margin-para"]
+Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, rendez-vous sur la page NetApp Cloud Volumes Service dans Google Cloud Marketplace et sélectionnez Acheter.  Purchase Cloud Volumes Service for Google Cloud,En savoir plus sur cette étape.
+
+
+
+=== Intégrez des API dans votre projet Google Cloud
+
+[role="quick-margin-para"]
+Activez les API Google Cloud suivantes :
+
+* Google Kubernetes Engine
+* Le stockage cloud
+* API JSON de stockage cloud
+* Utilisation du service
+* API Cloud Resource Manager
+* NetApp Cloud Volumes Service
++
+** Obligatoire pour Cloud Volumes Service pour Google Cloud
+** Facultatif (mais recommandé) pour les disques persistants Google
+
+
+* API Service Consumer Management
+* API de mise en réseau de services
+* API de gestion de services
+
+
+[role="quick-margin-para"]
+ APIs in your project,Suivez les instructions étape par étape.
+
+
+
+=== Créez un compte de service disposant des autorisations requises
+
+[role="quick-margin-para"]
+Créez un compte de service Google Cloud disposant des autorisations suivantes :
+
+* Admin moteur Kubernetes
+* Admin NetApp Cloud volumes
++
+** Obligatoire pour Cloud Volumes Service pour Google Cloud
+** Facultatif (mais recommandé) pour les disques persistants Google
+
+
+* Administrateur du stockage
+* Visualiseur d'utilisation de service
+* Calculer Network Viewer
+
+
+[role="quick-margin-para"]
+ a service account,Lisez les instructions détaillées.
+
+
+
+=== Créez une clé de compte de service
+
+[role="quick-margin-para"]
+Créez une clé pour le compte de service et enregistrez le fichier de clé dans un emplacement sécurisé.  a service account key,Suivez les instructions étape par étape.
+
+
+
+=== (Facultatif) : configurez le peering réseau pour votre VPC
+
+[role="quick-margin-para"]
+Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, configurez le peering de réseau de votre VPC vers Cloud Volumes Service pour Google Cloud.  Set up network peering for your VPC,Suivez les instructions étape par étape.
+
+
+
+== Configuration requise pour les clusters GKE
+
+Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service. Notez que certaines de ces exigences s'appliquent uniquement si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end.
+
+Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.20 et 1.23.
+Type d'image:: Le type d'image pour chaque nœud de travail doit être l'un des suivants :
++
+--
+* Système d'exploitation optimisé pour le conteneur avec Containerd
+* Système d'exploitation optimisé pour un conteneur avec Docker
+* Ubuntu avec Docker
+
+
+--
+État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
+Région Google Cloud:: Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end, les clusters doivent être exécutés dans un https://cloud.netapp.com/cloud-volumes-global-regions#cvsGc["Région Google Cloud prise en charge de Cloud Volumes Service pour Google Cloud"] Notez qu'Astra Control Service prend en charge les deux types de service : CVS et CVS-Performance. Il est recommandé de choisir une région qui prend en charge Cloud Volumes Service pour Google Cloud, même si vous ne l'utilisez pas comme système de stockage principal. Il est ainsi plus facile d'utiliser Cloud Volumes Service pour Google Cloud comme système de stockage back-end, à l'avenir si vos besoins en performance évoluent.
+Mise en réseau:: Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, le cluster doit résider dans un VPC avec Cloud Volumes Service pour Google Cloud.  Set up network peering for your VPC,Cette étape est décrite ci-dessous.
+Clusters privés:: Si le cluster est privé, le https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept["réseaux autorisés"^] Doit autoriser l'adresse IP du service de contrôle Astra :
++
+--
+52.188.218.166/32
+
+--
+Mode d'opération pour un cluster GKE:: Vous devez utiliser le mode de fonctionnement standard. Le mode pilote automatique n'a pas encore été testé. link:https://cloud.google.com/kubernetes-engine/docs/concepts/types-of-clusters#modes["En savoir plus sur les modes de fonctionnement"^].
+
+
+
+
+== Facultatif : achetez Cloud Volumes Service pour Google Cloud
+
+Astra Control Service peut utiliser Cloud Volumes Service pour Google Cloud comme backend de stockage pour vos volumes persistants. Si vous prévoyez d'utiliser ce service, vous devez acheter Cloud Volumes Service pour Google Cloud à partir de Google Cloud Marketplace pour activer la facturation des volumes persistants.
+
+.Étape
+. Accédez au https://console.cloud.google.com/marketplace/product/endpoints/cloudvolumesgcp-api.netapp.com["Page NetApp Cloud Volumes Service"^] Dans Google Cloud Marketplace, sélectionnez *Acheter* et suivez les invites.
++
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/quickstart#purchase_the_service["Suivez des instructions détaillées dans la documentation Google Cloud pour acheter et activer le service"^].
+
+
+
+
+
+== Activez les API dans votre projet
+
+Votre projet nécessite des autorisations pour accéder à des API Google Cloud spécifiques. Les API sont utilisées pour interagir avec les ressources Google Cloud, comme les clusters Google Kubernetes Engine (GKE) et le stockage NetApp Cloud Volumes Service.
+
+.Étape
+. https://cloud.google.com/endpoints/docs/openapi/enable-api["Utilisez la console Google Cloud ou l'interface de ligne de commande gCloud pour activer les API suivantes"^]:
++
+** Google Kubernetes Engine
+** Le stockage cloud
+** API JSON de stockage cloud
+** Utilisation du service
+** API Cloud Resource Manager
+** NetApp Cloud Volumes Service (requis pour Cloud Volumes Service pour Google Cloud)
+** API Service Consumer Management
+** API de mise en réseau de services
+** API de gestion de services
+
+
+
+
+La vidéo suivante montre comment activer les API à partir de la console Google Cloud.
+
+video::video-enable-gcp-apis.mp4[width=848,height=480]
+
+
+== Créez un compte de service
+
+Astra Control Service utilise un compte de service Google Cloud pour faciliter la gestion des données applicatives Kubernetes pour votre compte.
+
+.Étapes
+. Rendez-vous sur Google Cloud et https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["créez un compte de service à l'aide de la console, de la commande gcloud ou d'une autre méthode préférée"^].
+. Accordez au compte de service les rôles suivants :
++
+** *Kubernetes Engine Admin* - utilisé pour répertorier les clusters et créer un accès administrateur pour gérer les applications.
+** *NetApp Cloud volumes Admin* : permet de gérer le stockage persistant pour les applications.
+** *Administrateur de stockage* - utilisé pour gérer des compartiments et des objets pour les sauvegardes d'applications.
+** *Visualiseur d'utilisation du service* - utilisé pour vérifier si les API Cloud Volumes Service requises pour Google Cloud sont activées.
+** *Compute Network Viewer* : permet de vérifier si le VPC Kubernetes est autorisé à atteindre Cloud Volumes Service pour Google Cloud.
+
+
+
+
+Si vous souhaitez utiliser gcloud, vous pouvez suivre les étapes de l'interface Astra Control. Sélectionnez *compte > informations d'identification > Ajouter informations d'identification*, puis *instructions*.
+
+Si vous souhaitez utiliser la console Google Cloud, la vidéo suivante montre comment créer le compte de service à partir de la console.
+
+video::video-create-gcp-service-account.mp4[width=848,height=480]
+
+
+=== Configurez le compte de service pour un VPC partagé
+
+Pour gérer les clusters GKE qui résident dans un projet, mais qui utilisent un VPC depuis un autre projet (un VPC partagé), vous devez spécifier le compte de service Astra comme membre du projet hôte avec le rôle *Compute Network Viewer*.
+
+.Étapes
+. Depuis la console Google Cloud, allez à *IAM & Admin* et sélectionnez *comptes de service*.
+. Découvrez le compte de service Astra link:set-up-google-cloud.html#create-a-service-account["les autorisations requises"] puis copiez l'adresse e-mail.
+. Rendez-vous sur votre projet hôte et sélectionnez *IAM & Admin* > *IAM*.
+. Sélectionnez *Ajouter* et ajoutez une entrée pour le compte de service.
++
+.. *Nouveaux membres* : saisissez l'adresse électronique du compte de service.
+.. *Rôle* : sélectionnez *Compute Network Viewer*.
+.. Sélectionnez *Enregistrer*.
+
+
+
+
+L'ajout d'un cluster GKE utilisant un VPC partagé fonctionnera entièrement avec Astra.
+
+
+
+== Créez une clé de compte de service
+
+Au lieu de fournir un nom d'utilisateur et un mot de passe à Astra Control Service, vous fournissez une clé de compte de service lorsque vous ajoutez votre premier cluster. Astra Control Service utilise la clé du compte de service pour établir l'identité du compte de service que vous venez de configurer.
+
+La clé de compte de service est en texte brut stockée au format JSON (JavaScript Object notation). Elle contient des informations sur les ressources GCP auxquelles vous êtes autorisé à accéder.
+
+Vous ne pouvez afficher ou télécharger le fichier JSON que lorsque vous créez la clé. Cependant, vous pouvez créer une nouvelle clé à tout moment.
+
+.Étapes
+. Rendez-vous sur Google Cloud et https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating_service_account_keys["créez une clé de compte de service à l'aide de la console, de la commande gcloud ou d'une autre méthode préférée"^].
+. Lorsque vous y êtes invité, enregistrez le fichier de clé de compte de service dans un emplacement sécurisé.
+
+
+La vidéo suivante montre comment créer la clé de compte de service à partir de la console Google Cloud.
+
+video::video-create-gcp-service-account-key.mp4[width=848,height=480]
+
+
+== Facultatif : configurez le peering réseau pour votre VPC
+
+Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud comme service interne de stockage, la dernière étape consiste à configurer le peering de réseau depuis votre VPC vers Cloud Volumes Service pour Google Cloud.
+
+Le moyen le plus simple de configurer le peering de réseau est d'obtenir les commandes gcloud directement depuis Cloud Volumes Service. Les commandes sont disponibles depuis Cloud Volumes Service lors de la création d'un nouveau système de fichiers.
+
+.Étapes
+. https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Accédez à NetApp Cloud Central's Global régions Maps"^] Et identifiez le type de service que vous allez utiliser dans la région Google Cloud où se trouve votre cluster.
++
+Cloud Volumes Service propose deux types de services : CVS et CVS-Performance. https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types["En savoir plus sur ces types de service"^].
+
+. https://console.cloud.google.com/netapp/cloud-volumes/volumes["Accédez à Cloud volumes dans Google Cloud Platform"^].
+. Sur la page *volumes*, sélectionnez *Créer*.
+. Sous *Type de service*, sélectionnez *CVS* ou *CVS-Performance*.
++
+Vous devez choisir le type de service adapté à votre région Google Cloud. Il s'agit du type de service que vous avez identifié à l'étape 1. Après avoir sélectionné un type de service, la liste des régions de la page est mise à jour avec les régions où ce type de service est pris en charge.
+
++
+Après cette étape, il vous suffit de saisir vos informations réseau pour obtenir les commandes.
+
+. Sous *région*, sélectionnez votre région et votre zone.
+. Sous *Détails du réseau*, sélectionnez votre VPC.
++
+Si vous n'avez pas configuré le peering de réseau, la notification suivante s'affiche :
+
++
+image:gcp-peering.gif["Une capture d'écran de la console Google Cloud sur laquelle un bouton intitulé Afficher les commandes configurer le peering réseau s'affiche."]
+
+. Sélectionnez le bouton pour afficher les commandes de configuration du peering réseau.
+. Copiez les commandes et exécutez-les dans Cloud Shell.
++
+Pour plus de détails sur l'utilisation de ces commandes, reportez-vous au https://cloud.google.com/solutions/partners/netapp-cloud-volumes/quickstart#configure_private_services_access_and_set_up_network_peering["Service de démarrage rapide pour Cloud Volumes Service pour GCP"^].
+
++
+https://cloud.google.com/solutions/partners/netapp-cloud-volumes/setting-up-private-services-access["En savoir plus sur la configuration de l'accès aux services privés et la configuration du peering de réseau"^].
+
+. Une fois terminé, vous pouvez sélectionner Annuler sur la page *Créer un système de fichiers*.
++
+Nous avons commencé à créer ce volume uniquement pour obtenir les commandes pour le peering réseau.
+
+

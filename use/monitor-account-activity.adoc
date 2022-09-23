@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: use/monitor-account-activity.html 
+keywords: activity, log, activities, download log, download csv, csv 
+summary: 'Vous pouvez consulter les détails des activités de votre compte Astra Control. Par exemple, lorsque de nouveaux utilisateurs ont été invités, lorsque le calcul a été ajouté ou lorsqu"un snapshot a été créé. Vous pouvez également exporter votre activité de compte vers un fichier CSV.' 
+---
+= Surveillez l'activité des comptes
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Vous pouvez consulter les détails des activités de votre compte Astra Control. Par exemple, lorsque de nouveaux utilisateurs ont été invités, lorsqu'un cluster a été ajouté ou lorsqu'un snapshot a été créé. Vous pouvez également exporter votre activité de compte vers un fichier CSV.
+
+.Afficher toutes les activités du compte dans Astra Control
+. Sélectionnez *activité*.
+. Utilisez les filtres pour réduire la liste des activités ou utilisez la zone de recherche pour trouver exactement ce que vous recherchez.
+. Sélectionnez *Exporter au format CSV* pour télécharger l'activité de votre compte dans un fichier CSV.
+
+
+.Afficher l'activité d'un compte pour une application spécifique
+. Sélectionnez *applications*, puis le nom d'une application.
+. Sélectionnez *activité*.
+
+
+.Afficher l'activité des comptes pour les clusters
+. Sélectionnez *clusters*, puis le nom du cluster.
+. Sélectionnez *activité*.
+
+
+.Afficher les actions possibles pour les événements
+. Sélectionnez *activité*.
+. Sélectionnez un événement qui nécessite une attention particulière.
+. Sélectionnez l'option de liste déroulante *prendre une action*.
++
+Dans cette liste, vous pouvez consulter les actions correctives possibles, consulter la documentation associée au problème et obtenir de l'aide pour résoudre ce dernier.
+
+

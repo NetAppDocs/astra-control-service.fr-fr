@@ -1,0 +1,10 @@
+---
+section: support
+title: Connaissances et support
+entries:
+- title: S'inscrire pour obtenir de l'aide
+  url: "/support/register-support.html"
+- title: Dépannage
+  url: "/support/troubleshooting.html"
+- title: Obtenez de l'aide
+  url: "/support/get-help.html"

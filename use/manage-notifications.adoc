@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: use/manage-notifications.html 
+keywords: notifications, delete notifications, mark notifications as read 
+summary: 'Astra Control vous avertit lorsque les actions sont terminées ou en échec. Par exemple, vous verrez une notification si une sauvegarde d"une application a réussi.' 
+---
+= Afficher et gérer les notifications
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Astra Control vous avertit lorsque les actions sont terminées ou en échec. Par exemple, vous verrez une notification si une sauvegarde d'une application a réussi.
+
+Le nombre de notifications non lues est disponible en haut à droite de l'interface.
+
+Vous pouvez afficher ces notifications et les marquer comme lues (cela peut s'avérer pratique si vous souhaitez effacer les notifications non lues comme nous le faisons).
+
+.Étapes
+. Sélectionnez le nombre de notifications non lues en haut à droite.
+. Examinez les notifications, puis sélectionnez *Marquer comme lu* ou *Afficher toutes les notifications*.
++
+Si vous avez sélectionné *Afficher toutes les notifications*, la page Notifications se charge.
+
+. Sur la page *Notifications*, affichez les notifications, sélectionnez celles que vous souhaitez marquer comme lu, sélectionnez *action* et *Marquer comme lu*.
+

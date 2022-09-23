@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: use/view-dashboard.html 
+keywords: dashboard, cluster health, unhealthy apps, protected apps, managed apps 
+summary: Cliquez sur Tableau de bord pour afficher une vue détaillée de vos applications, clusters et de leur état. 
+---
+= Affichez un récapitulatif de l'état des applications et du cluster
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Cliquez sur *Dashboard* pour afficher une vue de haut niveau de vos applications, clusters et leur état de santé.
+
+La mosaïque applications vous aide à identifier les éléments suivants :
+
+* Nombre d'applications que vous gérez actuellement.
+* Si ces applications gérées sont en bon état.
+* Que les applications soient entièrement protégées (elles sont protégées si des sauvegardes récentes sont disponibles).
+
+
+Notez qu'il ne s'agit pas uniquement de chiffres ou d'États, vous pouvez approfondir ces informations. Par exemple, si les applications ne sont pas totalement protégées, vous pouvez passer le curseur de la souris sur l'icône pour identifier les applications qui ne sont pas totalement protégées, ce qui explique pourquoi.
+
+La mosaïque clusters fournit des informations similaires sur l'état de santé du cluster et vous pouvez accéder à des informations plus détaillées comme vous le pouvez avec une application.

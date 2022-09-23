@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: use/log-in.html 
+keywords: logging in, log in, sign in, signing in, cloud central, netapp cloud central, user account 
+summary: 'Le service Astra Control est accessible par le biais d"une interface utilisateur SaaS, d"ici astra.netapp.io.' 
+---
+= Connectez-vous au service Astra Control
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Le service Astra Control est accessible par le biais d'une interface utilisateur SaaS https://astra.netapp.io[].
+
+
+TIP: Vous pouvez utiliser l'authentification unique pour vous connecter à l'aide des informations d'identification de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://cloud.netapp.com/help-center["Centre d'aide de Cloud Central"^] Puis sélectionnez *Options de connexion à Cloud Central*.
+
+.Ce dont vous avez besoin, 8217;ll
+* link:../get-started/register.html["ID d'utilisateur Cloud Central"].
+* link:../get-started/register.html["Un nouveau compte Astra Control"] ou link:manage-users.html["invitation à un compte existant"].
+* Un navigateur Web pris en charge.
++
+Astra Control Service prend en charge les versions récentes de Firefox, Safari et Chrome avec une résolution minimale de 1280 x 720.
+
+
+
+.Étapes
+. Ouvrez un navigateur Web et accédez à https://astra.netapp.io[].
+. Connectez-vous à l'aide de vos identifiants NetApp Cloud Central.
+

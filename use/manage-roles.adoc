@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: use/manage-roles.html 
+keywords: users, roles, user roles, namespace, namespaces, account, accounts, permissions, restriction, restrict, constraint, constraints 
+summary: 'Apprenez à gérer les rôles d"utilisateur en ajoutant une contrainte au rôle.' 
+---
+= Gérez les rôles
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+Vous pouvez gérer les rôles en ajoutant des contraintes d'espace de noms et en restreignant les rôles des utilisateurs à ces contraintes. Cela vous permet de contrôler l'accès aux ressources de votre organisation. Vous pouvez utiliser l'interface utilisateur de contrôle Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour gérer les rôles.
+
+
+
+== Ajoutez une contrainte d'espace de noms à un rôle
+
+Un administrateur ou un propriétaire peut ajouter des contraintes d'espace de noms.
+
+.Étapes
+. Dans la zone de navigation *gérer votre compte*, sélectionnez *compte*.
+. Sélectionnez l'onglet *utilisateurs*.
+. Dans la colonne *actions*, sélectionnez le bouton de menu d'un utilisateur ayant le rôle membre ou visualiseur.
+. Sélectionnez *Modifier le rôle*.
+. Activez la case à cocher *restreindre le rôle aux contraintes*.
++
+La case à cocher n'est disponible que pour les rôles de membre ou de visualiseur. Vous pouvez sélectionner un autre rôle dans la liste déroulante *role*.
+
+. Sélectionnez *Ajouter une contrainte*.
++
+Vous pouvez afficher la liste des contraintes disponibles par espace de noms ou par étiquette d'espace de noms.
+
+. Dans la liste déroulante *Type de contrainte*, sélectionnez *espace de noms Kubernetes* ou *étiquette d'espace de noms Kubernetes* selon la configuration de vos espaces de noms.
+. Sélectionnez un ou plusieurs espaces de noms ou étiquettes dans la liste pour composer une contrainte qui restreint les rôles à ces espaces de noms.
+. Sélectionnez *confirmer*.
++
+La page *Modifier rôle* affiche la liste des contraintes que vous avez choisies pour ce rôle.
+
+. Sélectionnez *confirmer*.
++
+Sur la page *compte*, vous pouvez afficher les contraintes pour n'importe quel rôle de membre ou de visualiseur dans la colonne *rôle*.
+
+
+
+
+NOTE: Si vous activez des contraintes pour un rôle et que vous sélectionnez *confirmer* sans ajouter de contraintes, le rôle est considéré comme étant soumis à des restrictions complètes (le rôle est refusé l'accès aux ressources affectées aux espaces de noms).
+
+
+
+== Supprime une contrainte d'espace de noms d'un rôle
+
+Un utilisateur Admin ou propriétaire peut supprimer une contrainte d'espace de noms d'un rôle.
+
+.Étapes
+. Dans la zone de navigation *gérer votre compte*, sélectionnez *compte*.
+. Sélectionnez l'onglet *utilisateurs*.
+. Dans la colonne *actions*, sélectionnez le bouton de menu d'un utilisateur ayant le rôle membre ou visualiseur ayant des contraintes actives.
+. Sélectionnez *Modifier le rôle*.
++
+La boîte de dialogue *Modifier le rôle* affiche les contraintes actives du rôle.
+
+. Sélectionnez *X* à droite de la contrainte à supprimer.
+. Sélectionnez *confirmer*.
+
+
+
+
+== Pour en savoir plus
+
+* link:../learn/user-roles-namespaces.html["Rôles et espaces de noms d'utilisateur"]
+

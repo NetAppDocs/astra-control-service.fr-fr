@@ -1,0 +1,49 @@
+---
+section: use
+title: Utilisez le service Astra Control
+entries:
+- title: Connectez-vous
+  url: "/use/log-in.html"
+- title: Gestion et protection des applications
+  entries:
+  - title: Commencez à gérer les applications
+    url: "/use/manage-apps.html"
+  - title: Protégez vos applications
+    url: "/use/protect-apps.html"
+  - title: Restaurez les applications
+    url: "/use/restore-apps.html"
+  - title: Cloner et migrer les applications
+    url: "/use/clone-apps.html"
+  - title: Gérer les crochets d'exécution de l'application
+    url: "/use/manage-app-execution-hooks.html"
+    entries:
+    - title: Exemples de crochet d'exécution
+      url: "/use/execution-hook-examples.html"
+- title: Affichez l'état des applications et des ressources de calcul
+  entries:
+  - title: Récapitulatif du tableau de bord
+    url: "/use/view-dashboard.html"
+  - title: État de santé et détails du cluster
+    url: "/use/view-clusters.html"
+  - title: État de santé et détails des applications
+    url: "/use/view-apps.html"
+- title: Gestion des compartiments
+  url: "/use/manage-buckets.html"
+- title: Gérez votre compte
+  entries:
+  - title: Configurez la facturation
+    url: "/use/set-up-billing.html"
+  - title: Inviter et gérer des utilisateurs
+    url: "/use/manage-users.html"
+  - title: Gérez les rôles
+    url: "/use/manage-roles.html"
+  - title: Gérez les identifiants du fournisseur cloud
+    url: "/use/manage-credentials.html"
+  - title: Surveillez l'activité des comptes
+    url: "/use/monitor-account-activity.html"
+  - title: Gérer les notifications
+    url: "/use/manage-notifications.html"
+  - title: Fermez votre compte
+    url: "/use/close-account.html"
+- title: Annuler la gestion des applications et des clusters
+  url: "/use/unmanage.html"

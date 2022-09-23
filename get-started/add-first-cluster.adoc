@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: get-started/add-first-cluster.html 
+keywords: discover cluster, add cluster, add kubernetes cluster, discover kubernetes cluster, add cluster 
+summary: 'Une fois votre environnement configuré, vous êtes prêt à créer un cluster Kubernetes, puis à l"ajouter à Astra Control Service.' 
+---
+= Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Une fois votre environnement configuré, vous êtes prêt à créer un cluster Kubernetes, puis à l'ajouter à Astra Control Service.
+
+*  a Kubernetes cluster
+*  managing Kubernetes clusters
+
+
+ifdef::aws[]
+
+*  cluster access to other users
+
+
+endif::aws[]
+
+*  the default storage class
+
+
+
+
+== Créez un cluster Kubernetes
+
+Si vous ne disposez pas encore d'un cluster, créez-en un qui rencontre link:set-up-amazon-web-services.html#eks-cluster-requirements["Exigences d'Astra Control Service pour Amazon Elastic Kubernetes Service (EKS)"]. Si vous ne disposez pas encore d'un cluster, créez-en un qui rencontre link:set-up-google-cloud.html#gke-cluster-requirements["Exigences d'Astra Control Service pour Google Kubernetes Engine (GKE)"]. Si vous ne disposez pas encore d'un cluster, créez-en un qui rencontre link:set-up-microsoft-azure-with-anf.html["Astra Control Service exigences pour Azure Kubernetes Service (AKS) avec Azure NetApp Files"] ou link:set-up-microsoft-azure-with-amd.html["Astra Control Service exigences pour Azure Kubernetes Service (AKS) avec des disques gérés Azure"].
+
+
+NOTE: Astra Control Service prend en charge les clusters AKS qui utilisent Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
+
+
+
+== Commencez à gérer les clusters Kubernetes
+
+Une fois connecté au service Astra Control, la première étape consiste à commencer à gérer vos clusters.
+
+Si aucune classe de snapshot de volume n'est configurée sur le cluster lorsque vous l'ajoutez, Astra Control Service tente d'en installer une avec une configuration par défaut.
+
+[NOTE]
+====
+Lorsque Astra Control gère un cluster, il conserve le suivi de la classe de stockage par défaut du cluster. Si vous modifiez la classe de stockage à l'aide de `kubectl` Contrôle Astra rétablit le changement. Pour modifier la classe de stockage par défaut d'un cluster géré par Astra Control, utilisez l'une des méthodes suivantes :
+
+* Utilisez l'API de contrôle Astra `PUT /managedClusters` et attribuez une classe de stockage par défaut différente à l' `DefaultStorageClass` paramètre.
+* Utilisez l'interface utilisateur Web Astra Control pour attribuer une classe de stockage par défaut différente. Voir  the default storage class.
+
+
+====
+ifdef::aws[]
+
+* Pour Amazon Web Services, vous devez disposer du fichier JSON contenant les informations d'identification de l'utilisateur IAM qui a créé le cluster. link:../get-started/set-up-amazon-web-services.html#create-an-iam-user["Découvrez comment créer un utilisateur IAM"].
+* Astra Trident est requis pour Amazon FSX pour NetApp ONTAP. Si vous prévoyez d'utiliser Amazon FSX pour NetApp ONTAP en tant que système back-end de stockage pour votre cluster EKS, vérifiez que vous avez terminé link:set-up-amazon-web-services.html#optional-configure-astra-trident-for-amazon-fsx-for-netapp-ontap["étape numéro 7"] des instructions de configuration.
+
+
+endif::aws[]
+
+ifdef::gcp[]
+
+* Pour GKE, vous devez disposer du fichier de clé de compte de service pour un compte de service disposant des autorisations requises. link:../get-started/set-up-google-cloud.html#create-a-service-account["Découvrez comment configurer un compte de service"].
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+* Pour AKS, vous devez disposer du fichier JSON qui contient la sortie de l'interface de ligne de commande Azure lorsque vous avez créé le principal de service. link:../get-started/set-up-microsoft-azure-with-anf.html#create-an-azure-service-principal-2["Découvrez comment configurer un principal de service"].
++
+Vous aurez également besoin de votre ID d'abonnement Azure, si vous n'avez pas ajouté le fichier JSON.
+
+* Pour les clusters AKS privés :
++
+** Le cluster doit répondre aux exigences indiquées dans https://docs.microsoft.com/en-us/azure/aks/private-clusters["Documentation Azure"^].
+** Vous devez installer le connecteur Astra sur le cluster de service AKS pour que le service Astra Control puisse gérer le cluster. Pour installer le connecteur Astra,  a private cluster,suivez ces instructions.
+
+
+
+
+endif::azure[]
+
+.Étapes
+. Dans le Tableau de bord, sélectionnez *Manage Kubernetes cluster*.
++
+Suivez les invites pour ajouter le cluster.
+
+. *Fournisseur* : sélectionnez votre fournisseur de cloud, puis indiquez les informations d'identification requises.
+
+
+ifdef::aws[]
+
+. *Amazon Web Services*: Fournissez des détails sur votre compte utilisateur Amazon Web Services IAM en téléchargeant un fichier JSON ou en collant le contenu de ce fichier JSON à partir de votre presse-papiers.
++
+Le fichier JSON doit contenir les informations d'identification de l'utilisateur IAM qui a créé le cluster.
+
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+. *Microsoft Azure*: Fournissez des détails sur votre entité de service Azure en téléchargeant un fichier JSON ou en collant le contenu de ce fichier JSON à partir de votre presse-papiers.
++
+Le fichier JSON doit contenir la sortie de l'interface de ligne de commandes Azure lorsque vous avez créé le principal de service. Il peut également inclure votre identifiant d'abonnement afin qu'il soit automatiquement ajouté à Astra. Sinon, vous devez saisir manuellement l'ID après avoir fourni le fichier JSON.
+
+
+
+endif::azure[]
+
+ifdef::gcp[]
+
+. *Google Cloud Platform*: Fournir le fichier de clé de compte de service soit en téléchargeant le fichier ou en collant le contenu à partir de votre presse-papiers.
++
+Astra Control Service utilise le compte de service pour détecter les clusters qui s'exécutent dans Google Kubernetes Engine.
+
+
+
+endif::gcp[]
+
+. *Cluster* : sélectionnez le cluster que vous souhaitez ajouter.
++
+Faites attention à la languette admissible. Si un avertissement s'affiche, passez le curseur de la souris sur l'avertissement pour déterminer si un problème est lié au cluster. Par exemple, il peut identifier que le cluster ne dispose pas d'un nœud worker.
+
++
+Si vous sélectionnez un cluster qui n'a pas été configuré pour Cloud Volumes Service pour Google Cloud, un avertissement s'affiche. Ce cluster ne possède pas NetApp Trident installé et configuré. Vous pouvez continuer à ajouter le cluster si vous prévoyez d'utiliser un autre service de stockage.
+
++
+Faites attention à la languette admissible. Si un avertissement s'affiche, passez le curseur de la souris sur l'avertissement pour déterminer si un problème est lié au cluster. Par exemple, il peut identifier que le cluster ne dispose pas d'un nœud worker.
+
++
+Si vous sélectionnez un cluster qui n'a pas été configuré pour Amazon Web Services, un avertissement s'affiche. Ce cluster ne possède pas NetApp Trident installé et configuré. Vous pouvez continuer à ajouter le cluster si vous prévoyez d'utiliser un autre service de stockage.
+
++
+Faites attention à la languette admissible. Si un avertissement s'affiche, passez le curseur de la souris sur l'avertissement pour déterminer si un problème est lié au cluster. Par exemple, il peut identifier que le cluster ne dispose pas d'un nœud worker.
+
++
+Si vous sélectionnez un cluster qui n'a pas été configuré pour Azure NetApp Files, un avertissement s'affiche. Ce cluster ne possède pas NetApp Trident installé et configuré. Vous pouvez continuer à ajouter le cluster si vous prévoyez d'utiliser un autre service de stockage.
+
++
+Si vous sélectionnez un cluster marqué d'une icône « privé », il utilise des adresses IP privées et le connecteur Astra est nécessaire pour que Astra Control gère le cluster. Si vous voyez un message indiquant que vous devez installer le connecteur Astra,  a private cluster,suivez ces instructions Pour installer le connecteur Astra et permettre la gestion du cluster. Après avoir installé le connecteur Astra, le cluster doit être admissible et vous pouvez procéder à l'ajout du cluster.
+
+. *Stockage* : sélectionnez la classe de stockage que vous souhaitez que les applications Kubernetes déployées sur ce cluster utilisent par défaut.
++
+[NOTE]
+====
+Chaque fournisseur de service de stockage cloud affiche les informations suivantes en matière de prix, de performance et de résilience :
+
+ifdef::gcp[]
+
+** Cloud Volumes Service pour Google Cloud : informations sur le prix, la performance et la résilience
+** Google persistent Disk : pas d'informations sur le prix, la performance ou la résilience disponibles
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+** Azure NetApp Files : informations sur les performances et la résilience
+** Azure Managed Disks : aucun prix, performances ou résilience disponibles
+
+
+endif::azure[]
+
+ifdef::aws[]
+
+** Amazon Elastic Block Store : pas d'informations disponibles sur le prix, la performance ou la résilience
+** Amazon FSX pour NetApp ONTAP : aucune information disponible concernant le prix, les performances ou la résilience
+
+
+endif::aws[]
+
+====
++
+Chaque classe de stockage peut utiliser l'un des services suivants :
+
+
+
+ifdef::gcp[]
+
+* https://cloud.netapp.com/cloud-volumes-service-for-gcp["Cloud Volumes Service pour Google Cloud"^]
+* https://cloud.google.com/persistent-disk/["Disque persistant Google"^]
+
+
+endif::gcp[]
+
+ifdef::azure[]
+
+* https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["Disques gérés Azure"^]
+
+
+endif::azure[]
+
+ifdef::aws[]
+
+* https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^]
+* https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["Amazon FSX pour NetApp ONTAP"^]
+
+
+endif::aws[]
+
++ en savoir plus sur link:../learn/aws-storage.html["Classes de stockage pour les clusters Amazon Web Services"]. En savoir plus sur link:../learn/azure-storage.html["Classes de stockage pour les clusters AKS"]. En savoir plus sur link:../learn/choose-class-and-size.html["Classes de stockage pour clusters GKE"].
+
+. *Review & Approve* : consultez les détails de la configuration et sélectionnez *Add cluster*.
+
+
+Astra Control Service crée un magasin d'objets pour les sauvegardes d'applications sur les clusters éligibles, crée un compte d'administrateur sur le cluster et définit la classe de stockage par défaut que vous avez spécifiée. Ce processus peut prendre jusqu'à 5 minutes.
+
+ifdef::aws[]
+
+
+
+== Fournir un accès au cluster à d'autres utilisateurs
+
+Vous pouvez éventuellement fournir `kubectl` L'accès aux commandes d'un cluster à d'autres utilisateurs IAM qui ne sont pas le créateur du cluster.
+
+Pour obtenir des instructions, reportez-vous à la section https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/["Comment puis-je fournir l'accès aux autres utilisateurs IAM et aux rôles après la création du cluster dans Amazon EKS ?"^].
+
+endif::aws[]
+
+
+
+== Modifiez la classe de stockage par défaut
+
+Vous pouvez modifier la classe de stockage par défaut d'un cluster.
+
+.Étapes
+. Dans l'interface utilisateur du service de contrôle Astra, sélectionnez *clusters*.
+. Sur la page *clusters*, sélectionnez le cluster que vous souhaitez modifier.
+. Sélectionnez l'onglet *stockage*.
+. Sélectionnez la catégorie *classes de stockage*.
+. Sélectionnez le menu *actions* pour la classe de stockage que vous souhaitez définir par défaut.
+. Sélectionnez *définir comme valeur par défaut*.
+
+
+ifdef::azure[]
+
+
+
+== Pour en savoir plus
+
+* link:manage-private-cluster.html["Gérer un cluster privé"]
+
+
+endif::azure[]

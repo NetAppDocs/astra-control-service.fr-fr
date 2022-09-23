@@ -1,0 +1,102 @@
+---
+sidebar: sidebar 
+permalink: release-notes/known-issues.html 
+keywords: bugs, known issues, problems 
+summary: 'Les problèmes connus identifient les problèmes susceptibles de vous empêcher d"utiliser cette version du produit avec succès.' 
+---
+= Problèmes connus
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/release-notes/
+
+
+Les problèmes connus identifient les problèmes susceptibles de vous empêcher d'utiliser cette version du produit avec succès.
+
+Les problèmes connus suivants ont une incidence sur la version actuelle :
+
+.En applications
+*  clones fail after an application is deployed with a set storage class
+*  page loads forever when trying to restore an application belonging to a deleted cluster
+*  to define an app on a namespace that has been deleted and recreated
+
+
+.Sauvegarde, restauration et clonage
+*  of an app results in PV size larger than original PV
+*  clones fail using a specific version of PostgreSQL
+*  backups and snapshots fail if the volumesnapshotclass is added after a cluster is managed
+
+
+ifdef::azure[]
+
+*  backup buckets use LRS redundancy by default
+
+
+endif::azure[]
+
+.Autres questions
+*  eventually begin to fail when using external-snapshotter version 4.2.0
+*  data management operations fail with Internal Service Error (500) when Astra Trident is offline
+
+
+
+
+== Les clones d'application échouent après le déploiement d'une application avec une classe de stockage définie
+
+Après le déploiement d'une application avec une classe de stockage définie explicitement (par exemple, `helm install ...-set global.storageClass=netapp-cvs-perf-extreme`), les tentatives ultérieures de clonage de l'application nécessitent que le cluster cible ait la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage définie explicitement dans un cluster ne disposant pas de la même classe de stockage échouera. Il n'y a pas d'étapes de récupération dans ce scénario.
+
+
+
+== La page applications se charge à tout moment lors de la tentative de restauration d'une application appartenant à un cluster supprimé
+
+Lorsque vous essayez de restaurer une application à partir d'un cluster supprimé à partir de la page applications, le chargement de la page applications n'est jamais terminé. Pour contourner ce problème, restaurez l'application à partir du menu actions de l'application de la page de liste applications.
+
+
+
+== Impossible de définir une application sur un espace de noms qui a été supprimé et recréé
+
+Si vous définissez une application avec un espace de noms, supprimez l'espace de noms, puis réinstallez l'application dans le même espace de noms, l'opération échoue avec un code d'erreur 409. Pour définir l'application à l'aide de l'espace de noms recréé, supprimez d'abord l'ancienne instance d'application.
+
+
+
+== La restauration d'une application entraîne une taille de volume persistant supérieure à celle de l'application initiale
+
+Si vous redimensionnez un volume persistant après avoir créé une sauvegarde puis restauré à partir de cette sauvegarde, la taille du volume persistant correspond à la nouvelle taille du volume persistant, et non à la taille de la sauvegarde.
+
+
+
+== Les clones d'applications échouent à l'aide d'une version spécifique de PostgreSQL
+
+Les clones d'applications au sein du même cluster échouent systématiquement avec le graphique Bitnami PostgreSQL 11.5.0. Pour effectuer un clonage réussi, utilisez une version antérieure ou ultérieure du graphique.
+
+
+
+== Les sauvegardes d'applications et les snapshots échouent si la classe volumesnapshotclass est ajoutée après la gestion d'un cluster
+
+Dans ce scénario, les sauvegardes et les instantanés échouent avec une erreur UI 500. Pour contourner ce problème, actualisez la liste des applications.
+
+ifdef::azure[]
+
+
+
+== Les compartiments de sauvegarde Azure utilisent la redondance LRS par défaut
+
+Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). Pour utiliser une option de redondance plus durable pour les compartiments Azure, consultez les étapes en option des instructions de configuration du fournisseur cloud Azure :
+
+* link:../get-started/set-up-microsoft-azure-with-amd.html["Configuration de Microsoft Azure avec des disques gérés Azure"]
+* link:../get-started/set-up-microsoft-azure-with-anf.html["Configuration de Microsoft Azure avec Azure NetApp Files"]
+
+
+endif::azure[]
+
+
+
+== Les snapshots finissent par échouer lorsque les snapshots externes sont utilisés version 4.2.0
+
+Lorsque vous utilisez le snapshot-contrôleur Kubernetes (également appelé External-snapshotter) version 4.2.0 avec Kubernetes 1.20 ou 1.21, les snapshots peuvent échouer. Pour éviter cela, utilisez un autre https://kubernetes-csi.github.io/docs/snapshot-controller.html["version prise en charge"^] D'un snapshoter externe, comme la version 4.2.1, avec Kubernetes version 1.20 ou 1.21.
+
+
+
+== Les opérations de gestion des données d'application échouent avec l'erreur de service interne (500) lorsque Astra Trident est hors ligne
+
+Si Astra Trident sur un cluster d'application est mis hors ligne (et reconnecté) et 500 erreurs de service internes sont rencontrées lors de la tentative de gestion des données d'application, redémarrez tous les nœuds Kubernetes du cluster d'application pour restaurer la fonctionnalité.

@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: use/view-apps.html 
+keywords: view app, view app status, view app protection status, view app pods, view persistent storage 
+summary: 'Une fois que vous avez commencé à gérer une application, Astra Control fournit des informations détaillées sur l"application qui vous permet d"identifier son état, son état de protection, les pods, le stockage persistant, etc.' 
+---
+= Afficher l'état de santé et les détails d'une application
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Une fois que vous avez commencé à gérer une application, Astra Control fournit des informations détaillées sur l'application qui vous permet d'identifier son état (qu'il s'agisse d'une application en bon état), son état de protection (qu'il soit entièrement protégé en cas de défaillance), les pods, le stockage persistant, et bien plus encore.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application.
+. Sélectionnez autour pour trouver les informations que vous recherchez :
++
+Statut de l'application:: Fournit un état qui reflète l'état de l'application dans Kubernetes.
+État de la protection des applications:: Fournit un état de protection de l'application :
++
+--
+** *Entièrement protégé* : l'application dispose d'un programme de sauvegarde actif et d'une sauvegarde réussie qui a moins d'une semaine
+** *Partiellement protégé* : l'application dispose d'un programme de sauvegarde actif, d'un programme de snapshots actif ou d'une sauvegarde ou d'un snapshot réussi
+** *Non protégé*: Les applications qui ne sont ni totalement protégées ni partiellement protégées.
++
+_Vous ne pouvez pas être entièrement protégé tant que vous n'avez pas une sauvegarde récente_. Ceci est important, car les sauvegardes sont stockées dans un magasin d'objets à distance des volumes persistants. En cas de défaillance ou d'accident, le cluster doit être doté d'un stockage persistant, alors vous devez effectuer une sauvegarde pour effectuer une restauration. Un snapshot ne vous permettrait pas de restaurer votre système.
+
+
+
+--
+Présentation:: Informations sur l'état des modules associés à l'application.
+Protection des données:: Vous permet de configurer une règle de protection des données et d'afficher les snapshots et les sauvegardes existants.
+Stockage:: Vous indique les volumes persistants au niveau de l'application. L'état d'un volume persistant est du point de vue du cluster Kubernetes.
+Ressources:: Vous permet de vérifier quelles ressources sont sauvegardées et gérées.
+Activité:: Les activités Astra Control liées à l'application.
+
+
+

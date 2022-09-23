@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: get-started/quick-start.html 
+keywords: get started, quick start 
+summary: Commencez avec le service Astra Control en quelques étapes. 
+---
+= Démarrage rapide pour le service Astra Control
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+Cette page offre un aperçu détaillé des étapes à suivre pour commencer à utiliser le service Astra Control. Les liens de chaque étape vous mènent à une page qui fournit plus de détails.
+
+
+
+== Configurez votre fournisseur cloud
+
+ifdef::gcp[]
+
+. Google Cloud :
++
+** Examiner la configuration requise du cluster Google Kubernetes Engine.
+** Achetez Cloud Volumes Service pour Google Cloud sur Google Cloud Marketplace.
+** Activez les API requises.
+** Créez un compte de service et une clé de compte de service.
+** Configurez le peering réseau de votre VPC vers Cloud Volumes Service pour Google Cloud.
++
+link:set-up-google-cloud.html["En savoir plus sur les exigences de Google Cloud"].
+
+
+
+
+
+endif::gcp[]
+
+ifdef::aws[]
+
+. Amazon Web Services :
++
+** Vérifiez la configuration requise pour le cluster Amazon Web Services.
+** Créez un compte Amazon.
+** Installez l'interface de ligne de commande Amazon Web Services.
+** Créer un utilisateur IAM.
+** Créez et joignez une stratégie d'autorisations.
+** Enregistrer les informations d'identification pour l'utilisateur IAM.
++
+link:set-up-amazon-web-services.html["En savoir plus sur les conditions requises pour Amazon Web Services"].
+
+
+
+
+
+endif::aws[]
+
+ifdef::azure[]
+
+. Microsoft Azure :
++
+** Examinez les exigences de cluster Azure Kubernetes Service pour le système de stockage back-end que vous prévoyez d'utiliser.
++
+link:set-up-microsoft-azure-with-anf.html["En savoir plus sur les exigences relatives à Microsoft Azure et à Azure NetApp Files"].
+
++
+link:set-up-microsoft-azure-with-amd.html["En savoir plus sur les besoins en disques gérés pour Microsoft Azure et Azure"].
+
+
+
+
+
+endif::azure[]
+
+
+
+== Complétez l'inscription à Astra Control
+
+. Créer un https://cloud.netapp.com["NetApp Cloud Central"^] compte.
+. Indiquez votre ID d'e-mail NetApp Cloud Central lors de la création de votre compte Astra Control https://cloud.netapp.com/astra["À partir de la page produit Astra"^].
+
+
+[role="quick-margin-para"]
+link:register.html["En savoir plus sur le processus d'inscription"].
+
+
+
+== Ajoutez des clusters à Astra Control
+
+[role="quick-margin-para"]
+Une fois connecté, sélectionnez *Ajouter un cluster* pour commencer à gérer votre cluster avec Astra Control.
+
+[role="quick-margin-para"]
+link:add-first-cluster.html["En savoir plus sur l'ajout de clusters"].

@@ -1,0 +1,169 @@
+---
+sidebar: sidebar 
+permalink: use/protect-apps.html 
+keywords: backup, back up, backup apps, back up apps, snapshots, snapshot an app, take a snapshot, take a backup, view backups, view snapshots, set policy, set schedule, schedule backups, schedule snapshots 
+summary: 'Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l"aide d"une stratégie de protection automatisée ou ad hoc.' 
+---
+= Protéger les applications avec les snapshots et les sauvegardes
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour protéger les applications.
+
+
+
+== Snapshots et sauvegardes
+
+Un _snapshot_ est une copie ponctuelle d'une application stockée sur le même volume provisionné que l'application. Ils sont généralement rapides. Les snapshots locaux sont utilisés pour restaurer l'application à un point antérieur dans le temps.
+
+Une _sauvegarde_ est stockée dans le cloud sur un stockage objet. Les sauvegardes peuvent être plus lentes que les snapshots locaux. Mais ils sont accessibles dans plusieurs régions du cloud pour faciliter les migrations d'applications. Vous pouvez également choisir une période de conservation plus longue pour les sauvegardes.
+
+
+CAUTION: _Vous ne pouvez pas être entièrement protégé tant que vous n'avez pas une sauvegarde récente_. Ceci est important, car les sauvegardes sont stockées dans un magasin d'objets à distance des volumes persistants. En cas de défaillance ou d'accident, le cluster et son stockage persistant doivent être sauvegardées pour être restaurées. Un snapshot ne vous permettrait pas de restaurer votre système.
+
+
+NOTE: Si vous effectuez un snapshot ou une sauvegarde, mais que l'opération échoue avec l'erreur « la ressource n'a pas été créée à cause d'un problème interne de serveur », vérifiez que les pilotes corrects sont installés sur le système de stockage principal que vous utilisez. Certains systèmes back-end nécessitent des pilotes CSI (Container Storage interface), tandis que d'autres nécessitent un contrôleur Snapshot externe.
+
+Vous pouvez effectuer les tâches suivantes liées à la protection de vos données applicatives :
+
+*  a protection policy
+*  a snapshot
+*  a backup
+*  snapshots and backups
+*  snapshots
+*  backups
+*  backups
+
+
+
+
+== Configurer une règle de protection
+
+Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver. Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez *protection des données*.
+. Sélectionnez *configurer la stratégie de protection*.
+. Définissez un planning de protection en choisissant le nombre de snapshots et de sauvegardes à conserver pour les horaires, quotidiens, hebdomadaires et mensuels.
++
+Vous pouvez définir les horaires horaires, quotidiens, hebdomadaires et mensuels simultanément. Un programme ne sera pas activé tant que vous n'aurez pas défini un niveau de rétention pour les snapshots et les sauvegardes.
+
++
+Lorsque vous définissez un niveau de conservation pour les sauvegardes, vous pouvez choisir le compartiment dans lequel vous souhaitez stocker les sauvegardes.
+
++
+L'exemple suivant illustre quatre planifications de protection : toutes les heures, tous les jours, toutes les semaines et tous les mois pour les snapshots et les sauvegardes.
+
++
+image:screenshot-protection-policy.png["Capture d'écran d'un exemple de stratégie de configuration dans laquelle vous pouvez choisir de réaliser des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines ou tous les mois."]
+
+. Sélectionnez *Revue*.
+. Sélectionnez *configurer*.
++
+Voici une vidéo présentant chacune de ces étapes.
+
++
+video::video-set-protection-policy.mp4[width=848,height=480]
+
+
+Astra Control implémente la règle de protection des données en créant et en conservant des snapshots et des sauvegardes à l'aide du calendrier et de la règle de conservation que vous avez définis.
+
+
+
+== Créer un snapshot
+
+Vous pouvez créer un snapshot à la demande à tout moment.
+
+.Étapes
+. Sélectionnez *applications*.
+. Sélectionnez la liste déroulante dans la colonne *actions* pour l'application souhaitée.
+. Sélectionnez *instantané*.
+. Personnalisez le nom de l'instantané, puis sélectionnez *informations de révision*.
+. Consultez le résumé des instantanés et sélectionnez *Snapshot App*.
+
+
+Astra Control crée un snapshot des applications.
+
+
+
+== Créer une sauvegarde
+
+Vous pouvez également sauvegarder une application à tout moment.
+
+.Étapes
+. Sélectionnez *applications*.
+. Sélectionnez la liste déroulante dans la colonne *actions* pour l'application souhaitée.
+. Sélectionnez *Backup*.
+. Personnalisez le nom de la sauvegarde, choisissez de sauvegarder l'application à partir d'un instantané existant, puis sélectionnez *informations de révision*.
+. Passez en revue le résumé des sauvegardes et sélectionnez *Backup App*.
+
+
+Astra Control crée une sauvegarde de l'application.
+
+
+
+== Afficher les snapshots et les sauvegardes
+
+Vous pouvez afficher les instantanés et les sauvegardes d'une application à partir de l'onglet protection des données.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez *protection des données*.
++
+Les snapshots s'affichent par défaut.
+
+. Sélectionnez *backups* pour afficher la liste des sauvegardes.
+
+
+
+
+== Supprimer les instantanés
+
+Supprimez les snapshots programmés ou à la demande dont vous n'avez plus besoin.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez *protection des données*.
+. Sélectionnez la liste déroulante dans la colonne *actions* pour l'instantané souhaité.
+. Sélectionnez *Supprimer instantané*.
+. Tapez le nom de l'instantané pour confirmer la suppression, puis sélectionnez *Oui, Supprimer l'instantané*.
+
+
+Astra Control supprime le snapshot.
+
+
+
+== Annuler les sauvegardes
+
+Vous pouvez annuler une sauvegarde en cours.
+
+
+TIP: Pour annuler une sauvegarde, la sauvegarde doit être en cours d'exécution. Vous ne pouvez pas annuler une sauvegarde à l'état en attente.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application.
+. Sélectionnez *protection des données*.
+. Sélectionnez *backups*.
+. Dans le menu Options de la colonne *actions* pour la sauvegarde souhaitée, sélectionnez *Annuler*.
+. Tapez le mot "annuler" pour confirmer la suppression, puis sélectionnez *Oui, annuler la sauvegarde*.
+
+
+
+
+== Supprimer les sauvegardes
+
+Supprimez les sauvegardes planifiées ou à la demande qui ne vous sont plus nécessaires.
+
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez *protection des données*.
+. Sélectionnez *backups*.
+. Sélectionnez la liste déroulante dans la colonne *actions* pour la sauvegarde souhaitée.
+. Sélectionnez *Supprimer sauvegarde*.
+. Tapez le nom de la sauvegarde pour confirmer la suppression, puis sélectionnez *Oui, Supprimer la sauvegarde*.
+
+
+Astra Control supprime la sauvegarde.

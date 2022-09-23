@@ -1,0 +1,323 @@
+---
+sidebar: sidebar 
+permalink: use/manage-app-execution-hooks.html 
+keywords: execution hook, hook, script, snapshot, backup, freeze, thaw, database 
+summary: 'Un crochet d"exécution est un script personnalisé que vous pouvez exécuter avant ou après un instantané d"une application gérée.' 
+---
+= Gérer les crochets d'exécution de l'application
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Un crochet d'exécution est une action personnalisée que vous pouvez configurer pour s'exécuter conjointement avec une opération de protection des données d'une application gérée. Par exemple, si vous disposez d'une application de base de données, vous pouvez utiliser des crochets d'exécution pour interrompre toutes les transactions de base de données avant un instantané et reprendre les transactions une fois l'instantané terminé. Les snapshots sont ainsi cohérents au niveau des applications.
+
+
+
+== Types de crochets d'exécution
+
+Astra Control prend en charge les types de crochets d'exécution suivants, en fonction du moment où ils peuvent être exécutés :
+
+* Pré-instantané
+* Post-snapshot
+* Avant sauvegarde
+* Post-sauvegarde
+* Post-restauration
+
+
+
+
+== Remarques importantes sur les crochets d'exécution personnalisés
+
+Lors de la planification de crochets d'exécution pour vos applications, tenez compte des points suivants.
+
+* Un crochet d'exécution doit utiliser un script pour effectuer des actions. De nombreux crochets d'exécution peuvent référencer le même script.
+* Astra Control exige que les scripts utilisés par les crochets d'exécution soient écrits au format de scripts shell exécutables.
+* La taille du script est limitée à 96 Ko.
+* Astra Control utilise les paramètres de crochet d'exécution et tout critère de correspondance pour déterminer quels crochets s'appliquent à une opération de snapshot, de sauvegarde ou de restauration.
+* Toutes les défaillances de crochet d'exécution sont des pannes logicielles ; d'autres crochets et l'opération de protection des données sont toujours tentées même en cas de défaillance d'un crochet. Cependant, lorsqu'un crochet échoue, un événement d'avertissement est enregistré dans le journal des événements de la page *activité*.
+* Pour créer, modifier ou supprimer des crochets d'exécution, vous devez être un utilisateur disposant des autorisations propriétaire, administrateur ou membre.
+* Si l'exécution d'un crochet d'exécution prend plus de 25 minutes, le crochet échoue, créant une entrée de journal d'événements avec un code retour « N/A ». Tout instantané affecté expire et sera marqué comme ayant échoué, avec une entrée du journal des événements qui en résulte indiquant le délai d'attente.
+* Pour les opérations de protection de données ad hoc, tous les événements hook sont générés et enregistrés dans le journal des événements de la page *Activity*. Cependant, pour les opérations planifiées de protection des données, seuls les événements de défaillance de type « hook » sont enregistrés dans le journal des événements (les événements générés par les opérations de protection des données planifiées sont toujours enregistrés).
+
+
+[NOTE]
+====
+Puisque les crochets d'exécution réduisent souvent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils sont en cours d'exécution, vous devez toujours essayer de réduire le temps d'exécution de vos crochets d'exécution personnalisés. Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochets d'exécution associés, mais que vous l'annulez, les crochets sont toujours autorisés à s'exécuter si l'opération de sauvegarde ou d'instantané a déjà commencé. Autrement dit, un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde est terminée.
+
+====
+
+
+=== Ordre d'exécution
+
+Lors de l'exécution d'une opération de protection des données, les événements de hook d'exécution ont lieu dans l'ordre suivant :
+
+. Tous les crochets d'exécution de pré-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets de pré-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets avant que l'opération ne soit ni garantie ni configurable.
+. L'opération de protection des données est effectuée.
+. Tous les crochets d'exécution de post-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets post-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets après l'opération n'est ni garanti ni configurable.
+
+
+Si vous créez plusieurs crochets d'exécution du même type (par exemple, pré-instantané), l'ordre d'exécution de ces crochets n'est pas garanti. Cependant, l'ordre d'exécution des crochets de différents types est garanti. Par exemple, l'ordre d'exécution d'une configuration comportant les cinq types différents de crochets se présente comme suit :
+
+. Crochets de pré-secours exécutés
+. Crochets pré-instantanés exécutés
+. Crochets post-snapshot exécutés
+. Crochets post-secours exécutés
+. Crochets post-restauration exécutés
+
+
+Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la  whether a hook will run.
+
+
+NOTE: Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots et les sauvegardes obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot ou la sauvegarde, puis tester l'application.
+
+
+
+=== Déterminez si un crochet va courir
+
+Utilisez le tableau suivant pour déterminer si un crochet d'exécution personnalisé sera exécuté pour votre application.
+
+Notez que toutes les opérations générales liées aux applications consistent à exécuter l'une des opérations de base de la copie Snapshot, de la sauvegarde ou de la restauration. Selon le scénario, une opération de clonage peut se composer de différentes combinaisons de ces opérations, de sorte que les crochets d'exécution d'une opération de clonage varient.
+
+Les opérations de restauration sur place requièrent un snapshot ou une sauvegarde existante. Elles n'exécutent donc pas de snapshot ni de crochets de sauvegarde.
+
+[NOTE]
+====
+Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané et qu'il y a des crochets d'exécution associés, certains crochets peuvent s'exécuter, et d'autres peuvent ne pas. Autrement dit, un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde est terminée. Gardez à l'esprit les points suivants pour les sauvegardes annulées avec les crochets d'exécution associés :
+
+* Les crochets de pré-secours et post-secours sont toujours exécutés.
+* Si la sauvegarde inclut un nouvel instantané et que l'instantané a démarré, les crochets pré-instantané et post-instantané sont exécutés.
+* Si la sauvegarde est annulée avant le démarrage de l'instantané, les crochets pré-instantané et post-instantané ne sont pas exécutés.
+
+
+====
+|===
+| Scénario | Fonctionnement | Snapshot existant | Sauvegarde existante | Espace de noms | Cluster | Les crochets de snapshot sont exécutés | Les crochets de secours sont en place | Restaurer la course des crochets 
+
+
+| 1 | Clonage | N | N | Nouveau | Identique | Y | N | Y 
+
+
+| 2 | Clonage | N | N | Nouveau | Différente | Y | Y | Y 
+
+
+| 3 | Cloner ou restaurer | Y | N | Nouveau | Identique | N | N | Y 
+
+
+| 4 | Cloner ou restaurer | N | Y | Nouveau | Identique | N | N | Y 
+
+
+| 5 | Cloner ou restaurer | Y | N | Nouveau | Différente | N | Y | Y 
+
+
+| 6 | Cloner ou restaurer | N | Y | Nouveau | Différente | N | N | Y 
+
+
+| 7 | Restaurer | Y | N | Existant | Identique | N | N | Y 
+
+
+| 8 | Restaurer | N | Y | Existant | Identique | N | N | Y 
+
+
+| 9 | Snapshot | S/O | S/O | S/O | S/O | Y | S/O | S/O 
+
+
+| 10 | Sauvegarde | N | S/O | S/O | S/O | Y | Y | S/O 
+
+
+| 11 | Sauvegarde | Y | S/O | S/O | S/O | N | Y | S/O 
+|===
+
+
+== Afficher les crochets d'exécution existants
+
+Vous pouvez afficher les crochets d'exécution personnalisés existants pour une application.
+
+.Étapes
+. Accédez à *applications*, puis sélectionnez le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
++
+Vous pouvez afficher tous les crochets d'exécution activés ou désactivés dans la liste résultante. Vous pouvez voir l'état d'un crochet, sa source et le moment où il est exécuté (pré ou post-opération). Pour afficher les journaux d'événements entourant les crochets d'exécution, accédez à la page *activité* dans la zone de navigation de gauche.
+
+
+
+
+
+== Afficher les scripts existants
+
+Vous pouvez afficher les scripts chargés existants. Vous pouvez également voir quels scripts sont en cours d'utilisation, et quels crochets les utilisent, sur cette page.
+
+.Étapes
+. Accédez à *compte*.
+. Sélectionnez l'onglet *scripts*.
++
+Cette page affiche la liste des scripts chargés existants. La colonne *utilisé par* indique les crochets d'exécution qui utilisent chaque script.
+
+
+
+
+
+== Ajouter un script
+
+Vous pouvez ajouter un ou plusieurs scripts que les crochets d'exécution peuvent référencer. De nombreux crochets d'exécution peuvent référencer le même script ; cela vous permet de mettre à jour de nombreux crochets d'exécution en ne changeant qu'un seul script.
+
+.Étapes
+. Accédez à *compte*.
+. Sélectionnez l'onglet *scripts*.
+. Sélectionnez *Ajouter*.
+. Effectuez l'une des opérations suivantes :
++
+** Charger un script personnalisé.
++
+... Sélectionnez l'option *Télécharger le fichier*.
+... Accédez à un fichier et téléchargez-le.
+... Donnez un nom unique au script.
+... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+... Sélectionnez *Enregistrer le script*.
+
+
+** Coller dans un script personnalisé à partir du presse-papiers.
++
+... Sélectionnez l'option *Coller ou type*.
+... Sélectionnez le champ de texte et collez le texte du script dans le champ.
+... Donnez un nom unique au script.
+... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+
+
+
+
+. Sélectionnez *Enregistrer le script*.
+
+
+Le nouveau script apparaît dans la liste de l'onglet *scripts*.
+
+
+
+== Supprimer un script
+
+Vous pouvez supprimer un script du système s'il n'est plus nécessaire et s'il n'est pas utilisé par les crochets d'exécution.
+
+.Étapes
+. Accédez à *compte*.
+. Sélectionnez l'onglet *scripts*.
+. Choisissez un script à supprimer et sélectionnez le menu dans la colonne *actions*.
+. Sélectionnez *Supprimer*.
+
+
+
+NOTE: Si le script est associé à un ou plusieurs crochets d'exécution, l'action *Delete* n'est pas disponible. Pour supprimer le script, modifiez d'abord les crochets d'exécution associés et associez-les à un autre script.
+
+
+
+== Créer un crochet d'exécution personnalisé
+
+Vous pouvez créer un crochet d'exécution personnalisé pour une application. Voir link:execution-hook-examples.html["Exemples de crochet d'exécution"^] pour des exemples de crochet. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour créer des crochets d'exécution.
+
+
+NOTE: Lorsque vous créez un script de shell personnalisé à utiliser comme crochet d'exécution, n'oubliez pas de spécifier le shell approprié au début du fichier, sauf si vous exécutez des commandes spécifiques ou fournissez le chemin complet à un exécutable.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez *Ajouter*.
+. Dans la zone *Détails du crochet*, déterminez quand le crochet doit fonctionner en sélectionnant un type d'opération dans le menu déroulant *opération*.
+. Saisissez un nom unique pour le crochet.
+. (Facultatif) saisissez les arguments à transmettre au crochet pendant l'exécution, en appuyant sur la touche entrée après chaque argument que vous entrez pour enregistrer chacun.
+. Dans la zone *Images conteneur*, si le crochet doit être exécuté sur toutes les images de conteneur contenues dans l'application, activez la case à cocher *appliquer à toutes les images de conteneur*. Si, à la place, le crochet ne doit agir que sur une ou plusieurs images de conteneur spécifiées, entrez les noms d'image de conteneur dans le champ *noms d'image de conteneur à associer*.
+. Dans la zone *script*, effectuez l'une des opérations suivantes :
++
+** Ajouter un nouveau script.
++
+... Sélectionnez *Ajouter*.
+... Effectuez l'une des opérations suivantes :
++
+**** Charger un script personnalisé.
++
+..... Sélectionnez l'option *Télécharger le fichier*.
+..... Accédez à un fichier et téléchargez-le.
+..... Donnez un nom unique au script.
+..... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+..... Sélectionnez *Enregistrer le script*.
+
+
+**** Coller dans un script personnalisé à partir du presse-papiers.
++
+..... Sélectionnez l'option *Coller ou type*.
+..... Sélectionnez le champ de texte et collez le texte du script dans le champ.
+..... Donnez un nom unique au script.
+..... (Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.
+
+
+
+
+
+
+** Sélectionnez un script existant dans la liste.
++
+Cela indique au crochet d'exécution d'utiliser ce script.
+
+
+
+. Sélectionnez *Ajouter crochet*.
+
+
+
+
+== Vérifier l'état d'un crochet d'exécution
+
+Une fois qu'une opération de snapshot, de sauvegarde ou de restauration a terminé, vous pouvez vérifier l'état des crochets d'exécution qui ont été exécutés dans le cadre de l'opération. Vous pouvez utiliser ces informations d'état pour déterminer si vous souhaitez maintenir le crochet d'exécution, le modifier ou le supprimer.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *protection des données*.
+. Sélectionnez *snapshots* pour voir exécution de snapshots ou *sauvegardes* pour voir exécution de sauvegardes.
++
+L'état *Hook* indique l'état de la séquence de crochet d'exécution une fois l'opération terminée. Vous pouvez passer le curseur de la souris sur l'état pour plus de détails. Par exemple, si des échecs de crochet d'exécution se produisent au cours d'un snapshot, le fait de passer le curseur sur l'état de crochet pour ce snapshot donne une liste des crochets d'exécution ayant échoué. Pour voir les raisons de chaque échec, vous pouvez consulter la page *activité* dans la zone de navigation de gauche.
+
+
+
+
+
+== Afficher l'utilisation du script
+
+Vous pouvez voir quels crochets d'exécution utilisent un script particulier dans l'interface utilisateur Web Astra Control.
+
+.Étapes
+. Sélectionnez *compte*.
+. Sélectionnez l'onglet *scripts*.
++
+La colonne *utilisé par* de la liste des scripts contient des détails sur les crochets qui utilisent chaque script de la liste.
+
+. Sélectionnez les informations de la colonne *utilisé par* pour un script qui vous intéresse.
++
+Une liste plus détaillée s'affiche, avec les noms des crochets qui utilisent le script et le type d'opération avec lesquels ils sont configurés pour s'exécuter.
+
+
+
+
+
+== Désactivez un crochet d'exécution
+
+Vous pouvez désactiver un crochet d'exécution si vous souhaitez l'empêcher temporairement de s'exécuter avant ou après un instantané d'une application. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour désactiver les crochets d'exécution.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez le menu Options dans la colonne *actions* pour un crochet que vous souhaitez désactiver.
+. Sélectionnez *Désactiver*.
+
+
+
+
+== Supprimer un crochet d'exécution
+
+Vous pouvez supprimer entièrement un crochet d'exécution si vous n'en avez plus besoin. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour supprimer les crochets d'exécution.
+
+.Étapes
+. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez l'onglet *crochets d'exécution*.
+. Sélectionnez le menu Options dans la colonne *actions* pour un crochet que vous souhaitez supprimer.
+. Sélectionnez *Supprimer*.
+

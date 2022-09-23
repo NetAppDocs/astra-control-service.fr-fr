@@ -1,0 +1,36 @@
+---
+section: get-started
+title: Commencez
+entries:
+- title: Découvrez Astra Control
+  url: "/get-started/intro.html"
+- title: Déploiements Kubernetes pris en charge
+  url: "/get-started/supported-deployments.html"
+- title: Démarrage rapide
+  url: "/get-started/quick-start.html"
+- title: Configurez votre fournisseur cloud
+  entries:
+  - title: Configurer Amazon Web Services
+    flavor: aws
+    url: "/get-started/set-up-amazon-web-services.html"
+  - title: Configurez Google Cloud
+    flavor: gcp
+    url: "/get-started/set-up-google-cloud.html"
+  - title: Configuration de Microsoft Azure avec Azure NetApp Files
+    flavor: azure
+    url: "/get-started/set-up-microsoft-azure-with-anf.html"
+  - title: Configuration de Microsoft Azure avec des disques gérés Azure
+    flavor: azure
+    url: "/get-started/set-up-microsoft-azure-with-amd.html"
+- title: Créez un compte
+  url: "/get-started/register.html"
+- title: Gérer les clusters
+  url: "/get-started/add-first-cluster.html"
+- title: Gérer des clusters privés
+  url: "/get-started/manage-private-cluster.html"
+- title: Et la suite ?
+  url: "/get-started/whats-next.html"
+- title: Vidéos
+  url: "/get-started/videos.html"
+- title: FAQ
+  url: "/get-started/faq.html"

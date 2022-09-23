@@ -1,0 +1,327 @@
+---
+sidebar: sidebar 
+permalink: get-started/set-up-microsoft-azure-with-anf.html 
+keywords: azure, azure netapp files, register, create account, create netapp account, azure subscription, azure permissions, service principal, create service principal, set up azure permissions, set up service principal, setup service principal, setup azure permissions, permissions, create capacity pool, setup capacity pool, set up capacity pool, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, azure regions, kubernetes version, linux, image type, networking 
+summary: Voici quelques étapes pour préparer votre abonnement Microsoft Azure avant de gérer des clusters Azure Kubernetes Service avec Astra Control Service. 
+---
+= Configuration de Microsoft Azure avec Azure NetApp Files
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+Voici quelques étapes pour préparer votre abonnement Microsoft Azure avant de gérer des clusters Azure Kubernetes Service avec Astra Control Service. Suivez ces instructions si vous prévoyez d'utiliser Azure NetApp Files en tant que système back-end de stockage.
+
+
+
+== Démarrage rapide pour la configuration d'Azure
+
+Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux sections restantes pour obtenir plus de détails.
+
+
+
+=== Découvrez les exigences d'Astra Control Service pour Azure Kubernetes Service
+
+[role="quick-margin-para"]
+Assurez-vous que les clusters fonctionnent correctement et qu'une version prise en charge de Kubernetes est prise en charge, que les pools de nœuds sont en ligne et exécutent Linux, etc.  Kubernetes Service cluster requirements,En savoir plus sur cette étape.
+
+
+
+=== S'inscrire à Microsoft Azure
+
+[role="quick-margin-para"]
+Créez un compte Microsoft Azure.  up for Microsoft Azure,En savoir plus sur cette étape.
+
+
+
+=== Inscrivez-vous à Azure NetApp Files
+
+[role="quick-margin-para"]
+Enregistrez le fournisseur de ressources NetApp.  for Azure NetApp Files,En savoir plus sur cette étape.
+
+
+
+=== Créer un compte NetApp
+
+[role="quick-margin-para"]
+Accédez à Azure NetApp Files sur le portail Azure et créez un compte NetApp.  a NetApp account,En savoir plus sur cette étape.
+
+
+
+=== Configuration des pools de capacité
+
+[role="quick-margin-para"]
+Configurez un ou plusieurs pools de capacité pour vos volumes persistants.  up a capacity pool,En savoir plus sur cette étape.
+
+
+
+=== Déléguer un sous-réseau à Azure NetApp Files
+
+[role="quick-margin-para"]
+Déléguer un sous-réseau à Azure NetApp Files afin qu'Astra Control Service puisse créer des volumes persistants dans ce sous-réseau.  a subnet to Azure NetApp Files,En savoir plus sur cette étape.
+
+
+
+=== Créer un principal de service Azure
+
+[role="quick-margin-para"]
+Créez une entité de service Azure qui a le rôle Contributor.  an Azure service principal,En savoir plus sur cette étape.
+
+
+
+=== Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+
+[role="quick-margin-para"]
+Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). L'étape en option vous permet de configurer un niveau de redondance plus durable pour les compartiments Azure.  Configure redundancy for Azure backup buckets,En savoir plus sur cette étape.
+
+
+
+== Exigences des clusters Azure Kubernetes Service
+
+Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service.
+
+Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.21 à 1.24.
+Type d'image:: Le type d'image pour tous les pools de nœuds doit être Linux.
+État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
+Région Azure:: Les clusters doivent se trouver dans une région où Azure NetApp Files est disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Afficher les produits Azure par région"^].
+Abonnement:: Les clusters doivent résider dans un abonnement sur lequel Azure NetApp Files est activé. Vous choisissez un abonnement lorsque vous le souhaitez  for Azure NetApp Files,Inscrivez-vous à Azure NetApp Files.
+Vnet:: Prenez en compte les exigences suivantes de vnet :
++
+--
+* Les clusters doivent résider dans un vnet qui dispose d'un accès direct à un sous-réseau délégué Azure NetApp Files.  a subnet to Azure NetApp Files,Découvrez comment configurer un sous-réseau délégué.
+* Si vos clusters Kubernetes se trouvent dans un vnet lié au sous-réseau délégué Azure NetApp Files qui est dans un autre vnet, les deux côtés de la connexion de peering doivent être en ligne.
+* Notez que la limite par défaut du nombre d'adresses IP utilisées dans un réseau vnet (y compris les VNets immédiatement péré) avec Azure NetApp Files est de 1,000. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits["Afficher les limites de ressources Azure NetApp Files"^].
++
+Si vous êtes proche de la limite, vous avez deux options :
+
++
+** C'est possible https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits#request-limit-increase-["soumettre une demande d'augmentation de limite"^]. Contactez votre représentant NetApp si vous avez besoin d'aide.
+** Lors de la création d'un nouveau cluster Amazon Kubernetes Service (AKS), spécifiez un nouveau réseau pour le cluster. Une fois le nouveau réseau créé, provisionnez un nouveau sous-réseau et déléguez ce sous-réseau à Azure NetApp Files.
+
+
+
+
+--
+
+
+Contrôleur snapshot de volume externe:: Un contrôleur de snapshot de volume CSI doit être installé sur les clusters. Ce contrôleur est installé par défaut à partir de la version 1.21 de K8s, mais il est nécessaire de vérifier sur les clusters exécutant les versions 1.19 et 1.20. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["En savoir plus sur un contrôleur Snapshot externe pour les copies Snapshot de volume à la demande"^].
+
+
+
+
+=== Installer un contrôleur d'instantané de volume CSI
+
+Comme indiqué dans le  Kubernetes Service cluster requirements, Un contrôleur de snapshot de volume CSI doit être installé sur les clusters Kubernetes. Suivez ces étapes pour installer le contrôleur sur vos clusters.
+
+.Étapes pour K8s 1.19
+. Installation des CRD de snapshot de volume.
++
+[source, kubectl]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+----
+. Créer le contrôleur de snapshot.
++
+Si vous souhaitez que le contrôleur de snapshot se trouve dans un espace de noms spécifique, téléchargez et modifiez les fichiers suivants avant de les appliquer.
+
++
+[source, kubectl]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+----
+
+
+.Etapes relatives à K8s version 1.20
+. Installation des CRD de snapshot de volume.
++
+[source, kubectl]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
+----
+. Créer le contrôleur de snapshot.
++
+Si vous souhaitez que le contrôleur de snapshot se trouve dans un espace de noms spécifique, téléchargez et modifiez les fichiers suivants avant de les appliquer.
+
++
+[source, kubectl]
+----
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
+----
+
+
+
+
+== S'inscrire à Microsoft Azure
+
+Si vous ne possédez pas de compte Microsoft Azure, commencez par vous inscrire à Microsoft Azure.
+
+.Étapes
+. Accédez au https://azure.microsoft.com/en-us/free/["La page d'abonnement Azure"^] Pour vous abonner au service Azure.
+. Sélectionnez un plan et suivez les instructions pour terminer l'abonnement.
+
+
+
+
+== Inscrivez-vous à Azure NetApp Files
+
+Accédez à Azure NetApp Files en enregistrant le fournisseur de ressources NetApp.
+
+.Étapes
+. Connectez-vous au portail Azure.
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-register["Suivez la documentation Azure NetApp Files pour enregistrer le fournisseur de ressources NetApp"^].
+
+
+
+
+== Créer un compte NetApp
+
+Créez un compte NetApp dans Azure NetApp Files.
+
+.Étape
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-create-netapp-account["Suivez la documentation de Azure NetApp Files pour créer un compte NetApp à partir du portail Azure"^].
+
+
+
+
+== Configurez un pool de capacité
+
+Un ou plusieurs pools de capacité sont nécessaires pour que Astra Control Service puisse provisionner les volumes persistants dans un pool de capacité. Astra Control Service ne crée pas de pools de capacité pour vous.
+
+Prenez en compte les éléments suivants lors de la configuration de pools de capacité pour vos applications Kubernetes :
+
+* Les pools de capacité doivent être créés dans la même région Azure où les clusters AKS seront gérés avec Astra Control Service.
+* Un pool de capacité peut avoir un niveau de service Ultra, Premium ou Standard. Chacun de ces niveaux de service est conçu pour répondre à des besoins de performance très variés. Le service Astra Control est compatible avec ces trois services.
++
+Vous devez configurer un pool de capacité pour chaque niveau de service que vous souhaitez utiliser avec vos clusters Kubernetes.
+
++
+link:../learn/azure-storage.html["En savoir plus sur les niveaux de service pour Azure NetApp Files"].
+
+* Avant de créer un pool de capacité pour les applications que vous prévoyez de protéger avec Astra Control Service, choisissez les performances et la capacité requises pour ces applications.
++
+Le provisionnement de la capacité adéquate permet aux utilisateurs de créer des volumes persistants selon leurs besoins. Si la capacité n'est pas disponible, les volumes persistants ne peuvent pas être provisionnés.
+
+* Un pool de capacité Azure NetApp Files peut utiliser le type de QoS manuel ou automatique. Astra Control Service prend en charge les pools de capacité automatiques de QoS. Les pools de capacité manuels de QoS ne sont pas pris en charge.
+
+
+.Étape
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool["Suivez la documentation de Azure NetApp Files pour configurer un pool de capacité QoS automatique"^].
+
+
+
+
+== Déléguer un sous-réseau à Azure NetApp Files
+
+Vous devez déléguer un sous-réseau à Azure NetApp Files afin qu'Astra Control Service puisse créer des volumes persistants dans ce sous-réseau. Notez que Azure NetApp Files vous permet d'avoir un seul sous-réseau délégué dans un vnet.
+
+Si vous utilisez des VNets avec peering, les deux côtés de la connexion de peering doivent être en ligne : le VNet sur lequel résident vos clusters Kubernetes et le VNet sur lequel reposent le sous-réseau délégué Azure NetApp Files.
+
+.Étape
+. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Suivez la documentation Azure NetApp Files pour déléguer un sous-réseau à Azure NetApp Files"^].
+
+
+Attendez environ 10 minutes avant de découvrir le cluster exécuté dans le sous-réseau délégué.
+
+
+
+== Créer un principal de service Azure
+
+Astra Control Service requiert un principal de service Azure qui est affecté au rôle de contributeur. Astra Control Service utilise ce service principal pour faciliter la gestion des données d'applications Kubernetes pour votre compte.
+
+Un entité de service est une identité créée spécifiquement pour une utilisation avec des applications, des services et des outils. L'affectation d'un rôle principal du service restreint l'accès à des ressources Azure spécifiques.
+
+Suivez les étapes ci-dessous pour créer une entité de service à l'aide de l'interface de ligne de commande Azure. Vous devrez enregistrer la sortie dans un fichier JSON et la fournir ultérieurement au service de contrôle Astra. https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli["Pour plus d'informations sur l'utilisation de l'interface de ligne de commandes, consultez la documentation Azure"^].
+
+Les étapes suivantes supposent que vous êtes autorisé à créer un service principal et que vous disposez du SDK Microsoft Azure (commande az) installé sur votre ordinateur.
+
+.De formation
+* Le service principal doit utiliser une authentification régulière. Les certificats ne sont pas pris en charge.
+* Le responsable de service doit disposer de l'accès du Contributeur ou du propriétaire à votre abonnement Azure.
+* L'abonnement ou le groupe de ressources que vous choisissez pour la portée doit contenir les clusters AKS et votre compte Azure NetApp Files.
+
+
+.Étapes
+. Identifiez l'identifiant d'abonnement et de locataire où résident vos clusters AKS (il s'agit des clusters que vous souhaitez gérer dans le service Astra Control).
++
+[source, azureCLI]
+----
+az configure --list-defaults
+az account list --output table
+----
+. Effectuez l'une des opérations suivantes, selon que vous utilisez un abonnement complet ou un groupe de ressources :
++
+** Créez le principal de service, attribuez le rôle Contributor et spécifiez la portée de l'abonnement à l'ensemble de l'abonnement où résident les clusters.
++
+[source, azurecli]
+----
+az ad sp create-for-rbac --name service-principal-name --role contributor --scopes /subscriptions/SUBSCRIPTION-ID
+----
+** Créez le principal de service, attribuez le rôle Contributor et spécifiez le groupe de ressources où résident les clusters.
++
+[source, azurecli]
+----
+az ad sp create-for-rbac --name service-principal-name --role contributor --scopes /subscriptions/SUBSCRIPTION-ID/resourceGroups/RESOURCE-GROUP-ID
+----
+
+
+. Stockez la sortie de l'interface de ligne de commandes Azure résultante en tant que fichier JSON.
++
+Vous devez fournir ce fichier pour qu'Astra Control Service puisse détecter vos clusters AKS et gérer les opérations de gestion des données Kubernetes. link:../use/manage-credentials.html["Découvrez comment gérer les références dans le service Astra Control"].
+
+. Facultatif : ajoutez l'ID d'abonnement au fichier JSON pour que le service de contrôle Astra renseigne automatiquement l'ID lorsque vous sélectionnez le fichier.
++
+Sinon, vous devrez entrer l'ID d'abonnement dans le service Astra Control lorsque vous y êtes invité.
+
++
+*Exemple*
+
++
+[source, JSON]
+----
+{
+  "appId": "0db3929a-bfb0-4c93-baee-aaf8",
+  "displayName": "sp-example-dev-sandbox",
+  "name": "http://sp-example-dev-sandbox",
+  "password": "mypassword",
+  "tenant": "011cdf6c-7512-4805-aaf8-7721afd8ca37",
+  "subscriptionId": "99ce999a-8c99-99d9-a9d9-99cce99f99ad"
+}
+----
+. Facultatif : testez votre service principal. Choisissez parmi les exemples de commandes suivants en fonction du périmètre que vos principales utilisations du service.
++
+.Étendue de l'abonnement
+[source, azurecli]
+----
+az login --service-principal --username APP-ID-SERVICEPRINCIPAL --password PASSWORD --tenant TENANT-ID
+az group list --subscription SUBSCRIPTION-ID
+az aks list --subscription SUBSCRIPTION-ID
+az storage container list --account-name STORAGE-ACCOUNT-NAME
+----
++
+.Portée du groupe de ressources
+[source, azurecli]
+----
+az login --service-principal --username APP-ID-SERVICEPRINCIPAL --password PASSWORD --tenant TENANT-ID
+az aks list --subscription SUBSCRIPTION-ID --resource-group RESOURCE-GROUP-ID
+----
+
+
+
+
+== Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+
+Vous pouvez configurer un niveau de redondance plus durable pour les compartiments de sauvegarde Azure. Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). Pour utiliser une option de redondance plus durable pour les compartiments Azure, vous devez effectuer les opérations suivantes :
+
+.Étapes
+. Créez un compte de stockage Azure qui utilise le niveau de redondance requis https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["ces instructions"^].
+. Créez un conteneur Azure dans le nouveau compte de stockage à l'aide de https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["ces instructions"^].
+. Ajoutez le conteneur en tant que compartiment au service Astra Control. Voir link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
+. (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Voir link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
+

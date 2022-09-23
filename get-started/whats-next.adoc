@@ -1,0 +1,24 @@
+---
+sidebar: sidebar 
+permalink: get-started/whats-next.html 
+keywords: get started, manage apps, manage account 
+summary: 'Maintenant que vous vous êtes connecté et que vous avez ajouté des clusters à Astra Control, vous pouvez commencer à utiliser les fonctions de gestion des données applicatives d"Astra Control.' 
+---
+= Et la suite ?
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Maintenant que vous vous êtes connecté et que vous avez ajouté un cluster à Astra Control, vous pouvez commencer à utiliser les fonctions de gestion des données applicatives d'Astra Control.
+
+* link:../use/manage-apps.html["Commencez à gérer les applications"]
+* link:../use/protect-apps.html["Protégez vos applications"]
+* link:../use/clone-apps.html["Clonage des applications"]
+* link:../use/set-up-billing.html["Configurez la facturation"]
+* link:../use/manage-users.html["Inviter et gérer des utilisateurs"]
+* link:../use/manage-credentials.html["Gérez les identifiants du fournisseur cloud"]
+* link:../use/manage-notifications.html["Gérer les notifications"]
+
