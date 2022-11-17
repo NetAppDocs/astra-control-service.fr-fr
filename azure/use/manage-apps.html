@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head class="at-element-marker">
+  <title>Commencez à gérer les applications | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Commencez à gérer les applications | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-apps.html" />
+	<meta property="og:description" content="Une fois que vous avez ajouté un cluster Kubernetes à Astra Control, vous pouvez installer des applications sur ce cluster (en dehors d"Astra Control), puis ..." />
+  <meta property="og:image" content="https://docs.netapp.com/fr-fr/astra-control-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Une fois que vous avez ajouté un cluster Kubernetes à Astra Control, vous pouvez installer des applications sur ce cluster (en dehors d"Astra Control), puis ...">
+  <meta name="keywords" content=" manage app, discover app, ignore app"><!-- Icons -->
+  <link rel="icon" href="/fr-fr/astra-control-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/fr-fr/astra-control-service/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+  <!-- Elastic Search -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/searchkit/0.10.0/theme.css">
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/fr-fr/astra-control-service/css/netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/fr-fr/astra-control-service/css/landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/fr-fr/astra-control-service/css/tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  
+    
+    <link rel="canonical" href="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-apps.html" />
+  <link rel='stylesheet' href='/fr-fr/astra-control-service/css/na-feature.css' type='text/css'><!-- Top level site integrations --><script>
+    function addAdobeLaunch(adobeId) {
+      var head = document.getElementsByTagName('head')[0];
+      var adobe = document.createElement("script");
+      adobe.type = "text/plain";
+      adobe.className = "optanon-category-C0002";
+      adobe.src = "//assets.adobedtm.com/60287eadf1ee/c284da483c83/"+adobeId+".min.js";
+      head.appendChild(adobe);
+    }
+
+    function addGoogleAnalytics(gtagId) {
+      var google = document.createElement("script");
+      google.type = "text/plain";
+      google.className = "optanon-category-C0002";
+      google.src = "https://www.googletagmanager.com/gtag/js?id="+gtagId;
+      var head = document.getElementsByTagName('head')[0];
+      head.appendChild(google);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gtagId);
+    }
+
+    function addConsent(consentId) {
+      var head = document.getElementsByTagName('head')[0];
+      var onetrustConsent = document.createElement("script");
+      onetrustConsent.type = "text/javascript";
+      onetrustConsent.src = "https://cdn.cookielaw.org/consent/"+consentId+"/OtAutoBlock.js";
+      head.appendChild(onetrustConsent);
+
+      var onetrustScript = document.createElement("script");
+      onetrustScript.type = "text/javascript";
+      onetrustScript.src = "https://cdn.cookielaw.org/scripttemplates/otSDKStub.js";
+      onetrustScript.charset = "UTF-8";
+      onetrustScript.dataset.documentLanguage = "true";
+      onetrustScript.dataset.domainScript = consentId;
+      head.appendChild(onetrustScript);
+    }addConsent("72570c5c-fe30-465f-b0e0-b77f7fb4ae34");
+    addAdobeLaunch("launch-e9ff3acac59f");
+    addGoogleAnalytics("UA-81697994-3");function OptanonWrapper() { }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/fr-fr/astra-control-service/js/na-search.js'></script><script src='/fr-fr/astra-control-service/js/na-pagenav.js'></script><script src='/fr-fr/astra-control-service/js/na-utility.js'></script>
+  <script src='/fr-fr/astra-control-service/js/clouddocs.js'></script>
+  <script src='/fr-fr/astra-control-service/js/jquery.navgoco.min.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src='/fr-fr/astra-control-service/js/toc.js'></script>
+  <script src='/fr-fr/astra-control-service/js/customscripts.js'></script><script>
+      $(document).ready(function() {
+          
+          var collapseOnInit = true;
+          
+
+          var navSettings = {
+              "caretHtml": '',
+              "accordion": collapseOnInit,
+              "openClass": 'active', // open
+              "save": false, // leave false or nav highlighting doesn't work right
+              "cookie": {
+                  "name": 'navgoco',
+                  "expires": false,
+                  "path": '/'
+              },
+              "slide": {
+                  "duration": 400,
+                  "easing": 'swing'
+              }
+          };
+
+          // Initialize navgoco with default options
+          $("#mysidebar").navgoco(navSettings);
+          
+
+          $("#collapseAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', false);
+          });
+
+          $("#expandAll").click(function(e) {
+              e.preventDefault();
+              $("#mysidebar").navgoco('toggle', true);
+          });
+
+          $(".sidebar-nav-container").on("scroll", function() {
+            $.cookie("sidebarScroll", $(".sidebar-nav-container").scrollTop(), {
+              path    : "/fr-fr/astra-control-service"  
+            });
+          });
+          $(function() {
+            if ($.cookie("sidebarScroll")) {
+              $(".sidebar-nav-container").scrollTop($.cookie("sidebarScroll"));
+            }
+          });
+
+      });
+
+  </script>
+  <script>
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+  </script>
+  <script src='/fr-fr/astra-control-service/js/custom-dropdown.js'></script>
+  <script src='/fr-fr/astra-control-service/js/FileSaver.min.js'></script>
+  <script src='/fr-fr/astra-control-service/js/jszip-utils.min.js'></script>
+  <script src='/fr-fr/astra-control-service/js/jszip.min.js'></script>
+  <script src='/fr-fr/astra-control-service/js/pdf-ux.js'></script>
+</head>
+
+
+  <body class role="document" data-flavor="azure">
+    <div id="page" class="n-off-canvas-menu">
+      <div class="n-off-canvas-menu__menu"><!--TODO: Add offcanvas code --></div>
+      <div class="n-off-canvas-menu__content-wrap">
+        <header class="site-header" id="banner">
+  
+  <!-- Start Page Toolbar -->
+  
+  <div class="page-nav-toolbar">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/fr-fr/astra-control-service/use/manage-apps.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Azure">
+    <label>Ou du fournisseur cloud</label>
+    <div>Azure</div>  
+    <img src="/fr-fr/astra-control-service/images/filter.svg" class="custom-icon selected" alt="" />
+    <img src="/fr-fr/astra-control-service/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/fr-fr/astra-control-service/aws/use/manage-apps.html">
+      <img alt="" src="/fr-fr/astra-control-service/images/aws-ico.svg" onerror="this.src='/fr-fr/astra-control-service/images/blank-ico.png'" class="custom-icon" />Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/fr-fr/astra-control-service/gcp/use/manage-apps.html">
+      <img alt="" src="/fr-fr/astra-control-service/images/gcp-ico.svg" onerror="this.src='/fr-fr/astra-control-service/images/blank-ico.png'" class="custom-icon" />Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/fr-fr/astra-control-service/azure/use/manage-apps.html">
+      <img alt="" src="/fr-fr/astra-control-service/images/azure-ico.svg" onerror="this.src='/fr-fr/astra-control-service/images/blank-ico.png'" class="custom-icon" />Microsoft Azure
+    </li>
+    
+    
+  </ul>
+</div>
+<div class="page-nav-contribute"><a target="_blank" href="https://github.com/NetAppDocs/astra-control-service/issues/new?body=Page%3A%20[Commencez à gérer les applications](https://docs.netapp.com/fr-fr/astra-control-service/use/manage-apps.html)&template=public-issue-template.md" class="page-nav-contribute-link" role="button"><img src="/fr-fr/astra-control-service/images/discuss-sm.svg" alt="" class="github-icon" />Demander de modifier un document</a><a target="_blank" href="https://github.com/NetAppDocs/astra-control-service/blob/main/use/manage-apps.adoc" class="page-nav-contribute-link" role="button"><img src="/fr-fr/astra-control-service/images/edit-sm.svg" alt="" class="github-icon" />Modifier sur GitHub</a><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  ><img src="/fr-fr/astra-control-service/images/article-sm.svg" alt="" class="github-icon" />Guide des contributeurs</a></div>
+    <div class="page-nav-container">
+      <nav class="page-nav-fixed">
+        <div class="page-nav-title">SUR CETTE PAGE</div>
+        <div class="page-nav-links">
+          <ul class="page-nav-inner" id="page-menu"></ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  
+  
+  <!-- Start top_hat -->
+  <div class="n-top-hat">
+    <div class="n-container">
+      <div class="n-top-hat__cross-property-nav">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/products-a-z/" class="n-top-hat__link">Produits et solutions</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/support-and-training/netapp-university/" class="n-top-hat__link">Support et formation</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://cloud.netapp.com" class="n-top-hat__link">Cloud Central</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://community.netapp.com/" class="n-top-hat__link">Communauté</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://blog.netapp.com/" class="n-top-hat__link">Blog</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://customers.netapp.com/en/" class="n-top-hat__link">Témoignages clients</a>
+          </li>
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="n-top-hat__utils">
+        <ul class="n-top-hat__list">
+          <li class="n-top-hat__list-item">
+            <a href="https://www.netapp.com/us/contact-us/index.aspx" target="_self" class="n-top-hat__link" data-ntap-ui="contact-us">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- End top_hat -->
+
+  <!-- Start property bar -->
+  <style>
+    .n-property-navigation-bar__menus--desktop-experience .n-menu--mega__default-content__heading span {
+    color: #34B0FF;
+    }
+  </style>
+  <div class="n-property-bar " data-ntap-ui="sticky-nav">
+    <div class="n-property-bar__inner-wrap">
+      <div class="n-property-bar__menu-toggle">
+        <a href="#" class="n-property-bar__menu-toggle-link">
+          <span class="n-property-bar__menu-toggle-text">Menu</span>
+          <svg class="n-icon-bars n-property-bar__menu-toggle-icon" aria-labelledby="title">
+            <title>bars</title>
+            <use xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#bars"></use>
+          </svg>
+        </a>
+      </div>
+      <div class="n-property-bar__property-mark ">
+        <a href="https://www.netapp.com" class="n-property-bar__property-link">
+          <div class="n-property-bar__logo">
+            <svg class="n-icon-netapp-mark n-icon-netapp-mark n-property-bar__netapp-mark-icon" aria-labelledby="title">
+              <title>netapp-mark</title>
+              <use xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#netapp-mark"></use>
+            </svg>
+            <svg class="n-icon-netapp-logo n-property-bar__logo-svg" aria-labelledby="title">
+              <title>netapp-logo</title>
+              <use xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#netapp-logo"></use>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      
+      
+      
+      <div class="search-property-bar">
+        <div id="search-demo-container" class="searchbox n-property-bar__search">
+          <div id="react-search" 
+          data-search-html="/fr-fr/astra-control-service/azure/search.html"
+          data-type="widget" 
+          data-placeholder="Rechercher une documentation"
+          data-no-results-found="Aucun résultat n'a été trouvé pour {query}"
+          data-did-you-mean="Rechercher {suggestion}."
+          data-no-results-found-did-you-mean="Aucun résultat n’a été trouvé pour {query}. Voulez-vous dire {suggestion} ?"
+          data-results-found="{hitCount} résultats trouvés"
+          data-error-message="We're sorry, an issue occurred when fetching your results. Please try again."
+          data-error-reset="Reset Search"
+          data-sk-es-pf-indexes=""
+          data-flavor="azure"></div>
+          <button class="n-property-bar__search-toggle-button" type="button">
+            <svg class="n-icon-search n-property-bar__search-toggle-button-icon" aria-labelledby="title">
+              <title>search</title>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#search"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="n-property-bar__toolbar">
+    <!-- Start Language Selector --><div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+      <div class="custom-dropdown-select custom-dropdown-select-lang">
+      <span class="lang-name">Français</span>
+          <svg class="n-globe__icon" aria-labelledby="title">
+            <title>globe</title>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#globe"></use>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="custom-dropdown-menu"><li>
+          <a href="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">Français</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/us-en/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">English</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ja-jp/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">日本語</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-cn/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/zh-tw/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/ko-kr/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">한국어</span></a>
+        </li><li>
+          <a href="https://docs.netapp.com/de-de/astra-control-service/use/manage-apps.html" target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+        </li></ul>
+    </div><!-- End Language Selector -->
+
+    <div class="n-property-bar__cta"></div>
+  </div>
+  <script>
+    $(function(){
+        var currentLocalization = $('html').attr('lang');
+
+        var localizationsDictionary = {
+            "en-CA" : "https://www.netapp.com/search/index.aspx?for_cr=canada&",
+            "en-IN" : "https://www.netapp.com/search/index.aspx?for_cr=india&",
+            "nl-NL" : "https://www.netapp.com/search/index.aspx?for_cr=netherlands&",
+            "ru-RU" : "https://www.netapp.com/search/index.aspx?for_cr=russia&",
+            "sv-SE" : "https://www.netapp.com/search/index.aspx?for_cr=sweden&",
+            "it-IT" : "https://www.netapp.com/search/index.aspx?for_cr=italy&",
+            "he-IL" : "https://www.netapp.com/search/index.aspx?for_cr=israel&",
+            "ko-KR" : "https://www.netapp.com/search/index.aspx?for_cr=korea&",
+            "zh-TW" : "https://www.netapp.com/search/index.aspx?for_cr=taiwan&",
+            "en-GB" : "https://www.netapp.com/search/index.aspx?for_cr=unitedkingdom&",
+            "en-SG" : "https://www.netapp.com/search/index.aspx?for_cr=asean&",
+            "en-AU" : "https://www.netapp.com/search/index.aspx?for_cr=australia&",
+            "pt-BR" : "https://www.netapp.com/search/index.aspx?for_cr=brasil&",
+            "de-CH" : "https://www.netapp.com/search/index.aspx?for_cr=switzerland&",
+            "es-MX" : "https://www.netapp.com/search/index.aspx?for_cr=mexico&"
+        };
+
+        if($('html').hasClass('ntap-whitelisted') && localizationsDictionary.hasOwnProperty(currentLocalization)) {
+            $('.n-property-bar__property-link').attr('href', '/');
+        }
+    });
+  </script>
+  <!-- End property bar -->
+</header>
+
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+  <!-- Sidebar Column -->
+  
+  <div class="col-md-3" id="sidebar-height">
+      <button id="btn-sidebar-collapse" onclick="hideSidebar()"><img src="/fr-fr/astra-control-service/images/collapse.png" alt="Réduire le panneau de navigation"></button>
+      <div class="n-pdf-header">
+  <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+    <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>PDFs disponibles<span>
+    </span>
+  </a>
+</div>
+<div class="n-pdf-body-container">
+  <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+        
+        
+        
+        <a target="_blank" href="/fr-fr/astra-control-service/pdfs/azure/fullsite-sidebar/Documentation_relative_au_service_après_vente_Astra_Control.pdf" >
+          <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>PDF de ce site de documentation</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Notes_de_mise_à_jour.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Notes de mise à jour
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Commencez.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Commencez
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Configurez_votre_fournisseur_cloud.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Configurez votre fournisseur cloud
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Utilisez_le_service_Astra_Control.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Utilisez le service Astra Control
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gestion_et_protection_des_applications.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Gestion et protection des applications
+          </a>
+          
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Gérer les crochets d'exécution de l'application
+          </a>
+          
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Affichez_l_état_des_applications_et_des_ressources_de_calcul.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Affichez l'état des applications et des ressources de calcul
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gérez_votre_compte.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Gérez votre compte
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Concepts.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Concepts
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" 
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Connaissances_et_support.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
+            Connaissances et support
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+  <div class="zip-pdf-link-container" style="display: none;">   
+    <a href="#" id="zipPdf">
+      <img src="/fr-fr/astra-control-service/images/pdf-zip.png" alt="" width="16" height="16"/>
+      <pre>Collection de documents PDF séparés<span class="zip-size"></span></pre>
+    </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+</div>
+<script>
+  $("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+  $("#toggleButtonPdf").click(function () {
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+  });
+</script><div class="prod-nav" id="product-nav">
+  <a target="_self" class="prod-fam-nav" href="https://docs.netapp.com/fr-fr/astra-family/"><img src="/fr-fr/astra-control-service/images/left_arrow.png" alt=""><pre>Toute la documentation Astra</pre></a>
+</div><div class="sidebar-nav-container" id="mysidebardiv">
+  <ul id="mysidebar" class="nav"><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentation sur le service Astra Control"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/index.html">
+        Documentation sur le service Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notes de mise à jour"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Notes de mise à jour</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Quoi de neuf"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/release-notes/whats-new.html">
+        Quoi de neuf
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problèmes connus"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/release-notes/known-issues.html">
+        Problèmes connus
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Limites connues"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/release-notes/known-limitations.html">
+        Limites connues
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Commencez</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Découvrez Astra Control"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/intro.html">
+        Découvrez Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Déploiements Kubernetes pris en charge"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/supported-deployments.html">
+        Déploiements Kubernetes pris en charge
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Démarrage rapide"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/quick-start.html">
+        Démarrage rapide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez votre fournisseur cloud"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Configurez votre fournisseur cloud</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuration de Microsoft Azure avec Azure NetApp Files"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/set-up-microsoft-azure-with-anf.html">
+        Configuration de Microsoft Azure avec Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuration de Microsoft Azure avec des disques gérés Azure"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/set-up-microsoft-azure-with-amd.html">
+        Configuration de Microsoft Azure avec des disques gérés Azure
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créez un compte"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/register.html">
+        Créez un compte
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les clusters"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/add-first-cluster.html">
+        Gérer les clusters
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer des clusters privés"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/manage-private-cluster.html">
+        Gérer des clusters privés
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Et la suite ?"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/whats-next.html">
+        Et la suite ?
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vidéos"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/videos.html">
+        Vidéos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/get-started/faq.html">
+        FAQ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilisez le service Astra Control"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Utilisez le service Astra Control</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connectez-vous"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/log-in.html">
+        Connectez-vous
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion et protection des applications"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Gestion et protection des applications</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez à gérer les applications"
+      data-li-level="3#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-apps.html">
+        Commencez à gérer les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protégez vos applications"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/protect-apps.html">
+        Protégez vos applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez les applications"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/restore-apps.html">
+        Restaurez les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloner et migrer les applications"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/clone-apps.html">
+        Cloner et migrer les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les crochets d'exécution de l'application"
+      data-li-level="3" 
+      class="subfolders "
+    ><a href="/fr-fr/astra-control-service/azure/use/manage-app-execution-hooks.html">
+        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Exemples de crochet d'exécution"
+      data-li-level="4#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/execution-hook-examples.html">
+        Exemples de crochet d'exécution
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Affichez l'état des applications et des ressources de calcul</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Récapitulatif du tableau de bord"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/view-dashboard.html">
+        Récapitulatif du tableau de bord
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="État de santé et détails du cluster"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/view-clusters.html">
+        État de santé et détails du cluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="État de santé et détails des applications"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/view-apps.html">
+        État de santé et détails des applications
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion des compartiments"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-buckets.html">
+        Gestion des compartiments
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez votre compte"
+      data-li-level="2" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Gérez votre compte</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez la facturation"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/set-up-billing.html">
+        Configurez la facturation
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inviter et gérer des utilisateurs"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-users.html">
+        Inviter et gérer des utilisateurs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les rôles"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-roles.html">
+        Gérez les rôles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les identifiants du fournisseur cloud"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-credentials.html">
+        Gérez les identifiants du fournisseur cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Surveillez l'activité des comptes"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/monitor-account-activity.html">
+        Surveillez l'activité des comptes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les notifications"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-notifications.html">
+        Gérer les notifications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fermez votre compte"
+      data-li-level="3#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/close-account.html">
+        Fermez votre compte
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Annuler la gestion des applications et des clusters"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/unmanage.html">
+        Annuler la gestion des applications et des clusters
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatisez avec l'API REST Astra Control"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/automation.html">
+        Automatisez avec l'API REST Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Concepts"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Concepts</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Architecture et composants"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/learn/architecture.html">
+        Architecture et composants
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Stockage pour clusters AKS"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/learn/azure-storage.html">
+        Stockage pour clusters AKS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Comprendre la gestion des applications"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/learn/app-management.html">
+        Comprendre la gestion des applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Rôles et espaces de noms d'utilisateur"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/learn/user-roles-namespaces.html">
+        Rôles et espaces de noms d'utilisateur
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connaissances et support"
+      data-li-level="1" 
+      class="subfolders "
+    ><a href="#">
+        <div class="na-navbar-padding"> Connaissances et support</div>
+      </a>
+      <ul style="display: none;">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S'inscrire pour obtenir de l'aide"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/support/register-support.html">
+        S'inscrire pour obtenir de l'aide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dépannage"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/support/troubleshooting.html">
+        Dépannage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenez de l'aide"
+      data-li-level="2#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/support/get-help.html">
+        Obtenez de l'aide
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mentions légales"
+      data-li-level="1#" 
+      class=" "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/legal-notices.html">
+        Mentions légales
+      </a></li></ul>
+</div>
+<script>
+  window.onscroll = () => {
+    const value = -40 - (document.body.scrollHeight - (window.innerHeight + document.scrollingElement.scrollTop));
+    
+    document.getElementById("sidebar-height").style.bottom = Math.max(0,value) + "px";
+};
+</script>
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+<script>$("#mysidebar li.active").parents('ul').css("display","block");</script>
+
+
+  </div>
+  
+
+  <div class="ie-content-pane n-doc__component-detail-content n-doc__component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <div class="ie-utility">
+  <button id="btn-sidebar-expand" onclick="showSidebar()"><img src="/fr-fr/astra-control-service/images/expand.png" alt="Développer le panneau de navigation"></button>
+  <div class="ie-menu">
+    <div class="n-breadcrumb">
+      <ul class="n-breadcrumb__list">
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com">docs.netapp.com</a>
+        </li>
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/us-en/cloud/">Documents dans le cloud</a>
+        </li>
+        
+
+        
+        <li class="n-breadcrumb__list-item">
+          <a href="https://docs.netapp.com/fr-fr/astra-family/">Astra</a>
+        </li>
+        
+
+        <li class="n-breadcrumb__list-item">
+          <a href="/fr-fr/astra-control-service/">Astra&nbsp;Control&nbsp;Service</a>
+        </li>
+
+      </ul>
+    </div>
+    <div style="clear: both"></div><!-- Main needs to have height -->
+  </div>
+</div>
+
+      <div class="ie-nmt-disclaimer">
+  <span>
+    <div class="ie-nmt-disclaimer-container">
+      <div class="ie-nmt-disclaimer-icon">
+        <svg class="luci-icon" aria-hidden="true">
+          <use xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#circle-info">
+        </svg>
+      </div>
+      <div class="ie-nmt-disclaimer-content">
+        <span> La version française est une traduction automatique. La version anglaise prévaut sur la française en cas de divergence. </span>
+      </div>
+      <div style="clear:both;"></div>
+    </div>
+  </span>
+</div><div class="n-doc__component-detail-heading-wrap">
+  <h1 class="n-doc__component-detail-heading">Commencez à gérer les applications</h1>
+</div>
+
+
+<p class="page-details">
+  
+    
+    <time datetime="2022-11-17 05:49:37 +0000">11/17/2022</time>
+    
+  
+
+<span>Contributeurs
+</span>
+
+
+</p>
+
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Après vous <a href="../get-started/add-first-cluster.html">"Ajoutez un cluster Kubernetes à Astra Control"</a>, Vous pouvez installer des applications sur le cluster (en dehors d&#8217;Astra Control), puis aller à la page applications d&#8217;Astra Control pour commencer à gérer les applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="besoins-en-termes-de-gestion-des-applications">Besoins en termes de gestion des applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Astra Control présente les exigences de gestion des applications suivantes :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Licensing</strong>: Pour gérer des applications à l&#8217;aide d&#8217;Astra Control Center, vous devez disposer d&#8217;une licence Astra Control Center.</p>
+</li>
+<li>
+<p><strong>Espaces de noms</strong> : Astra Control exige qu&#8217;une application ne couvre pas plus d&#8217;un seul espace de noms, mais qu&#8217;un espace de noms peut contenir plus d&#8217;une application.</p>
+</li>
+<li>
+<p><strong>StorageClass</strong> : si vous installez explicitement une application avec une classe de stockage et que vous devez cloner l&#8217;application, le cluster cible pour l&#8217;opération de clonage doit avoir la classe de stockage spécifiée à l&#8217;origine. Le clonage d&#8217;une application avec une classe de stockage explicitement définie sur un cluster ne disposant pas de la même classe de stockage échouera.</p>
+</li>
+<li>
+<p><strong>Ressources Kubernetes</strong> : les applications qui utilisent les ressources Kubernetes non collectées par Astra Control peuvent ne pas disposer de fonctionnalités complètes de gestion des données d&#8217;application. Astra Control collecte les ressources Kubernetes suivantes :</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClusterRole</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ClusterRoleBinding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ConfigMap</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CustomResourceDefinition</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ressource CustomResource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cronjob</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ensemble de démonstrations</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HorizontalPodAutoscaler</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Entrée</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Déploiement.Config</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MutatingWebhook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Demande de volume persistant</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PodPetitionBudget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PodTemplate</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stratégie réseau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Et de réplication</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rôle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RoleBinding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Itinéraire</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Secret</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Compte de service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">StatefulSet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ValidétingWebhook</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+<div class="sect2">
+<h3 id="méthodes-dinstallation-dapplications-prises-en-charge">Méthodes d&#8217;installation d&#8217;applications prises en charge</h3>
+<div class="paragraph">
+<p>Vous pouvez utiliser les méthodes suivantes pour installer des applications que vous souhaitez gérer avec Astra Control :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Fichier manifeste</strong> : Astra Control prend en charge les applications installées à partir d&#8217;un fichier manifeste utilisant kubectl. Par exemple :</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-sh" data-lang="sh">kubectl apply -f myapp.yaml</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p><strong>Helm 3</strong> : si vous utilisez Helm pour installer des applications, Astra Control nécessite Helm version 3. La gestion et le clonage des applications installées avec Helm 3 (ou mises à niveau de Helm 2 à Helm 3) sont entièrement pris en charge. La gestion des applications installées avec Helm 2 n&#8217;est pas prise en charge.</p>
+</li>
+<li>
+<p><strong>Applications déployées par l&#8217;opérateur</strong> : Astra Control prend en charge les applications installées avec des opérateurs situés à l&#8217;étendue de l&#8217;espace de noms qui sont, en général, conçus avec une architecture « valeur par passe » plutôt que « par référence ». Un opérateur et l&#8217;application qu&#8217;il installe doivent utiliser le même espace de noms ; vous devrez peut-être modifier le fichier .yaml de déploiement pour que l&#8217;opérateur s&#8217;assure que c&#8217;est le cas.</p>
+<div class="paragraph">
+<p>Voici quelques applications opérateur qui suivent ces modèles :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/k8ssandra/cass-operator/tree/v1.7.1" target="_blank" rel="noopener">"Apache K8ssandra"</a></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Pour K8ssandra, les opérations de restauration sur place sont prises en charge. Pour effectuer une opération de restauration vers un nouvel espace de noms ou un cluster, l&#8217;instance d&#8217;origine de l&#8217;application doit être arrêté. Cela permet de s&#8217;assurer que les informations du groupe de pairs transmises ne conduisent pas à une communication entre les instances. Le clonage de l&#8217;application n&#8217;est pas pris en charge.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p><a href="https://github.com/jenkinsci/kubernetes-operator" target="_blank" rel="noopener">"IC Jenkins"</a></p>
+</li>
+<li>
+<p><a href="https://github.com/percona/percona-xtradb-cluster-operator" target="_blank" rel="noopener">"Cluster Percona XtraDB"</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Astra Control peut ne pas être en mesure de cloner un opérateur conçu avec une architecture « pass-by-Reference » (par exemple, l&#8217;opérateur CockroachDB). Lors de ces types d&#8217;opérations de clonage, l&#8217;opérateur cloné tente de référencer les secrets de Kubernetes de l&#8217;opérateur source malgré avoir son propre nouveau secret dans le cadre du processus de clonage. Il est possible que le clonage échoue, car Astra Control ne connaît pas les secrets de Kubernetes qui sont présents dans l&#8217;opérateur source.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installez-les-applications-sur-votre-cluster">Installez les applications sur votre cluster</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Après vous l&#8217;avez <a href="../get-started/add-first-cluster.html">"a ajouté votre cluster"</a> Avec Astra Control, vous pouvez installer des applications ou gérer des applications existantes sur le cluster. Toute application dont l&#8217;étendue correspond à un espace de noms unique peut être gérée.</p>
+</div>
+<div class="paragraph">
+<p>Astra Control ne gère les applications avec état que si le stockage est installé dans une classe de stockage par Astra Control.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../learn/azure-storage.html">"Découvrez les classes de stockage pour les clusters AKS"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="gérer-des-applications">Gérer des applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une fois qu&#8217;Astra Control détecte les espaces de noms sur vos clusters, vous pouvez définir les applications que vous souhaitez gérer. Vous pouvez choisir <a href="../learn/app-management.html">"gérez tout un espace de noms comme une seule application ou gérez une ou plusieurs applications dans l&#8217;espace de noms individuellement"</a>. La granularité est en effet au niveau de granularité requis pour les opérations de protection des données.</p>
+</div>
+<div class="paragraph">
+<p>Bien qu&#8217;Astra Control vous permet de gérer séparément les deux niveaux de la hiérarchie (l&#8217;espace de noms et les applications dans cet espace de noms), il est recommandé de choisir l&#8217;un ou l&#8217;autre. Les actions que vous prenez dans Astra Control peuvent échouer si les actions ont lieu en même temps au niveau de l&#8217;espace de noms et de l&#8217;application.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Par exemple, vous pouvez définir une stratégie de sauvegarde pour « maria » avec une fréquence hebdomadaire, mais vous devrez peut-être sauvegarder « mariadb » (qui se trouve dans le même espace de noms) plus fréquemment que cela. En fonction de ces besoins, vous devrez gérer les applications séparément et non sous la forme d&#8217;une application à espace de noms unique.
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<div class="title">Ce dont vous avez besoin, 8217;ll</div>
+<ul>
+<li>
+<p>Un cluster Kubernetes ajouté à Astra Control.</p>
+</li>
+<li>
+<p>Une ou plusieurs applications installées sur le cluster.  app installation methods,En savoir plus sur les méthodes d&#8217;installation d&#8217;applications prises en charge.</p>
+</li>
+<li>
+<p>Un ou plusieurs pods actifs.</p>
+</li>
+<li>
+<p>Les espaces de noms spécifiés sur le cluster Kubernetes que vous avez ajouté à Astra Control.</p>
+</li>
+<li>
+<p>(Facultatif) Etiquette Kubernetes de toute <a href="../use/manage-apps.html#app-management-requirements">"Ressources Kubernetes prises en charge"</a>.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Kubernetes pour identification. Elles facilitent le tri, l&#8217;organisation et la recherche des objets Kubernetes. Pour en savoir plus sur les étiquettes Kubernetes, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" target="_blank" rel="noopener">"Consultez la documentation officielle Kubernetes"</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Avant de commencer, vous devez également comprendre <a href="../use/manage-apps.html#what-about-system-namespaces">"gestion des espaces de noms standard et système"</a>. Pour obtenir des instructions sur la gestion des applications à l&#8217;aide de l&#8217;API Astra Control, reportez-vous au <a href="https://docs.netapp.com/us-en/astra-automation/" target="_blank" rel="noopener">"Informations sur l&#8217;automatisation et les API d&#8217;Astra"</a>.</p>
+</div>
+<div class="ulist">
+<div class="title">Options de gestion des applications</div>
+<ul>
+<li>
+<p>resources to manage as an app</p>
+</li>
+<li>
+<p>a namespace to manage as an app</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="définissez-les-ressources-à-gérer-en-tant-quapplication">Définissez les ressources à gérer en tant qu&#8217;application</h3>
+<div class="paragraph">
+<p>Vous pouvez spécifier le <a href="../learn/app-management.html">"Ressources Kubernetes qui constituent une application"</a> Que vous voulez gérer avec Astra Control. La définition d&#8217;une application vous permet de regrouper des éléments de votre cluster Kubernetes dans une seule application. Cette collection de ressources Kubernetes est organisée par critères d&#8217;espace de noms et de sélecteur d&#8217;étiquettes.</p>
+</div>
+<div class="paragraph">
+<p>La définition d&#8217;une application vous offre un contrôle plus granulaire sur les éléments à inclure dans une opération Astra Control, notamment le clonage, les snapshots et les sauvegardes.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/warning.svg" alt="Attention">
+</td>
+<td class="content">
+Lors de la définition d&#8217;applications, assurez-vous de ne pas inclure de ressource Kubernetes dans plusieurs applications avec des règles de protection. Le chevauchement des règles de protection sur des ressources Kubernetes peut provoquer des conflits de données.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Dans la page applications, sélectionnez <strong>définir</strong>.</p>
+</li>
+<li>
+<p>Dans la fenêtre <strong>define application</strong>, entrez le nom de l&#8217;application.</p>
+</li>
+<li>
+<p>Choisissez le cluster sur lequel votre application s&#8217;exécute dans la liste déroulante <strong>Cluster</strong>.</p>
+</li>
+<li>
+<p>Choisissez l&#8217;espace de nom de votre application dans la liste déroulante <strong>namespace</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Les applications ne peuvent être définies que au sein d&#8217;un espace de nom spécifié sur un même cluster. Astra Control ne prend pas en charge la capacité des applications à s&#8217;étendre sur plusieurs espaces de noms ou clusters.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Saisissez un libellé pour l&#8217;application et l&#8217;espace de noms. Vous pouvez spécifier un seul libellé ou un seul critère de sélection d&#8217;étiquette (requête).</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Pour en savoir plus sur les étiquettes Kubernetes, <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" target="_blank" rel="noopener">"Consultez la documentation officielle Kubernetes"</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Après avoir sélectionné <strong>définir</strong>, répétez le processus pour les autres applications, selon les besoins.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Une fois que vous avez terminé de définir une application, celle-ci apparaît dans la liste des applications de la page applications. Vous pouvez désormais le cloner et créer des sauvegardes et des snapshots.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Il se peut que l&#8217;application que vous venez d&#8217;ajouter comporte une icône d&#8217;avertissement sous la colonne protégé, indiquant qu&#8217;elle n&#8217;est pas encore sauvegardée et qu&#8217;elle n&#8217;est pas planifiée pour les sauvegardes.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Pour afficher les détails d&#8217;une application particulière, sélectionnez le nom de l&#8217;application.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="définissez-un-espace-de-noms-à-gérer-en-tant-quapplication">Définissez un espace de noms à gérer en tant qu&#8217;application</h3>
+<div class="paragraph">
+<p>Vous pouvez ajouter toutes les ressources Kubernetes dans un namespace à la gestion d&#8217;Astra Control en définissant les ressources de ce namespace comme une application. Cette méthode est préférable à définir des applications individuellement si vous avez l&#8217;intention de gérer et de protéger toutes les ressources d&#8217;un espace de noms particulier de la même manière et à intervalles communs.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sur la page clusters, sélectionnez un cluster.</p>
+</li>
+<li>
+<p>Sélectionnez l&#8217;onglet <strong>espaces de noms</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le menu actions de l&#8217;espace de noms contenant les ressources d&#8217;application que vous souhaitez gérer et sélectionnez <strong>définir comme application</strong>.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Si vous souhaitez gérer plusieurs espaces de noms, sélectionnez-les, puis sélectionnez le bouton <strong>actions</strong> dans le coin supérieur gauche et sélectionnez <strong>gérer</strong>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Note">
+</td>
+<td class="content">
+Cochez la case <strong>Afficher les espaces de noms système</strong> pour afficher les espaces de noms système qui ne sont généralement pas utilisés dans la gestion des applications par défaut. <span class="image"><img src="../media/use/acc_namespace_system.png" alt="Capture d&#8217;écran qui montre l&#8217;option <strong>Afficher les espaces de noms système</strong> disponible dans l&#8217;onglet espaces de noms."></span> <a href="../use/manage-apps.html#what-about-system-namespaces">"En savoir plus"</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Une fois le processus terminé, les applications associées à l&#8217;espace de noms apparaissent dans le <code>Associated applications</code> colonne.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="quen-est-il-des-espaces-de-noms-système">Qu&#8217;en est-il des espaces de noms système</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Astra Control détecte également les espaces de noms système sur un cluster Kubernetes. Nous ne vous montrons pas ces espaces de noms système par défaut, car il est rare qu&#8217;il soit nécessaire de sauvegarder les ressources d&#8217;applications système.</p>
+</div>
+<div class="paragraph">
+<p>Vous pouvez afficher les espaces de noms système à partir de l&#8217;onglet espaces de noms d&#8217;un cluster sélectionné en cochant la case <strong>Afficher les espaces de noms système</strong>.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../media/use/acc_namespace_system.png" alt="Capture d&#8217;écran qui montre l&#8217;option <strong>Afficher les espaces de noms système</strong> disponible dans l&#8217;onglet espaces de noms."></span></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
+</td>
+<td class="content">
+Astra Control en soi n&#8217;est pas une application standard. Il s&#8217;agit d&#8217;une « application système ». Vous ne devriez pas essayer de gérer Astra Control lui-même. Le contrôle Astra lui-même n&#8217;est pas indiqué par défaut pour la direction.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+      <div class="n-footer__bottom-left">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Conditions générales</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Cookie Policy</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Paramètres de cookies</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="n-footer__bottom-right">
+        <div class="n-footer__copyright">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a target="_self" href="javascript:netapp_mailto()">Envoyer un avis à propos de cette page</a>
+            </li>
+          </ul>
+        </div>
+        <div class="n-footer__social-links">
+          <ul class="n-footer__social-link-list">
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-blog" href="https://blog.netapp.com"
+                target="_blank" title="blog" alt="blog">
+                <span class="n-footer__social-link-text">blog</span>
+                <svg class="n-icon-blog n-footer__social-link-icon" aria-labelledby="title">
+                  <title>blog@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#blog"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-community" href="https://community.netapp.com/"
+                target="_blank" title="community" alt="community">
+                <span class="n-footer__social-link-text">community</span>
+                <svg class="n-icon-community n-footer__social-link-icon" aria-labelledby="title">
+                  <title>community@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#comments"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-twitter" href="https://twitter.com/netapp"
+                target="_blank" title="twitter" alt="twitter">
+                <span class="n-footer__social-link-text">twitter</span>
+                <svg class="n-icon-twitter n-footer__social-link-icon" aria-labelledby="title">
+                  <title>twitter@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#twitter"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-facebook" href="https://www.facebook.com/NetApp"
+                target="_blank" title="facebook" alt="facebook">
+                <span class="n-footer__social-link-text">facebook</span>
+                <svg class="n-icon-facebook n-footer__social-link-icon" aria-labelledby="title">
+                  <title>facebook@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-linkedin"
+                href="https://www.linkedin.com/company/netapp" target="_blank" title="linkedin" alt="linkedin">
+                <span class="n-footer__social-link-text">linkedin</span>
+                <svg class="n-icon-linkedin n-footer__social-link-icon" aria-labelledby="title">
+                  <title>linkedin@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#linkedin"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-youtube"
+                href="https://www.youtube.com/user/NetAppTV" target="_blank" title="youtube" alt="youtube">
+                <span class="n-footer__social-link-text">youtube</span>
+                <svg class="n-icon-youtube n-footer__social-link-icon" aria-labelledby="title">
+                  <title>youtube@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#youtube"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="n-footer__social-link-list-item">
+              <a class="n-footer__social-link" data-ntap-social="follow-slideshare"
+                href="https://www.slideshare.net/NetApp" target="_blank" title="slideshare" alt="slideshare">
+                <span class="n-footer__social-link-text">slideshare</span>
+                <svg class="n-icon-slideshare n-footer__social-link-icon" aria-labelledby="title">
+                  <title>slideshare@</title>
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="/fr-fr/astra-control-service/common/svg/sprite.svg#slideshare"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/prism.js'></script>
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/fr-fr/astra-control-service/js/www-ntap.js'></script>
+    <script src='/fr-fr/astra-control-service/js/tabbed-blocks.js'></script>
+    <script src='/fr-fr/astra-control-service/js/sidebar.js'></script>
+  </body></html>
