@@ -11,6 +11,7 @@ summary: 'Supprimez toutes les applications ou clusters que vous ne souhaitez pl
 :imagesdir: ../media/use/
 
 
+[role="lead"]
 Supprimez toutes les applications ou clusters que vous ne souhaitez plus gérer d'Astra Control.
 
 
@@ -19,15 +20,19 @@ Supprimez toutes les applications ou clusters que vous ne souhaitez plus gérer 
 
 Arrêtez de gérer les applications que vous ne souhaitez plus sauvegarder, créer des copies Snapshot ou cloner à partir d'Astra Control.
 
+Lorsque vous annulez la gestion d'une application :
+
 * Toutes les sauvegardes et tous les instantanés existants seront supprimés.
 * Les applications et les données restent disponibles.
 
 
 .Étapes
-. Sélectionnez *applications*.
-. Cochez la case correspondant aux applications que vous ne souhaitez plus gérer.
-. Sélectionnez la liste déroulante *action* et sélectionnez *Unmanage application(s)*.
-. Confirmez que vous souhaitez annuler la gestion des applications, puis sélectionnez *Oui, Annuler la gestion des applications*.
+. Dans la barre de navigation de gauche, sélectionnez *applications*.
+. Sélectionnez l'application.
+. Dans le menu Options de la colonne actions, sélectionnez *Unmanage*.
+. Vérifiez les informations.
+. Tapez « Unmanage » pour confirmer.
+. Sélectionnez *Oui, Annuler la gestion de l'application*.
 
 
 Astra Control cesse de gérer l'application.
@@ -40,9 +45,14 @@ Arrêtez de gérer le cluster que vous ne souhaitez plus gérer avec Astra Contr
 
 ifdef::gcp[]
 
+
+NOTE: Avant d'annuler la gestion du cluster, vous devez annuler la gestion des applications associées au cluster.
+
 Il est recommandé de supprimer le cluster d'Astra Control avant de le supprimer via GCP.
 
 endif::gcp[]
+
+Lorsque vous dégérez un cluster :
 
 * Cette action empêche la gestion de votre cluster par Astra Control. Elle ne modifie pas la configuration du cluster et ne supprime pas le cluster.
 * Astra Trident ne sera pas désinstallé du cluster. https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Découvrez comment désinstaller Astra Trident"^].
@@ -51,11 +61,11 @@ endif::gcp[]
 .Étapes
 . Sélectionnez *clusters*.
 . Cochez la case correspondant au cluster que vous ne souhaitez plus gérer.
-. Sélectionnez la liste déroulante *actions* et sélectionnez *Unmanage*.
-. Confirmez que vous souhaitez annuler la gestion du cluster, puis sélectionnez *Oui, Annuler la gestion du cluster*.
+. Dans le menu Options de la colonne *actions*, sélectionnez *Unmanage*.
+. Confirmez que vous souhaitez annuler la gestion du cluster, puis sélectionnez *Oui, Unmanage cluster*.
 
 
-Astra Control cesse de gérer le cluster.
+L'état du cluster devient *Suppression*. Ensuite, le cluster sera supprimé de la page *clusters* et il n'est plus géré par Astra Control Center.
 
 
 

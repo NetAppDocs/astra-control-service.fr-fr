@@ -29,12 +29,3 @@ Vous pouvez consulter les détails des activités de votre compte Astra Control.
 . Sélectionnez *clusters*, puis le nom du cluster.
 . Sélectionnez *activité*.
 
-
-.Afficher les actions possibles pour les événements
-. Sélectionnez *activité*.
-. Sélectionnez un événement qui nécessite une attention particulière.
-. Sélectionnez l'option de liste déroulante *prendre une action*.
-+
-Dans cette liste, vous pouvez consulter les actions correctives possibles, consulter la documentation associée au problème et obtenir de l'aide pour résoudre ce dernier.
-
-

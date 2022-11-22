@@ -11,6 +11,7 @@ summary: Trouvez des conseils de dépannage pour les problèmes courants.
 :imagesdir: ../media/support/
 
 
+[role="lead"]
 Apprenez à contourner certains problèmes courants que vous pourriez rencontrer.
 
 https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Astra[]

@@ -16,7 +16,7 @@ Une fois que vous avez commencé à gérer une application, Astra Control fourni
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application.
-. Sélectionnez autour pour trouver les informations que vous recherchez :
+. Trouvez les informations que vous recherchez :
 +
 Statut de l'application:: Fournit un état qui reflète l'état de l'application dans Kubernetes.
 État de la protection des applications:: Fournit un état de protection de l'application :

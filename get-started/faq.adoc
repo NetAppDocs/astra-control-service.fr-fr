@@ -11,6 +11,7 @@ summary: Cette FAQ peut vous aider si vous cherchez juste une réponse rapide à
 :imagesdir: ../media/
 
 
+[role="lead"]
 Cette FAQ peut vous aider si vous cherchez juste une réponse rapide à une question.
 
 
@@ -41,9 +42,9 @@ Vous pouvez accéder au service Astra Control à l'adresse https://astra.netapp.
 
 Demandez-leur de vérifier leur dossier de courrier indésirable à partir de do-not-reply@netapp.com, ou de rechercher une "invitation" dans leur boîte de réception. Vous pouvez également supprimer l'utilisateur et tenter de les ajouter à nouveau.
 
-*J'ai mis à niveau le Plan Premium PayGo à partir du Plan gratuit. Serai-je chargé pour les 10 premières applications?*
+*J'ai mis à niveau le Plan Premium PayGo à partir du Plan gratuit. Est-ce que je serai chargé pour les 10 premiers espaces de noms?*
 
-Oui. Après la mise à niveau vers le plan Premium, Astra Control commence à vous charger pour toutes les applications gérées de votre compte.
+Oui. Après la mise à niveau vers le plan Premium, Astra Control commence à vous facturer pour tous les espaces de noms gérés de votre compte.
 
 *J'ai mis à niveau le Plan Premium PayGo au milieu d'un mois. Est-ce que je serai facturé pour tout le mois?*
 
@@ -63,7 +64,7 @@ Non Lorsque votre cluster est ajouté à Astra Control, le service installe auto
 
 *J'ai besoin d'ajouter des nœuds de travail à mon cluster après avoir ajouté à Astra Control Service. Que dois-je faire?*
 
-De nouveaux nœuds workers peuvent être ajoutés aux pools existants, ou de nouveaux pools peuvent être créés tant qu'ils sont le type d'image Ubuntu. Elles seront automatiquement découvertes par Astra Control. Si les nouveaux nœuds ne sont pas visibles dans Astra Control, vérifiez si les nouveaux nœuds de travail exécutent le type d'image pris en charge. Vous pouvez également vérifier l'état de santé des nouveaux nœuds workers à l'aide de la `kubectl get nodes` commande.
+Il est possible d'ajouter de nouveaux nœuds workers aux pools existants ou de créer de nouveaux pools tant qu'ils ne le sont pas `COS_CONTAINERD` type d'image. Elles seront automatiquement découvertes par Astra Control. Si les nouveaux nœuds ne sont pas visibles dans Astra Control, vérifiez si les nouveaux nœuds de travail exécutent le type d'image pris en charge. Vous pouvez également vérifier l'état de santé des nouveaux nœuds workers à l'aide de la `kubectl get nodes` commande.
 
 ifdef::aws[]
 
@@ -164,7 +165,7 @@ L'opérateur Astra Trident définit la classe de stockage par défaut sur `netap
 
 * Courez `kubectl get sc` et vérifiez la classe de stockage par défaut.
 * Vérifiez le fichier yaml ou le graphique Helm utilisé pour déployer l'application et voir si une classe de stockage différente est définie.
-* Vérifiez que le type d'image du nœud de travail est Ubuntu et que le montage NFS a réussi.
+* GKE version 1.24 et ultérieure ne prend pas en charge les images de nœud basées sur Docker. Assurez-vous que le type d'image du nœud de travail dans GKE est `COS_CONTAINERD` Et que le montage NFS a réussi.
 
 
 endif::gcp[]

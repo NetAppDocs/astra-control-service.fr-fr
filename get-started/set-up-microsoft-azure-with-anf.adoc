@@ -11,6 +11,7 @@ summary: Voici quelques étapes pour préparer votre abonnement Microsoft Azure 
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 Voici quelques étapes pour préparer votre abonnement Microsoft Azure avant de gérer des clusters Azure Kubernetes Service avec Astra Control Service. Suivez ces instructions si vous prévoyez d'utiliser Azure NetApp Files en tant que système back-end de stockage.
 
 
@@ -81,7 +82,7 @@ Par défaut, les compartiments Astra Control Service utilisent pour stocker les 
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service.
 
-Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.21 à 1.24.
+Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.23 à 1.25.
 Type d'image:: Le type d'image pour tous les pools de nœuds doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 Région Azure:: Les clusters doivent se trouver dans une région où Azure NetApp Files est disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Afficher les produits Azure par région"^].
@@ -103,57 +104,6 @@ Si vous êtes proche de la limite, vous avez deux options :
 
 
 --
-
-
-Contrôleur snapshot de volume externe:: Un contrôleur de snapshot de volume CSI doit être installé sur les clusters. Ce contrôleur est installé par défaut à partir de la version 1.21 de K8s, mais il est nécessaire de vérifier sur les clusters exécutant les versions 1.19 et 1.20. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html["En savoir plus sur un contrôleur Snapshot externe pour les copies Snapshot de volume à la demande"^].
-
-
-
-
-=== Installer un contrôleur d'instantané de volume CSI
-
-Comme indiqué dans le  Kubernetes Service cluster requirements, Un contrôleur de snapshot de volume CSI doit être installé sur les clusters Kubernetes. Suivez ces étapes pour installer le contrôleur sur vos clusters.
-
-.Étapes pour K8s 1.19
-. Installation des CRD de snapshot de volume.
-+
-[source, kubectl]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-----
-. Créer le contrôleur de snapshot.
-+
-Si vous souhaitez que le contrôleur de snapshot se trouve dans un espace de noms spécifique, téléchargez et modifiez les fichiers suivants avant de les appliquer.
-
-+
-[source, kubectl]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/release-3.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
-----
-
-
-.Etapes relatives à K8s version 1.20
-. Installation des CRD de snapshot de volume.
-+
-[source, kubectl]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotclasses.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshotcontents.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/client/config/crd/snapshot.storage.k8s.io_volumesnapshots.yaml
-----
-. Créer le contrôleur de snapshot.
-+
-Si vous souhaitez que le contrôleur de snapshot se trouve dans un espace de noms spécifique, téléchargez et modifiez les fichiers suivants avant de les appliquer.
-
-+
-[source, kubectl]
-----
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/rbac-snapshot-controller.yaml
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snapshotter/v4.0.0/deploy/kubernetes/snapshot-controller/setup-snapshot-controller.yaml
-----
 
 
 

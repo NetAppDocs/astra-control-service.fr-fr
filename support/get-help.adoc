@@ -11,6 +11,7 @@ summary: 'NetApp prend en charge Astra Control de plusieurs façons. De nombreus
 :imagesdir: ../media/support/
 
 
+[role="lead"]
 NetApp prend en charge Astra Control de plusieurs façons. De nombreuses options d'auto-assistance gratuites sont disponibles 24 h/24 et 7 j/7, comme des articles de la base de connaissances (KB) et un canal discorde. Votre compte Astra Control inclut un support technique à distance via la billetterie en ligne.
 
 Vous devez d'abord link:register-support.html["Activez le support de votre numéro de série NetApp"] afin d'utiliser ces options d'assistance non disponibles en libre-service. Un compte SSO du site de support NetApp (NSS) est nécessaire pour la discussion en ligne et la gestion des dossiers.

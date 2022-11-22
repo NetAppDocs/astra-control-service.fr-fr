@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: get-started/set-up-amazon-web-services.html 
-keywords: set up service account, create service account, project, permissions, service account permissions, key, service account key, json, key json, roles, service account roles, apis, networking, private service access, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, kubernetes version, ubuntu, image type, networking, container os 
+keywords: set up service account, create service account, project, permissions, service account permissions, key, service account key, json, key json, roles, service account roles, apis, networking, private service access, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, kubernetes version, image type, networking, container os 
 summary: Voici quelques étapes pour préparer votre projet Amazon Web Services avant de gérer des clusters Amazon Elastic Kubernetes Service avec Astra Control Service. 
 ---
 = Configurer Amazon Web Services
@@ -11,6 +11,7 @@ summary: Voici quelques étapes pour préparer votre projet Amazon Web Services 
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 Pour préparer votre projet Amazon Web Services, vous devez suivre quelques étapes pour gérer les clusters Amazon Elastic Kubernetes Service (EKS) avec Astra Control Service.
 
 
@@ -76,7 +77,7 @@ Enregistrez les informations d'identification de l'utilisateur IAM pour pouvoir 
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service.
 
-Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.20 et 1.22.
+Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.22 et 1.24.
 Type d'image:: Le type d'image pour chaque nœud de travail doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 
@@ -131,7 +132,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes-csi/external-snaps
 . Créez le rôle IAM du pilote Amazon EBS CSI pour les comptes de service. Suivez les instructions https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html["Dans la documentation Amazon"^], En utilisant les commandes de l'interface de ligne de commande AWS dans les instructions.
 . Ajoutez le module complémentaire Amazon EBS CSI à l'aide de la commande CLI AWS suivante, en remplaçant les informations entre parenthèses <> par des valeurs spécifiques à votre environnement. Remplacez <DRIVER_ROLE> par le nom du rôle du pilote EBS CSI que vous avez créé à l'étape précédente :
 +
-[source, sh]
+[source, console]
 ----
 aws eks create-addon \
   --cluster-name <CLUSTER_NAME> \
@@ -143,26 +144,26 @@ aws eks create-addon \
 .Configuration de la classe de stockage EBS
 . Clonez le référentiel GitHub du pilote Amazon EBS CSI sur votre système.
 +
-[source, sh]
+[source, console]
 ----
 git clone https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git
 ----
 . Accédez au répertoire d'exemple de provisionnement dynamique.
 +
-[source, sh]
+[source, console]
 ----
 cd aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/
 ----
 . Déploiement de la classe de stockage ebs-sc et de la demande de volume persistant ebs-claim dans le répertoire des manifestes.
 +
-[source, sh]
+[source, console]
 ----
 kubectl apply -f manifests/storageclass.yaml
 kubectl apply -f manifests/claim.yaml
 ----
 . Classe de stockage ebs-sc
 +
-[source, sh]
+[source, console]
 ----
 kubectl describe storageclass ebs-sc
 ----
@@ -250,13 +251,13 @@ Créez une règle avec les autorisations requises pour que le service Astra Cont
 ----
 . Création de la règle :
 +
-[source, sh]
+[source, console]
 ----
 POLICY_ARN=$(aws iam create-policy  --policy-name <policy-name> --policy-document file://policy.json  --query='Policy.Arn' --output=text)
 ----
 . Associez la stratégie à l'utilisateur IAM. Remplacement `<IAM-USER-NAME>` Avec le nom d'utilisateur de l'utilisateur IAM que vous avez créé ou un utilisateur IAM existant :
 +
-[source, sh]
+[source, console]
 ----
 aws iam attach-user-policy --user-name <IAM-USER-NAME> --policy-arn=$POLICY_ARN
 ----
@@ -271,7 +272,7 @@ Enregistrez les informations d'identification de l'utilisateur IAM afin de sensi
 .Étapes
 . Téléchargez les informations d'identification. Remplacement `<IAM-USER-NAME>` Avec le nom d'utilisateur de l'utilisateur IAM que vous souhaitez utiliser :
 +
-[source, sh]
+[source, console]
 ----
 aws iam create-access-key --user-name <IAM-USER-NAME> --output json > credential.json
 ----

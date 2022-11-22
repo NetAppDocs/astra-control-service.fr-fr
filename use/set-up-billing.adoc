@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: use/set-up-billing.html 
 keywords: billing, set up billing, payments, set up payments, credit card, update credit card, change credit card, free plan, free trial, premium, premium plan 
-summary: 'Le programme gratuit d"Astra Control vous permet de gérer jusqu"à 10 applications dans votre compte. Si vous voulez gérer plus de 10 applications, vous devrez configurer la facturation en passant du Plan gratuit au Plan Premium.' 
+summary: 'Astra Control Service propose deux moyens de facturation pour vos espaces de noms. Le Plan gratuit vous permet de gérer jusqu"à 10 applications dans votre compte. Si vous souhaitez gérer plus de 10 espaces de noms, vous devrez configurer la facturation en passant du Plan gratuit au Plan Premium. Vous pouvez également gérer la facturation des services Azure ou AWS via Azure ou AWS Marketplace.' 
 ---
 = Configurez la facturation
 :hardbreaks:
@@ -11,7 +11,10 @@ summary: 'Le programme gratuit d"Astra Control vous permet de gérer jusqu"à 10
 :imagesdir: ../media/use/
 
 
-Le programme gratuit d'Astra Control vous permet de gérer jusqu'à 10 applications dans votre compte. Si vous voulez gérer plus de 10 applications, vous devrez configurer la facturation en passant du Plan gratuit au Plan Premium.
+[role="lead"]
+Vous pouvez utiliser plusieurs méthodes pour gérer la facturation de votre compte Astra Control Service. Si vous utilisez Azure ou Amazon AWS, vous pouvez vous abonner à un plan de service Astra Control via Microsoft Azure Marketplace ou AWS Marketplace. Dans ce cas, vous pouvez gérer vos données de facturation via Marketplace. Vous pouvez également vous abonner directement à NetApp. Si vous vous inscrivez directement à NetApp, vous pouvez gérer vos données de facturation via Astra Control Service. Si vous utilisez le service Astra Control sans abonnement, vous êtes automatiquement abonné au programme gratuit.
+
+Le plan gratuit de service de contrôle d'Astra vous permet de gérer jusqu'à 10 espaces de noms dans votre compte. Si vous souhaitez gérer plus de 10 espaces de noms, vous devrez configurer la facturation en mettant à niveau le plan gratuit vers le plan Premium, ou en vous inscrivant sur Azure Marketplace ou AWS Marketplace.
 
 
 
@@ -25,9 +28,9 @@ Il existe deux types de coûts associés au service Astra Control : les frais de
 
 Le service Astra Control propose trois plans :
 
-Plan gratuit:: Gérez gratuitement jusqu'à 10 applications.
-Prime à l'utilisation:: Gérer un nombre illimité d'applications au tarif de 0,005 $ par minute, par application.
-Abonnement Premium:: Prépayez à un tarif réduit avec un abonnement annuel qui vous permet de gérer jusqu'à 10 applications par _application Pack_. Par exemple, pour acheter autant de packs que nécessaire à votre entreprise, contactez le service NetApp Sales : achetez 3 packs pour gérer 30 applications auprès d'Astra Control Service. Si vous gérez plus d'applications que votre abonnement annuel, vous serez facturé au taux de surcharge de 0.005 $ par minute, par application (comme Premium PayGo).
+Plan gratuit:: Gérer jusqu'à 10 espaces de noms gratuits.
+Prime à l'utilisation:: Gérer un nombre illimité de namespaces à un taux spécifique par heure, par espace de noms.
+Abonnement Premium:: Prépayez à un tarif réduit avec un abonnement annuel qui vous permet de gérer jusqu'à 10 espaces de noms par _Namespace pack_. Contactez le service commercial NetApp pour acheter autant de packs que nécessaire à votre entreprise. Par exemple, achetez 3 paquets pour gérer 30 espaces de noms auprès d'Astra Control Service. Si vous gérez plus de espaces de noms que ceux autorisés par votre abonnement annuel, vous serez facturé au taux de dépassement dépendant de l'abonnement par espace de noms supplémentaire.
 +
 --
 Si vous n'avez pas encore de compte Astra Control, l'achat de l'abonnement Premium crée automatiquement un compte Astra Control pour vous. Si vous disposez d'un plan gratuit existant, vous êtes automatiquement converti en abonnement Premium.
@@ -35,11 +38,11 @@ Si vous n'avez pas encore de compte Astra Control, l'achat de l'abonnement Premi
 --
 
 
-Lorsque vous créez un compte Astra Control, vous êtes automatiquement inscrit au plan gratuit. Le tableau de bord d'Astra Control vous indique le nombre d'applications que vous gérez actuellement à partir des 10 applications gratuites que vous avez autorisées.
+Lorsque vous créez un compte Astra Control, vous êtes automatiquement abonné au Plan gratuit. Le tableau de bord d'Astra Control vous indique le nombre d'espaces de noms que vous gérez actuellement à partir des 10 espaces de noms gratuits que vous êtes autorisé. La facturation commence pour un espace de noms lorsque la première application contenant l'espace de noms est gérée et s'arrête pour cet espace de noms lorsque la dernière application contenant l'espace de noms n'est pas gérée.
 
-Si vous essayez de gérer une 11e application, Astra Control vous avertit que vous avez atteint la limite du plan gratuit. Il vous invite ensuite à passer du plan gratuit à un plan Premium.
+Si vous essayez de gérer un 11e espace de noms, Astra Control vous avertit que vous avez atteint la limite du Plan libre. Il vous invite ensuite à passer du plan gratuit à un plan Premium. Vous serez facturé au taux de dépassement dépendant de l'abonnement par espace de noms supplémentaire.
 
-Vous pouvez passer à un abonnement Premium à tout moment. Après la mise à niveau, Astra Control commence à vous charger pour _All_ Managed apps dans le compte. Les 10 premières applications ne restent pas dans le Plan gratuit.
+Vous pouvez passer à un abonnement Premium à tout moment. Après la mise à niveau, Astra Control commence à vous charger pour _All_ namespaces dans le compte. Les 10 premiers espaces de noms ne restent pas dans le Plan libre.
 
 ifdef::gcp[]
 
@@ -87,25 +90,39 @@ endif::aws[]
 
 
 
-== Remarques importantes
+== Abonnez-vous à Astra Control Service dans Azure Marketplace
 
-* Votre plan de facturation est conforme au compte Astra Control.
-+
-Si vous avez plusieurs comptes, chacun a son propre plan de facturation.
+Vous pouvez vous abonner au service Astra Control à l'aide d'Azure Marketplace. Vos informations de compte et de facturation sont gérées via Marketplace.
 
-* Avec le paiement d'Astra Control, le coût de gestion de vos applications Kubernetes est compris. Votre fournisseur de cloud vous charge séparément pour le back-end de stockage des volumes persistants.
-+
-link:../get-started/intro.html["En savoir plus sur la tarification Astra Control"].
-
-* Chaque période de facturation se termine le dernier jour du mois.
-* Vous ne pouvez pas rétrograder d'un plan Premium à un plan gratuit.
+.Étapes
+. Accédez au https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.netapp-astra-acs?tab=Overview["Azure Marketplace"^].
+. Sélectionnez *obtenir maintenant*.
+. Suivez les instructions pour vous abonner à un plan.
 
 
 
 
-== Passez du Plan gratuit au Plan Premium PayGo
+== Abonnez-vous à Astra Control Service sur AWS Marketplace
 
-Mettez à niveau votre plan de facturation à tout moment pour commencer à gérer plus de 10 applications depuis Astra Control en payant uniquement ce que vous utilisez. Vous n'avez besoin que d'une carte de crédit valide.
+Vous pouvez vous abonner au service Astra Control avec AWS Marketplace. Vos informations de compte et de facturation sont gérées via Marketplace.
+
+.Étapes
+. Accédez au https://aws.amazon.com/marketplace/["AWS Marketplace"^].
+. Sélectionnez *Continuer pour s'inscrire*.
+. Suivez les instructions pour vous abonner à un plan.
+
+
+
+
+== Abonnez-vous à Astra Control Service directement avec NetApp
+
+Vous pouvez vous abonner au service de contrôle Astra depuis l'interface utilisateur du service de contrôle Astra ou en contactant le service commercial de NetApp.
+
+
+
+=== Passez du Plan gratuit au Plan Premium PayGo
+
+Mettez à niveau votre plan de facturation à tout moment pour commencer à gérer plus de 10 espaces de noms d'Astra Control en payant au fur et à mesure. Vous n'avez besoin que d'une carte de crédit valide.
 
 .Étapes
 . Sélectionnez *compte*, puis *facturation*.
@@ -117,11 +134,11 @@ NOTE: Astra Control vous enverra un e-mail si la carte de crédit arrive à expi
 
 
 
-Vous pouvez désormais gérer plus de 10 applications. Astra Control commence à vous charger pour les _toutes_ applications que vous gérez actuellement.
+Vous pouvez désormais gérer plus de 10 espaces de noms. Astra Control commence à vous charger pour _tous_ namespaces que vous gérez actuellement.
 
 
 
-== Passez du Plan gratuit à l'abonnement Premium
+=== Passez du Plan gratuit à l'abonnement Premium
 
 Contactez l'équipe commerciale de NetApp pour bénéficier d'un tarif préférentiel et d'un abonnement annuel.
 
@@ -131,22 +148,22 @@ Contactez l'équipe commerciale de NetApp pour bénéficier d'un tarif préfére
 . Fournissez des détails à l'équipe commerciale pour démarrer le processus.
 
 
-Un ingénieur commercial NetApp vous contactera pour traiter votre bon de commande. Une fois la commande terminée, Astra Control reflétera votre plan actuel dans l'onglet facturation.
+Un ingénieur commercial NetApp vous contactera pour traiter votre bon de commande. Une fois la commande terminée, Astra Control reflétera votre plan actuel dans l'onglet *facturation*.
 
 
 
 == Afficher les coûts actuels et l'historique de facturation
 
-Astra Control vous montre vos coûts mensuels actuels, ainsi qu'un historique détaillé de facturation par application.
+Astra Control vous montre vos coûts mensuels actuels, ainsi qu'un historique détaillé de facturation par espace de noms. Si vous vous êtes abonné à un plan via un Marketplace, l'historique de facturation n'est pas visible (mais vous pouvez l'afficher en vous connectant au Marketplace).
 
 .Étapes
 . Sélectionnez *compte*, puis *facturation*.
 +
 Vos coûts actuels apparaissent sous la vue d'ensemble de la facturation.
 
-. Pour afficher l'historique de facturation par application, sélectionnez *Historique de facturation*.
+. Pour afficher l'historique de facturation par espace de noms, sélectionnez *Historique de facturation*.
 +
-Astra Control vous indique le nombre de minutes d'utilisation et le coût de chaque application. La minute d'utilisation correspond au nombre de minutes pendant lesquelles Astra Control a géré votre application au cours d'une période de facturation.
+Astra Control vous indique l'utilisation des minutes et le coût de chaque espace de noms. La minute d'utilisation correspond au nombre de minutes pendant lesquelles Astra Control a géré votre espace de noms au cours d'une période de facturation.
 
 . Sélectionnez la liste déroulante pour sélectionner un mois précédent.
 
@@ -161,4 +178,20 @@ Si nécessaire, vous pouvez changer la carte de crédit qu'Astra Control a en do
 . Sélectionnez *compte > facturation > mode de paiement*.
 . Sélectionnez l'icône configurer.
 . Modifier la carte de crédit.
+
+
+
+
+== Remarques importantes
+
+* Votre plan de facturation est conforme au compte Astra Control.
++
+Si vous avez plusieurs comptes, chacun a son propre plan de facturation.
+
+* Votre facture de contrôle Astra comprend des frais pour la gestion de vos espaces de noms. Votre fournisseur cloud vous facture séparément pour le back-end de stockage des volumes persistants.
++
+link:../get-started/intro.html["En savoir plus sur la tarification Astra Control"].
+
+* Chaque période de facturation se termine le dernier jour du mois.
+* Vous ne pouvez pas rétrograder d'un plan Premium à un plan gratuit.
 

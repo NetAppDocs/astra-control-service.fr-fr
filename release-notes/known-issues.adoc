@@ -11,6 +11,7 @@ summary: 'Les problèmes connus identifient les problèmes susceptibles de vous 
 :imagesdir: ../media/release-notes/
 
 
+[role="lead"]
 Les problèmes connus identifient les problèmes susceptibles de vous empêcher d'utiliser cette version du produit avec succès.
 
 Les problèmes connus suivants ont une incidence sur la version actuelle :

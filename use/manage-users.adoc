@@ -11,6 +11,7 @@ summary: Invitez les utilisateurs à rejoindre votre compte Astra Control et sup
 :imagesdir: ../media/use/
 
 
+[role="lead"]
 Invitez les utilisateurs à rejoindre votre compte Astra Control et supprimez les utilisateurs qui ne devraient plus avoir accès au compte.
 
 

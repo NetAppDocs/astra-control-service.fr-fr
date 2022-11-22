@@ -11,6 +11,7 @@ summary: Découvrez les types de protection des données disponibles dans Astra 
 :imagesdir: ../media/learn/
 
 
+[role="lead"]
 Apprenez-en plus sur les rôles d'utilisateur et les espaces de noms d'Astra Control, et découvrez comment vous pouvez les utiliser pour contrôler l'accès aux ressources de votre entreprise.
 
 
@@ -37,4 +38,5 @@ Un espace de noms est une portée que vous pouvez attribuer à des ressources sp
 
 == Trouvez plus d'informations
 
-link:../use/manage-roles.html["Gérez les rôles"]
+* link:../use/manage-roles.html["Gérez les rôles"]
+

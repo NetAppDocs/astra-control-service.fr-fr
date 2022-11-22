@@ -1,0 +1,54 @@
+---
+sidebar: sidebar 
+permalink: use/manage-cloud-instances.html 
+keywords: cloud, instance, manage, delete, remove, edit 
+summary: 'Gérez les instances cloud que vous avez ajoutées lors de l"ajout de nouveaux clusters.' 
+---
+= Gérer les instances cloud
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Une instance de cloud est un domaine unique au sein d'un fournisseur de cloud. Vous pouvez créer plusieurs instances cloud pour chaque fournisseur cloud, et chaque instance cloud possède son propre nom, ses identifiants et ses clusters associés.
+
+Vous créez une instance de Cloud lorsque vous ajoutez un nouveau cluster à Astra Control. Vous pouvez modifier une instance de Cloud pour changer son nom ou son compartiment par défaut à l'aide de l'interface utilisateur Astra Control et effectuer d'autres actions avec l'instance de Cloud à l'aide de l'API Astra Control.
+
+
+
+== Ajouter une instance de cloud
+
+Vous pouvez ajouter une nouvelle instance de Cloud lorsque vous ajoutez un nouveau cluster à Astra Control. Voir link:../add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"] pour en savoir plus.
+
+
+
+== Modifier une instance de nuage
+
+Vous pouvez modifier une instance de cloud existante pour un fournisseur de cloud.
+
+.Étapes
+. Accédez à *Cloud instances*.
+. Dans la liste des instances de Cloud, sélectionnez le menu *actions* pour l'instance de Cloud que vous souhaitez modifier.
+. Sélectionnez *Modifier*.
++
+Sur cette page, vous pouvez mettre à jour le nom et le compartiment par défaut de l'instance de cloud.
+
++
+
+NOTE: Chaque instance de cloud d'Astra Control doit avoir un nom unique.
+
+
+
+
+
+== Faites pivoter les informations d'identification d'une instance de Cloud
+
+Vous pouvez utiliser l'API Astra Control pour faire pivoter les informations d'identification pour une instance de Cloud. Pour en savoir plus, https://docs.netapp.com/us-en/astra-automation["Accédez à la documentation sur l'automatisation d'Astra"^].
+
+
+
+== Supprimez une instance de Cloud
+
+Vous pouvez utiliser l'API Astra Control pour supprimer une instance cloud d'un fournisseur cloud. Pour en savoir plus, https://docs.netapp.com/us-en/astra-automation["Accédez à la documentation sur l'automatisation d'Astra"^].

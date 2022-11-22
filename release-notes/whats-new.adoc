@@ -11,7 +11,52 @@ summary: NetApp met régulièrement à jour le service Astra Control afin de vou
 :imagesdir: ../media/release-notes/
 
 
+[role="lead"]
 NetApp met régulièrement à jour le service Astra Control afin de vous apporter de nouvelles fonctionnalités, des améliorations et des correctifs.
+
+
+
+== 22 novembre 2022
+
+.Nouvelles fonctionnalités et prises en charge
+* Prise en charge des applications réparties sur plusieurs espaces de noms.
++
+link:../use/manage-apps.html["Définir les applications"]
+
+* La prise en charge de l'inclusion des ressources de cluster dans une définition d'application.
++
+link:../use/manage-apps.html["Définir les applications"]
+
+* Création de rapports d'avancement pour les opérations de sauvegarde, de restauration et de clonage.
++
+link:../use/monitor-running-tasks.html["Surveillez les tâches en cours d'exécution"]
+
+* Prise en charge des clusters qui disposent déjà d'une version compatible d'Astra Trident installée.
++
+link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"]
+
+* Prise en charge de la gestion de plusieurs abonnements fournisseurs de services cloud dans un seul compte Astra Control.
++
+link:../use/manage-cloud-instances.html["Gérer les instances cloud"]
+
+* Possibilité d'ajouter des clusters Kubernetes autogérés à Astra Control Service.
++
+link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"]
+
+* La facturation du service Astra Control est maintenant mesurée par espace de nom et non par application.
++
+link:../use/set-up-billing.html["Configurez la facturation"]
+
+* Avec AWS Marketplace, vous bénéficiez d'un support pour vous abonner aux offres basées sur les conditions du service Astra Control.
++
+link:../use/set-up-billing.html["Configurez la facturation"]
+
+
+
+.Problèmes et limites connus
+* link:../release-notes/known-issues.html["Problèmes connus pour cette version"]
+* link:../release-notes/known-limitations.html["Restrictions connues pour cette version"]
+
 
 
 
@@ -27,7 +72,7 @@ Cette version comprend de nouvelles fonctionnalités et améliorations suivantes
 
 * Amélioration du flux de travail de gestion des applications l'amélioration des flux de travail de gestion des applications offre une plus grande flexibilité lors de la définition d'applications gérées par Astra Control.
 +
-link:../use/manage-apps.html#manage-apps["Gérer des applications"]
+link:../use/manage-apps.html#define-apps["Gérer des applications"]
 
 
 

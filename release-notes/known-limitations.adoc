@@ -11,6 +11,7 @@ summary: Les limitations connues identifient les plateformes, les périphérique
 :imagesdir: ../media/release-notes/
 
 
+[role="lead"]
 Les limitations connues identifient les plateformes, les périphériques ou les fonctions qui ne sont pas pris en charge par cette version du produit, ou qui ne fonctionnent pas correctement avec elle. Examinez attentivement ces limites.
 
 
@@ -43,7 +44,7 @@ Les limites suivantes s'appliquent à la gestion des clusters Kubernetes dans Go
 
 === Un projet GCP et un compte de service sont pris en charge
 
-Astra Control Service prend en charge un projet Google Cloud Platform et un compte de service. Vous ne devez pas ajouter plus d'un compte de service au service Astra Control et vous ne devez pas faire pivoter les informations d'identification du compte de service.
+Astra Control Service prend en charge un projet Google Cloud Platform et un compte de service. Vous ne devez pas ajouter plus d'un compte de service au service Astra Control et vous ne devez pas faire pivoter les identifiants de compte de service.
 
 
 
@@ -60,6 +61,18 @@ endif::gcp[]
 == Limites de gestion des applications
 
 Les restrictions suivantes affectent la gestion des applications par le service Astra Control.
+
+
+
+=== De même, vous ne pouvez pas restaurer collectivement plusieurs applications qui utilisent le même namespace
+
+Si vous gérez plusieurs applications qui utilisent le même espace de noms (en créant plusieurs définitions d'applications dans Astra Control), vous ne pouvez pas restaurer toutes les applications dans un espace de noms différent. Chaque application doit être restaurée dans son propre espace de noms distinct.
+
+
+
+=== Astra Control n'attribue pas automatiquement de compartiments par défaut pour les instances de cloud
+
+Astra Control n'attribue pas automatiquement de compartiment par défaut à une instance de cloud. Vous devez définir manuellement un compartiment par défaut pour une instance de cloud. Si un compartiment par défaut n'est pas défini, vous ne pourrez pas effectuer les opérations de clonage d'applications entre les deux clusters.
 
 
 
@@ -88,7 +101,10 @@ NOTE: Pour K8ssandra, les opérations de restauration sur place sont prises en c
 * https://github.com/percona/percona-xtradb-cluster-operator["Cluster Percona XtraDB"^]
 
 
-Notez qu'Astra Control peut ne pas être en mesure de cloner un opérateur conçu avec une architecture de "pass-by-Reference" (par exemple, l'opérateur CockroachDB). Lors de ces types d'opérations de clonage, l'opérateur cloné tente de référencer les secrets de Kubernetes de l'opérateur source malgré avoir son propre nouveau secret dans le cadre du processus de clonage. Il est possible que le clonage échoue, car Astra Control ne connaît pas les secrets de Kubernetes qui sont présents dans l'opérateur source.
+Notez qu'Astra Control peut ne pas être en mesure de cloner un opérateur conçu avec une architecture « pass-by-Reference » (par exemple, l'opérateur CockroachDB). Lors de ces types d'opérations de clonage, l'opérateur cloné tente de référencer les secrets de Kubernetes de l'opérateur source malgré avoir son propre nouveau secret dans le cadre du processus de clonage. Il est possible que le clonage échoue, car Astra Control ne connaît pas les secrets de Kubernetes qui sont présents dans l'opérateur source.
+
+
+NOTE: Lors des opérations de clonage, les applications nécessitant une ressource IngressClass ou des crochets Web ne doivent pas avoir ces ressources déjà définies sur le cluster de destination.
 
 
 

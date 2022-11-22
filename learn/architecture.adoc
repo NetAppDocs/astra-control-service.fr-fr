@@ -11,9 +11,10 @@ summary: 'Voici un aperçu des divers composants de l"environnement Astra Contro
 :imagesdir: ../media/learn/
 
 
+[role="lead"]
 Voici un aperçu des divers composants de l'environnement Astra Control.
 
-image:astra-architecture-diagram-v4.png["Schéma d'architecture et composants d'Astra Control"]
+image:astra-architecture-diagram-v5.png["Schéma d'architecture et composants d'Astra Control"]
 
 
 

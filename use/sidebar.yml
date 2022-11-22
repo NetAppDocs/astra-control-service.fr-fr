@@ -29,6 +29,8 @@ entries:
     url: "/use/view-apps.html"
 - title: Gestion des compartiments
   url: "/use/manage-buckets.html"
+- title: Surveillez les tâches en cours d'exécution
+  url: "/use/monitor-running-tasks.html"
 - title: Gérez votre compte
   entries:
   - title: Configurez la facturation
@@ -45,5 +47,7 @@ entries:
     url: "/use/manage-notifications.html"
   - title: Fermez votre compte
     url: "/use/close-account.html"
+- title: Gérer les instances cloud
+  url: "/use/manage-cloud-instances.html"
 - title: Annuler la gestion des applications et des clusters
   url: "/use/unmanage.html"

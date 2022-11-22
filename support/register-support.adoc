@@ -11,6 +11,7 @@ summary: 'Astra Control tente d"enregistrer automatiquement votre compte pour l"
 :imagesdir: ../media/support/
 
 
+[role="lead"]
 Astra Control tente d'enregistrer automatiquement votre compte pour l'assistance lorsque vous configurez votre compte. Si ce n'est pas le cas, vous pouvez vous inscrire manuellement pour obtenir de l'aide vous-même. Vous devez enregistrer le support afin d'obtenir de l'aide auprès du support technique NetApp.
 
 

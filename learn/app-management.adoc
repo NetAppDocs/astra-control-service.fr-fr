@@ -18,11 +18,11 @@ Lorsque Astra Control détecte vos clusters, les applications de ces clusters ne
 +
 image:diagram-managed-app1.png["Image conceptuelle qui montre qu'Astra gère toutes les ressources d'un espace de noms."]
 
-* Une application individuelle déployée au sein d'un namespace (Helm 3 est utilisé dans cet exemple)
+* Une application individuelle déployée au sein d'un ou plusieurs espaces de noms (Helm 3 est utilisé dans cet exemple)
 +
 image:diagram-managed-app2.png["Image conceptuelle qui illustre la gestion d'une application individuelle déployée dans un espace de noms incluant d'autres applications."]
 
-* Groupe de ressources identifié par une étiquette Kubernetes dans un namespace
+* Groupe de ressources identifié par une étiquette Kubernetes dans un ou plusieurs espaces de noms
 +
 image:diagram-managed-app3.png["Image conceptuelle qui illustre la gestion d'une application personnalisée basée sur une étiquette Kubernetes."]
 

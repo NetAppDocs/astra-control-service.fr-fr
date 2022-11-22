@@ -12,34 +12,58 @@ summary: 'Clonez une application existante pour créer une application dupliqué
 
 
 [role="lead"]
-Clonez une application existante pour créer une application dupliquée sur le même cluster Kubernetes ou sur un autre cluster. Le clonage peut être utile pour déplacer des applications et du stockage d'un cluster Kubernetes vers un autre. Par exemple, il peut être intéressant de déplacer les workloads dans un pipeline ci/CD et entre les espaces de noms Kubernetes.
+Vous pouvez cloner une application existante pour créer une application dupliquée sur le même cluster Kubernetes ou sur un autre cluster. Lorsque vous clonez une application Astra Control, il crée un clone de la configuration des applications et du stockage persistant.
 
-Lorsque vous clonez une application Astra Control, il crée un clone de la configuration des applications et du stockage persistant.
+Le clonage peut être utile pour déplacer des applications et du stockage d'un cluster Kubernetes vers un autre. Par exemple, il peut être intéressant de déplacer les workloads dans un pipeline ci/CD et entre les espaces de noms Kubernetes.
 
-[NOTE]
-====
-* Si vous clonez une instance déployée par l'opérateur de Jenkins ci, vous devez restaurer manuellement les données persistantes. Il s'agit d'une limitation du modèle de déploiement de l'application.
-* Si vous déployez une application avec une classe de stockage définie de manière explicite et que vous devez cloner l'application, le cluster cible doit avoir la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage explicitement définie sur un cluster ne disposant pas de la même classe de stockage échouera.
-* Lors d'une sauvegarde ou d'une restauration d'application, vous pouvez éventuellement spécifier un ID de compartiment. Cependant, une opération de clonage d'application utilise toujours le compartiment par défaut défini. Il n'existe aucune option pour modifier les compartiments d'un clone. Si vous souhaitez contrôler le godet utilisé, vous pouvez l'un des deux link:../use/manage-buckets.html#edit-a-bucket["modifiez les paramètres par défaut du compartiment"] ou faites un link:../use/protect-apps.html#create-a-backup["sauvegarde"] suivi d'un link:../use/restore-apps.html["restaurer"] séparément.
-* Tout utilisateur membre ayant des contraintes d'espace de noms par nom/ID d'espace de noms ou par libellés d'espace de noms peut cloner ou restaurer une application dans un nouvel espace de noms sur le même cluster ou sur tout autre cluster du compte de son entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, l'administrateur/propriétaire du compte peut modifier le compte d'utilisateur membre et mettre à jour les contraintes de rôle pour l'utilisateur affecté afin d'autoriser l'accès au nouvel espace de noms.
+.Ce dont vous avez besoin, 8217;ll
+* Pour cloner les applications sur un autre cluster, vous devez vérifier que les instances cloud contenant les clusters source et de destination (le cas échéant) disposent d'un compartiment par défaut. Vous devez attribuer un compartiment par défaut à chaque instance de cloud.
+* Lors des opérations de clonage, les applications nécessitant une ressource IngressClass ou des crochets Web ne doivent pas avoir ces ressources déjà définies sur le cluster de destination.
 
 
-====
+.Limites des clones
+* *Classes de stockage explicites* : si vous déployez une application avec une classe de stockage définie explicitement et que vous devez cloner l'application, le cluster cible doit avoir la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage explicitement définie sur un cluster ne disposant pas de la même classe de stockage échouera.
+* *Clones et contraintes utilisateur* : tout utilisateur membre ayant des contraintes d'espace de noms par nom/ID d'espace de noms ou par étiquette d'espace de noms peut cloner ou restaurer une application dans un nouvel espace de noms sur le même cluster ou sur tout autre cluster du compte de son organisation. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, l'administrateur/propriétaire du compte peut modifier le compte d'utilisateur membre et mettre à jour les contraintes de rôle pour l'utilisateur affecté afin d'autoriser l'accès au nouvel espace de noms.
+* *Les clones utilisent des compartiments par défaut* :
++
+** Lors d'une sauvegarde ou d'une restauration d'application, vous pouvez spécifier un compartiment à utiliser. Vous devez spécifier un compartiment par défaut lors du clonage des clusters, mais en spécifiant un compartiment est facultatif lorsque vous effectuez le clonage au sein du même cluster.
+** Lorsque vous clonez les clusters, l'instance cloud contenant le cluster source de l'opération de clonage doit disposer d'un ensemble de compartiments par défaut.
+** Il n'existe aucune option pour modifier les compartiments d'un clone. Si vous souhaitez contrôler le godet utilisé, vous pouvez l'un des deux link:../use/manage-buckets.html#edit-a-bucket["modifiez les paramètres par défaut du compartiment"] ou faites un link:../use/protect-apps.html#create-a-backup["sauvegarde"] suivi d'un link:../use/restore-apps.html["restaurer"] séparément.
+
+
+* *Avec Jenkins ci* : si vous clonez une instance déployée par l'opérateur de Jenkins ci, vous devez restaurer manuellement les données persistantes. Il s'agit d'une limitation du modèle de déploiement de l'application.
+
+
 .Étapes
 . Sélectionnez *applications*.
-. Sélectionnez la liste déroulante dans la colonne *action* pour l'application souhaitée.
+. Effectuez l'une des opérations suivantes :
++
+** Sélectionnez le menu Options dans la colonne *actions* pour l'application souhaitée.
+** Sélectionnez le nom de l'application souhaitée et sélectionnez la liste déroulante d'état en haut à droite de la page.
+
+
 . Sélectionnez *Clone*.
-. *Détails du clone* : spécifiez les détails du clone :
+. Spécifiez les détails du clone :
 +
-** Conservez le nom et l'espace de noms par défaut, ou modifiez-les.
+** Entrez un nom.
 ** Choisissez un cluster de destination pour le clone.
-** Indiquez si vous souhaitez créer le clone à partir d'un snapshot ou d'une sauvegarde existant. Si vous ne sélectionnez pas cette option, Astra Control crée le clone à partir de l'état actuel de l'application.
-
-
-. *Résumé du clone* : consultez les détails du clone et sélectionnez *Cloner l'application*.
+** Entrer les espaces de noms de destination du clone. Chaque espace de noms source associé à l'application est mappé à un espace de noms de destination.
 +
-image:screenshot-clone-summary.gif["Capture d'écran de la boîte de dialogue Cloner le résumé qui permet de consulter les informations de clonage concernant l'application d'origine et l'application clonée."]
+
+NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cadre de l'opération de clonage. Les espaces de noms de destination que vous spécifiez ne doivent pas être déjà présents sur le cluster de destination.
+
+** Sélectionnez *Suivant*.
+** Indiquez si vous souhaitez créer le clone à partir d'un snapshot ou d'une sauvegarde existant. Si vous ne sélectionnez pas cette option, Astra Control crée le clone à partir de l'état actuel de l'application.
++
+*** Si vous avez choisi de cloner à partir d'un snapshot ou d'une sauvegarde existant, choisissez le snapshot ou la sauvegarde que vous souhaitez utiliser.
 
 
 
-Astra Control clones dont l'application est basée sur les informations que vous avez fournies.
+
+. Sélectionnez *Suivant*.
+. Vérifiez les informations sur le clone et sélectionnez *Clone*.
+
+
+Astra Control clone l'application en fonction des informations que vous avez fournies. L'opération de clonage a réussi lorsque le nouveau clone d'application est dans `Healthy` Indiquez la page *applications*.
+
+Après la création d'un espace de noms par une opération de clonage ou de restauration, l'administrateur/propriétaire du compte peut modifier le compte d'utilisateur membre et mettre à jour les contraintes de rôle pour l'utilisateur affecté afin d'autoriser l'accès au nouvel espace de noms.

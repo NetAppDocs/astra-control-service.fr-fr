@@ -11,6 +11,7 @@ summary: 'De nombreuses pages de ce site comprennent des vidéos montrant commen
 :imagesdir: ../media/
 
 
+[role="lead"]
 De nombreuses pages de ce site comprennent des vidéos qui vous montrent comment effectuer une tâche pour Astra Control Service. Si vous êtes seulement intéressé par les vidéos, nous avons simplifié votre choix en collectant toutes les vidéos sur cette seule page (comme une liste de lecture).
 
 ifdef::gcp[]

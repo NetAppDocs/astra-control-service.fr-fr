@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: get-started/set-up-google-cloud.html 
-keywords: google cloud, google cloud platform, gcp, set up google cloud, set up gcp, set up service account, create service account, project, gcp project, permissions gcp permissions, service account permissions, key, service account key, json, key json, roles, service account roles, gcp roles, cvs, cvs for aws, cloud volumes service apis, apis, networking, cvs networking, cloud volumes service networking, private service access, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, google cloud regions, gcp regions, kubernetes version, ubuntu, image type, networking, container os 
+keywords: google cloud, google cloud platform, gcp, set up google cloud, set up gcp, set up service account, create service account, project, gcp project, permissions gcp permissions, service account permissions, key, service account key, json, key json, roles, service account roles, gcp roles, cvs, cvs for aws, cloud volumes service apis, apis, networking, cvs networking, cloud volumes service networking, private service access, kubernetes cluster, cluster requirements, version requirements, supported versions, supported regions, google cloud regions, gcp regions, kubernetes version, image type, networking, container os 
 summary: Il vous faut quelques étapes pour préparer votre projet Google Cloud avant de gérer des clusters Google Kubernetes Engine avec Astra Control Service. 
 ---
 = Configurez Google Cloud
@@ -11,6 +11,7 @@ summary: Il vous faut quelques étapes pour préparer votre projet Google Cloud 
 :imagesdir: ../media/get-started/
 
 
+[role="lead"]
 Il vous faut quelques étapes pour préparer votre projet Google Cloud avant de gérer des clusters Google Kubernetes Engine avec Astra Control Service.
 
 
@@ -27,7 +28,7 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 === Lisez les exigences d'Astra Control Service pour Google Kubernetes Engine
 
 [role="quick-margin-para"]
-Assurez-vous que les clusters fonctionnent correctement et qu'une version Kubernetes prise en charge fonctionne, que les nœuds workers sont en ligne et exécutent Ubuntu ou un système d'exploitation optimisé pour un conteneur, etc.  cluster requirements,En savoir plus sur cette étape.
+Assurez-vous que les clusters exécutent une version Kubernetes prise en charge, que les nœuds workers sont en ligne et exécutent un type d'image pris en charge, etc.  cluster requirements,En savoir plus sur cette étape.
 
 
 
@@ -104,16 +105,8 @@ Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service. Notez que certaines de ces exigences s'appliquent uniquement si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end.
 
-Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.20 et 1.23.
-Type d'image:: Le type d'image pour chaque nœud de travail doit être l'un des suivants :
-+
---
-* Système d'exploitation optimisé pour le conteneur avec Containerd
-* Système d'exploitation optimisé pour un conteneur avec Docker
-* Ubuntu avec Docker
-
-
---
+Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.22 et 1.24.
+Type d'image:: Le type d'image de chaque nœud de travail doit être `COS_CONTAINERD`.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 Région Google Cloud:: Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end, les clusters doivent être exécutés dans un https://cloud.netapp.com/cloud-volumes-global-regions#cvsGc["Région Google Cloud prise en charge de Cloud Volumes Service pour Google Cloud"] Notez qu'Astra Control Service prend en charge les deux types de service : CVS et CVS-Performance. Il est recommandé de choisir une région qui prend en charge Cloud Volumes Service pour Google Cloud, même si vous ne l'utilisez pas comme système de stockage principal. Il est ainsi plus facile d'utiliser Cloud Volumes Service pour Google Cloud comme système de stockage back-end, à l'avenir si vos besoins en performance évoluent.
 Mise en réseau:: Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, le cluster doit résider dans un VPC avec Cloud Volumes Service pour Google Cloud.  Set up network peering for your VPC,Cette étape est décrite ci-dessous.
