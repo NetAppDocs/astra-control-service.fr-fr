@@ -21,7 +21,7 @@ image:astra-architecture-diagram-v5.png["Schéma d'architecture et composants d'
 == Composants d'Astra Control
 
 * *Clusters Kubernetes* : Kubernetes est une plateforme portable, extensible et open source pour la gestion des workloads et des services conteneurisés, qui facilite à la fois la configuration déclarative et l'automatisation. Astra propose des services de gestion pour les applications hébergées dans un cluster Kubernetes.
-* *Astra Trident* : en tant que fournisseur de stockage open source entièrement pris en charge et orchestrateur géré par NetApp, Trident vous permet de créer des volumes de stockage pour les applications conteneurisées gérées par Docker et Kubernetes. Lorsqu'il est déployé avec Astra Control Center, Trident inclut un système de stockage back-end configuré de ONTAP et prend également en charge le magasin de données Astra en tant que système de stockage back-end.
+* *Astra Trident* : en tant que fournisseur de stockage open source entièrement pris en charge et orchestrateur géré par NetApp, Astra Trident vous permet de créer des volumes de stockage pour les applications conteneurisées gérées par Docker et Kubernetes. Lorsqu'il est déployé avec Astra Control Center, Trident inclut un système back-end de stockage ONTAP configuré.
 * *Back-end de stockage* :
 +
 ** Utilisation d'Astra Control Service https://www.netapp.com/cloud-services/azure-netapp-files/["Azure NetApp Files"^] Ou des disques gérés Azure en tant que système back-end de stockage pour les clusters AKS.

@@ -68,7 +68,6 @@ Mêmes fonctionnalités sur les deux plateformes, avec des exceptions au systèm
 
 | Qu'est-ce que le système back-end prend en charge ? | Offres de services clouds NetApp  a| 
 * Systèmes NetApp ONTAP AFF et FAS
-* Astra Data Store comme système de stockage back-end
 * Système back-end Cloud Volumes ONTAP
 
 
@@ -170,7 +169,6 @@ Vous pouvez ajouter des applications à votre cluster. Si certaines applications
 * https://docs.netapp.com/us-en/astra-family/["Documentation relative à la gamme de produits NetApp Astra"^]
 * https://docs.netapp.com/us-en/astra/index.html["Documentation relative au service après-vente Astra Control"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Documentation Astra Control Center"^]
-* https://docs.netapp.com/us-en/astra-data-store/index.html["Documentation Astra Data Store"]
 * https://docs.netapp.com/us-en/trident/index.html["Documentation Astra Trident"^]
 * https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^]
 * https://docs.netapp.com/us-en/cloudinsights/["Documentation Cloud Insights"^]
