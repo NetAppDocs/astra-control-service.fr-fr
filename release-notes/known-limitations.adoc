@@ -42,12 +42,6 @@ Les limites suivantes s'appliquent à la gestion des clusters Kubernetes dans Go
 
 
 
-=== Un projet GCP et un compte de service sont pris en charge
-
-Astra Control Service prend en charge un projet Google Cloud Platform et un compte de service. Vous ne devez pas ajouter plus d'un compte de service au service Astra Control et vous ne devez pas faire pivoter les identifiants de compte de service.
-
-
-
 === Les applications Google Marketplace n'ont pas été validées
 
 NetApp n'a pas validé les applications déployées depuis Google Marketplace. Certains utilisateurs signalent des problèmes de découverte ou de sauvegarde des applications Postgres, MariaDB et MySQL déployées à partir de Google Marketplace.
