@@ -1224,7 +1224,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 17:31:32 +0000">11/22/2022</time>
+    <time datetime="2022-11-28 22:36:36 +0000">11/28/2022</time>
     
   
 
@@ -1267,9 +1267,6 @@
 </li>
 <li>
 <p>backups and snapshots fail if the volumesnapshotclass is added after a cluster is managed</p>
-</li>
-<li>
-<p>backup buckets use LRS redundancy by default</p>
 </li>
 </ul>
 </div>
@@ -1331,24 +1328,6 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dans ce scénario, les sauvegardes et les instantanés échouent avec une erreur UI 500. Pour contourner ce problème, actualisez la liste des applications.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="les-compartiments-de-sauvegarde-azure-utilisent-la-redondance-lrs-par-défaut">Les compartiments de sauvegarde Azure utilisent la redondance LRS par défaut</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l&#8217;option de redondance LRS (local Redundant Storage). Pour utiliser une option de redondance plus durable pour les compartiments Azure, consultez les étapes en option des instructions de configuration du fournisseur cloud Azure :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="../get-started/set-up-microsoft-azure-with-amd.html">"Configuration de Microsoft Azure avec des disques gérés Azure"</a></p>
-</li>
-<li>
-<p><a href="../get-started/set-up-microsoft-azure-with-anf.html">"Configuration de Microsoft Azure avec Azure NetApp Files"</a></p>
-</li>
-</ul>
 </div>
 </div>
 </div>
