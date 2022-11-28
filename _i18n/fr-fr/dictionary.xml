@@ -150,7 +150,6 @@
   <block id="19f1799814a50fc19daad0ce851f2b34" category="inline-link-macro">Gérez les rôles</block>
   <block id="73b2ad293eda73ca2acff9008e7ac0e8" category="paragraph"><block ref="73b2ad293eda73ca2acff9008e7ac0e8" category="inline-link-macro-rx"></block></block>
   <block id="a7da53d86332105dcae80a12f3e8b7a5" category="summary">Décrit le type d'applications gérées dans Astra Control.</block>
-  <block id="0aec310f3808bce2063a2292e6052cf8" category="doc">Comprendre la gestion des applications</block>
   <block id="848f207b3c4594754aa82fd21b5fc5e0" category="paragraph">Lorsque Astra Control détecte vos clusters, les applications de ces clusters ne sont pas gérées jusqu'à ce que vous choisissiez comment les gérer. Une application gérée d'Astra Control peut être l'une des suivantes :</block>
   <block id="3757d3597962f660c54cb3f9ed5ba251" category="list-text">Un espace de nom, y compris toutes les ressources de cet espace de nom</block>
   <block id="99185f9c0e1b271b9c7c1684898a4b91" category="inline-image-macro">Image conceptuelle qui montre qu'Astra gère toutes les ressources d'un espace de noms.</block>
@@ -2043,4 +2042,5 @@
   <block id="400b9c72badfc397898ae034a400c0f8" category="section-title">Supprimez une instance de Cloud</block>
   <block id="f4e39691a17b55519cdcd9b3fe953c77" category="paragraph">Vous pouvez utiliser l'API Astra Control pour supprimer une instance cloud d'un fournisseur cloud. Pour en savoir plus,<block ref="bfa33a3653b9adb3eeffbdd741a1c8dc" category="inline-link-rx"></block>.</block>
   <block id="2af1f66f8f47d8339a96c1cd543cd3a8" category="list-text">*Astra Trident* : en tant que fournisseur de stockage open source entièrement pris en charge et orchestrateur géré par NetApp, Astra Trident vous permet de créer des volumes de stockage pour les applications conteneurisées gérées par Docker et Kubernetes. Lorsqu'il est déployé avec Astra Control Center, Trident inclut un système back-end de stockage ONTAP configuré.</block>
+  <block id="934c5edffa8e732ecb866cb319c8454a" category="doc">Gestion des applications</block>
 </blocks>

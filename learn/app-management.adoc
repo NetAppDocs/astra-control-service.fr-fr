@@ -4,7 +4,7 @@ permalink: learn/app-management.html
 keywords: custom app, labels, kubernetes labels, kubernetes resources, pods, define custom app 
 summary: 'Décrit le type d"applications gérées dans Astra Control.' 
 ---
-= Comprendre la gestion des applications
+= Gestion des applications
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
