@@ -1247,7 +1247,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 19:34:31 +0000">11/22/2022</time>
+    <time datetime="2022-11-30 22:04:11 +0000">11/30/2022</time>
     
   
 
@@ -1296,7 +1296,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p>Astra Control surveille en permanence votre calcul pour les changements d&#8217;état, il est donc conscient de toutes les nouvelles applications que vous ajoutez en chemin.</p>
+<p>Astra Control surveille en permanence vos ressources de calcul pour détecter les changements d&#8217;état. Il est donc conscient des nouvelles applications que vous ajoutez tout au long de votre trajet.</p>
 </div>
 </div>
 </div>
@@ -1360,7 +1360,49 @@
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Qu&#8217;est-ce que le système back-end prend en charge ?</p></th>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Offres de services clouds NetApp</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
+<ul>
+<li>
+<p>Amazon Web Services :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Amazon EBS</p>
+</li>
+<li>
+<p>Amazon FSX pour NetApp ONTAP</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Google Cloud :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Disque persistant Google</p>
+</li>
+<li>
+<p>NetApp Cloud Volumes Service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Microsoft Azure :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Disques gérés Azure</p>
+</li>
+<li>
+<p>Azure NetApp Files</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div></div></td>
 <td class="tableblock halign-left valign-top"><div class="content"><div class="ulist">
 <ul>
 <li>
@@ -1427,7 +1469,7 @@
 <p>Utilise ce nouveau rôle d&#8217;administrateur pour l&#8217;installation <a href="https://docs.netapp.com/us-en/trident/index.html" target="_blank" rel="noopener">"Astra Trident"</a> sur le cluster et pour créer une ou plusieurs classes de stockage.</p>
 </li>
 <li>
-<p>Si vous utilisez un service de stockage avec un fournisseur cloud comme système back-end, Astra Control Service utilise Astra Trident pour provisionner des volumes persistants pour vos applications.</p>
+<p>Si vous utilisez une offre de stockage de service cloud NetApp comme système back-end de stockage, Astra Control Service utilise Astra Trident pour provisionner des volumes persistants pour vos applications. Si vous utilisez des disques gérés Amazon EBS ou Azure comme système de stockage principal, vous devez installer un pilote CSI spécifique au fournisseur. Les instructions d&#8217;installation sont fournies dans le <a href="set-up-amazon-web-services.html" target="_blank" rel="noopener">"Configurer Amazon Web Services"</a> et <a href="set-up-microsoft-azure-with-amd.html" target="_blank" rel="noopener">"Configuration de Microsoft Azure avec des disques gérés Azure"</a>.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -1459,7 +1501,7 @@
 <p>Astra Control Center prend en charge les clusters Kubernetes avec un système de stockage basé sur Trident avec un système ONTAP 9.5 et supérieur.</p>
 </div>
 <div class="paragraph">
-<p>Dans un environnement connecté au cloud, Astra Control Center utilise Cloud Insights pour fournir des fonctionnalités avancées de surveillance et de télémétrie. En l&#8217;absence de connexion Cloud Insights, un monitoring et une télémétrie limités (7 jours de metrics) sont disponibles dans Astra Control Center, mais aussi exportés vers les outils de surveillance natifs de Kubernetes (comme Prometheus et Grafana) via des points de terminaison ouverts.</p>
+<p>Dans un environnement connecté au cloud, Astra Control Center utilise Cloud Insights pour fournir des fonctionnalités avancées de surveillance et de télémétrie. En l&#8217;absence de connexion Cloud Insights, un contrôle et une télémétrie limités (7 jours de metrics) sont disponibles dans Astra Control Center, mais aussi exportés vers les outils de surveillance natifs de Kubernetes (comme Prometheus et Grafana) via des points de terminaison ouverts.</p>
 </div>
 <div class="paragraph">
 <p>Astra Control Center est entièrement intégré à l&#8217;écosystème AutoSupport et Active IQ. Il fournit aux utilisateurs et au support NetApp des informations relatives à la résolution de problèmes et à l&#8217;utilisation.</p>
