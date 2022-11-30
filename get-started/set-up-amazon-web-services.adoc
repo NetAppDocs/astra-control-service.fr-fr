@@ -88,6 +88,7 @@ Pilotes CSI pour Amazon Elastic Block Store (EBS):: Si vous utilisez le système
 --
 Reportez-vous aux détails pour obtenir des instructions sur l'installation du pilote CSI.
 
+[%collapsible%open]
 ====
 .Installez un snapshots externe
 . Création de CRD de snapshot de volume.

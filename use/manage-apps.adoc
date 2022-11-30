@@ -167,6 +167,7 @@ WARNING: Lors de la définition d'applications, assurez-vous de ne pas inclure d
 CAUTION: L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus.
 
 .<strong> </strong> a propos de l'ajout de ressources cluster-scoped à vos espaces de noms d'applications.
+[%collapsible]
 ====
 Vous pouvez importer des ressources de grappe associées aux ressources affectées en plus des ressources Astra Control incluses automatiquement. Vous pouvez ajouter une règle qui inclura des ressources d'un groupe, un type, une version et, éventuellement, une étiquette. Vous voudrez peut-être le faire si certaines ressources qu'Astra Control n'incluent pas automatiquement.
 

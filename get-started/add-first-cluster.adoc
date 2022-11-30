@@ -46,6 +46,7 @@ Vous pouvez également créer un cluster sur site ou hébergé dans le cloud que
 Une fois connecté au service Astra Control, la première étape consiste à commencer à gérer vos clusters. Vous pouvez ajouter un cluster géré par un fournisseur de cloud ou un cluster autogéré. Avant d'ajouter un cluster au service Astra Control, vous devez effectuer certaines tâches et vous assurer que le cluster répond à certaines exigences.
 
 .Vous devez adopter une nouvelle version du modèle 8217;ll pour la gestion de clusters gérés par un fournisseur de services cloud
+[%collapsible]
 ====
 ifdef::aws[]
 
@@ -75,6 +76,7 @@ endif::azure[]
 
 ====
 .Ce que vous&#8217;ll avez besoin pour les clusters autogérés
+[%collapsible]
 ====
 Les conditions suivantes doivent être respectées par votre cluster :
 
