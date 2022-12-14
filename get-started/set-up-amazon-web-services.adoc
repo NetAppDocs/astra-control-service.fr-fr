@@ -22,54 +22,54 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 
 
 
-=== Lisez les exigences d'Astra Control Service pour Amazon Web Services
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Lisez les exigences d'Astra Control Service pour Amazon Web Services
 
 [role="quick-margin-para"]
-Assurez-vous que les clusters exécutent une version prise en charge de Kubernetes, que les nœuds workers sont en ligne et exécutent Linux ou Windows, et bien plus encore.  cluster requirements,En savoir plus sur cette étape.
+Assurez-vous que les clusters exécutent une version prise en charge de Kubernetes, que les nœuds workers sont en ligne et exécutent Linux ou Windows, et bien plus encore. <<Configuration requise pour le cluster EKS,En savoir plus sur cette étape>>.
 
 
 
-=== Créez un compte Amazon
-
-[role="quick-margin-para"]
-Si vous n'avez pas encore de compte Amazon, vous devez en créer un pour pouvoir utiliser EKS.  an Amazon account,En savoir plus sur cette étape.
-
-
-
-=== Installez l'interface de ligne de commande Amazon Web Services
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] Créez un compte Amazon
 
 [role="quick-margin-para"]
-Installez l'interface de ligne de commandes AWS afin de gérer AWS à partir de la ligne de commandes.  the Amazon Web Services CLI,Suivez les instructions étape par étape.
+Si vous n'avez pas encore de compte Amazon, vous devez en créer un pour pouvoir utiliser EKS. <<Créez un compte Amazon,En savoir plus sur cette étape>>.
 
 
 
-=== Facultatif : créez un utilisateur IAM
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Installez l'interface de ligne de commande Amazon Web Services
+
+[role="quick-margin-para"]
+Installez l'interface de ligne de commandes AWS afin de gérer AWS à partir de la ligne de commandes. <<Installez l'interface de ligne de commande Amazon Web Services,Suivez les instructions étape par étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] Facultatif : créez un utilisateur IAM
 
 [role="quick-margin-para"]
 Créez un utilisateur Amazon Identity and Access Management (IAM). Vous pouvez également ignorer cette étape et utiliser un utilisateur IAM existant avec le service de contrôle Astra.
 
 [role="quick-margin-para"]
- Create an IAM user,Lisez les instructions détaillées.
+<<Facultatif : créez un utilisateur IAM,Lisez les instructions détaillées>>.
 
 
 
-=== Créez et joignez une stratégie d'autorisations
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Créez et joignez une stratégie d'autorisations
 
 [role="quick-margin-para"]
 Créez une règle avec les autorisations requises pour que le service Astra Control puisse interagir avec votre compte AWS.
 
 [role="quick-margin-para"]
- and attach a permissions policy,Lisez les instructions détaillées.
+<<Créez et joignez une stratégie d'autorisations,Lisez les instructions détaillées>>.
 
 
 
-=== Enregistrer les informations d'identification pour l'utilisateur IAM
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"] Enregistrer les informations d'identification pour l'utilisateur IAM
 
 [role="quick-margin-para"]
 Enregistrez les informations d'identification de l'utilisateur IAM pour pouvoir importer les informations d'identification dans le service de contrôle Astra.
 
 [role="quick-margin-para"]
- the credentials for the IAM user,Lisez les instructions détaillées.
+<<Enregistrer les informations d'identification pour l'utilisateur IAM,Lisez les instructions détaillées>>.
 
 
 
@@ -82,7 +82,7 @@ Type d'image:: Le type d'image pour chaque nœud de travail doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 
 
-Astra Trident pour Amazon FSX pour NetApp ONTAP:: Si vous utilisez le système back-end Amazon FSX pour le stockage ONTAP NetApp, vous devez installer Astra Trident. Pour obtenir des instructions, reportez-vous à la section https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Présentation du déploiement d'Astra Trident"^]. Pour en savoir plus sur l'utilisation d'Astra Trident avec FSX pour NetApp ONTAP, consultez https://docs.netapp.com/us-en/trident/trident-use/trident-fsx.html["Utilisez Astra Trident avec Amazon FSX pour NetApp ONTAP"^].
+Astra Trident pour Amazon FSX pour NetApp ONTAP:: Si vous utilisez le système back-end Amazon FSX pour le stockage ONTAP NetApp, vous devez installer Astra Trident. Pour obtenir des instructions, reportez-vous à la section https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Présentation du déploiement d'Astra Trident"^]. Pour en savoir plus sur l'utilisation d'Astra Trident avec FSX pour NetApp ONTAP, consultez le https://docs.netapp.com/us-en/trident/trident-use/trident-fsx.html["Utilisez Astra Trident avec Amazon FSX pour NetApp ONTAP"^].
 Pilotes CSI pour Amazon Elastic Block Store (EBS):: Si vous utilisez le système back-end Amazon EBS, vous devez installer le pilote Container Storage interface (CSI) pour EBS (il n'est pas installé automatiquement).
 +
 --
@@ -279,4 +279,5 @@ aws iam create-access-key --user-name <IAM-USER-NAME> --output json > credential
 ----
 
 
+.Résultat
 Le `credential.json` Le fichier est créé et vous pouvez importer les informations d'identification dans le service de contrôle Astra.

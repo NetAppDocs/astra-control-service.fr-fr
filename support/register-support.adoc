@@ -75,6 +75,7 @@ image:screenshot-existing-registration.gif["Formulaire d'enregistrement de clien
 
 
 
+.Résultat
 Vous devez être redirigé vers une page « enregistrement soumis avec succès ». L'adresse e-mail associée à votre inscription recevra un e-mail dans les quelques minutes indiquant que « votre produit est désormais éligible pour une assistance ».
 
 Il s'agit d'une inscription unique au support qui concerne le numéro de série applicable.

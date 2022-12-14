@@ -27,10 +27,10 @@ Vous pouvez utiliser plusieurs types de volumes avec EBS :
 * Génération précédente
 
 
-Pour plus d'informations sur chaque type de volume et leurs performances, reportez-vous à la section https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html["Documentation Amazon EBS"^]. Pour plus d'informations sur les tarifs, voir https://aws.amazon.com/ebs/pricing/["Tarification Amazon EBS"^].
+Pour plus d'informations sur chaque type de volume et leurs performances, reportez-vous à https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html["Documentation Amazon EBS"^]. Pour plus d'informations sur les prix, reportez-vous à la section https://aws.amazon.com/ebs/pricing/["Tarification Amazon EBS"^].
 
 
 
 == Amazon FSX pour NetApp ONTAP
 
-Lorsque vous utilisez FSX pour NetApp ONTAP en tant que backend de stockage pour les clusters AWS, les performances d'E/S dépendent de la configuration du système de fichiers et des caractéristiques de vos charges de travail. Pour plus d'informations sur FSX pour les performances ONTAP de NetApp, consultez https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/performance.html["Performances d'Amazon FSX pour NetApp ONTAP"^]. Pour plus d'informations sur les tarifs, voir https://aws.amazon.com/fsx/netapp-ontap/pricing/["Amazon FSX pour la tarification NetApp ONTAP"^].
+Lorsque vous utilisez FSX pour NetApp ONTAP en tant que backend de stockage pour les clusters AWS, les performances d'E/S dépendent de la configuration du système de fichiers et des caractéristiques de vos charges de travail. Pour plus d'informations sur FSX pour les performances ONTAP NetApp, reportez-vous à https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/performance.html["Performances d'Amazon FSX pour NetApp ONTAP"^]. Pour plus d'informations sur les prix, reportez-vous à la section https://aws.amazon.com/fsx/netapp-ontap/pricing/["Amazon FSX pour la tarification NetApp ONTAP"^].

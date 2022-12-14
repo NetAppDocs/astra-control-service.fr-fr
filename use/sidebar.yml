@@ -16,9 +16,6 @@ entries:
     url: "/use/clone-apps.html"
   - title: Gérer les crochets d'exécution de l'application
     url: "/use/manage-app-execution-hooks.html"
-    entries:
-    - title: Exemples de crochet d'exécution
-      url: "/use/execution-hook-examples.html"
 - title: Affichez l'état des applications et des ressources de calcul
   entries:
   - title: Récapitulatif du tableau de bord

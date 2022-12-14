@@ -134,6 +134,7 @@ NOTE: Astra Control vous enverra un e-mail si la carte de crédit arrive à expi
 
 
 
+.Résultat
 Vous pouvez désormais gérer plus de 10 espaces de noms. Astra Control commence à vous charger pour _tous_ namespaces que vous gérez actuellement.
 
 
@@ -148,6 +149,7 @@ Contactez l'équipe commerciale de NetApp pour bénéficier d'un tarif préfére
 . Fournissez des détails à l'équipe commerciale pour démarrer le processus.
 
 
+.Résultat
 Un ingénieur commercial NetApp vous contactera pour traiter votre bon de commande. Une fois la commande terminée, Astra Control reflétera votre plan actuel dans l'onglet *facturation*.
 
 

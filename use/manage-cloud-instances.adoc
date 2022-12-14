@@ -20,7 +20,7 @@ Vous créez une instance de Cloud lorsque vous ajoutez un nouveau cluster à Ast
 
 == Ajouter une instance de cloud
 
-Vous pouvez ajouter une nouvelle instance de Cloud lorsque vous ajoutez un nouveau cluster à Astra Control. Voir link:../add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"] pour en savoir plus.
+Vous pouvez ajouter une nouvelle instance de Cloud lorsque vous ajoutez un nouveau cluster à Astra Control. Reportez-vous à la section link:../add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"] pour en savoir plus.
 
 
 

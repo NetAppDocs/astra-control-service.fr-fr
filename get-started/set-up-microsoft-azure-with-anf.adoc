@@ -22,59 +22,59 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 
 
 
-=== Découvrez les exigences d'Astra Control Service pour Azure Kubernetes Service
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Découvrez les exigences d'Astra Control Service pour Azure Kubernetes Service
 
 [role="quick-margin-para"]
-Assurez-vous que les clusters fonctionnent correctement et qu'une version prise en charge de Kubernetes est prise en charge, que les pools de nœuds sont en ligne et exécutent Linux, etc.  Kubernetes Service cluster requirements,En savoir plus sur cette étape.
+Assurez-vous que les clusters fonctionnent correctement et qu'une version prise en charge de Kubernetes est prise en charge, que les pools de nœuds sont en ligne et exécutent Linux, etc. <<Exigences des clusters Azure Kubernetes Service,En savoir plus sur cette étape>>.
 
 
 
-=== S'inscrire à Microsoft Azure
-
-[role="quick-margin-para"]
-Créez un compte Microsoft Azure.  up for Microsoft Azure,En savoir plus sur cette étape.
-
-
-
-=== Inscrivez-vous à Azure NetApp Files
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] S'inscrire à Microsoft Azure
 
 [role="quick-margin-para"]
-Enregistrez le fournisseur de ressources NetApp.  for Azure NetApp Files,En savoir plus sur cette étape.
+Créez un compte Microsoft Azure. <<S'inscrire à Microsoft Azure,En savoir plus sur cette étape>>.
 
 
 
-=== Créer un compte NetApp
-
-[role="quick-margin-para"]
-Accédez à Azure NetApp Files sur le portail Azure et créez un compte NetApp.  a NetApp account,En savoir plus sur cette étape.
-
-
-
-=== Configuration des pools de capacité
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Inscrivez-vous à Azure NetApp Files
 
 [role="quick-margin-para"]
-Configurez un ou plusieurs pools de capacité pour vos volumes persistants.  up a capacity pool,En savoir plus sur cette étape.
+Enregistrez le fournisseur de ressources NetApp. <<Inscrivez-vous à Azure NetApp Files,En savoir plus sur cette étape>>.
 
 
 
-=== Déléguer un sous-réseau à Azure NetApp Files
-
-[role="quick-margin-para"]
-Déléguer un sous-réseau à Azure NetApp Files afin qu'Astra Control Service puisse créer des volumes persistants dans ce sous-réseau.  a subnet to Azure NetApp Files,En savoir plus sur cette étape.
-
-
-
-=== Créer un principal de service Azure
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] Créer un compte NetApp
 
 [role="quick-margin-para"]
-Créez une entité de service Azure qui a le rôle Contributor.  an Azure service principal,En savoir plus sur cette étape.
+Accédez à Azure NetApp Files sur le portail Azure et créez un compte NetApp. <<Créer un compte NetApp,En savoir plus sur cette étape>>.
 
 
 
-=== Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Configuration des pools de capacité
 
 [role="quick-margin-para"]
-Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). L'étape en option vous permet de configurer un niveau de redondance plus durable pour les compartiments Azure.  Configure redundancy for Azure backup buckets,En savoir plus sur cette étape.
+Configurez un ou plusieurs pools de capacité pour vos volumes persistants. <<Configurez un pool de capacité,En savoir plus sur cette étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Six"] Déléguer un sous-réseau à Azure NetApp Files
+
+[role="quick-margin-para"]
+Déléguer un sous-réseau à Azure NetApp Files afin qu'Astra Control Service puisse créer des volumes persistants dans ce sous-réseau. <<Déléguer un sous-réseau à Azure NetApp Files,En savoir plus sur cette étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-7.png["Sept"] Créer un principal de service Azure
+
+[role="quick-margin-para"]
+Créez une entité de service Azure qui a le rôle Contributor. <<Créer un principal de service Azure,En savoir plus sur cette étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-8.png["Huit"] Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+
+[role="quick-margin-para"]
+Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). L'étape en option vous permet de configurer un niveau de redondance plus durable pour les compartiments Azure. <<Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure,En savoir plus sur cette étape>>.
 
 
 
@@ -86,11 +86,11 @@ Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.23 à 1
 Type d'image:: Le type d'image pour tous les pools de nœuds doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 Région Azure:: Les clusters doivent se trouver dans une région où Azure NetApp Files est disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Afficher les produits Azure par région"^].
-Abonnement:: Les clusters doivent résider dans un abonnement sur lequel Azure NetApp Files est activé. Vous choisissez un abonnement lorsque vous le souhaitez  for Azure NetApp Files,Inscrivez-vous à Azure NetApp Files.
+Abonnement:: Les clusters doivent résider dans un abonnement sur lequel Azure NetApp Files est activé. Vous choisissez un abonnement lorsque vous le souhaitez <<Inscrivez-vous à Azure NetApp Files,Inscrivez-vous à Azure NetApp Files>>.
 Vnet:: Prenez en compte les exigences suivantes de vnet :
 +
 --
-* Les clusters doivent résider dans un vnet qui dispose d'un accès direct à un sous-réseau délégué Azure NetApp Files.  a subnet to Azure NetApp Files,Découvrez comment configurer un sous-réseau délégué.
+* Les clusters doivent résider dans un vnet qui dispose d'un accès direct à un sous-réseau délégué Azure NetApp Files. <<Déléguer un sous-réseau à Azure NetApp Files,Découvrez comment configurer un sous-réseau délégué>>.
 * Si vos clusters Kubernetes se trouvent dans un vnet lié au sous-réseau délégué Azure NetApp Files qui est dans un autre vnet, les deux côtés de la connexion de peering doivent être en ligne.
 * Notez que la limite par défaut du nombre d'adresses IP utilisées dans un réseau vnet (y compris les VNets immédiatement péré) avec Azure NetApp Files est de 1,000. https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-resource-limits["Afficher les limites de ressources Azure NetApp Files"^].
 +
@@ -177,6 +177,7 @@ Si vous utilisez des VNets avec peering, les deux côtés de la connexion de pee
 . https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-delegate-subnet["Suivez la documentation Azure NetApp Files pour déléguer un sous-réseau à Azure NetApp Files"^].
 
 
+.Après avoir terminé
 Attendez environ 10 minutes avant de découvrir le cluster exécuté dans le sous-réseau délégué.
 
 
@@ -272,6 +273,6 @@ Vous pouvez configurer un niveau de redondance plus durable pour les compartimen
 .Étapes
 . Créez un compte de stockage Azure qui utilise le niveau de redondance requis https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["ces instructions"^].
 . Créez un conteneur Azure dans le nouveau compte de stockage à l'aide de https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["ces instructions"^].
-. Ajoutez le conteneur en tant que compartiment au service Astra Control. Voir link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
-. (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Voir link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
+. Ajoutez le conteneur en tant que compartiment au service Astra Control. Reportez-vous à la section link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
+. (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Reportez-vous à la section link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
 

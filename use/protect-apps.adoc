@@ -30,13 +30,13 @@ NOTE: Si vous effectuez un snapshot ou une sauvegarde, mais que l'opération éc
 
 Vous pouvez effectuer les tâches suivantes liées à la protection de vos données applicatives :
 
-*  a protection policy
-*  a snapshot
-*  a backup
-*  snapshots and backups
-*  snapshots
-*  backups
-*  backups
+* <<Configurer une règle de protection>>
+* <<Créer un snapshot>>
+* <<Créer une sauvegarde>>
+* <<Afficher les snapshots et les sauvegardes>>
+* <<Supprimer les instantanés>>
+* <<Annuler les sauvegardes>>
+* <<Supprimer les sauvegardes>>
 
 
 
@@ -66,6 +66,7 @@ image:screenshot-protection-policy.png["Capture d'écran d'un exemple de straté
 . Sélectionnez *définir la stratégie de protection*.
 
 
+.Résultat
 Astra Control implémente la règle de protection des données en créant et en conservant des snapshots et des sauvegardes à l'aide du calendrier et de la règle de conservation que vous avez définis.
 
 
@@ -81,6 +82,7 @@ Vous pouvez créer un snapshot à la demande à tout moment.
 . Examinez le résumé de l'instantané et sélectionnez *instantané*.
 
 
+.Résultat
 Le processus d'instantané commence. Un instantané a réussi lorsque l'état est *Healthy* dans la colonne *State* de la page *Data protection* > *snapshots*.
 
 
@@ -99,10 +101,11 @@ Vous pouvez également sauvegarder une application à tout moment.
 . Passez en revue le résumé des sauvegardes et sélectionnez *Sauvegarder*.
 
 
+.Résultat
 Astra Control crée une sauvegarde de l'application.
 
 
-NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section  backups. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section  backups.
+NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section <<Annuler les sauvegardes>>. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <<Supprimer les sauvegardes>>.
 
 
 
@@ -116,7 +119,7 @@ Vous pouvez afficher les instantanés et les sauvegardes d'une application à pa
 +
 Les snapshots s'affichent par défaut.
 
-. Sélectionnez *backups* pour afficher la liste des sauvegardes.
+. Sélectionnez *backups* pour faire référence à la liste des sauvegardes.
 
 
 
@@ -132,6 +135,7 @@ Supprimez les snapshots programmés ou à la demande dont vous n'avez plus besoi
 . Tapez le mot "supprimer" pour confirmer la suppression, puis sélectionnez *Oui, Supprimer l'instantané*.
 
 
+.Résultat
 Astra Control supprime le snapshot.
 
 
@@ -158,7 +162,7 @@ TIP: Pour annuler une sauvegarde, la sauvegarde doit être dans `Running` état.
 Supprimez les sauvegardes planifiées ou à la demande qui ne vous sont plus nécessaires.
 
 
-NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section  backups. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions.
+NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section <<Annuler les sauvegardes>>. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions.
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application.
@@ -168,4 +172,5 @@ NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les ins
 . Tapez le mot "supprimer" pour confirmer la suppression, puis sélectionnez *Oui, Supprimer sauvegarde*.
 
 
+.Résultat
 Astra Control supprime la sauvegarde.

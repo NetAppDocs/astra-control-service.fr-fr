@@ -51,6 +51,7 @@ Vous pouvez inviter jusqu'à 10 utilisateurs à la fois. Vous pouvez naviguer en
 . Sélectionnez *inviter des utilisateurs*.
 
 
+.Résultat
 L'utilisateur ou les utilisateurs recevront un e-mail les invitant à rejoindre votre compte.
 
 
@@ -71,6 +72,7 @@ Pour plus d'informations sur l'ajout de contraintes, voir link:manage-roles.html
 . Sélectionnez *confirmer*.
 
 
+.Résultat
 Astra Control met à jour les autorisations de l'utilisateur en fonction du nouveau rôle que vous avez sélectionné.
 
 
@@ -86,4 +88,5 @@ Un utilisateur ayant le rôle propriétaire peut à tout moment supprimer d'autr
 . Lorsque vous y êtes invité, confirmez la suppression en tapant « Supprimer », puis sélectionnez *Oui, Supprimer l'utilisateur*.
 
 
+.Résultat
 Astra Control supprime l'utilisateur du compte.

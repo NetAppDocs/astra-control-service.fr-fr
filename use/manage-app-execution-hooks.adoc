@@ -68,7 +68,7 @@ Si vous créez plusieurs crochets d'exécution du même type (par exemple, pré-
 . Crochets post-restauration exécutés
 
 
-Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la  whether a hook will run.
+Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la <<Déterminez si un crochet va courir>>.
 
 
 NOTE: Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots et les sauvegardes obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot ou la sauvegarde, puis tester l'application.
@@ -131,6 +131,12 @@ Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané 
 |===
 
 
+== Exemples de crochet d'exécution
+
+Consultez le https://github.com/NetApp/Verda["Projet GitHub NetApp Verda"] Pour télécharger des crochets d'exécution réels pour des applications courantes telles qu'Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d'exécution personnalisés.
+
+
+
 == Afficher les crochets d'exécution existants
 
 Vous pouvez afficher les crochets d'exécution personnalisés existants pour une application.
@@ -191,6 +197,7 @@ Vous pouvez ajouter un ou plusieurs scripts que les crochets d'exécution peuven
 . Sélectionnez *Enregistrer le script*.
 
 
+.Résultat
 Le nouveau script apparaît dans la liste de l'onglet *scripts*.
 
 
@@ -213,7 +220,7 @@ NOTE: Si le script est associé à un ou plusieurs crochets d'exécution, l'acti
 
 == Créer un crochet d'exécution personnalisé
 
-Vous pouvez créer un crochet d'exécution personnalisé pour une application. Voir link:execution-hook-examples.html["Exemples de crochet d'exécution"^] pour des exemples de crochet. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour créer des crochets d'exécution.
+Vous pouvez créer un crochet d'exécution personnalisé pour une application. Reportez-vous à la section <<Exemples de crochet d'exécution>> pour des exemples de crochet. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour créer des crochets d'exécution.
 
 
 NOTE: Lorsque vous créez un script de shell personnalisé à utiliser comme crochet d'exécution, n'oubliez pas de spécifier le shell approprié au début du fichier, sauf si vous exécutez des commandes spécifiques ou fournissez le chemin complet à un exécutable.
@@ -320,4 +327,11 @@ Vous pouvez supprimer entièrement un crochet d'exécution si vous n'en avez plu
 . Sélectionnez l'onglet *crochets d'exécution*.
 . Sélectionnez le menu Options dans la colonne *actions* pour un crochet que vous souhaitez supprimer.
 . Sélectionnez *Supprimer*.
+
+
+
+
+== Pour en savoir plus
+
+* https://github.com/NetApp/Verda["Projet GitHub NetApp Verda"]
 

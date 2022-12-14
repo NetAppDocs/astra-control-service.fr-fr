@@ -22,38 +22,38 @@ Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu'aux secti
 
 
 
-=== Découvrez les exigences d'Astra Control Service pour Azure Kubernetes Service
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Une seule"] Découvrez les exigences d'Astra Control Service pour Azure Kubernetes Service
 
 [role="quick-margin-para"]
-Assurez-vous que les clusters fonctionnent correctement et qu'une version prise en charge de Kubernetes est prise en charge, que les pools de nœuds sont en ligne et exécutent Linux, etc.  Kubernetes Service cluster requirements,En savoir plus sur cette étape.
+Assurez-vous que les clusters fonctionnent correctement et qu'une version prise en charge de Kubernetes est prise en charge, que les pools de nœuds sont en ligne et exécutent Linux, etc. <<Exigences des clusters Azure Kubernetes Service,En savoir plus sur cette étape>>.
 
 
 
-=== S'inscrire à Microsoft Azure
-
-[role="quick-margin-para"]
-Créez un compte Microsoft Azure.  up for Microsoft Azure,En savoir plus sur cette étape.
-
-
-
-=== Créer un principal de service Azure
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Deux"] S'inscrire à Microsoft Azure
 
 [role="quick-margin-para"]
-Créez une entité de service Azure qui a le rôle Contributor.  an Azure service principal,En savoir plus sur cette étape.
+Créez un compte Microsoft Azure. <<S'inscrire à Microsoft Azure,En savoir plus sur cette étape>>.
 
 
 
-=== Configurer les détails du pilote CSI (Container Storage interface)
-
-[role="quick-margin-para"]
-Vous devez configurer votre abonnement Azure et le cluster pour qu'ils fonctionnent avec les pilotes CSI.  Container Storage Interface (CSI) driver details,En savoir plus sur cette étape.
-
-
-
-=== Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Trois"] Créer un principal de service Azure
 
 [role="quick-margin-para"]
-Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). L'étape en option vous permet de configurer un niveau de redondance plus durable pour les compartiments Azure.  Configure redundancy for Azure backup buckets,En savoir plus sur cette étape.
+Créez une entité de service Azure qui a le rôle Contributor. <<Créer un principal de service Azure,En savoir plus sur cette étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Quatre"] Configurer les détails du pilote CSI (Container Storage interface)
+
+[role="quick-margin-para"]
+Vous devez configurer votre abonnement Azure et le cluster pour qu'ils fonctionnent avec les pilotes CSI. <<Configurer les détails du pilote CSI (Container Storage interface),En savoir plus sur cette étape>>.
+
+
+
+=== image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Cinq"] Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure
+
+[role="quick-margin-para"]
+Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). L'étape en option vous permet de configurer un niveau de redondance plus durable pour les compartiments Azure. <<Facultatif : configurez la redondance pour les compartiments de sauvegarde Azure,En savoir plus sur cette étape>>.
 
 
 
@@ -227,6 +227,6 @@ Vous pouvez configurer un niveau de redondance plus durable pour les compartimen
 .Étapes
 . Créez un compte de stockage Azure qui utilise le niveau de redondance requis https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["ces instructions"^].
 . Créez un conteneur Azure dans le nouveau compte de stockage à l'aide de https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["ces instructions"^].
-. Ajoutez le conteneur en tant que compartiment au service Astra Control. Voir link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
-. (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Voir link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
+. Ajoutez le conteneur en tant que compartiment au service Astra Control. Reportez-vous à la section link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
+. (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Reportez-vous à la section link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
 

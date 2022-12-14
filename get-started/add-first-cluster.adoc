@@ -14,18 +14,18 @@ summary: 'Une fois votre environnement configuré, vous êtes prêt à créer un
 [role="lead"]
 Une fois votre environnement configuré, vous êtes prêt à créer un cluster Kubernetes, puis à l'ajouter à Astra Control Service.
 
-*  a Kubernetes cluster
-*  managing Kubernetes clusters
+* <<Créez un cluster Kubernetes>>
+* <<Commencez à gérer les clusters Kubernetes>>
 
 
 ifdef::aws[]
 
-*  cluster access to other users
+* <<Fournir un accès au cluster à d'autres utilisateurs>>
 
 
 endif::aws[]
 
-*  the default storage class
+* <<Modifiez la classe de stockage par défaut>>
 
 
 
@@ -37,7 +37,7 @@ Si vous ne disposez pas encore d'un cluster, vous pouvez en créer un qui rencon
 
 NOTE: Astra Control Service prend en charge les clusters AKS qui utilisent Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
 
-Vous pouvez également créer un cluster sur site ou hébergé dans le cloud que vous envisagez de gérer vous-même. Vous pouvez ajouter un cluster auto-géré au service Astra Control en téléchargeant un `kubeconfig.yaml` fichier. Vous devez vous assurer que le cluster répond aux exigences décrites dans  managing Kubernetes clusters.
+Vous pouvez également créer un cluster sur site ou hébergé dans le cloud que vous envisagez de gérer vous-même. Vous pouvez ajouter un cluster auto-géré au service Astra Control en téléchargeant un `kubeconfig.yaml` fichier. Vous devez vous assurer que le cluster répond aux exigences décrites dans <<Commencez à gérer les clusters Kubernetes>>.
 
 
 
@@ -106,6 +106,7 @@ export-policy rule modify -vserver <storage virtual machine name> -policyname <p
 * *Rancher uniquement*: Lorsque vous gérez des clusters d'applications dans un environnement Rancher, modifiez le contexte par défaut du cluster d'applications dans le fichier kubeconfig fourni par Rancher pour utiliser un contexte de plan de contrôle au lieu du contexte du serveur d'API Rancher. La charge est réduite sur le serveur API Rancher et les performances sont améliorées.
 
 
+.(Facultatif) Vérifiez la version Astra Trident
 Si votre cluster utilise Astra Trident pour les services de stockage, vérifiez que la version installée d'Astra Trident est la plus récente.
 
 .Étapes
@@ -134,7 +135,7 @@ error: the server doesn't have a resource type "tridentversions"
 ----
 +
 
-NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Voir la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions.
+NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions.
 
 . Assurez-vous que les pods fonctionnent :
 +
@@ -142,7 +143,7 @@ NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souh
 ----
 kubectl get pods -n trident
 ----
-. Vérifiez si les classes de stockage utilisent les pilotes Trident Astra pris en charge. Le nom de provisionnement doit être `csi.trident.netapp.io`. Voir l'exemple suivant :
+. Vérifiez si les classes de stockage utilisent les pilotes Trident Astra pris en charge. Le nom de provisionnement doit être `csi.trident.netapp.io`. Reportez-vous à l'exemple suivant :
 +
 [source, console]
 ----
@@ -159,6 +160,7 @@ ontap-gold (default)   csi.trident.netapp.io          Delete          Immediate 
 ----
 
 
+.Créez un kubeconfig. Rôle admin
 Avant d'effectuer les étapes suivantes, assurez-vous que vous disposez des éléments suivants sur votre machine :
 
 * kubectl v1.19 ou version ultérieure installé
@@ -379,7 +381,7 @@ endif::gcp[]
 . *Autre*: Fournir des détails sur votre cluster auto-géré en téléchargeant un `kubeconfig.yaml` ou en collant le contenu du `kubeconfig.yaml` fichier à partir du presse-papiers.
 +
 
-NOTE: Si vous créez la vôtre `kubeconfig` fichier, vous ne devez définir que *un* élément de contexte dans celui-ci. Voir https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Documentation Kubernetes"^] pour plus d'informations sur la création `kubeconfig` fichiers.
+NOTE: Si vous créez la vôtre `kubeconfig` fichier, vous ne devez définir que *un* élément de contexte dans celui-ci. Reportez-vous à la section https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Documentation Kubernetes"^] pour plus d'informations sur la création `kubeconfig` fichiers.
 
 +
 .. *Nom du Cloud* (pour les clusters gérés par le fournisseur) : indiquez un nom pour la nouvelle instance de Cloud qui sera créée lorsque vous ajoutez ce cluster. En savoir plus sur link:../use/manage-cloud-instances.html["instances cloud"].
@@ -466,6 +468,7 @@ endif::aws[]
 . *Review & Approve* : consultez les détails de la configuration et sélectionnez *Add cluster*.
 
 
+.Résultat
 *Pour les clusters gérés par le fournisseur* : s'il s'agit du premier cluster que vous avez ajouté pour ce fournisseur de cloud, Astra Control Service crée un magasin d'objets pour le fournisseur de cloud pour les sauvegardes d'applications sur les clusters éligibles. (Lorsque vous ajoutez des clusters suivants pour ce fournisseur de cloud, aucun magasin d'objets n'est créé.) Astra Control Service définit également la classe de stockage par défaut que vous avez spécifiée. Pour les clusters gérés dans Amazon Web Services ou Google Cloud Platform, Astra Control Service crée également un compte d'administration sur le cluster. Ces actions peuvent prendre plusieurs minutes.
 
 ifdef::aws[]
@@ -490,7 +493,7 @@ Vous pouvez modifier la classe de stockage par défaut d'un cluster.
 
 === Modifiez la classe de stockage par défaut avec Astra Control
 
-Vous pouvez modifier la classe de stockage par défaut d'un cluster depuis Astra Control. Si votre cluster utilise un service back-end de stockage installé précédemment, il se peut que vous ne puissiez pas utiliser cette méthode pour modifier la classe de stockage par défaut (l'action *Set as default* n'est pas sélectionnable). Dans ce cas, vous pouvez  the default storage class using the command line.
+Vous pouvez modifier la classe de stockage par défaut d'un cluster depuis Astra Control. Si votre cluster utilise un service back-end de stockage installé précédemment, il se peut que vous ne puissiez pas utiliser cette méthode pour modifier la classe de stockage par défaut (l'action *Set as default* n'est pas sélectionnable). Dans ce cas, vous pouvez <<Modifiez la classe de stockage par défaut à l'aide de la ligne de commande>>.
 
 .Étapes
 . Dans l'interface utilisateur du service de contrôle Astra, sélectionnez *clusters*.

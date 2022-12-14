@@ -19,7 +19,7 @@ Le service Astra Control est accessible par le biais d'une interface utilisateur
 
 TIP: Vous pouvez utiliser l'authentification unique pour vous connecter à l'aide des informations d'identification de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://cloud.netapp.com/help-center["Centre d'aide de Cloud Central"^] Puis sélectionnez *Options de connexion à Cloud Central*.
 
-.Ce dont vous avez besoin, 8217;ll
+.Ce dont vous avez besoin
 * link:../get-started/register.html["ID d'utilisateur Cloud Central"].
 * link:../get-started/register.html["Un nouveau compte Astra Control"] ou link:manage-users.html["invitation à un compte existant"].
 * Un navigateur Web pris en charge.

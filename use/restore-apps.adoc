@@ -59,6 +59,7 @@ NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cad
 
 
 
+.Résultat
 Astra Control restaure l'application en fonction des informations que vous avez fournies. Si vous avez restauré l'application sur place, le contenu des volumes persistants existants est remplacé par le contenu des volumes persistants de l'application restaurée.
 
 

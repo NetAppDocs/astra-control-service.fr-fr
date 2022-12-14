@@ -62,7 +62,7 @@ Une fois que vous avez commencé à gérer un cluster dans votre fournisseur clo
 
 Notez qu'Astra Control Service ne vous permet pas de retirer un godet après l'avoir ajouté.
 
-.Ce dont vous avez besoin, 8217;ll
+.Ce dont vous avez besoin
 * Nom d'une compartiment existant dans votre fournisseur cloud.
 
 
@@ -96,7 +96,7 @@ endif::azure[]
 
 ifdef::aws[]
 
-* *Nom du serveur S3 ou adresse IP* (AWS uniquement) : saisissez le nom de domaine complet du noeud final S3 qui correspond à votre région, sans `https://`. Voir https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
+* *Nom du serveur S3 ou adresse IP* (AWS uniquement) : saisissez le nom de domaine complet du noeud final S3 qui correspond à votre région, sans `https://`. Reportez-vous à la section https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
 
 
 endif::aws[]
@@ -108,6 +108,7 @@ endif::aws[]
 
 
 
+.Résultat
 Astra Control Service ajoute le godet supplémentaire. Vous pouvez désormais choisir le compartiment lors de la création d'une règle de protection.
 
 
@@ -137,7 +138,7 @@ Il est possible de retirer un godet qui n'est plus utilisé ou qui n'est pas en 
 
 Vous ne pouvez pas supprimer un compartiment par défaut. Si vous souhaitez retirer ce compartiment, sélectionnez tout d'abord un autre compartiment comme valeur par défaut.
 
-.Ce dont vous avez besoin, 8217;ll
+.Ce dont vous avez besoin
 * Avant de commencer, assurez-vous qu'aucune sauvegarde n'est en cours d'exécution ou terminée pour ce compartiment.
 * Vérifiez que le compartiment n'est pas utilisé pour les sauvegardes planifiées.
 

@@ -26,7 +26,7 @@ Vous pouvez utiliser des rôles pour contrôler l'accès des utilisateurs aux re
 * Un *Viewer* peut afficher les ressources.
 
 
-Vous pouvez ajouter des contraintes à un membre ou à un visualiseur pour limiter l'utilisateur à un ou plusieurs .
+Vous pouvez ajouter des contraintes à un membre ou à un visualiseur pour limiter l'utilisateur à un ou plusieurs <<Espaces de noms>>.
 
 
 

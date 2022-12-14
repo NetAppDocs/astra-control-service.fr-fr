@@ -122,16 +122,16 @@ endif::aws[]
 
 == Définir les applications
 
-Une fois qu'Astra Control détecte les espaces de noms sur vos clusters, vous pouvez définir les applications que vous souhaitez gérer. Vous pouvez choisir  resources to manage as an app,gérer une application couvrant un ou plusieurs espaces de noms ou  a namespace to manage as an app,gérer la totalité d'un namespace comme une seule application. La granularité est en effet au niveau de granularité requis pour les opérations de protection des données.
+Une fois qu'Astra Control détecte les espaces de noms sur vos clusters, vous pouvez définir les applications que vous souhaitez gérer. Vous pouvez choisir <<Définissez les ressources à gérer en tant qu'application,gérer une application couvrant un ou plusieurs espaces de noms>> ou <<Définissez un espace de noms à gérer en tant qu'application,gérer la totalité d'un namespace comme une seule application>>. La granularité est en effet au niveau de granularité requis pour les opérations de protection des données.
 
 Bien qu'Astra Control vous permet de gérer séparément les deux niveaux de la hiérarchie (l'espace de noms et les applications dans cet espace de noms ou les espaces de noms d'extension), il est recommandé de choisir l'un ou l'autre. Les actions que vous prenez dans Astra Control peuvent échouer si les actions ont lieu en même temps au niveau de l'espace de noms et de l'application.
 
 
 TIP: Par exemple, vous pouvez définir une stratégie de sauvegarde pour « maria » avec une fréquence hebdomadaire, mais vous devrez peut-être sauvegarder « mariadb » (qui se trouve dans le même espace de noms) plus fréquemment que cela. En fonction de ces besoins, vous devrez gérer les applications séparément et non sous la forme d'une application à espace de noms unique.
 
-.Ce dont vous avez besoin, 8217;ll
+.Ce dont vous avez besoin
 * Un cluster Kubernetes ajouté à Astra Control.
-* Une ou plusieurs applications installées sur le cluster.  app installation methods,En savoir plus sur les méthodes d'installation d'applications prises en charge.
+* Une ou plusieurs applications installées sur le cluster. <<Méthodes d'installation d'applications prises en charge,En savoir plus sur les méthodes d'installation d'applications prises en charge>>.
 * Un ou plusieurs pods actifs.
 * Espaces de noms existants sur le cluster Kubernetes que vous avez ajouté à Astra Control.
 * (Facultatif) Etiquette Kubernetes de toute link:../use/manage-apps.html#app-management-requirements["Ressources Kubernetes prises en charge"].
@@ -148,8 +148,8 @@ TIP: Une étiquette est une paire clé/valeur que vous pouvez attribuer aux obje
 
 
 .Options de gestion des applications
-*  resources to manage as an app
-*  a namespace to manage as an app
+* <<Définissez les ressources à gérer en tant qu'application>>
+* <<Définissez un espace de noms à gérer en tant qu'application>>
 
 
 
@@ -255,7 +255,7 @@ Vous pouvez ajouter toutes les ressources Kubernetes dans un namespace à la ges
 . Sélectionnez le menu actions de l'espace de noms contenant les ressources d'application que vous souhaitez gérer et sélectionnez *définir comme application*.
 +
 
-TIP: Si vous souhaitez définir plusieurs applications, sélectionnez dans la liste Namespaces et sélectionnez le bouton *actions* dans le coin supérieur gauche et sélectionnez *définir comme application*. Cela définira plusieurs applications individuelles dans leurs espaces de noms individuels. Pour les applications à espace de noms multiples, voir  resources to manage as an app.
+TIP: Si vous souhaitez définir plusieurs applications, sélectionnez dans la liste Namespaces et sélectionnez le bouton *actions* dans le coin supérieur gauche et sélectionnez *définir comme application*. Cela définira plusieurs applications individuelles dans leurs espaces de noms individuels. Pour les applications à espace de noms multiples, voir <<Définissez les ressources à gérer en tant qu'application>>.
 
 +
 

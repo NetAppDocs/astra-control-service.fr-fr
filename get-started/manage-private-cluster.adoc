@@ -12,11 +12,11 @@ summary: 'Une fois votre environnement configuré, vous êtes prêt à créer un
 
 
 [role="lead"]
-Vous pouvez utiliser Astra Control Service pour gérer des clusters AKS privés. Ces instructions supposent que vous avez déjà créé un cluster AKS privé et préparé une méthode sécurisée pour y accéder à distance. Pour plus d'informations sur la création et l'accès à des clusters AKS privés, reportez-vous à la https://docs.microsoft.com/azure/aks/private-clusters["Documentation Azure"^].
+Vous pouvez utiliser Astra Control Service pour gérer des clusters AKS privés. Ces instructions supposent que vous avez déjà créé un cluster AKS privé et que vous avez préparé une méthode sécurisée pour y accéder à distance. Pour plus d'informations sur la création et l'accès à des clusters AKS privés, reportez-vous au https://docs.microsoft.com/azure/aks/private-clusters["Documentation Azure"^].
 
-*  the Astra Connector operator
-*  up persistent storage
-*  the private cluster to Astra Control Service
+* <<Poser le conducteur du connecteur Astra>>
+* <<Configuration du stockage persistant>>
+* <<Ajoutez le cluster privé au service Astra Control>>
 
 
 
@@ -66,7 +66,7 @@ kubectl apply -f config/samples/astraconnector_v1.yaml -n astra-connector
 kubectl get astraconnector astra-connector -n astra-connector
 ----
 +
-Vous devez voir les résultats similaires à ce qui suit :
+Vous devez vous référer à la sortie similaire à celle qui suit :
 
 +
 [source, console]

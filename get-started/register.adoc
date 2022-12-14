@@ -70,6 +70,7 @@ image:screenshot-cloud-central-signup.gif["Capture d'écran de la page d'inscrip
 . Une fois l'e-mail reçu, sélectionnez le lien dans l'e-mail pour vérifier votre adresse e-mail.
 
 
+.Résultat
 Vous disposez désormais d'un utilisateur Cloud Central actif.
 
 Maintenant que vous êtes inscrit, vous pouvez accéder au service Astra Control directement à l'aide de vos identifiants Cloud Central de https://astra.netapp.io[].
