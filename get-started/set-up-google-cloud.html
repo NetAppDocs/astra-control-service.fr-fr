@@ -567,29 +567,6 @@
 
 
 
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/fr-fr/astra-control-service/pdfs/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
-            
-          >
-            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
-            Gérer les crochets d'exécution de l'application
-          </a>
-          
-
-
-        </li>
-      </ul>
-    
-
-  
-
 
         </li>
       </ul>
@@ -1003,20 +980,11 @@
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Gérer les crochets d'exécution de l'application"
-      data-li-level="3" 
-      class="subfolders "
-    ><a href="/fr-fr/astra-control-service/use/manage-app-execution-hooks.html">
-        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
-      </a>
-      <ul style="display: none;">
-        <li 
-      data-pdf-exists="true" 
-      data-pdf-filename="Exemples de crochet d'exécution"
-      data-li-level="4#" 
+      data-li-level="3#" 
       class=" "
-    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/use/execution-hook-examples.html">
-        Exemples de crochet d'exécution
-      </a></li></ul></li></ul></li><li 
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
       data-li-level="2" 
@@ -1247,7 +1215,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 17:31:32 +0000">11/22/2022</time>
+    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
     
   
 
@@ -1283,23 +1251,23 @@ Si vous ne démarrez pas à l&#8217;aide de Google Cloud Volumes Service pour Go
 <p>Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu&#8217;aux sections restantes pour obtenir plus de détails.</p>
 </div>
 <div class="sect2">
-<h3 id="lisez-les-exigences-dastra-control-service-pour-google-kubernetes-engine">Lisez les exigences d&#8217;Astra Control Service pour Google Kubernetes Engine</h3>
+<h3 id="lisez-les-exigences-dastra-control-service-pour-google-kubernetes-engine"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png" alt="Une seule"></span> Lisez les exigences d&#8217;Astra Control Service pour Google Kubernetes Engine</h3>
 <div class="paragraph quick-margin-para">
-<p>Assurez-vous que les clusters exécutent une version Kubernetes prise en charge, que les nœuds workers sont en ligne et exécutent un type d&#8217;image pris en charge, etc.  cluster requirements,En savoir plus sur cette étape.</p>
+<p>Assurez-vous que les clusters exécutent une version Kubernetes prise en charge, que les nœuds workers sont en ligne et exécutent un type d&#8217;image pris en charge, etc. <a href="#configuration-requise-pour-les-clusters-gke">En savoir plus sur cette étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="facultatif-achat-dcloud-volumes-service-pour-google-cloud">(Facultatif) : achat d&#8217;Cloud Volumes Service pour Google Cloud</h3>
+<h3 id="facultatif-achat-dcloud-volumes-service-pour-google-cloud"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png" alt="Deux"></span> (Facultatif) : achat d&#8217;Cloud Volumes Service pour Google Cloud</h3>
 <div class="paragraph quick-margin-para">
-<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, rendez-vous sur la page NetApp Cloud Volumes Service dans Google Cloud Marketplace et sélectionnez Acheter.  Purchase Cloud Volumes Service for Google Cloud,En savoir plus sur cette étape.</p>
+<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, rendez-vous sur la page NetApp Cloud Volumes Service dans Google Cloud Marketplace et sélectionnez Acheter. <a href="#facultatif-achetez-cloud-volumes-service-pour-google-cloud">En savoir plus sur cette étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="intégrez-des-api-dans-votre-projet-google-cloud">Intégrez des API dans votre projet Google Cloud</h3>
+<h3 id="intégrez-des-api-dans-votre-projet-google-cloud"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png" alt="Trois"></span> Intégrez des API dans votre projet Google Cloud</h3>
 <div class="paragraph quick-margin-para">
 <p>Activez les API Google Cloud suivantes :</p>
 </div>
-<div class="ulist">
+<div class="ulist quick-margin-list">
 <ul>
 <li>
 <p>Google Kubernetes Engine</p>
@@ -1340,18 +1308,16 @@ Si vous ne démarrez pas à l&#8217;aide de Google Cloud Volumes Service pour Go
 </li>
 </ul>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>APIs in your project,Suivez les instructions étape par étape.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="#activez-les-api-dans-votre-projet">Suivez les instructions étape par étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="créez-un-compte-de-service-disposant-des-autorisations-requises">Créez un compte de service disposant des autorisations requises</h3>
+<h3 id="créez-un-compte-de-service-disposant-des-autorisations-requises"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png" alt="Quatre"></span> Créez un compte de service disposant des autorisations requises</h3>
 <div class="paragraph quick-margin-para">
 <p>Créez un compte de service Google Cloud disposant des autorisations suivantes :</p>
 </div>
-<div class="ulist">
+<div class="ulist quick-margin-list">
 <ul>
 <li>
 <p>Admin moteur Kubernetes</p>
@@ -1380,22 +1346,20 @@ Si vous ne démarrez pas à l&#8217;aide de Google Cloud Volumes Service pour Go
 </li>
 </ul>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>a service account,Lisez les instructions détaillées.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="#créez-un-compte-de-service">Lisez les instructions détaillées</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="créez-une-clé-de-compte-de-service">Créez une clé de compte de service</h3>
+<h3 id="créez-une-clé-de-compte-de-service"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png" alt="Cinq"></span> Créez une clé de compte de service</h3>
 <div class="paragraph quick-margin-para">
-<p>Créez une clé pour le compte de service et enregistrez le fichier de clé dans un emplacement sécurisé.  a service account key,Suivez les instructions étape par étape.</p>
+<p>Créez une clé pour le compte de service et enregistrez le fichier de clé dans un emplacement sécurisé. <a href="#créez-une-clé-de-compte-de-service-2">Suivez les instructions étape par étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="facultatif-configurez-le-peering-réseau-pour-votre-vpc">(Facultatif) : configurez le peering réseau pour votre VPC</h3>
+<h3 id="facultatif-configurez-le-peering-réseau-pour-votre-vpc"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png" alt="Six"></span> (Facultatif) : configurez le peering réseau pour votre VPC</h3>
 <div class="paragraph quick-margin-para">
-<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, configurez le peering de réseau de votre VPC vers Cloud Volumes Service pour Google Cloud.  Set up network peering for your VPC,Suivez les instructions étape par étape.</p>
+<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, configurez le peering de réseau de votre VPC vers Cloud Volumes Service pour Google Cloud. <a href="#facultatif-configurez-le-peering-réseau-pour-votre-vpc-2">Suivez les instructions étape par étape</a>.</p>
 </div>
 </div>
 </div>
@@ -1426,7 +1390,7 @@ Si vous ne démarrez pas à l&#8217;aide de Google Cloud Volumes Service pour Go
 </dd>
 <dt class="hdlist1">Mise en réseau</dt>
 <dd>
-<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, le cluster doit résider dans un VPC avec Cloud Volumes Service pour Google Cloud.  Set up network peering for your VPC,Cette étape est décrite ci-dessous.</p>
+<p>Si vous prévoyez d&#8217;utiliser Cloud Volumes Service pour Google Cloud en tant que backend de stockage, le cluster doit résider dans un VPC avec Cloud Volumes Service pour Google Cloud. <a href="#facultatif-configurez-le-peering-réseau-pour-votre-vpc-2">Cette étape est décrite ci-dessous</a>.</p>
 </dd>
 <dt class="hdlist1">Clusters privés</dt>
 <dd>
@@ -1608,6 +1572,7 @@ Your browser does not support the video tag.
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>L&#8217;ajout d&#8217;un cluster GKE utilisant un VPC partagé fonctionnera entièrement avec Astra.</p>
 </div>
 </div>

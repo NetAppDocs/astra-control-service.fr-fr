@@ -572,29 +572,6 @@
 
 
 
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/fr-fr/astra-control-service/pdfs/aws/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
-            
-          >
-            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
-            Gérer les crochets d'exécution de l'application
-          </a>
-          
-
-
-        </li>
-      </ul>
-    
-
-  
-
 
         </li>
       </ul>
@@ -973,20 +950,11 @@
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Gérer les crochets d'exécution de l'application"
-      data-li-level="3" 
-      class="subfolders "
-    ><a href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
-        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
-      </a>
-      <ul style="display: none;">
-        <li 
-      data-pdf-exists="true" 
-      data-pdf-filename="Exemples de crochet d'exécution"
-      data-li-level="4#" 
+      data-li-level="3#" 
       class=" "
-    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/execution-hook-examples.html">
-        Exemples de crochet d'exécution
-      </a></li></ul></li></ul></li><li 
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
       data-li-level="2" 
@@ -1217,7 +1185,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-22 17:31:32 +0000">11/22/2022</time>
+    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
     
   
 
@@ -1273,25 +1241,25 @@ Si vous effectuez un snapshot ou une sauvegarde, mais que l&#8217;opération éc
 <div class="ulist">
 <ul>
 <li>
-<p>a protection policy</p>
+<p><a href="#configurer-une-règle-de-protection">Configurer une règle de protection</a></p>
 </li>
 <li>
-<p>a snapshot</p>
+<p><a href="#créer-un-snapshot">Créer un snapshot</a></p>
 </li>
 <li>
-<p>a backup</p>
+<p><a href="#créer-une-sauvegarde">Créer une sauvegarde</a></p>
 </li>
 <li>
-<p>snapshots and backups</p>
+<p><a href="#afficher-les-snapshots-et-les-sauvegardes">Afficher les snapshots et les sauvegardes</a></p>
 </li>
 <li>
-<p>snapshots</p>
+<p><a href="#supprimer-les-instantanés">Supprimer les instantanés</a></p>
 </li>
 <li>
-<p>backups</p>
+<p><a href="#annuler-les-sauvegardes">Annuler les sauvegardes</a></p>
 </li>
 <li>
-<p>backups</p>
+<p><a href="#supprimer-les-sauvegardes">Supprimer les sauvegardes</a></p>
 </li>
 </ul>
 </div>
@@ -1339,6 +1307,7 @@ Si vous effectuez un snapshot ou une sauvegarde, mais que l&#8217;opération éc
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Astra Control implémente la règle de protection des données en créant et en conservant des snapshots et des sauvegardes à l&#8217;aide du calendrier et de la règle de conservation que vous avez définis.</p>
 </div>
 </div>
@@ -1367,6 +1336,7 @@ Si vous effectuez un snapshot ou une sauvegarde, mais que l&#8217;opération éc
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Le processus d&#8217;instantané commence. Un instantané a réussi lorsque l&#8217;état est <strong>Healthy</strong> dans la colonne <strong>State</strong> de la page <strong>Data protection</strong> &gt; <strong>snapshots</strong>.</p>
 </div>
 </div>
@@ -1404,6 +1374,7 @@ Si vous effectuez un snapshot ou une sauvegarde, mais que l&#8217;opération éc
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Astra Control crée une sauvegarde de l&#8217;application.</p>
 </div>
 <div class="admonitionblock note">
@@ -1413,7 +1384,7 @@ Si vous effectuez un snapshot ou une sauvegarde, mais que l&#8217;opération éc
 <img src="/us-en/astra-control-service/images/note.svg" alt="Note">
 </td>
 <td class="content">
-Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les instructions de la section  backups. Pour supprimer la sauvegarde, attendez qu&#8217;elle soit terminée, puis suivez les instructions de la section  backups.
+Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les instructions de la section <a href="#annuler-les-sauvegardes">Annuler les sauvegardes</a>. Pour supprimer la sauvegarde, attendez qu&#8217;elle soit terminée, puis suivez les instructions de la section <a href="#supprimer-les-sauvegardes">Supprimer les sauvegardes</a>.
 </td>
 </tr>
 </table>
@@ -1439,7 +1410,7 @@ Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les ins
 </div>
 </li>
 <li>
-<p>Sélectionnez <strong>backups</strong> pour afficher la liste des sauvegardes.</p>
+<p>Sélectionnez <strong>backups</strong> pour faire référence à la liste des sauvegardes.</p>
 </li>
 </ol>
 </div>
@@ -1469,6 +1440,7 @@ Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les ins
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Astra Control supprime le snapshot.</p>
 </div>
 </div>
@@ -1526,7 +1498,7 @@ Pour annuler une sauvegarde, la sauvegarde doit être dans <code>Running</code> 
 <img src="/us-en/astra-control-service/images/note.svg" alt="Note">
 </td>
 <td class="content">
-Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les instructions de la section  backups. Pour supprimer la sauvegarde, attendez qu&#8217;elle soit terminée, puis suivez ces instructions.
+Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les instructions de la section <a href="#annuler-les-sauvegardes">Annuler les sauvegardes</a>. Pour supprimer la sauvegarde, attendez qu&#8217;elle soit terminée, puis suivez ces instructions.
 </td>
 </tr>
 </table>
@@ -1552,6 +1524,7 @@ Si vous devez annuler une sauvegarde en cours d&#8217;exécution, suivez les ins
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Astra Control supprime la sauvegarde.</p>
 </div>
 </div>

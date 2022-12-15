@@ -572,29 +572,6 @@
 
 
 
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
-            
-          >
-            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
-            Gérer les crochets d'exécution de l'application
-          </a>
-          
-
-
-        </li>
-      </ul>
-    
-
-  
-
 
         </li>
       </ul>
@@ -980,20 +957,11 @@
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Gérer les crochets d'exécution de l'application"
-      data-li-level="3" 
-      class="subfolders "
-    ><a href="/fr-fr/astra-control-service/azure/use/manage-app-execution-hooks.html">
-        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
-      </a>
-      <ul style="display: none;">
-        <li 
-      data-pdf-exists="true" 
-      data-pdf-filename="Exemples de crochet d'exécution"
-      data-li-level="4#" 
+      data-li-level="3#" 
       class=" "
-    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/execution-hook-examples.html">
-        Exemples de crochet d'exécution
-      </a></li></ul></li></ul></li><li 
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/azure/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
       data-li-level="2" 
@@ -1224,7 +1192,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-30 22:04:11 +0000">11/30/2022</time>
+    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
     
   
 
@@ -1398,7 +1366,7 @@ Pour K8ssandra, les opérations de restauration sur place sont prises en charge.
 <h2 id="définir-les-applications">Définir les applications</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Une fois qu&#8217;Astra Control détecte les espaces de noms sur vos clusters, vous pouvez définir les applications que vous souhaitez gérer. Vous pouvez choisir  resources to manage as an app,gérer une application couvrant un ou plusieurs espaces de noms ou  a namespace to manage as an app,gérer la totalité d&#8217;un namespace comme une seule application. La granularité est en effet au niveau de granularité requis pour les opérations de protection des données.</p>
+<p>Une fois qu&#8217;Astra Control détecte les espaces de noms sur vos clusters, vous pouvez définir les applications que vous souhaitez gérer. Vous pouvez choisir <a href="Définissez les ressources à gérer en tant qu&.html#8217;application">gérer une application couvrant un ou plusieurs espaces de noms</a> ou <a href="Définissez un espace de noms à gérer en tant qu&.html#8217;application">gérer la totalité d&#8217;un namespace comme une seule application</a>. La granularité est en effet au niveau de granularité requis pour les opérations de protection des données.</p>
 </div>
 <div class="paragraph">
 <p>Bien qu&#8217;Astra Control vous permet de gérer séparément les deux niveaux de la hiérarchie (l&#8217;espace de noms et les applications dans cet espace de noms ou les espaces de noms d&#8217;extension), il est recommandé de choisir l&#8217;un ou l&#8217;autre. Les actions que vous prenez dans Astra Control peuvent échouer si les actions ont lieu en même temps au niveau de l&#8217;espace de noms et de l&#8217;application.</p>
@@ -1416,13 +1384,13 @@ Par exemple, vous pouvez définir une stratégie de sauvegarde pour « maria » 
 </table>
 </div>
 <div class="ulist">
-<div class="title">Ce dont vous avez besoin, 8217;ll</div>
+<div class="title">Ce dont vous avez besoin</div>
 <ul>
 <li>
 <p>Un cluster Kubernetes ajouté à Astra Control.</p>
 </li>
 <li>
-<p>Une ou plusieurs applications installées sur le cluster.  app installation methods,En savoir plus sur les méthodes d&#8217;installation d&#8217;applications prises en charge.</p>
+<p>Une ou plusieurs applications installées sur le cluster. <a href="Méthodes d&.html#8217;installation d&#8217;applications prises en charge">En savoir plus sur les méthodes d&#8217;installation d&#8217;applications prises en charge</a>.</p>
 </li>
 <li>
 <p>Un ou plusieurs pods actifs.</p>
@@ -1465,10 +1433,10 @@ Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Ku
 <div class="title">Options de gestion des applications</div>
 <ul>
 <li>
-<p>resources to manage as an app</p>
+<p><a href="Définissez les ressources à gérer en tant qu&.html#8217;application">Définissez les ressources à gérer en tant qu&.html</a></p>
 </li>
 <li>
-<p>a namespace to manage as an app</p>
+<p><a href="Définissez un espace de noms à gérer en tant qu&.html#8217;application">Définissez un espace de noms à gérer en tant qu&.html</a></p>
 </li>
 </ul>
 </div>
@@ -1706,7 +1674,7 @@ Pour afficher les détails d&#8217;une application particulière, sélectionnez 
 <img src="/us-en/astra-control-service/images/tip.svg" alt="Astuce">
 </td>
 <td class="content">
-Si vous souhaitez définir plusieurs applications, sélectionnez dans la liste Namespaces et sélectionnez le bouton <strong>actions</strong> dans le coin supérieur gauche et sélectionnez <strong>définir comme application</strong>. Cela définira plusieurs applications individuelles dans leurs espaces de noms individuels. Pour les applications à espace de noms multiples, voir  resources to manage as an app.
+Si vous souhaitez définir plusieurs applications, sélectionnez dans la liste Namespaces et sélectionnez le bouton <strong>actions</strong> dans le coin supérieur gauche et sélectionnez <strong>définir comme application</strong>. Cela définira plusieurs applications individuelles dans leurs espaces de noms individuels. Pour les applications à espace de noms multiples, voir <a href="Définissez les ressources à gérer en tant qu&.html#8217;application">Définissez les ressources à gérer en tant qu&.html</a>.
 </td>
 </tr>
 </table>

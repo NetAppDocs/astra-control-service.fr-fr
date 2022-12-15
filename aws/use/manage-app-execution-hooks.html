@@ -569,28 +569,7 @@
 
 
 
-
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/fr-fr/astra-control-service/pdfs/aws/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
-            
-          >
-            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
-            Gérer les crochets d'exécution de l'application
-          </a>
-          
-
-
-        </li>
-      </ul>
-    
-
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
   
 
 
@@ -971,20 +950,11 @@
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Gérer les crochets d'exécution de l'application"
-      data-li-level="3" 
-      class="subfolders  active "
-    ><a href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
-        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
-      </a>
-      <ul style="display: none;">
-        <li 
-      data-pdf-exists="true" 
-      data-pdf-filename="Exemples de crochet d'exécution"
-      data-li-level="4#" 
-      class=" "
-    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/execution-hook-examples.html">
-        Exemples de crochet d'exécution
-      </a></li></ul></li></ul></li><li 
+      data-li-level="3#" 
+      class="  active "
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
       data-li-level="2" 
@@ -1215,7 +1185,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-17 05:49:37 +0000">11/17/2022</time>
+    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
     
   
 
@@ -1348,7 +1318,7 @@
 </ol>
 </div>
 <div class="paragraph">
-<p>Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la  whether a hook will run.</p>
+<p>Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la <a href="#déterminez-si-un-crochet-va-courir">Déterminez si un crochet va courir</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1554,6 +1524,14 @@ Vous devez toujours tester vos scripts d&#8217;exécution avant de les activer d
 </div>
 </div>
 <div class="sect1">
+<h2 id="exemples-de-crochet-dexécution">Exemples de crochet d&#8217;exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Consultez le <a href="https://github.com/NetApp/Verda">"Projet GitHub NetApp Verda"</a> Pour télécharger des crochets d&#8217;exécution réels pour des applications courantes telles qu&#8217;Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d&#8217;exécution personnalisés.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="afficher-les-crochets-dexécution-existants">Afficher les crochets d&#8217;exécution existants</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -1669,6 +1647,7 @@ Vous devez toujours tester vos scripts d&#8217;exécution avant de les activer d
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Le nouveau script apparaît dans la liste de l&#8217;onglet <strong>scripts</strong>.</p>
 </div>
 </div>
@@ -1714,7 +1693,7 @@ Si le script est associé à un ou plusieurs crochets d&#8217;exécution, l&#821
 <h2 id="créer-un-crochet-dexécution-personnalisé">Créer un crochet d&#8217;exécution personnalisé</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Vous pouvez créer un crochet d&#8217;exécution personnalisé pour une application. Voir <a href="execution-hook-examples.html" target="_blank" rel="noopener">"Exemples de crochet d&#8217;exécution"</a> pour des exemples de crochet. Vous devez disposer d&#8217;autorisations propriétaire, administrateur ou membre pour créer des crochets d&#8217;exécution.</p>
+<p>Vous pouvez créer un crochet d&#8217;exécution personnalisé pour une application. Reportez-vous à la section <a href="Exemples de crochet d&.html#8217;exécution">Exemples de crochet d&.html</a> pour des exemples de crochet. Vous devez disposer d&#8217;autorisations propriétaire, administrateur ou membre pour créer des crochets d&#8217;exécution.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1930,6 +1909,18 @@ Lorsque vous créez un script de shell personnalisé à utiliser comme crochet d
 <p>Sélectionnez <strong>Supprimer</strong>.</p>
 </li>
 </ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pour-en-savoir-plus">Pour en savoir plus</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/NetApp/Verda">"Projet GitHub NetApp Verda"</a></p>
+</li>
+</ul>
 </div>
 </div>
 </div>

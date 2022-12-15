@@ -572,29 +572,6 @@
 
 
 
-    
-      <ul class="subfolders" style="display:none;">
-        <li class="pdf-ux-container">
-          
-          
-          
-          <a target="_blank" 
-            
-              href="/fr-fr/astra-control-service/pdfs/aws/sidebar/Gérer_les_crochets_d_exécution_de_l_application.pdf" 
-            
-          >
-            <img src="/fr-fr/astra-control-service/images/pdf.png" alt="" width="16" height="16"/>
-            Gérer les crochets d'exécution de l'application
-          </a>
-          
-
-
-        </li>
-      </ul>
-    
-
-  
-
 
         </li>
       </ul>
@@ -973,20 +950,11 @@
       </a></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Gérer les crochets d'exécution de l'application"
-      data-li-level="3" 
-      class="subfolders "
-    ><a href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
-        <div class="na-navbar-padding"> Gérer les crochets d'exécution de l'application</div>
-      </a>
-      <ul style="display: none;">
-        <li 
-      data-pdf-exists="true" 
-      data-pdf-filename="Exemples de crochet d'exécution"
-      data-li-level="4#" 
+      data-li-level="3#" 
       class=" "
-    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/execution-hook-examples.html">
-        Exemples de crochet d'exécution
-      </a></li></ul></li></ul></li><li 
+    ><a class="na-navbar-padding" href="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
       data-pdf-exists="true" 
       data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
       data-li-level="2" 
@@ -1217,7 +1185,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-11-30 22:04:11 +0000">11/30/2022</time>
+    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
     
   
 
@@ -1241,54 +1209,48 @@
 <p>Pour commencer rapidement, suivez ces étapes ou faites défiler jusqu&#8217;aux sections restantes pour obtenir plus de détails.</p>
 </div>
 <div class="sect2">
-<h3 id="lisez-les-exigences-dastra-control-service-pour-amazon-web-services">Lisez les exigences d&#8217;Astra Control Service pour Amazon Web Services</h3>
+<h3 id="lisez-les-exigences-dastra-control-service-pour-amazon-web-services"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png" alt="Une seule"></span> Lisez les exigences d&#8217;Astra Control Service pour Amazon Web Services</h3>
 <div class="paragraph quick-margin-para">
-<p>Assurez-vous que les clusters exécutent une version prise en charge de Kubernetes, que les nœuds workers sont en ligne et exécutent Linux ou Windows, et bien plus encore.  cluster requirements,En savoir plus sur cette étape.</p>
+<p>Assurez-vous que les clusters exécutent une version prise en charge de Kubernetes, que les nœuds workers sont en ligne et exécutent Linux ou Windows, et bien plus encore. <a href="#configuration-requise-pour-le-cluster-eks">En savoir plus sur cette étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="créez-un-compte-amazon">Créez un compte Amazon</h3>
+<h3 id="créez-un-compte-amazon"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png" alt="Deux"></span> Créez un compte Amazon</h3>
 <div class="paragraph quick-margin-para">
-<p>Si vous n&#8217;avez pas encore de compte Amazon, vous devez en créer un pour pouvoir utiliser EKS.  an Amazon account,En savoir plus sur cette étape.</p>
+<p>Si vous n&#8217;avez pas encore de compte Amazon, vous devez en créer un pour pouvoir utiliser EKS. <a href="#créez-un-compte-amazon-2">En savoir plus sur cette étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="installez-linterface-de-ligne-de-commande-amazon-web-services">Installez l&#8217;interface de ligne de commande Amazon Web Services</h3>
+<h3 id="installez-linterface-de-ligne-de-commande-amazon-web-services"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png" alt="Trois"></span> Installez l&#8217;interface de ligne de commande Amazon Web Services</h3>
 <div class="paragraph quick-margin-para">
-<p>Installez l&#8217;interface de ligne de commandes AWS afin de gérer AWS à partir de la ligne de commandes.  the Amazon Web Services CLI,Suivez les instructions étape par étape.</p>
+<p>Installez l&#8217;interface de ligne de commandes AWS afin de gérer AWS à partir de la ligne de commandes. <a href="Installez l&.html#8217;interface de ligne de commande Amazon Web Services">Suivez les instructions étape par étape</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="facultatif-créez-un-utilisateur-iam">Facultatif : créez un utilisateur IAM</h3>
+<h3 id="facultatif-créez-un-utilisateur-iam"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png" alt="Quatre"></span> Facultatif : créez un utilisateur IAM</h3>
 <div class="paragraph quick-margin-para">
 <p>Créez un utilisateur Amazon Identity and Access Management (IAM). Vous pouvez également ignorer cette étape et utiliser un utilisateur IAM existant avec le service de contrôle Astra.</p>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>Create an IAM user,Lisez les instructions détaillées.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="#facultatif-créez-un-utilisateur-iam-2">Lisez les instructions détaillées</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="créez-et-joignez-une-stratégie-dautorisations">Créez et joignez une stratégie d&#8217;autorisations</h3>
+<h3 id="créez-et-joignez-une-stratégie-dautorisations"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png" alt="Cinq"></span> Créez et joignez une stratégie d&#8217;autorisations</h3>
 <div class="paragraph quick-margin-para">
 <p>Créez une règle avec les autorisations requises pour que le service Astra Control puisse interagir avec votre compte AWS.</p>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>and attach a permissions policy,Lisez les instructions détaillées.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="Créez et joignez une stratégie d&.html#8217;autorisations">Lisez les instructions détaillées</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="enregistrer-les-informations-didentification-pour-lutilisateur-iam">Enregistrer les informations d&#8217;identification pour l&#8217;utilisateur IAM</h3>
+<h3 id="enregistrer-les-informations-didentification-pour-lutilisateur-iam"><span class="image"><img src="https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png" alt="Six"></span> Enregistrer les informations d&#8217;identification pour l&#8217;utilisateur IAM</h3>
 <div class="paragraph quick-margin-para">
 <p>Enregistrez les informations d&#8217;identification de l&#8217;utilisateur IAM pour pouvoir importer les informations d&#8217;identification dans le service de contrôle Astra.</p>
 </div>
-<div class="literalblock quick-margin-para">
-<div class="content">
-<pre>the credentials for the IAM user,Lisez les instructions détaillées.</pre>
-</div>
+<div class="paragraph quick-margin-para">
+<p><a href="Enregistrer les informations d&.html#8217;identification pour l&#8217;utilisateur IAM">Lisez les instructions détaillées</a>.</p>
 </div>
 </div>
 </div>
@@ -1315,7 +1277,7 @@
 </dd>
 <dt class="hdlist1">Astra Trident pour Amazon FSX pour NetApp ONTAP</dt>
 <dd>
-<p>Si vous utilisez le système back-end Amazon FSX pour le stockage ONTAP NetApp, vous devez installer Astra Trident. Pour obtenir des instructions, reportez-vous à la section <a href="https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html" target="_blank" rel="noopener">"Présentation du déploiement d&#8217;Astra Trident"</a>. Pour en savoir plus sur l&#8217;utilisation d&#8217;Astra Trident avec FSX pour NetApp ONTAP, consultez <a href="https://docs.netapp.com/us-en/trident/trident-use/trident-fsx.html" target="_blank" rel="noopener">"Utilisez Astra Trident avec Amazon FSX pour NetApp ONTAP"</a>.</p>
+<p>Si vous utilisez le système back-end Amazon FSX pour le stockage ONTAP NetApp, vous devez installer Astra Trident. Pour obtenir des instructions, reportez-vous à la section <a href="https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html" target="_blank" rel="noopener">"Présentation du déploiement d&#8217;Astra Trident"</a>. Pour en savoir plus sur l&#8217;utilisation d&#8217;Astra Trident avec FSX pour NetApp ONTAP, consultez le <a href="https://docs.netapp.com/us-en/trident/trident-use/trident-fsx.html" target="_blank" rel="noopener">"Utilisez Astra Trident avec Amazon FSX pour NetApp ONTAP"</a>.</p>
 </dd>
 <dt class="hdlist1">Pilotes CSI pour Amazon Elastic Block Store (EBS)</dt>
 <dd>
@@ -1599,6 +1561,7 @@ kubectl apply -f manifests/claim.yaml</code></pre>
 </ol>
 </div>
 <div class="paragraph">
+<div class="title">Résultat</div>
 <p>Le <code>credential.json</code> Le fichier est créé et vous pouvez importer les informations d&#8217;identification dans le service de contrôle Astra.</p>
 </div>
 </div>
