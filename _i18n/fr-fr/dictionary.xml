@@ -1791,7 +1791,6 @@
   <block id="e1392cd5a84b9e2661cec2830d5c10bf" category="list-text">Dans le menu Options de la colonne *actions* pour l'instantané ou la sauvegarde à partir duquel vous souhaitez restaurer, sélectionnez *Restaurer l'application*.</block>
   <block id="8d7c216bc17d281838efafaa3704677b" category="list-text">Choisissez le type de restauration :</block>
   <block id="90d21d98503ddae05ddf0a1a34b7d790" category="list-text">*Restaurer les espaces de noms d'origine* : utilisez cette procédure pour restaurer l'app sur place dans le cluster d'origine.</block>
-  <block id="d6163245aff1d495d4414480b1d33f38" category="admonition">L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus.</block>
   <block id="eb543a53c7bc9830323c1e31b5a68dc4" category="list-text">Sélectionnez le snapshot à utiliser pour restaurer l'application sur place, qui restaure l'application vers une version antérieure de lui-même.</block>
   <block id="e6cd86d61f4639c8a27006c6c29b3e9f" category="list-text">Sélectionnez *Suivant*.</block>
   <block id="3b015c7e8b671c5a6b88a902ad59e853" category="list-text">Consultez les détails de l'action de restauration, saisissez "restaurer" et sélectionnez *Restaurer*.</block>
@@ -2049,4 +2048,5 @@
   <block id="edb74efc05972c268b6cccf83996ac3e" category="section-title">Modifier le rôle d'un utilisateur</block>
   <block id="bfba5acdae4cf2cfa2c86cce302038d4" category="paragraph">Supprimez les informations d'identification d'un compte à tout moment. Vous ne devez supprimer les informations d'identification qu'après <block ref="7193f1b7f27bd5505d89cc1e5724fb4b" category="inline-link-macro-rx"></block>, sauf si vous faites pivoter des informations d'identification (voir <block ref="029b7394eded829c95ca3b86c4cd802d" category="inline-xref-macro-rx"></block>).</block>
   <block id="df1dd0475d7e25b9e368f8f45f636062" category="list-text">*Nom du serveur S3 ou adresse IP* (AWS uniquement) : saisissez le nom de domaine complet du noeud final S3 qui correspond à votre région, sans<block ref="f8eae6750519389e078e1eb1bcb3d708" prefix=" " category="inline-code"></block>. Reportez-vous à la section<block ref="398d47c523652edc934ec11e2f213d87" category="inline-link-rx"></block> pour en savoir plus.</block>
+  <block id="ce461936438c7221ad2aecef67b1e35b" category="paragraph">L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus. Toutes les ressources partagées entre les applications sont remplacées lorsqu'une restauration sur place est effectuée sur l'une des applications.</block>
 </blocks>

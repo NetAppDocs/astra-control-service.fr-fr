@@ -28,9 +28,11 @@ Astra Control peut restaurer votre application à partir d'un snapshot ou d'une 
 +
 ** *Restaurer les espaces de noms d'origine* : utilisez cette procédure pour restaurer l'app sur place dans le cluster d'origine.
 +
+[CAUTION]
+====
+L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus. Toutes les ressources partagées entre les applications sont remplacées lorsqu'une restauration sur place est effectuée sur l'une des applications.
 
-CAUTION: L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus.
-
+====
 +
 ... Sélectionnez le snapshot à utiliser pour restaurer l'application sur place, qui restaure l'application vers une version antérieure de lui-même.
 ... Sélectionnez *Suivant*.

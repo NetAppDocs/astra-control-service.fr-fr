@@ -163,9 +163,11 @@ La définition d'une application vous offre un contrôle plus granulaire sur les
 
 WARNING: Lors de la définition d'applications, assurez-vous de ne pas inclure de ressource Kubernetes dans plusieurs applications avec des règles de protection. Le chevauchement des règles de protection sur des ressources Kubernetes peut provoquer des conflits de données.
 
+[CAUTION]
+====
+L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus. Toutes les ressources partagées entre les applications sont remplacées lorsqu'une restauration sur place est effectuée sur l'une des applications.
 
-CAUTION: L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus.
-
+====
 .<strong> </strong> a propos de l'ajout de ressources cluster-scoped à vos espaces de noms d'applications.
 [%collapsible]
 ====
