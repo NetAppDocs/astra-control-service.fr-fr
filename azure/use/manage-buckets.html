@@ -1192,7 +1192,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-12-14 18:10:53 +0000">12/14/2022</time>
+    <time datetime="2023-01-10 17:22:22 +0000">01/10/2023</time>
     
   
 
@@ -1289,9 +1289,6 @@ Le service de contrôle Astra vérifie si un compartiment de destination est acc
 <div class="paragraph">
 <p>Une fois que vous avez commencé à gérer un cluster dans votre fournisseur cloud, vous pouvez ajouter des compartiments à tout moment. Vous pouvez ainsi choisir entre plusieurs compartiments lors de la création d&#8217;une règle de protection et modifier le compartiment par défaut pour les sauvegardes et les clones ad hoc.</p>
 </div>
-<div class="paragraph">
-<p>Notez qu&#8217;Astra Control Service ne vous permet pas de retirer un godet après l&#8217;avoir ajouté.</p>
-</div>
 <div class="ulist">
 <div class="title">Ce dont vous avez besoin</div>
 <ul>
@@ -1299,7 +1296,17 @@ Le service de contrôle Astra vérifie si un compartiment de destination est acc
 <p>Nom d&#8217;une compartiment existant dans votre fournisseur cloud.</p>
 </li>
 <li>
-<p>Si votre compartiment est dans Azure, il doit appartenir au groupe de ressources nommé <em>astra-backup-rg</em>.</p>
+<p>Si le compartiment est en mode Azure :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Le compartiment doit appartenir au groupe de ressources nommé <em>astra-backup-rg</em>.</p>
+</li>
+<li>
+<p>Si le paramètre de performance de l&#8217;instance de compte de stockage Azure est défini sur « Premium », le paramètre « Type de compte Premium » doit être défini sur « blobs de bloc ».</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -1478,7 +1485,7 @@ Astra Control veille à l&#8217;absence de règles de planification qui utilise 
         <div class="n-footer__copyright">
           <ul class="n-footer__copyright-list">
             <li class="n-footer__copyright-link">
-              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2022 NetApp, Inc.</a>
+              <a href="https://www.netapp.com/us/legal/copyright.aspx">© 2023 NetApp, Inc.</a>
             </li>
             <li class="n-footer__copyright-link">
               <a href="https://www.netapp.com/company/legal/terms-of-use/">Conditions générales</a>
