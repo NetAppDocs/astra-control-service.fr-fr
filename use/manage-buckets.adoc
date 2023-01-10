@@ -60,15 +60,18 @@ La liste des godets disponibles pour le service Astra Control s'affiche.
 
 Une fois que vous avez commencé à gérer un cluster dans votre fournisseur cloud, vous pouvez ajouter des compartiments à tout moment. Vous pouvez ainsi choisir entre plusieurs compartiments lors de la création d'une règle de protection et modifier le compartiment par défaut pour les sauvegardes et les clones ad hoc.
 
-Notez qu'Astra Control Service ne vous permet pas de retirer un godet après l'avoir ajouté.
-
 .Ce dont vous avez besoin
 * Nom d'une compartiment existant dans votre fournisseur cloud.
 
 
 ifdef::azure[]
 
-* Si votre compartiment est dans Azure, il doit appartenir au groupe de ressources nommé _astra-backup-rg_.
+* Si le compartiment est en mode Azure :
++
+** Le compartiment doit appartenir au groupe de ressources nommé _astra-backup-rg_.
+** Si le paramètre de performance de l'instance de compte de stockage Azure est défini sur « Premium », le paramètre « Type de compte Premium » doit être défini sur « blobs de bloc ».
+
+
 
 
 endif::azure[]
