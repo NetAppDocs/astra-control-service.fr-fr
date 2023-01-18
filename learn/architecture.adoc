@@ -24,20 +24,18 @@ image:astra-architecture-diagram-v5.png["Schéma d'architecture et composants d'
 * *Astra Trident* : en tant que fournisseur de stockage open source entièrement pris en charge et orchestrateur géré par NetApp, Astra Trident vous permet de créer des volumes de stockage pour les applications conteneurisées gérées par Docker et Kubernetes. Lorsqu'il est déployé avec Astra Control Center, Trident inclut un système back-end de stockage ONTAP configuré.
 * *Back-end de stockage* :
 +
-** Utilisation d'Astra Control Service https://www.netapp.com/cloud-services/azure-netapp-files/["Azure NetApp Files"^] Ou des disques gérés Azure en tant que système back-end de stockage pour les clusters AKS.
-** Utilisation d'Astra Control Service https://www.netapp.com/cloud-services/cloud-volumes-service-for-google-cloud/["NetApp Cloud Volumes Service pour Google Cloud"^] Ou Google persistent Disk comme système back-end de stockage pour les clusters GKE.
-** Utilisation d'Astra Control Service https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] et https://docs.aws.amazon.com/fsx/["Amazon FSX pour NetApp ONTAP"^] En tant que système back-end de stockage pour les clusters EKS.
+** Utilisation d'Astra Control Service https://www.netapp.com/cloud-services/azure-netapp-files/["Azure NetApp Files"^], Disques gérés Azure, et https://www.netapp.com/cloud-services/cloud-volumes-ontap/what-is-cloud-volumes/["NetApp Cloud Volumes ONTAP"] En tant que système back-end de stockage pour les clusters AKS.
+** Utilisation d'Astra Control Service https://www.netapp.com/cloud-services/cloud-volumes-service-for-google-cloud/["NetApp Cloud Volumes Service pour Google Cloud"^], Google persistent Disk, et https://www.netapp.com/cloud-services/cloud-volumes-ontap/what-is-cloud-volumes/["NetApp Cloud Volumes ONTAP"] En tant que système back-end de stockage pour les clusters GKE.
+** Utilisation d'Astra Control Service https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^] et https://docs.aws.amazon.com/fsx/["Amazon FSX pour NetApp ONTAP"^] En tant que système back-end de stockage pour les clusters AWS.
 ** Astra Control Center utilise les systèmes back-end de stockage suivants :
-
-
-
-
-* Système back-end ONTAP AFF et FAS. En tant que plateforme matérielle et logicielle de stockage, ONTAP fournit des services de stockage de base, la prise en charge de plusieurs protocoles d'accès au stockage et des fonctionnalités de gestion du stockage, telles que les snapshots et la mise en miroir.
-* Système back-end Cloud Volumes ONTAP
 +
-** *Cloud Insights* : un outil NetApp de surveillance de l'infrastructure cloud, Cloud Insights vous permet de surveiller les performances et l'utilisation de vos clusters Kubernetes gérés par Astra Control Center. Cloud Insights met en corrélation l'utilisation du stockage avec les charges de travail. Lorsque vous activez la connexion Cloud Insights dans le centre de contrôle Astra, les informations de télémétrie s'affichent dans les pages de l'interface utilisateur du centre de contrôle Astra.
+*** Système back-end ONTAP AFF et FAS. En tant que plateforme matérielle et logicielle de stockage, ONTAP fournit des services de stockage de base, la prise en charge de plusieurs protocoles d'accès au stockage et des fonctionnalités de gestion du stockage, telles que les snapshots et la mise en miroir.
+*** Système back-end Cloud Volumes ONTAP
 
 
+
+
+* *Cloud Insights* : un outil NetApp de surveillance de l'infrastructure cloud, Cloud Insights vous permet de surveiller les performances et l'utilisation de vos clusters Kubernetes gérés par Astra Control Center. Cloud Insights met en corrélation l'utilisation du stockage avec les charges de travail. Lorsque vous activez la connexion Cloud Insights dans le centre de contrôle Astra, les informations de télémétrie s'affichent dans les pages de l'interface utilisateur du centre de contrôle Astra.
 
 
 

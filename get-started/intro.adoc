@@ -88,7 +88,7 @@ Mêmes fonctionnalités sur les deux plateformes, avec des exceptions au systèm
 
  a| 
 * Systèmes NetApp ONTAP AFF et FAS
-* Système back-end Cloud Volumes ONTAP
+* Système back-end de stockage Cloud Volumes ONTAP (pris en charge officiellement sur Azure et Google Cloud Platform)
 
 
 |===

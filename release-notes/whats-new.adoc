@@ -16,38 +16,53 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 
 
 
+== 17 janvier 2023
+
+.Nouvelles fonctionnalités et prises en charge
+* Fonctionnalité améliorée de crochets d'exécution avec options de filtrage supplémentaires
++
+link:../use/manage-app-execution-hooks.html["Gérer les crochets d'exécution de l'application"]
+
+* Prise en charge de NetApp Cloud Volumes ONTAP en tant que système back-end de stockage (officiellement pris en charge sur Microsoft Azure et Google Cloud Platform)
++
+link:../learn/architecture.html#astra-control-components["Architecture et composants"]
+
+
+
+
+
 == 22 novembre 2022
 
 .Nouvelles fonctionnalités et prises en charge
-* Prise en charge des applications réparties sur plusieurs espaces de noms.
+* Prise en charge des applications réparties sur plusieurs espaces de noms
 +
 link:../use/manage-apps.html["Définir les applications"]
 
-* La prise en charge de l'inclusion des ressources de cluster dans une définition d'application.
+* La prise en charge de l'inclusion des ressources de cluster dans une définition d'application
 +
 link:../use/manage-apps.html["Définir les applications"]
 
-* Création de rapports d'avancement pour les opérations de sauvegarde, de restauration et de clonage.
+* Création de rapports d'avancement pour les opérations de sauvegarde, de restauration et de clonage
 +
 link:../use/monitor-running-tasks.html["Surveillez les tâches en cours d'exécution"]
 
-* Prise en charge des clusters qui disposent déjà d'une version compatible d'Astra Trident installée.
+* Prise en charge des clusters qui disposent déjà d'une version compatible d'Astra Trident installée
 +
 link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"]
 
-* Prise en charge de la gestion de plusieurs abonnements fournisseurs de services cloud dans un seul compte Astra Control.
+* Prise en charge de la gestion de plusieurs abonnements fournisseurs de services cloud dans un seul compte Astra Control
 +
 link:../use/manage-cloud-instances.html["Gérer les instances cloud"]
 
-* Possibilité d'ajouter des clusters Kubernetes autogérés à Astra Control Service.
+* Possibilité d'ajouter des clusters Kubernetes autogérés à Astra Control Service
 +
 link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"]
 
-* La facturation du service Astra Control est maintenant mesurée par espace de nom et non par application.
+* La facturation du service Astra Control est maintenant mesurée par espace de nom et non par application
 +
 link:../use/set-up-billing.html["Configurez la facturation"]
 
-* Avec AWS Marketplace, vous bénéficiez d'un support pour vous abonner aux offres basées sur les conditions du service Astra Control.
+* Avec AWS Marketplace, vous bénéficiez d'un support pour vous abonner aux offres basées sur les conditions du service Astra Control
 +
 link:../use/set-up-billing.html["Configurez la facturation"]
 

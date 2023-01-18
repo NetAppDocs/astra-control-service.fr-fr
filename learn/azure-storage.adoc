@@ -12,7 +12,7 @@ summary: 'Astra Control Service utilise Azure NetApp Files en tant que système 
 
 
 [role="lead"]
-Astra Control Service prend en charge les disques gérés Azure NetApp Files ou Azure en tant que backend de stockage pour les clusters Azure Kubernetes Service (AKS).
+Astra Control Service prend en charge Azure NetApp Files, les disques gérés Azure ou NetApp Cloud Volumes ONTAP en tant que système de stockage back-end pour les clusters Azure Kubernetes Service (AKS).
 
 
 
@@ -56,3 +56,9 @@ Le service de contrôle Astra provisionne des volumes persistants selon une tail
 Astra Control Service prend en charge les disques gérés Azure en tant qu'option de stockage back-end. Il fournit un stockage de niveau bloc géré par Azure.
 
 https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["En savoir plus sur les disques gérés Azure"^].
+
+
+
+== NetApp Cloud Volumes ONTAP
+
+Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Documentation NetApp Cloud Volumes ONTAP"^].
