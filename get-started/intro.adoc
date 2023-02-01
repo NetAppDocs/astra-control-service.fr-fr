@@ -25,7 +25,6 @@ Astra Control offre des fonctionnalités stratégiques pour la gestion du cycle 
 * Automatisation des opérations de sauvegarde et de snapshots basées sur des règles
 * Migrez des applications et des données d'un cluster Kubernetes vers un autre
 * Cloner une application de la phase intermédiaire à la production
-* Répliquez vos applications sur un système distant grâce à la technologie NetApp SnapMirror
 * Visualiser l'état de santé et de protection des applications
 * Implémentation de vos workflows de sauvegarde et de migration à l'aide d'une interface utilisateur web ou d'une API
 
@@ -57,11 +56,6 @@ Sur votre cluster Kubernetes
 
 | Comment est-elle mise à jour ? | Géré par NetApp  a| 
 Vous gérez toutes les mises à jour
-
-
-
-| Quelles sont les fonctionnalités de gestion des données applicatives ? | Mêmes fonctionnalités sur les deux plateformes, sans exception au système de stockage back-end ou aux services externes (voir <<Caractéristiques>>)  a| 
-Mêmes fonctionnalités sur les deux plateformes, sans exception au système de stockage back-end ou aux services externes (voir <<Caractéristiques>>)
 
 
 
@@ -163,9 +157,6 @@ endif::azure[]
 +
 ** À ce stade, vous pouvez définir des applications à partir de votre cluster. Les volumes persistants seront provisionnés sur le back-end de stockage via la nouvelle classe de stockage par défaut.
 ** Utilisez ensuite le service Astra Control pour gérer ces applications, et commencez à créer des copies Snapshot, des sauvegardes et des clones.
-+
-Astra Control Service surveille en permanence votre calcul pour les changements d'état, afin qu'il soit conscient des nouvelles applications que vous ajoutez tout au long du trajet.
-
 
 
 
