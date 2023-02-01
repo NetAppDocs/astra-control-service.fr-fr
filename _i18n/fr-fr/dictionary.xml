@@ -33,13 +33,9 @@
   <block id="2325c645f4d2112a8e96b127fbad7bf2" category="inline-image-macro">Schéma d'architecture et composants d'Astra Control</block>
   <block id="51d249216b03414f10b242b851af7951" category="section-title">Composants d'Astra Control</block>
   <block id="a8d77bbb11d2e1a349811767d194e9ba" category="list-text">*Clusters Kubernetes* : Kubernetes est une plateforme portable, extensible et open source pour la gestion des workloads et des services conteneurisés, qui facilite à la fois la configuration déclarative et l'automatisation. Astra propose des services de gestion pour les applications hébergées dans un cluster Kubernetes.</block>
-  <block id="951fe18cc6e59e05fca3c0ca7de399fa" category="list-text">*Back-end de stockage* :</block>
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">NetApp Cloud Volumes Service pour Google Cloud</block>
   <block id="4b6ccd94421822eaaf7bd027992018af" category="inline-link">Amazon Elastic Block Store</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link">Amazon FSX pour NetApp ONTAP</block>
-  <block id="dd069ab6d74011bb108bf219e092a2d0" category="list-text">Astra Control Center utilise les systèmes back-end de stockage suivants :</block>
-  <block id="fc8adf6067b9e369fbebc9abf2891bce" category="list-text">Système back-end ONTAP AFF et FAS. En tant que plateforme matérielle et logicielle de stockage, ONTAP fournit des services de stockage de base, la prise en charge de plusieurs protocoles d'accès au stockage et des fonctionnalités de gestion du stockage, telles que les snapshots et la mise en miroir.</block>
-  <block id="570fa99ce4fbf8deb198b97a6931d63a" category="list-text">Système back-end Cloud Volumes ONTAP</block>
   <block id="415ba7b6a21fb373d9c5b72207313c1c" category="list-text">*Cloud Insights* : un outil NetApp de surveillance de l'infrastructure cloud, Cloud Insights vous permet de surveiller les performances et l'utilisation de vos clusters Kubernetes gérés par Astra Control Center. Cloud Insights met en corrélation l'utilisation du stockage avec les charges de travail. Lorsque vous activez la connexion Cloud Insights dans le centre de contrôle Astra, les informations de télémétrie s'affichent dans les pages de l'interface utilisateur du centre de contrôle Astra.</block>
   <block id="de0c45e94d4b178203631d55e65d1b62" category="section-title">Interfaces de contrôle Astra</block>
   <block id="d015aca78df45458ee1d6533c5246919" category="paragraph">Vous pouvez effectuer des tâches à l'aide de différentes interfaces :</block>
@@ -2049,9 +2045,6 @@
   <block id="0f0b99ea2f70cd363c2c6a279f74e760" category="section-title">NetApp Cloud Volumes ONTAP</block>
   <block id="e472e0844cec8046d5a3eed1d37de0ed" category="inline-link">Documentation NetApp Cloud Volumes ONTAP</block>
   <block id="b311f4f89f8edf2c494c59166cea789e" category="paragraph">Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le<block ref="c94772fe83b69960a6ebea80e6f83cf2" category="inline-link-rx"></block>.</block>
-  <block id="1da547253b2bff6a97f16457ba6c7659" category="list-text">Utilisation d'Astra Control Service<block ref="9e2d15731749abbc242896b41a1be2ef" category="inline-link-rx"></block>, Disques gérés Azure, et<block ref="3d43fd73820648564776fa140e465af6" category="inline-link-rx"></block> En tant que système back-end de stockage pour les clusters AKS.</block>
-  <block id="068755ba9601ac78582444cf9563d28b" category="list-text">Utilisation d'Astra Control Service<block ref="d804c793f302b1f3285300e6253aaac6" category="inline-link-rx"></block>, Google persistent Disk, et<block ref="3d43fd73820648564776fa140e465af6" category="inline-link-rx"></block> En tant que système back-end de stockage pour les clusters GKE.</block>
-  <block id="9ff64e735ff169bd9cc9554b0d5d8108" category="list-text">Utilisation d'Astra Control Service<block ref="a65cb6c91d35e755c3763fe01aedac72" category="inline-link-rx"></block> et<block ref="789fe92e2b55f108a4e50dd78da73d71" category="inline-link-rx"></block> En tant que système back-end de stockage pour les clusters AWS.</block>
   <block id="88ede18f1c4b4384b20f2ce56a75bd80" category="paragraph">Astra Control Service prend en charge Azure NetApp Files, les disques gérés Azure ou NetApp Cloud Volumes ONTAP en tant que système de stockage back-end pour les clusters Azure Kubernetes Service (AKS).</block>
   <block id="cf2023b42357e47bef18c127980bd1c6" category="list-text">NetApp Cloud Volumes ONTAP : aucune information disponible sur le prix, les performances ou la résilience</block>
   <block id="d52e07d1d595c838fa6dd650fe711cd0" category="list-text"><block ref="d52e07d1d595c838fa6dd650fe711cd0" category="inline-link-rx"></block></block>
@@ -2086,4 +2079,11 @@
   <block id="a3060d8563d84f399ad045a8f074e953" category="cell">Quels sont les systèmes back-end pris en charge ?</block>
   <block id="117bdbda976fe8b3212bc3b6327a0a1b" category="list-text">Cloud Volumes ONTAP</block>
   <block id="e76d01158a51318d708ef8185fb06b2d" category="list-text">À ce stade, vous pouvez définir des applications à partir de votre cluster. Les volumes persistants seront provisionnés sur le back-end de stockage via la nouvelle classe de stockage par défaut.</block>
+  <block id="38e3b2d02a57ef89462103f8dcf36ab0" category="list-text"><block ref="38e3b2d02a57ef89462103f8dcf36ab0" category="inline-link-rx"></block></block>
+  <block id="ab819072ff4cb02cb39723b20e2ec373" category="list-text"><block ref="ab819072ff4cb02cb39723b20e2ec373" category="inline-link-rx"></block></block>
+  <block id="55b6146ebe43b01a290a7aad48a66943" category="list-text">Clusters autogérés :</block>
+  <block id="ec2e9418f579c84a41733c6bb0adb789" category="list-text"><block ref="ec2e9418f579c84a41733c6bb0adb789" category="inline-link-rx"></block></block>
+  <block id="1bdec68ba7ba69d1cfefb7e18a857ef4" category="inline-link">documentation de configuration</block>
+  <block id="e7f7ae1f9423fb8774a02e2ae647e158" category="list-text">Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Microsoft Azure. Consultez le Cloud Volumes ONTAP<block ref="8bd14818004729c0926343811de7e4e9" category="inline-link-rx"></block>.</block>
+  <block id="d75122947e3b2c3b0a4b44dfa3966432" category="list-text">Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Google Cloud. Consultez le Cloud Volumes ONTAP<block ref="3a89728ad1d2dcbb16e661d8af8129b1" category="inline-link-rx"></block>.</block>
 </blocks>

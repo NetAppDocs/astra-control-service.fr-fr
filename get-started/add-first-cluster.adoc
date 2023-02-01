@@ -57,6 +57,7 @@ ifdef::azure[]
 Vous aurez également besoin de votre ID d'abonnement Azure, si vous n'avez pas ajouté le fichier JSON.
 
 * Pour les clusters AKS privés, reportez-vous à la section link:manage-private-cluster.html["Gérer des clusters privés à partir d'Astra Control Service"^].
+* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Microsoft Azure. Consultez le Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["documentation de configuration"^].
 
 
 endif::azure[]
@@ -65,6 +66,7 @@ ifdef::gcp[]
 
 .Google Cloud
 * Vous devez disposer du fichier de clé de compte de service pour un compte de service disposant des autorisations requises. link:../get-started/set-up-google-cloud.html#create-a-service-account["Découvrez comment configurer un compte de service"].
+* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Google Cloud. Consultez le Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["documentation de configuration"^].
 
 
 endif::gcp[]

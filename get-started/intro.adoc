@@ -72,24 +72,46 @@ Mêmes fonctionnalités sur les deux plateformes, sans exception au système de 
 ** Amazon FSX pour NetApp ONTAP
 
 
+
+
+endif::aws[]
+
+ifdef::gcp[]
+
 * Google Cloud :
 +
 ** Disque persistant Google
 ** NetApp Cloud Volumes Service
-** Cloud Volumes ONTAP
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
 
+
+
+
+endif::gcp[]
+
+ifdef::azure[]
 
 * Microsoft Azure :
 +
 ** Disques gérés Azure
 ** Azure NetApp Files
-** Cloud Volumes ONTAP
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
+
+
+
+
+endif::azure[]
+
+* Clusters autogérés :
++
+** Systèmes NetApp ONTAP AFF et FAS
+** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
 
  a| 
 * Systèmes NetApp ONTAP AFF et FAS
-* Cloud Volumes ONTAP
+* https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
 
 
 |===
