@@ -88,7 +88,7 @@ Votre cluster autogéré doit répondre aux exigences suivantes :
 
 * Le cluster doit être accessible via Internet.
 * Si vous utilisez ou prévoyez d'utiliser le stockage activé avec des pilotes CSI, les pilotes CSI appropriés doivent être installés sur le cluster. Pour plus d'informations sur l'utilisation des pilotes CSI pour intégrer le stockage, reportez-vous à la documentation de votre service de stockage.
-* Si vous utilisez ou prévoyez d'utiliser un système de stockage NetApp, assurez-vous d'avoir installé une version d'Astra Trident link:../get-started/requirements.html#operational-environment-requirements["Pris en charge par le service Astra Control"^]:
+* Si vous utilisez ou prévoyez d'utiliser un système de stockage NetApp, vérifiez que vous avez installé la dernière version d'Astra Trident :
 +
 
 NOTE: C'est possible https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["Déployez Astra Trident"^] Utilisation de l'opérateur Trident (manuellement ou à l'aide du graphique Helm) ou `tridentctl`. Avant d'installer ou de mettre à niveau Astra Trident, consultez le https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["systèmes front-end, systèmes back-end et configurations hôte pris en charge"^].
