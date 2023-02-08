@@ -22,38 +22,38 @@ Astra Control présente les exigences de gestion des applications suivantes :
 
 * *Licence*: Pour gérer plus de 10 espaces de noms, vous devez souscrire un abonnement à Astra Control Center.
 * *Espaces de noms* : les applications peuvent être définies au sein d'un ou plusieurs espaces de noms spécifiés sur un même cluster à l'aide d'Astra Control. Une application peut contenir des ressources couvrant plusieurs espaces de noms au sein d'un même cluster. Astra Control ne prend pas en charge la possibilité de définir des applications entre plusieurs clusters.
-* *StorageClass* : si vous installez explicitement une application avec une classe de stockage et que vous devez cloner l'application, le cluster cible pour l'opération de clonage doit avoir la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage explicitement définie sur un cluster ne disposant pas de la même classe de stockage échouera.
+* *Classe de stockage* : si vous installez une application avec une classe de stockage définie explicitement et que vous devez cloner l'application, le cluster cible pour l'opération de clonage doit avoir la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage définie explicitement dans un cluster ne disposant pas de la même classe de stockage échouera.
 * *Ressources Kubernetes* : les applications qui utilisent les ressources Kubernetes non collectées par Astra Control peuvent ne pas disposer de fonctionnalités complètes de gestion des données d'application. Astra Control collecte les ressources Kubernetes suivantes :
 +
 [cols="1,1,1"]
 |===
 
 
-| ClusterRole | ClusterRoleBinding | ConfigMap 
+| `ClusterRole` | `ClusterRoleBinding` | `ConfigMap` 
 
 
-| Cronjob | CustomResourceDefinition | Ressource CustomResource 
+| `CronJob` | `CustomResourceDefinition` | `CustomResource` 
 
 
-| Ensemble de démonstrations | Déploiement.Config | HorizontalPodAutoscaler 
+| `DaemonSet` | `DeploymentConfig` | `HorizontalPodAutoscaler` 
 
 
-| Entrée | MutatingWebhook | Stratégie réseau 
+| `Ingress` | `MutatingWebhook` | `NetworkPolicy` 
 
 
-| Demande de volume persistant | Pod | PodPetitionBudget 
+| `PersistentVolumeClaim` | `Pod` | `PodDisruptionBudget` 
 
 
-| PodTemplate | Et de réplication | Rôle 
+| `PodTemplate` | `ReplicaSet` | `Role` 
 
 
-| RoleBinding | Itinéraire | Secret 
+| `RoleBinding` | `Route` | `Secret` 
 
 
-| Service | Compte de service | StatefulSet 
+| `Service` | `ServiceAccount` | `StatefulSet` 
 
 
-| ValidétingWebhook |  |  
+| `ValidatingWebhook` |  |  
 |===
 
 
@@ -168,10 +168,10 @@ WARNING: Lors de la définition d'applications, assurez-vous de ne pas inclure d
 L'exécution d'une opération de restauration sur place sur une application qui partage des ressources avec une autre application peut avoir des résultats inattendus. Toutes les ressources partagées entre les applications sont remplacées lorsqu'une restauration sur place est effectuée sur l'une des applications.
 
 ====
-.<strong> </strong> a propos de l'ajout de ressources cluster-scoped à vos espaces de noms d'applications.
+.En savoir plus sur l'ajout de ressources cluster-scoped à vos espaces de noms d'applications.
 [%collapsible]
 ====
-Vous pouvez importer des ressources de grappe associées aux ressources affectées en plus des ressources Astra Control incluses automatiquement. Vous pouvez ajouter une règle qui inclura des ressources d'un groupe, un type, une version et, éventuellement, une étiquette. Vous voudrez peut-être le faire si certaines ressources qu'Astra Control n'incluent pas automatiquement.
+Vous pouvez importer des ressources de cluster associées aux ressources d'espace de noms en plus de celles incluses automatiquement dans Astra Control. Vous pouvez ajouter une règle qui inclura des ressources d'un groupe, un type, une version et, éventuellement, une étiquette. Vous voudrez peut-être le faire si certaines ressources qu'Astra Control n'incluent pas automatiquement.
 
 Vous ne pouvez exclure aucune des ressources à périmètre de cluster qui sont automatiquement incluses par Astra Control.
 
