@@ -54,7 +54,7 @@ link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kub
 +
 link:../use/manage-cloud-instances.html["Gérer les instances cloud"]
 
-* Possibilité d'ajouter des clusters Kubernetes autogérés à Astra Control Service
+* Prise en charge de l'ajout de clusters Kubernetes autogérés hébergés dans des environnements de cloud public à Astra Control Service
 +
 link:../get-started/add-first-cluster.html["Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service"]
 
