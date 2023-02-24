@@ -53,7 +53,7 @@ Le service de contrôle Astra provisionne des volumes persistants selon une tail
 
 == Disques gérés Azure
 
-Astra Control Service prend en charge les disques gérés Azure en tant qu'option de stockage back-end. Il fournit un stockage de niveau bloc géré par Azure.
+ASTRA Control Service peut utiliser des pilotes Container Storage interface (CSI) pour l'interface avec les disques gérés Azure en tant que système back-end de stockage. Il fournit un stockage de niveau bloc géré par Azure.
 
 https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["En savoir plus sur les disques gérés Azure"^].
 

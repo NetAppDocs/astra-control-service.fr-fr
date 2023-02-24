@@ -76,7 +76,7 @@ endif::gcp[]
 .Ce que vous&#8217;ll avez besoin pour les clusters autogérés
 [%collapsible]
 ====
-Vos clusters autogérés peuvent utiliser Astra Trident pour communiquer avec les services de stockage NetApp, ou ils peuvent utiliser des pilotes CSI (Container Storage interface) pour interagir avec d'autres services de stockage.
+Vos clusters autogérés peuvent utiliser Astra Trident pour s'interfacer avec les services de stockage NetApp ou les pilotes Container Storage interface (CSI) pour s'interfacer avec Amazon Elastic Block Store (EBS), les disques gérés Azure et le service Google persistent Disk.
 
 Astra Control Service prend en charge les clusters autogérés avec les distributions Kubernetes suivantes :
 

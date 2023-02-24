@@ -113,7 +113,7 @@ En raison d'une limitation, si un volume PVC demande un volume entre 700-999 Gio
 
 == Disque persistant Google
 
-Astra Control Service prend en charge Google persistent Disk comme option de stockage back-end. Il fournit un stockage de niveau bloc géré par Google.
+ASTRA Control Service peut utiliser des pilotes Container Storage interface (CSI) pour s'interfacer avec le service Google persistent Disk en tant que système back-end de stockage. Il fournit un stockage de niveau bloc géré par Google.
 
 https://cloud.google.com/persistent-disk/["En savoir plus sur le disque persistant Google"^].
 

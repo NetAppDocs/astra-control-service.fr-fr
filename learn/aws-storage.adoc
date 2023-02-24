@@ -18,7 +18,7 @@ Astra Control Service peut utiliser Amazon Elastic Block Store (EBS) ou Amazon F
 
 == Amazon Elastic Block Store (EBS)
 
-Lorsque vous utilisez EBS comme back-end de stockage pour les clusters EKS, vous pouvez configurer certains paramètres de classe de stockage. Pour plus d'informations sur la signification des paramètres et leur configuration, reportez-vous à la section https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs["Documentation Kubernetes"^].
+Vos clusters peuvent utiliser des pilotes Container Storage interface (CSI) pour assurer l'interface avec EBS. Lorsque vous utilisez EBS comme back-end de stockage pour les clusters EKS, vous pouvez configurer certains paramètres de classe de stockage. Pour plus d'informations sur la signification des paramètres et leur configuration, reportez-vous à la section https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs["Documentation Kubernetes"^].
 
 Vous pouvez utiliser plusieurs types de volumes avec EBS :
 
