@@ -17,7 +17,7 @@ Vous pouvez cloner une application existante pour créer une application dupliqu
 Le clonage peut être utile pour déplacer des applications et du stockage d'un cluster Kubernetes vers un autre. Par exemple, il peut être intéressant de déplacer les workloads dans un pipeline ci/CD et entre les espaces de noms Kubernetes.
 
 .Ce dont vous avez besoin
-* Pour cloner les applications sur un autre cluster, vous devez vérifier que les instances cloud contenant les clusters source et de destination (le cas échéant) disposent d'un compartiment par défaut. Vous devez attribuer un compartiment par défaut à chaque instance de cloud.
+* Pour cloner des applications sur un autre cluster, vérifiez que vous avez attribué un compartiment par défaut à l'instance cloud contenant le cluster source. Si l'instance de cloud source ne dispose pas d'un ensemble de compartiments par défaut, l'opération de clonage inter-cluster échoue.
 * Lors des opérations de clonage, les applications nécessitant une ressource IngressClass ou des crochets Web ne doivent pas avoir ces ressources déjà définies sur le cluster de destination.
 
 
