@@ -1557,7 +1557,6 @@
   <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">Communauté sur les blogs</block>
   <block id="d1b9bd0c14af2ff8d25891d12987a68b" category="sidebar">Canal de discorde Astra</block>
   <block id="36910a95584c53fdc9ed97782ef3965c" category="sidebar">Blog Astra Control</block>
-  <block id="dbfc769b7e821664736a653f70155476" category="sidebar">Astra Control – qui simplifie la gestion des données d'application pour le cloud hybride</block>
   <block id="a984dc296b5a86b8097f515731aee987" category="sidebar">Kubernetes Hub sur Cloud Central</block>
   <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">Toute la documentation Astra</block>
   <block id="e29d7c0b36af68edd13ebac84f15b44b" category="sidebar">Ou du fournisseur cloud</block>
@@ -2086,4 +2085,5 @@
   <block id="8640a7c7370301ca0c61fe2e7d0e5170" category="list-text">*Sélectionner les informations d'identification* : entrez les informations d'identification qui fournissent à Astra Control Service les autorisations dont il a besoin pour gérer le compartiment. Les informations à fournir varient en fonction du type de godet.</block>
   <block id="21f6901f1009f7b8fc1d4c9d614493d7" category="paragraph">ASTRA Control Service ajoute le compartiment. Vous pouvez désormais choisir ce compartiment lors de la création d'une règle de protection ou de l'exécution d'une sauvegarde ad hoc. Vous pouvez également définir ce compartiment comme compartiment par défaut pour une instance cloud.</block>
   <block id="68a2953dae168f957410960ed303cfe1" category="paragraph">Vous pouvez modifier le compartiment par défaut d'une instance cloud. ASTRA Control Service utilisera ce compartiment par défaut pour les sauvegardes et les clones. Chaque instance cloud dispose de son propre compartiment par défaut.</block>
+  <block id="7c68315054de23a17c2a6febe9d9d149" category="sidebar">ASTRA Control : simplifier la gestion des données d'application pour le cloud hybride</block>
 </blocks>
