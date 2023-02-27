@@ -12,19 +12,21 @@ summary: Gérez les compartiments utilisés par Astra pour les sauvegardes et le
 
 
 [role="lead"]
-Vous pouvez gérer les compartiments utilisés par Astra pour les sauvegardes et les clones en ajoutant des compartiments supplémentaires et en modifiant le compartiment par défaut pour les clusters Kubernetes dans votre instance cloud.
+Vous pouvez gérer les compartiments qu'Astra utilise pour la sauvegarde et le clonage. Vous pouvez ajouter des compartiments supplémentaires, supprimer des compartiments existants et modifier le compartiment par défaut des clusters Kubernetes dans une instance cloud.
 
-Seuls les administrateurs peuvent ajouter et modifier des compartiments.
+Seuls les propriétaires et les administrateurs peuvent gérer les compartiments.
 
 
 
 == Utilisation des seaux par Astra Control
 
-Lorsque vous commencez à gérer votre premier cluster Kubernetes, Astra Control Service crée un compartiment par défaut pour votre fournisseur de cloud, dans le même emplacement que le cluster géré.
+Lorsque vous commencez à gérer votre premier cluster Kubernetes pour une instance cloud, Astra Control Service crée le compartiment initial pour cette instance link:manage-cloud-instances.html["instance cloud"^].
 
-Astra Control Service utilise ce compartiment par défaut pour les sauvegardes et les clones que vous créez. Vous pouvez ensuite utiliser les sauvegardes pour restaurer et cloner des applications entre les clusters.
+Vous pouvez désigner manuellement un compartiment comme compartiment par défaut pour une instance cloud. Dans ce cas, Astra Control Service utilise ce compartiment par défaut pour les sauvegardes et les clones que vous créez sur n'importe quel cluster géré de cette instance cloud (vous pouvez sélectionner un compartiment différent pour les sauvegardes). Si vous effectuez un clone dynamique d'une application depuis l'un des clusters gérés d'une instance cloud vers un autre cluster, Astra Control Service utilise le compartiment par défaut de l'instance cloud source pour effectuer l'opération de clonage.
 
-Si vous ajoutez des compartiments supplémentaires au service de contrôle Astra, vous pouvez choisir parmi ces compartiments lorsque vous créez une règle de protection. Vous pouvez également modifier le compartiment par défaut qu'Astra Control Service utilise pour les sauvegardes et les clones ad hoc. Vous ne pouvez pas cloner un compartiment d'un fournisseur cloud à un autre fournisseur cloud. Pour migrer des données d'un fournisseur de cloud à un autre, clonez l'application associée à la place.
+Vous pouvez définir le même compartiment que le compartiment par défaut pour plusieurs instances cloud.
+
+Vous pouvez faire votre choix parmi les compartiments lorsque vous créez une stratégie de protection ou que vous démarrez une sauvegarde ad hoc.
 
 
 TIP: Le service de contrôle Astra vérifie si un compartiment de destination est accessible avant de démarrer une sauvegarde ou un clone.
@@ -33,11 +35,11 @@ TIP: Le service de contrôle Astra vérifie si un compartiment de destination es
 
 == Afficher les compartiments existants
 
-Consultez la liste des compartiments accessibles par le service de contrôle Astra afin de déterminer leur état et d'identifier le compartiment par défaut pour votre fournisseur de cloud.
+Affichez la liste des compartiments disponibles pour Astra Control Service pour déterminer leur état et identifier le compartiment par défaut (si défini) de votre instance cloud.
 
 Un godet peut avoir l'un des États suivants :
 
-En attente:: Après avoir ajouté un compartiment, il commence à l'état en attente, tandis qu'Astra Control le regarde pour la première fois.
+En attente:: Une fois que vous avez ajouté un compartiment, celui-ci commence à l'état en attente tandis qu'Astra Control le découvre.
 Disponibilité:: Le godet peut être utilisé par Astra Control.
 Supprimé:: Le godet n'est pas opérationnel actuellement. Passez votre souris sur l'icône d'état pour identifier le problème.
 +
@@ -50,7 +52,7 @@ Si un compartiment est retiré, vous pouvez toujours le définir comme compartim
 .Étape
 . Aller à *seaux*.
 +
-La liste des godets disponibles pour le service Astra Control s'affiche.
+La liste des compartiments disponibles pour Astra Control Service s'affiche.
 
 
 
@@ -58,15 +60,26 @@ La liste des godets disponibles pour le service Astra Control s'affiche.
 
 == Ajouter un godet supplémentaire
 
-Une fois que vous avez commencé à gérer un cluster dans votre fournisseur cloud, vous pouvez ajouter des compartiments à tout moment. Vous pouvez ainsi choisir entre plusieurs compartiments lors de la création d'une règle de protection et modifier le compartiment par défaut pour les sauvegardes et les clones ad hoc.
+Vous pouvez ajouter des compartiments supplémentaires à tout moment. Vous avez ainsi le choix entre compartiments lors de la création d'une règle de protection ou du démarrage d'une sauvegarde ad hoc. Vous pouvez également modifier le compartiment par défaut utilisé par une instance cloud.
+
+Vous pouvez ajouter les types de compartiments suivants :
+
+* Amazon Web Services
+* S3 générique
+* Google Cloud Platform
+* Microsoft Azure
+* NetApp ONTAP S3
+* NetApp StorageGRID S3
+
 
 .Ce dont vous avez besoin
-* Nom d'une compartiment existant dans votre fournisseur cloud.
+* Nom d'un compartiment existant.
+* Identifiants du compartiment qui fournit à Astra Control Service les autorisations dont le service IT a besoin pour gérer le compartiment.
 
 
 ifdef::azure[]
 
-* Si le compartiment est en mode Azure :
+* Si votre compartiment est dans Microsoft Azure :
 +
 ** Le compartiment doit appartenir au groupe de ressources nommé _astra-backup-rg_.
 ** Si le paramètre de performance de l'instance de compte de stockage Azure est défini sur « Premium », le paramètre « Type de compte Premium » doit être défini sur « blobs de bloc ».
@@ -81,9 +94,6 @@ endif::azure[]
 . Sélectionnez *Ajouter* et suivez les invites pour ajouter le compartiment.
 +
 ** *Type* : Choisissez votre fournisseur cloud.
-+
-Votre fournisseur de cloud n'est disponible qu'une fois qu'Astra Control Service a commencé à gérer un cluster qui s'exécute chez ce fournisseur cloud.
-
 ** *Nom de compartiment existant* : saisissez le nom du compartiment.
 ** *Description* : saisissez éventuellement une description du godet.
 
@@ -99,12 +109,12 @@ endif::azure[]
 
 ifdef::aws[]
 
-* *Nom du serveur S3 ou adresse IP* (AWS uniquement) : saisissez le nom de domaine complet du noeud final S3 qui correspond à votre région, sans `https://`. Reportez-vous à la section https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
+* *Nom du serveur S3 ou adresse IP* (types de compartiment AWS et S3 uniquement) : entrez le nom de domaine complet du terminal S3 correspondant à votre région, sans `https://`. Reportez-vous à la section https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
 
 
 endif::aws[]
 
-* *Sélectionner les informations d'identification* : Choisissez les informations d'identification qui fournissent au service de contrôle Astra les autorisations dont il a besoin pour gérer le compartiment.
+* *Sélectionner les informations d'identification* : entrez les informations d'identification qui fournissent à Astra Control Service les autorisations dont il a besoin pour gérer le compartiment. Les informations à fournir varient en fonction du type de godet.
 +
 .. Sélectionnez *Ajouter* pour ajouter le compartiment.
 
@@ -112,15 +122,13 @@ endif::aws[]
 
 
 .Résultat
-Astra Control Service ajoute le godet supplémentaire. Vous pouvez désormais choisir le compartiment lors de la création d'une règle de protection.
+ASTRA Control Service ajoute le compartiment. Vous pouvez désormais choisir ce compartiment lors de la création d'une règle de protection ou de l'exécution d'une sauvegarde ad hoc. Vous pouvez également définir ce compartiment comme compartiment par défaut pour une instance cloud.
 
 
 
 == Modifier le compartiment par défaut
 
-Modifiez le compartiment par défaut qu'Astra Control Service doit utiliser pour les sauvegardes et les clones. Chaque instance cloud dispose de son propre compartiment par défaut.
-
-Astra Control Service utilise le compartiment par défaut pour une instance de cloud pour les sauvegardes ad hoc et pour les clones ad hoc lorsque vous n'avez pas le choix entre le clonage à partir d'une sauvegarde existante.
+Vous pouvez modifier le compartiment par défaut d'une instance cloud. ASTRA Control Service utilisera ce compartiment par défaut pour les sauvegardes et les clones. Chaque instance cloud dispose de son propre compartiment par défaut.
 
 
 NOTE: Astra Control n'attribue pas automatiquement de compartiment par défaut à une instance de cloud. Vous devez définir manuellement un compartiment par défaut pour une instance de cloud avant d'effectuer des opérations de clonage d'applications entre deux clusters.
