@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: learn/data-protection.html 
+keywords: backup, back up, backup apps, back up apps, snapshots, snapshot an app, take a snapshot, take a backup, view backups, view snapshots, set policy, set schedule, schedule backups, schedule snapshots, protect data 
+summary: Découvrez les types de protection des données disponibles dans Astra Control Service et la meilleure façon de les utiliser pour protéger vos applications. 
+---
+= Protection des données
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/learn/
+
+
+[role="lead"]
+Découvrez les types de protection des données disponibles dans Astra Control Service et la meilleure façon de les utiliser pour protéger vos applications.
+
+
+
+== Snapshots, sauvegardes et règles de protection
+
+Les snapshots et les sauvegardes protègent les types de données suivants :
+
+* L'application elle-même
+* Tout volume de données persistant associé à l'application
+* Tous les artefacts de ressource appartenant à l'application
+
+
+Un _snapshot_ est une copie ponctuelle d'une application stockée sur le même volume provisionné que l'application. Ils sont généralement rapides. Vous pouvez utiliser les snapshots locaux pour restaurer l'application à un point antérieur dans le temps. Les copies Snapshot sont utiles pour les clones rapides. Les snapshots incluent tous les objets Kubernetes de l'application, y compris les fichiers de configuration. Les snapshots sont utiles pour le clonage ou la restauration d'une application au sein du même cluster.
+
+Une _sauvegarde_ est basée sur un snapshot. Il est stocké dans le magasin d'objets externe et, par conséquent, peut être plus lent à prendre par rapport aux snapshots locaux. Vous pouvez restaurer une sauvegarde d'application sur le même cluster ou migrer une application en restaurant sa sauvegarde sur un autre cluster. Vous pouvez également choisir une période de conservation plus longue pour les sauvegardes. Les sauvegardes étant stockées dans un référentiel de stockage objet externe, il est généralement plus efficace que les copies Snapshot en cas de panne serveur ou de perte de données.
+
+Une _stratégie de protection_ est un moyen de protéger une application en créant automatiquement des snapshots, des sauvegardes ou les deux en fonction d'un planning que vous définissez pour cette application. Une règle de protection vous permet également de choisir le nombre de snapshots et de sauvegardes à conserver dans la planification, et de définir différents niveaux de granularité de planification. L'automatisation de vos sauvegardes et de vos snapshots à l'aide d'une règle de protection est la meilleure façon de garantir que chaque application est protégée en fonction des besoins de votre organisation et des exigences de votre contrat de niveau de service.
+
+
+CAUTION: _Vous ne pouvez pas être entièrement protégé tant que vous n'avez pas une sauvegarde récente_. Ceci est important, car les sauvegardes sont stockées dans un magasin d'objets à distance des volumes persistants. En cas de défaillance ou d'accident, le cluster et le stockage persistant qui lui est associé doivent être sauvegardées pour être restaurées. Un snapshot ne vous permettrait pas de restaurer.
+
+
+NOTE: Si vous effectuez un snapshot ou une sauvegarde, mais que l'opération échoue avec l'erreur « la ressource n'a pas été créée à cause d'un problème interne de serveur », vérifiez que les pilotes corrects sont installés sur le système de stockage principal que vous utilisez. Certains systèmes back-end nécessitent des pilotes CSI (Container Storage interface), tandis que d'autres nécessitent un contrôleur Snapshot externe.
+
+
+
+== Clones
+
+Un _clone_ est un doublon exact d'une application, de sa configuration et de ses volumes de données persistants. Vous pouvez créer manuellement un clone sur le même cluster Kubernetes ou sur un autre cluster. Le clonage d'une application peut être utile pour déplacer des applications et du stockage d'un cluster Kubernetes vers un autre.

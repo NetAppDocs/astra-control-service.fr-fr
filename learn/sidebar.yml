@@ -4,6 +4,8 @@ title: Concepts
 entries:
 - title: Architecture et composants
   url: "/learn/architecture.html"
+- title: Protection des données
+  url: "/learn/data-protection.html"
 - title: Stockage pour clusters AWS
   flavor: aws
   url: "/learn/aws-storage.html"

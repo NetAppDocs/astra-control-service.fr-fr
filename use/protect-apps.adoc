@@ -14,19 +14,7 @@ summary: 'Protégez vos applications en effectuant des copies Snapshot et des sa
 [role="lead"]
 Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour protéger les applications.
 
-
-
-== Snapshots et sauvegardes
-
-Un _snapshot_ est une copie ponctuelle d'une application stockée sur le même volume provisionné que l'application. Ils sont généralement rapides. Les snapshots locaux sont utilisés pour restaurer l'application à un point antérieur dans le temps.
-
-Une _sauvegarde_ est stockée dans le cloud sur un stockage objet. Les sauvegardes peuvent être plus lentes que les snapshots locaux. Mais ils sont accessibles dans plusieurs régions du cloud pour faciliter les migrations d'applications. Vous pouvez également choisir une période de conservation plus longue pour les sauvegardes.
-
-
-CAUTION: _Vous ne pouvez pas être entièrement protégé tant que vous n'avez pas une sauvegarde récente_. Ceci est important, car les sauvegardes sont stockées dans un magasin d'objets à distance des volumes persistants. En cas de défaillance ou d'accident, le cluster et son stockage persistant doivent être sauvegardées pour être restaurées. Un snapshot ne vous permettrait pas de restaurer votre système.
-
-
-NOTE: Si vous effectuez un snapshot ou une sauvegarde, mais que l'opération échoue avec l'erreur « la ressource n'a pas été créée à cause d'un problème interne de serveur », vérifiez que les pilotes corrects sont installés sur le système de stockage principal que vous utilisez. Certains systèmes back-end nécessitent des pilotes CSI (Container Storage interface), tandis que d'autres nécessitent un contrôleur Snapshot externe.
+En savoir plus sur link:../learn/data-protection.html["Protection des données dans Astra Control"^].
 
 Vous pouvez effectuer les tâches suivantes liées à la protection de vos données applicatives :
 
