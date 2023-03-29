@@ -39,7 +39,7 @@ indexpage:
   - title: Centre de contrôle Astra
     links:
     - title: Présentation du centre de contrôle Astra
-      url: https://docs.netapp.com/us-en/astra-control-center/concepts/intro.html
+      url: https://docs.netapp.com/us-en/astra-control-center/get-started/intro.html
     - title: Quoi de neuf
       url: https://docs.netapp.com/us-en/astra-control-center/release-notes/whats-new.html
     - title: Démarrage rapide
