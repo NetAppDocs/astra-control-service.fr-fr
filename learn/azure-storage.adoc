@@ -51,6 +51,14 @@ Le service de contrôle Astra provisionne des volumes persistants selon une tail
 
 
 
+=== Sauvegardes d'applications
+
+Si vous sauvegardez une application qui réside sur le stockage Azure NetApp Files, Astra Control Service étend automatiquement temporairement le pool de capacité. Une fois la sauvegarde terminée, Astra Control Service réduit le pool de capacité à sa taille précédente. En fonction de votre abonnement Azure, des frais de stockage peuvent être facturés dans ce cas. Vous pouvez voir un historique des événements de redimensionnement du pool de capacité dans le journal des événements de la page *Activity*.
+
+Si le pool de capacité dépasse la taille maximale autorisée par l'abonnement Azure lors de l'opération de redimensionnement, l'opération de sauvegarde échoue et un avertissement est déclenché à partir de l'API Azure.
+
+
+
 == Disques gérés Azure
 
 ASTRA Control Service peut utiliser des pilotes Container Storage interface (CSI) pour l'interface avec les disques gérés Azure en tant que système back-end de stockage. Il fournit un stockage de niveau bloc géré par Azure.

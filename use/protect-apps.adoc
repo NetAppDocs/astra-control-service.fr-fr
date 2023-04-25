@@ -31,7 +31,9 @@ Vous pouvez effectuer les tâches suivantes liées à la protection de vos donn�
 
 == Configurer une règle de protection
 
-Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver. Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
+Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver.
+
+Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application gérée.
@@ -78,6 +80,15 @@ Le processus d'instantané commence. Un instantané a réussi lorsque l'état es
 == Créer une sauvegarde
 
 Vous pouvez également sauvegarder une application à tout moment.
+
+ifdef::azure[]
+
+[NOTE]
+====
+Soyez conscient du traitement de l'espace de stockage lors de la sauvegarde d'une application hébergée sur un système de stockage Azure NetApp Files. Reportez-vous à la section link:../learn/azure-storage.html#application-backups["Sauvegardes d'applications"] pour en savoir plus.
+
+====
+endif::azure[]
 
 .Étapes
 . Sélectionnez *applications*.

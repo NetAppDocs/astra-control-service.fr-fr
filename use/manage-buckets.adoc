@@ -72,7 +72,7 @@ Vous pouvez ajouter les types de compartiments suivants :
 * NetApp StorageGRID S3
 
 
-.Ce dont vous avez besoin
+.Avant de commencer
 * Nom d'un compartiment existant.
 * Identifiants du compartiment qui fournit à Astra Control Service les autorisations dont le service IT a besoin pour gérer le compartiment.
 
@@ -149,7 +149,7 @@ Il est possible de retirer un godet qui n'est plus utilisé ou qui n'est pas en 
 
 Vous ne pouvez pas supprimer un compartiment par défaut. Si vous souhaitez retirer ce compartiment, sélectionnez tout d'abord un autre compartiment comme valeur par défaut.
 
-.Ce dont vous avez besoin
+.Avant de commencer
 * Avant de commencer, assurez-vous qu'aucune sauvegarde n'est en cours d'exécution ou terminée pour ce compartiment.
 * Vérifiez que le compartiment n'est pas utilisé pour les sauvegardes planifiées.
 

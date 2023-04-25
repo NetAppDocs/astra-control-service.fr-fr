@@ -67,7 +67,7 @@ Lorsque vous dégérez un cluster :
 
 
 .Résultat
-L'état du cluster devient *Suppression*. Ensuite, le cluster sera supprimé de la page *clusters* et il n'est plus géré par Astra Control Center.
+L'état du cluster devient *Suppression*. Ensuite, le cluster sera supprimé de la page *clusters* et il n'est plus géré par Astra Control.
 
 
 

@@ -32,6 +32,12 @@ Lorsque vous dégérez un cluster depuis Astra Control Service, Astra Trident n'
 
 Lorsque vous exécutez des opérations sur les modules Postgres, vous ne devez pas vous connecter directement dans le pod pour utiliser la commande psql. Astra Control Service requiert un accès psql pour geler et dégeler les bases de données. S'il existe une connexion existante, le snapshot, la sauvegarde ou le clone échoueront.
 
+
+
+=== La page activité affiche jusqu'à 100,000 événements
+
+La page activité Astra Control peut afficher jusqu'à 100,000 événements. Pour afficher tous les événements consignés, récupérez-les à l'aide du link:../rest-api/api-intro.html["API REST Astra Control"^].
+
 ifdef::gcp[]
 
 
@@ -44,7 +50,7 @@ Les limites suivantes s'appliquent à la gestion des clusters Kubernetes dans Go
 
 === Les applications Google Marketplace n'ont pas été validées
 
-NetApp n'a pas validé les applications déployées depuis Google Marketplace. Certains utilisateurs signalent des problèmes de découverte ou de sauvegarde des applications Postgres, MariaDB et MySQL déployées à partir de Google Marketplace.
+NetApp n'a pas validé les applications déployées depuis Google Marketplace. Certains utilisateurs ont signalé des problèmes de découverte ou de sauvegarde des applications Postgres, MariaDB et MySQL déployées à partir de Google Marketplace.
 
 Quel que soit le type d'application que vous utilisez avec Astra Control Service, vous devez toujours tester vous-même le flux de travail de sauvegarde et de restauration afin de vous assurer que vous respectez vos exigences de reprise après incident.
 

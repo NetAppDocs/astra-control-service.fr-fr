@@ -60,7 +60,7 @@ Oui, vous serez facturé pour les volumes persistants utilisés par les clusters
 
 *Dois-je installer des pilotes CSI sur mon cluster avant de l'ajouter à Astra Control Service?*
 
-Non Lorsque votre cluster est ajouté à Astra Control, le service installe automatiquement le pilote NetApp Trident Container Storage interface (CSI) sur le cluster Kubernetes. Ce pilote CSI est utilisé pour provisionner des volumes persistants pour les clusters sauvegardés par votre fournisseur cloud.
+Non Une fois votre cluster ajouté à Astra Control, le service installe automatiquement le pilote Trident Container Storage interface (CSI) de NetApp sur le cluster Kubernetes. Ce pilote CSI est utilisé pour provisionner des volumes persistants pour les clusters sauvegardés par votre fournisseur cloud.
 
 *J'ai besoin d'ajouter des nœuds de travail à mon cluster après avoir ajouté à Astra Control Service. Que dois-je faire?*
 

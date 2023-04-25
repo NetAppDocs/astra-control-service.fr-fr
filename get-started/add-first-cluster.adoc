@@ -406,6 +406,11 @@ NOTE: Si vous sélectionnez un cluster marqué d'une icône « privé », il uti
 endif::azure[]
 
 . *Credential name* (pour les clusters autogérés) : indiquez un nom pour les informations d'identification du cluster autogérées que vous téléchargez sur Astra Control. Par défaut, le nom des identifiants est automatiquement renseigné comme nom du cluster.
+. (Facultatif) *ID de route privée* : saisissez l'identifiant de route privée que vous pouvez obtenir à partir du connecteur Astra.
++
+
+NOTE: L'ID de route privée est le nom associé à Astra Connector qui permet de gérer un cluster Kubernetes privé par Astra. Dans ce contexte, un cluster privé est un cluster Kubernetes qui n'expose pas son serveur d'API à Internet.
+
 . (Facultatif) *stockage* : sélectionnez la classe de stockage que vous souhaitez déployer par défaut pour les applications Kubernetes sur ce cluster.
 +
 [NOTE]

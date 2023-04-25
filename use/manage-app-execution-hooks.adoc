@@ -46,6 +46,11 @@ Pour plus d'informations sur la syntaxe prise en charge par Astra Control pour l
 
 Lors de la planification de crochets d'exécution pour vos applications, tenez compte des points suivants.
 
+[NOTE]
+====
+Puisque les crochets d'exécution réduisent souvent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils sont en cours d'exécution, vous devez toujours essayer de réduire le temps d'exécution de vos crochets d'exécution personnalisés. Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochets d'exécution associés, mais que vous l'annulez, les crochets sont toujours autorisés à s'exécuter si l'opération de sauvegarde ou d'instantané a déjà commencé. Cela signifie que la logique utilisée dans un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde a été effectuée.
+
+====
 * Un crochet d'exécution doit utiliser un script pour effectuer des actions. De nombreux crochets d'exécution peuvent référencer le même script.
 * Astra Control exige que les scripts utilisés par les crochets d'exécution soient écrits au format de scripts shell exécutables.
 * La taille du script est limitée à 96 Ko.
@@ -57,11 +62,6 @@ Lors de la planification de crochets d'exécution pour vos applications, tenez c
 * Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui s'exécute après une opération de restauration ou de clonage et que la source et la destination de restauration ou de clonage sont dans des espaces de noms différents, le filtre d'espace de noms est appliqué uniquement à l'espace de noms de destination.
 
 
-[NOTE]
-====
-Puisque les crochets d'exécution réduisent souvent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils sont en cours d'exécution, vous devez toujours essayer de réduire le temps d'exécution de vos crochets d'exécution personnalisés. Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochets d'exécution associés, mais que vous l'annulez, les crochets sont toujours autorisés à s'exécuter si l'opération de sauvegarde ou d'instantané a déjà commencé. Cela signifie que la logique utilisée dans un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde a été effectuée.
-
-====
 
 
 === Ordre d'exécution
@@ -123,7 +123,7 @@ Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané 
 | 4 | Cloner ou restaurer | N | Y | Nouveau | Identique | N | N | Y 
 
 
-| 5 | Cloner ou restaurer | Y | N | Nouveau | Différente | N | Y | Y 
+| 5 | Cloner ou restaurer | Y | N | Nouveau | Différente | N | N | Y 
 
 
 | 6 | Cloner ou restaurer | N | Y | Nouveau | Différente | N | N | Y 
@@ -141,7 +141,7 @@ Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané 
 | 10 | Sauvegarde | N | S/O | S/O | S/O | Y | Y | S/O 
 
 
-| 11 | Sauvegarde | Y | S/O | S/O | S/O | N | Y | S/O 
+| 11 | Sauvegarde | Y | S/O | S/O | S/O | N | N | S/O 
 |===
 
 

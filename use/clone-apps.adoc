@@ -19,7 +19,7 @@ Le clonage peut être utile pour déplacer des applications et du stockage d'un 
 
 NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui s'exécute après une opération de restauration ou de clonage et que la source et la destination de restauration ou de clonage sont dans des espaces de noms différents, le filtre d'espace de noms est appliqué uniquement à l'espace de noms de destination.
 
-.Ce dont vous avez besoin
+.Avant de commencer
 * Pour cloner des applications sur un autre cluster, vérifiez que vous avez attribué un compartiment par défaut à l'instance cloud contenant le cluster source. Si l'instance de cloud source ne dispose pas d'un ensemble de compartiments par défaut, l'opération de clonage inter-cluster échoue.
 * Lors des opérations de clonage, les applications nécessitant une ressource IngressClass ou des crochets Web ne doivent pas avoir ces ressources déjà définies sur le cluster de destination.
 
@@ -60,6 +60,12 @@ NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cad
 +
 *** Si vous avez choisi de cloner à partir d'un snapshot ou d'une sauvegarde existant, choisissez le snapshot ou la sauvegarde que vous souhaitez utiliser.
 
+
+** Sélectionnez *Suivant*.
+** Choisissez de conserver la classe de stockage d'origine associée à l'application ou de sélectionner une autre classe de stockage.
++
+
+NOTE: Si vous sélectionnez une classe de stockage différente et que cette classe de stockage n'existe pas au moment de la restauration, une erreur est renvoyée.
 
 
 

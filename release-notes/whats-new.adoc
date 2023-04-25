@@ -16,6 +16,29 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 
 
 
+== 25 avril 2023
+
+.Nouvelles fonctionnalités et prises en charge
+ifdef::azure[]
+
+endif::azure[]
+
+* Prise en charge des clusters Red Hat OpenShift privés
++
+link:../get-started/manage-private-cluster.html["Gérer des clusters privés à partir d'Astra Control Service"]
+
+* Prise en charge de l'inclusion ou de l'exclusion des ressources applicatives pendant les opérations de restauration
++
+link:../use/restore-apps.html#filter-resources-during-an-application-restore["Restaurez les applications"]
+
+* Prise en charge de la gestion des applications données uniquement
++
+link:../use/manage-apps.html["Commencez à gérer les applications"]
+
+
+
+
+
 == 17 janvier 2023
 
 .Nouvelles fonctionnalités et prises en charge

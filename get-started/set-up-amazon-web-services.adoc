@@ -77,7 +77,7 @@ Enregistrez les informations d'identification de l'utilisateur IAM pour pouvoir 
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service.
 
-Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.22 et 1.24.
+Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.23 et 1.25.
 Type d'image:: Le type d'image pour chaque nœud de travail doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 
