@@ -12,7 +12,7 @@ summary: 'Astra Control Service peut utiliser Amazon Elastic Block Store (EBS) o
 
 
 [role="lead"]
-Astra Control Service peut utiliser Amazon Elastic Block Store (EBS) ou Amazon FSX pour NetApp ONTAP en tant que système back-end de stockage pour les clusters Amazon Elastic Kubernetes Service (EKS).
+ASTRA Control Service peut utiliser Amazon Elastic Block Store (EBS), Amazon FSX pour NetApp ONTAP ou NetApp Cloud Volumes ONTAP en tant que système back-end de stockage pour les clusters Amazon Elastic Kubernetes Service (EKS).
 
 
 
@@ -34,3 +34,9 @@ Pour plus d'informations sur chaque type de volume et leurs performances, report
 == Amazon FSX pour NetApp ONTAP
 
 Lorsque vous utilisez FSX pour NetApp ONTAP en tant que backend de stockage pour les clusters AWS, les performances d'E/S dépendent de la configuration du système de fichiers et des caractéristiques de vos charges de travail. Pour plus d'informations sur FSX pour les performances ONTAP NetApp, reportez-vous à https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/performance.html["Performances d'Amazon FSX pour NetApp ONTAP"^]. Pour plus d'informations sur les prix, reportez-vous à la section https://aws.amazon.com/fsx/netapp-ontap/pricing/["Amazon FSX pour la tarification NetApp ONTAP"^].
+
+
+
+== NetApp Cloud Volumes ONTAP
+
+Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-performance.html["Documentation NetApp Cloud Volumes ONTAP"^].

@@ -12,7 +12,7 @@ summary: 'Astra Control Service utilise Cloud Volumes Service pour Google Cloud 
 
 
 [role="lead"]
-Astra Control Service prend en charge Cloud Volumes Service pour Google Cloud, Google persistent Disk ou NetApp Cloud Volumes ONTAP comme options de stockage back-end pour les volumes persistants.
+ASTRA Control Service prend en charge Cloud Volumes Service pour Google Cloud, le service de disque persistant Google ou NetApp Cloud Volumes ONTAP en tant qu'options back-end de stockage pour les volumes persistants.
 
 
 
@@ -123,4 +123,4 @@ https://cloud.google.com/compute/docs/disks/performance["En savoir plus sur les 
 
 == NetApp Cloud Volumes ONTAP
 
-Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Documentation NetApp Cloud Volumes ONTAP"^].
+Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-performance.html["Documentation NetApp Cloud Volumes ONTAP"^].
