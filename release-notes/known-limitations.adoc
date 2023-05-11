@@ -123,18 +123,3 @@ Un utilisateur doté de contraintes RBAC d'espace de noms ne doit pas être auto
 === Un utilisateur membre avec des contraintes d'espace de noms ne peut pas accéder aux applications clonées ou restaurées tant qu'un utilisateur administrateur n'ajoute pas l'espace de noms à la contrainte
 
 Toutes `member` Les utilisateurs ayant des contraintes RBAC en fonction du nom/ID de l'espace de noms peuvent cloner ou restaurer une application vers un nouvel espace de noms sur le même cluster ou vers tout autre cluster du compte de leur entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, le compte admin/propriétaire peut modifier le `member` contraintes de compte d'utilisateur et de rôle de mise à jour pour l'utilisateur affecté pour accorder l'accès au nouvel espace de noms.
-
-
-
-=== Les snapshots peuvent échouer pour Amazon EKS 1.25 ou des clusters ultérieurs
-
-Les snapshots dans les clusters Amazon EKS de la version 1.25 ou ultérieure peuvent échouer car un contrôleur de snapshot incorrect est utilisé.
-
-Pour contourner ce problème, procédez comme suit lors de la mise à niveau d'installations EKS 1.25 ou ultérieures existantes :
-
-. Supprimez tous les CRD de snapshot existants et tout contrôleur de snapshot existant.
-. https://["Désinstaller Astra Trident"^].
-. https://["Installez les CRD de snapshot et le contrôleur de snapshot"^].
-. https://["Installez la dernière version d'Astra Trident"^].
-. https://["Créez une VolumeSnapshotClass"^].
-
