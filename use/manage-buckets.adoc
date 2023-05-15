@@ -109,7 +109,7 @@ endif::azure[]
 
 ifdef::aws[]
 
-* *Nom du serveur S3 ou adresse IP* (types de compartiment AWS et S3 uniquement) : entrez le nom de domaine complet du terminal S3 correspondant à votre région, sans `https://`. Reportez-vous à la section https://docs.aws.amazon.com/general/latest/gr/s3.html["La documentation Amazon"^] pour en savoir plus.
+* *Nom du serveur S3 ou adresse IP* (types de compartiment AWS et S3 uniquement) : entrez le nom de domaine complet du terminal S3 correspondant à votre région, sans `https://`. Reportez-vous à la section https://["La documentation Amazon"^] pour en savoir plus.
 
 
 endif::aws[]
@@ -171,5 +171,5 @@ NOTE: Astra Control veille à l'absence de règles de planification qui utilise 
 
 == Trouvez plus d'informations
 
-* https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^]
+* https://["Utilisez l'API de contrôle Astra"^]
 

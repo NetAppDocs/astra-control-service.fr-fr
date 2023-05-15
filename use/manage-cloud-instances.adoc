@@ -45,10 +45,10 @@ NOTE: Chaque instance de cloud d'Astra Control doit avoir un nom unique.
 
 == Faites pivoter les informations d'identification d'une instance de Cloud
 
-Vous pouvez utiliser l'API Astra Control pour faire pivoter les informations d'identification pour une instance de Cloud. Pour en savoir plus, https://docs.netapp.com/us-en/astra-automation["Accédez à la documentation sur l'automatisation d'Astra"^].
+Vous pouvez utiliser l'API Astra Control pour faire pivoter les informations d'identification pour une instance de Cloud. Pour en savoir plus, https://["Accédez à la documentation sur l'automatisation d'Astra"^].
 
 
 
 == Supprimez une instance de Cloud
 
-Vous pouvez utiliser l'API Astra Control pour supprimer une instance cloud d'un fournisseur cloud. Pour en savoir plus, https://docs.netapp.com/us-en/astra-automation["Accédez à la documentation sur l'automatisation d'Astra"^].
+Vous pouvez utiliser l'API Astra Control pour supprimer une instance cloud d'un fournisseur cloud. Pour en savoir plus, https://["Accédez à la documentation sur l'automatisation d'Astra"^].

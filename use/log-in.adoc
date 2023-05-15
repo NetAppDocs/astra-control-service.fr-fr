@@ -14,10 +14,10 @@ summary: 'Le service Astra Control est accessible par le biais d"une interface u
 
 
 [role="lead"]
-Le service Astra Control est accessible par le biais d'une interface utilisateur SaaS https://astra.netapp.io[].
+Le service Astra Control est accessible par le biais d'une interface utilisateur SaaS https://[].
 
 
-TIP: Vous pouvez utiliser l'authentification unique pour vous connecter à l'aide des informations d'identification de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://cloud.netapp.com/help-center["Centre d'aide de Cloud Central"^] Puis sélectionnez *Options de connexion à Cloud Central*.
+TIP: Vous pouvez utiliser l'authentification unique pour vous connecter à l'aide des informations d'identification de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://["Centre d'aide de Cloud Central"^] Puis sélectionnez *Options de connexion à Cloud Central*.
 
 .Avant de commencer
 * link:../get-started/register.html["ID d'utilisateur Cloud Central"].
@@ -29,6 +29,6 @@ Astra Control Service prend en charge les versions récentes de Firefox, Safari 
 
 
 .Étapes
-. Ouvrez un navigateur Web et accédez à https://astra.netapp.io[].
+. Ouvrez un navigateur Web et accédez à https://[].
 . Connectez-vous à l'aide de vos identifiants NetApp Cloud Central.
 

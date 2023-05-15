@@ -14,4 +14,4 @@ summary: 'Astra Control est doté d"une API REST qui vous permet d"accéder dire
 [role="lead"]
 Astra Control est doté d'une API REST qui vous permet d'accéder directement à la fonctionnalité Astra Control à l'aide d'un langage de programmation ou d'un utilitaire tel que Curl. Vous pouvez également gérer les déploiements d'Astra Control avec Ansible et d'autres technologies d'automatisation.
 
-Pour en savoir plus, https://docs.netapp.com/us-en/astra-automation["Accédez à la documentation sur l'automatisation d'Astra"^].
+Pour en savoir plus, https://["Accédez à la documentation sur l'automatisation d'Astra"^].

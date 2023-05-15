@@ -24,7 +24,7 @@ Voici quelques restrictions qui affectent la gestion des clusters Kubernetes par
 
 === Astra Trident n'est pas désinstallé d'un cluster
 
-Lorsque vous dégérez un cluster depuis Astra Control Service, Astra Trident n'est pas automatiquement désinstallé du cluster. Pour désinstaller Astra Trident, vous devez https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Suivez ces étapes dans la documentation d'Astra Trident"^].
+Lorsque vous dégérez un cluster depuis Astra Control Service, Astra Trident n'est pas automatiquement désinstallé du cluster. Pour désinstaller Astra Trident, vous devez https://["Suivez ces étapes dans la documentation d'Astra Trident"^].
 
 
 
@@ -92,13 +92,13 @@ Après le déploiement d'une application avec une classe de stockage définie ex
 
 Astra Control prend en charge les applications installées avec des opérateurs à espace de noms. Ces opérateurs sont généralement conçus avec une architecture « pass-by-value » plutôt qu'une architecture « pass-by-Reference ». Voici quelques applications opérateur qui suivent ces modèles :
 
-* https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
+* https://["Apache K8ssandra"^]
 +
 
 NOTE: Pour K8ssandra, les opérations de restauration sur place sont prises en charge. Pour effectuer une opération de restauration vers un nouvel espace de noms ou un cluster, l'instance d'origine de l'application doit être arrêté. Cela permet de s'assurer que les informations du groupe de pairs transmises ne conduisent pas à une communication entre les instances. Le clonage de l'application n'est pas pris en charge.
 
-* https://github.com/jenkinsci/kubernetes-operator["IC Jenkins"^]
-* https://github.com/percona/percona-xtradb-cluster-operator["Cluster Percona XtraDB"^]
+* https://["IC Jenkins"^]
+* https://["Cluster Percona XtraDB"^]
 
 
 Notez qu'Astra Control peut ne pas être en mesure de cloner un opérateur conçu avec une architecture « pass-by-Reference » (par exemple, l'opérateur CockroachDB). Lors de ces types d'opérations de clonage, l'opérateur cloné tente de référencer les secrets de Kubernetes de l'opérateur source malgré avoir son propre nouveau secret dans le cadre du processus de clonage. Il est possible que le clonage échoue, car Astra Control ne connaît pas les secrets de Kubernetes qui sont présents dans l'opérateur source.
@@ -123,3 +123,18 @@ Un utilisateur doté de contraintes RBAC d'espace de noms ne doit pas être auto
 === Un utilisateur membre avec des contraintes d'espace de noms ne peut pas accéder aux applications clonées ou restaurées tant qu'un utilisateur administrateur n'ajoute pas l'espace de noms à la contrainte
 
 Toutes `member` Les utilisateurs ayant des contraintes RBAC en fonction du nom/ID de l'espace de noms peuvent cloner ou restaurer une application vers un nouvel espace de noms sur le même cluster ou vers tout autre cluster du compte de leur entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, le compte admin/propriétaire peut modifier le `member` contraintes de compte d'utilisateur et de rôle de mise à jour pour l'utilisateur affecté pour accorder l'accès au nouvel espace de noms.
+
+
+
+=== Les snapshots peuvent échouer pour Amazon EKS 1.25 ou des clusters ultérieurs
+
+Les snapshots dans les clusters Amazon EKS de la version 1.25 ou ultérieure peuvent échouer car un contrôleur de snapshot incorrect est utilisé.
+
+Pour contourner ce problème, procédez comme suit lors de la mise à niveau d'installations EKS 1.25 ou ultérieures existantes :
+
+. Supprimez tous les CRD de snapshot existants et tout contrôleur de snapshot existant.
+. https://["Désinstaller Astra Trident"^].
+. https://["Installez les CRD de snapshot et le contrôleur de snapshot"^].
+. https://["Installez la dernière version d'Astra Trident"^].
+. https://["Créez une VolumeSnapshotClass"^].
+

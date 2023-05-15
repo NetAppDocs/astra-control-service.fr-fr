@@ -12,7 +12,7 @@ summary: 'Astra Control permet de restaurer la configuration de vos applications
 
 
 [role="lead"]
-Astra Control peut restaurer votre application à partir d'un snapshot ou d'une sauvegarde. La restauration d'un snapshot existant est plus rapide lors de la restauration d'une application sur le même cluster. Vous pouvez utiliser l'interface utilisateur de contrôle Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour restaurer des applications.
+Astra Control peut restaurer votre application à partir d'un snapshot ou d'une sauvegarde. La restauration d'un snapshot existant est plus rapide lors de la restauration d'une application sur le même cluster. Vous pouvez utiliser l'interface utilisateur de contrôle Astra ou https://["API de contrôle Astra"^] pour restaurer des applications.
 
 
 NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui s'exécute après une opération de restauration ou de clonage et que la source et la destination de restauration ou de clonage sont dans des espaces de noms différents, le filtre d'espace de noms est appliqué uniquement à l'espace de noms de destination.
@@ -123,7 +123,7 @@ NOTE: Vous devez spécifier au moins un espace de noms, un libellé ou un GVK. A
 NOTE: Si votre application contenait initialement plusieurs espaces de noms et que vous les restaurez à de nouveaux espaces de noms, tous les espaces de noms seront créés même s'ils ne contiennent pas de ressources.
 
 .. (Facultatif) Entrez un nom de ressource.
-.. (Facultatif) *Sélecteur d'étiquettes* : inclure un https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#label-selectors["sélecteur d'étiquettes"^] pour ajouter à la règle. Le sélecteur d'étiquettes est utilisé pour filtrer uniquement les ressources correspondant à l'étiquette sélectionnée.
+.. (Facultatif) *Sélecteur d'étiquettes* : inclure un https://["sélecteur d'étiquettes"^] pour ajouter à la règle. Le sélecteur d'étiquettes est utilisé pour filtrer uniquement les ressources correspondant à l'étiquette sélectionnée.
 .. (Facultatif) sélectionnez *utiliser GVK (GroupVersionKind) défini pour filtrer les ressources* pour des options de filtrage supplémentaires.
 +
 

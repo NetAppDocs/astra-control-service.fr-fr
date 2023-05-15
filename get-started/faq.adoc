@@ -36,7 +36,7 @@ Astra Control exige que vous fournissez des renseignements précis sur le client
 
 *Qu'est-ce que l'URL du service de contrôle Astra?*
 
-Vous pouvez accéder au service Astra Control à l'adresse https://astra.netapp.io[].
+Vous pouvez accéder au service Astra Control à l'adresse https://[].
 
 *J'ai envoyé une invitation par e-mail à un collègue, mais ils ne l'ont pas reçue. Que dois-je faire?*
 
@@ -90,7 +90,7 @@ Oui, vous pouvez ajouter des clusters AKS privés au service Astra Control. Pour
 
 *Puis-je utiliser Active Directory pour gérer l'authentification pour mes clusters AKS?*
 
-Oui, vous pouvez configurer vos clusters AKS pour utiliser Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
+Oui, vous pouvez configurer vos clusters AKS pour utiliser Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
 
 endif::azure[]
 
@@ -102,9 +102,9 @@ ifdef::gcp[]
 
 *Puis-je ajouter un cluster GKE privé au service de contrôle Astra?*
 
-Oui, vous pouvez ajouter des clusters GKE privés au service Astra Control. Pour créer un cluster GKE privé, https://kb.netapp.com/Advice_and_Troubleshooting/Cloud_Services/Project_Astra/How_to_create_a_private_GKE_cluster_to_work_with_project_Astra["suivez les instructions de cet article de la base de connaissances"^].
+Oui, vous pouvez ajouter des clusters GKE privés au service Astra Control. Pour créer un cluster GKE privé, https://["Suivez les instructions de cet article de la base de connaissances"^].
 
-Les clusters privés doivent avoir le https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept["réseaux autorisés"^] Configuré pour autoriser l'adresse IP de contrôle Astra :
+Les clusters privés doivent avoir le https://["réseaux autorisés"^] Configuré pour autoriser l'adresse IP de contrôle Astra :
 
 52.188.218.166/32
 
@@ -114,7 +114,7 @@ Oui, Astra Control peut gérer les clusters qui résident dans un VPC partagé. 
 
 *Où puis-je trouver les informations d'identification de mon compte de service sur GCP?*
 
-Une fois que vous êtes connecté au https://console.cloud.google.com/["Console Google Cloud"^], Les détails de votre compte de service seront dans la section *IAM et Admin*. Pour plus de détails, reportez-vous à link:set-up-google-cloud.html["Comment configurer Google Cloud pour Astra Control"].
+Une fois que vous êtes connecté au https://["Console Google Cloud"^], Les détails de votre compte de service seront dans la section *IAM et Admin*. Pour plus de détails, reportez-vous à link:set-up-google-cloud.html["Comment configurer Google Cloud pour Astra Control"].
 
 *Je voudrais ajouter différents clusters GKE de différents projets GCP. Est-ce pris en charge dans Astra Control?*
 

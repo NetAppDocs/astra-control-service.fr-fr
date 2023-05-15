@@ -56,7 +56,7 @@ endif::gcp[]
 Lorsque vous dégérez un cluster :
 
 * Cette action empêche la gestion de votre cluster par Astra Control. Elle ne modifie pas la configuration du cluster et ne supprime pas le cluster.
-* Astra Trident ne sera pas désinstallé du cluster. https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Découvrez comment désinstaller Astra Trident"^].
+* Astra Trident ne sera pas désinstallé du cluster. https://["Découvrez comment désinstaller Astra Trident"^].
 
 
 .Étapes
