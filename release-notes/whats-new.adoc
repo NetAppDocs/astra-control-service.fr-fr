@@ -16,6 +16,13 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 
 
 
+== 15 mai 2023
+
+.Nouvelles fonctionnalités et prises en charge
+Il s'agit d'une version mineure de bugfix.
+
+
+
 == 25 avril 2023
 
 .Nouvelles fonctionnalités et prises en charge
