@@ -293,9 +293,7 @@
   <block id="54d90be7ed2f484693994a0a44b349d2" category="inline-link">documentation officielle</block>
   <block id="e4b4463df81090495a7820578ac936d9" category="paragraph">Oui, vous pouvez configurer vos clusters AKS pour utiliser Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du<block ref="ba1ce5a57a4d347a0e1e2ecf2a2c91ba" category="inline-link-rx"></block> Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.</block>
   <block id="2c932845e362039bca422bb4b59eea27" category="section-title">Enregistrement des clusters Google Kubernetes Engine (GKE)</block>
-  <block id="af2b33bb637866cca13ababa2653601d" category="paragraph">*Puis-je ajouter un cluster GKE privé au service de contrôle Astra?*</block>
   <block id="14404c0506ad155270835b42ac26b048" category="inline-link">réseaux autorisés</block>
-  <block id="51e84df52b4888344ecda584885aaabd" category="paragraph">Les clusters privés doivent avoir le<block ref="aa255aeede553f15509fbd44536f790e" category="inline-link-rx"></block> Configuré pour autoriser l'adresse IP de contrôle Astra :</block>
   <block id="0cc78d43619515d263f8e91071f2ed83" category="paragraph">52.188.218.166/32</block>
   <block id="952200664143e727f3f65397759fe5e8" category="paragraph">*Mon cluster GKE peut-il résider sur un VPC partagé ?*</block>
   <block id="5d346778751cb328795e29ad6aed29a4" category="inline-link-macro">Découvrez comment configurer le compte de service Astra pour une configuration VPC partagée</block>
@@ -2113,11 +2111,7 @@
   <block id="5e45edcd9985e188c258e7b6515feeea" category="paragraph">ASTRA Control Service prend en charge Azure NetApp Files, les disques gérés Azure ou NetApp Cloud Volumes ONTAP en tant que système back-end de stockage pour les clusters Azure Kubernetes Service (AKS).</block>
   <block id="6bab6ac71f743f37f154b7b0219c56a8" category="paragraph">ASTRA Control Service prend en charge Cloud Volumes Service pour Google Cloud, le service de disque persistant Google ou NetApp Cloud Volumes ONTAP en tant qu'options back-end de stockage pour les volumes persistants.</block>
   <block id="09a08aa51d9a5d34a5bc6cecdb1f03bf" category="paragraph">Vous pouvez ajouter une nouvelle instance de Cloud lorsque vous ajoutez un nouveau cluster à Astra Control. Reportez-vous à la section <block ref="04d97bec7f4fa11002764129cf40d13a" category="inline-link-macro-rx"></block> pour en savoir plus.</block>
-  <block id="3151d43bcd1c27b32e26e2270e5f6365" category="inline-link">Suivez les instructions de cet article de la base de connaissances</block>
-  <block id="89ee4e626d8ee5cecc8bc20164109dc0" category="paragraph">Oui, vous pouvez ajouter des clusters GKE privés au service Astra Control. Pour créer un cluster GKE privé,<block ref="99bba183cf709d565e021b59be5fb393" category="inline-link-rx"></block>.</block>
   <block id="9743b1bac661724fbae098bb88f6131d" category="list-text"><block ref="9743b1bac661724fbae098bb88f6131d" category="inline-link-rx"></block></block>
-  <block id="1012a371df8509745561ebc7fb6c67ed" category="paragraph"><block ref="1012a371df8509745561ebc7fb6c67ed" category="inline-link-rx"></block></block>
-  <block id="ed0a05533716082066f8bcf9280a4c5f" category="list-text"><block ref="ed0a05533716082066f8bcf9280a4c5f" category="inline-link-rx"></block></block>
   <block id="84810f606cf208e2aa62628838041ba8" category="list-text">Vous devez utiliser Astra Trident et un contrôleur Snapshot externe pour les opérations avec les systèmes back-end. Pour les installer, procédez comme suit :</block>
   <block id="a9b10c3e99be35f3f8a9c7dc7fadd754" category="inline-link">Installez les CRD de snapshot et le contrôleur de snapshot</block>
   <block id="fc49eec2e1350c70e0ee83082938896c" category="list-text"><block ref="40a914e8068809539f086034e13549c6" category="inline-link-rx"></block>.</block>
@@ -2136,4 +2130,6 @@
   <block id="d5d53109cd766da789a263c6e2051051" category="list-text">Supprimez tous les CRD de snapshot existants et tout contrôleur de snapshot existant.</block>
   <block id="43f17763173fe230bdd78477152f5f7d" category="inline-link">Désinstaller Astra Trident</block>
   <block id="478393a7bc00211c00b84b91bd7270e1" category="list-text"><block ref="ae36d1cdd520df7c3eaefc0ce2deb814" category="inline-link-rx"></block>.</block>
+  <block id="de6aa62d63707ee7d0d8147e0441da62" category="paragraph"><block ref="de6aa62d63707ee7d0d8147e0441da62" category="inline-link-rx"></block></block>
+  <block id="bbc78db47a3fe23dc96746668da3d287" category="list-text"><block ref="bbc78db47a3fe23dc96746668da3d287" category="inline-link-rx"></block></block>
 </blocks>

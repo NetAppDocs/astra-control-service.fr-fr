@@ -100,14 +100,6 @@ ifdef::gcp[]
 
 == Enregistrement des clusters Google Kubernetes Engine (GKE)
 
-*Puis-je ajouter un cluster GKE privé au service de contrôle Astra?*
-
-Oui, vous pouvez ajouter des clusters GKE privés au service Astra Control. Pour créer un cluster GKE privé, https://["Suivez les instructions de cet article de la base de connaissances"^].
-
-Les clusters privés doivent avoir le https://["réseaux autorisés"^] Configuré pour autoriser l'adresse IP de contrôle Astra :
-
-52.188.218.166/32
-
 *Mon cluster GKE peut-il résider sur un VPC partagé ?*
 
 Oui, Astra Control peut gérer les clusters qui résident dans un VPC partagé. link:set-up-google-cloud.html["Découvrez comment configurer le compte de service Astra pour une configuration VPC partagée"].
