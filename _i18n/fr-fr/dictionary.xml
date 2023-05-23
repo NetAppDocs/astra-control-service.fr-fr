@@ -2124,12 +2124,12 @@
   <block id="6c190cb8b2ab4bcec637bcea54946bee" category="paragraph">Si ce n'est déjà fait,<block ref="0e5afab18fbd6e0f822d02155d04d2bd" category="inline-link-rx"></block>.</block>
   <block id="abfeaf5dc3fa1bf4a2a2cba84c5e546c" category="section-title">15 mai 2023</block>
   <block id="7dfc25c1548ba836ed04c79f8fbd1825" category="paragraph">Il s'agit d'une version mineure de bugfix.</block>
-  <block id="8f80a6bba41c8f2f5d1a9b2f5ff1d87b" category="section-title">Les snapshots peuvent échouer pour Amazon EKS 1.25 ou des clusters ultérieurs</block>
-  <block id="b3794e2a706f8946cd7b6e8c2435538f" category="paragraph">Les snapshots dans les clusters Amazon EKS de la version 1.25 ou ultérieure peuvent échouer car un contrôleur de snapshot incorrect est utilisé.</block>
-  <block id="bfe0bca35535f01b62abdc5459c6610c" category="paragraph">Pour contourner ce problème, procédez comme suit lors de la mise à niveau d'installations EKS 1.25 ou ultérieures existantes :</block>
   <block id="d5d53109cd766da789a263c6e2051051" category="list-text">Supprimez tous les CRD de snapshot existants et tout contrôleur de snapshot existant.</block>
   <block id="43f17763173fe230bdd78477152f5f7d" category="inline-link">Désinstaller Astra Trident</block>
   <block id="478393a7bc00211c00b84b91bd7270e1" category="list-text"><block ref="ae36d1cdd520df7c3eaefc0ce2deb814" category="inline-link-rx"></block>.</block>
   <block id="de6aa62d63707ee7d0d8147e0441da62" category="paragraph"><block ref="de6aa62d63707ee7d0d8147e0441da62" category="inline-link-rx"></block></block>
   <block id="bbc78db47a3fe23dc96746668da3d287" category="list-text"><block ref="bbc78db47a3fe23dc96746668da3d287" category="inline-link-rx"></block></block>
+  <block id="5a5355eda2f1cf003d25254ee2c311a3" category="section-title">Les snapshots peuvent échouer pour les clusters Kubernetes 1.25 ou versions ultérieures disposant de certaines versions de contrôleur Snapshot</block>
+  <block id="f9f1ea7c0040d9bdb077f9ce68de31e3" category="paragraph">Les snapshots pour les clusters Kubernetes exécutant la version 1.25 ou ultérieure peuvent échouer si la version v1beta1 des API du contrôleur de snapshot est installée sur le cluster.</block>
+  <block id="2ad74d9f76ccccd37e4f9c6cb27f1cbd" category="paragraph">Pour contourner ce problème, procédez comme suit lorsque vous mettez à niveau des installations Kubernetes 1.25 ou ultérieures :</block>
 </blocks>

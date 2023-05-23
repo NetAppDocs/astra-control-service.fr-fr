@@ -35,7 +35,7 @@ Ces niveaux de service correspondent à un attribut d'un pool de capacité. Vous
 
 Le service Astra Control utilise ces niveaux de service comme classes de stockage pour vos volumes persistants. Lorsque vous ajoutez des clusters Kubernetes à Astra Control Service, vous êtes invité à choisir Ultra, Premium ou Standard comme classe de stockage par défaut. Les noms des classes de stockage sont _netapp-anf-perf-Ultra_, _netapp-anf-perf-Premium_ et _netapp-anf-perf-standard_.
 
-https://["Pour en savoir plus sur ces niveaux de service, consultez la documentation Azure NetApp Files"^].
+https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-service-levels["Pour en savoir plus sur ces niveaux de service, consultez la documentation Azure NetApp Files"^].
 
 
 
@@ -63,10 +63,10 @@ Si le pool de capacité dépasse la taille maximale autorisée par l'abonnement 
 
 ASTRA Control Service peut utiliser des pilotes Container Storage interface (CSI) pour l'interface avec les disques gérés Azure en tant que système back-end de stockage. Il fournit un stockage de niveau bloc géré par Azure.
 
-https://["En savoir plus sur les disques gérés Azure"^].
+https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["En savoir plus sur les disques gérés Azure"^].
 
 
 
 == NetApp Cloud Volumes ONTAP
 
-Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://["Documentation NetApp Cloud Volumes ONTAP"^].
+Pour plus d'informations sur la configuration de NetApp Cloud Volumes ONTAP et notamment sur les recommandations de performances, consultez le https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/concept-performance.html["Documentation NetApp Cloud Volumes ONTAP"^].

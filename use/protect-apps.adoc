@@ -12,7 +12,7 @@ summary: 'Protégez vos applications en effectuant des copies Snapshot et des sa
 
 
 [role="lead"]
-Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://["API de contrôle Astra"^] pour protéger les applications.
+Protégez vos applications en effectuant des copies Snapshot et des sauvegardes à l'aide d'une stratégie de protection automatisée ou ad hoc. Vous pouvez utiliser l'interface utilisateur Astra ou https://docs.netapp.com/us-en/astra-automation/index.html["API de contrôle Astra"^] pour protéger les applications.
 
 En savoir plus sur link:../learn/data-protection.html["Protection des données dans Astra Control"^].
 
@@ -33,7 +33,7 @@ Vous pouvez effectuer les tâches suivantes liées à la protection de vos donn�
 
 Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver.
 
-Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
+Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application gérée.

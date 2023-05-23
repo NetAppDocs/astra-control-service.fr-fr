@@ -14,11 +14,11 @@ summary: Trouvez des conseils de dépannage pour les problèmes courants.
 [role="lead"]
 Apprenez à contourner certains problèmes courants que vous pourriez rencontrer.
 
-https://[]
+https://kb.netapp.com/Cloud/Astra/Control[]
 
 
 
 == Pour en savoir plus
 
-* https://["Dépannage"^]
+* https://kb.netapp.com/Cloud/Astra/Control["Dépannage"^]
 

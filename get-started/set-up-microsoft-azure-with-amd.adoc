@@ -64,7 +64,7 @@ Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puiss
 Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.24 à 1.26.
 Type d'image:: Le type d'image pour tous les pools de nœuds doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
-Région Azure:: Il est donc recommandé de choisir une région qui prend en charge Azure NetApp Files, même si vous ne l'utilisez pas comme système back-end. Ainsi, il est plus facile d'utiliser Azure NetApp Files comme système back-end de stockage si vos besoins en termes de performances évoluent. https://["Afficher les produits Azure par région"^].
+Région Azure:: Il est donc recommandé de choisir une région qui prend en charge Azure NetApp Files, même si vous ne l'utilisez pas comme système back-end. Ainsi, il est plus facile d'utiliser Azure NetApp Files comme système back-end de stockage si vos besoins en termes de performances évoluent. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Afficher les produits Azure par région"^].
 
 
 Pilotes CSI:: Les pilotes CSI appropriés doivent être installés sur les clusters.
@@ -77,7 +77,7 @@ Pilotes CSI:: Les pilotes CSI appropriés doivent être installés sur les clust
 Si vous ne possédez pas de compte Microsoft Azure, commencez par vous inscrire à Microsoft Azure.
 
 .Étapes
-. Accédez au https://["La page d'abonnement Azure"^] Pour vous abonner au service Azure.
+. Accédez au https://azure.microsoft.com/en-us/free/["La page d'abonnement Azure"^] Pour vous abonner au service Azure.
 . Sélectionnez un plan et suivez les instructions pour terminer l'abonnement.
 
 
@@ -89,7 +89,7 @@ Astra Control Service requiert un principal de service Azure qui est affecté au
 
 Un entité de service est une identité créée spécifiquement pour une utilisation avec des applications, des services et des outils. L'affectation d'un rôle principal du service restreint l'accès à des ressources Azure spécifiques.
 
-Suivez les étapes ci-dessous pour créer une entité de service à l'aide de l'interface de ligne de commande Azure. Vous devrez enregistrer la sortie dans un fichier JSON et la fournir ultérieurement au service de contrôle Astra. https://["Pour plus d'informations sur l'utilisation de l'interface de ligne de commandes, consultez la documentation Azure"^].
+Suivez les étapes ci-dessous pour créer une entité de service à l'aide de l'interface de ligne de commande Azure. Vous devrez enregistrer la sortie dans un fichier JSON et la fournir ultérieurement au service de contrôle Astra. https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli["Pour plus d'informations sur l'utilisation de l'interface de ligne de commandes, consultez la documentation Azure"^].
 
 Les étapes suivantes supposent que vous êtes autorisé à créer un service principal et que vous disposez du SDK Microsoft Azure (commande az) installé sur votre ordinateur.
 
@@ -214,7 +214,7 @@ Vous devez voir les résultats similaires à ce qui suit :
 Vous pouvez installer les pilotes Azure CSI pour terminer votre préparation.
 
 .Étape
-. Accédez à https://["Documentation du pilote Microsoft CSI"^].
+. Accédez à https://docs.microsoft.com/en-us/azure/aks/csi-storage-drivers["Documentation du pilote Microsoft CSI"^].
 . Suivez les instructions pour installer les pilotes CSI requis.
 
 
@@ -225,8 +225,8 @@ Vous pouvez installer les pilotes Azure CSI pour terminer votre préparation.
 Vous pouvez configurer un niveau de redondance plus durable pour les compartiments de sauvegarde Azure. Par défaut, les compartiments Astra Control Service utilisent pour stocker les sauvegardes Azure Kubernetes Service avec l'option de redondance LRS (local Redundant Storage). Pour utiliser une option de redondance plus durable pour les compartiments Azure, vous devez effectuer les opérations suivantes :
 
 .Étapes
-. Créez un compte de stockage Azure qui utilise le niveau de redondance requis https://["ces instructions"^].
-. Créez un conteneur Azure dans le nouveau compte de stockage à l'aide de https://["ces instructions"^].
+. Créez un compte de stockage Azure qui utilise le niveau de redondance requis https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal["ces instructions"^].
+. Créez un conteneur Azure dans le nouveau compte de stockage à l'aide de https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal["ces instructions"^].
 . Ajoutez le conteneur en tant que compartiment au service Astra Control. Reportez-vous à la section link:../use/manage-buckets.html#add-an-additional-bucket["Ajouter un godet supplémentaire"].
 . (Facultatif) pour utiliser le compartiment récemment créé comme compartiment par défaut pour les sauvegardes Azure, définissez-le comme compartiment par défaut pour Azure. Reportez-vous à la section link:../use/manage-buckets.html#change-the-default-bucket["Modifier le compartiment par défaut"].
 

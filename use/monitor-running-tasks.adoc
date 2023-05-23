@@ -31,4 +31,4 @@ Vous pouvez afficher les détails des tâches actuelles ou passées et filtrer p
 
 
 
-NOTE: Les tâches sont conservées dans la liste *tâches* pour un maximum de 24 heures. Vous pouvez configurer cette limite et d'autres paramètres du moniteur de tâches à l'aide de l' https://["API de contrôle Astra"^].
+NOTE: Les tâches sont conservées dans la liste *tâches* pour un maximum de 24 heures. Vous pouvez configurer cette limite et d'autres paramètres du moniteur de tâches à l'aide de l' https://docs.netapp.com/us-en/astra-automation/["API de contrôle Astra"^].

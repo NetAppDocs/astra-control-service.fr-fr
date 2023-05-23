@@ -75,13 +75,13 @@ kubectl apply -f myapp.yaml
 Voici quelques applications opérateur qui suivent ces modèles :
 
 +
-** https://["Apache K8ssandra"^]
+** https://github.com/k8ssandra/cass-operator/tree/v1.7.1["Apache K8ssandra"^]
 +
 
 NOTE: Pour K8ssandra, les opérations de restauration sur place sont prises en charge. Pour effectuer une opération de restauration vers un nouvel espace de noms ou un cluster, l'instance d'origine de l'application doit être arrêté. Cela permet de s'assurer que les informations du groupe de pairs transmises ne conduisent pas à une communication entre les instances. Le clonage de l'application n'est pas pris en charge.
 
-** https://["IC Jenkins"^]
-** https://["Cluster Percona XtraDB"^]
+** https://github.com/jenkinsci/kubernetes-operator["IC Jenkins"^]
+** https://github.com/percona/percona-xtradb-cluster-operator["Cluster Percona XtraDB"^]
 
 
 +
@@ -136,7 +136,7 @@ TIP: Par exemple, vous pouvez définir une stratégie de sauvegarde pour « mari
 * (Facultatif) Etiquette Kubernetes de toute link:../use/manage-apps.html#app-management-requirements["Ressources Kubernetes prises en charge"].
 +
 
-TIP: Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Kubernetes pour identification. Elles facilitent le tri, l'organisation et la recherche des objets Kubernetes. Pour en savoir plus sur les étiquettes Kubernetes, https://["Consultez la documentation officielle Kubernetes"^].
+TIP: Une étiquette est une paire clé/valeur que vous pouvez attribuer aux objets Kubernetes pour identification. Elles facilitent le tri, l'organisation et la recherche des objets Kubernetes. Pour en savoir plus sur les étiquettes Kubernetes, https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["Consultez la documentation officielle Kubernetes"^].
 
 
 
@@ -206,7 +206,7 @@ NOTE: Les applications peuvent être définies au sein d'un ou plusieurs espaces
 . (Facultatif) Indiquez une étiquette pour les ressources Kubernetes dans chaque espace de noms. Vous pouvez spécifier un seul libellé ou un seul critère de sélection d'étiquette (requête).
 +
 
-TIP: Pour en savoir plus sur les étiquettes Kubernetes, https://["Consultez la documentation officielle Kubernetes"^].
+TIP: Pour en savoir plus sur les étiquettes Kubernetes, https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/["Consultez la documentation officielle Kubernetes"^].
 
 . (Facultatif) Ajouter des espaces de noms supplémentaires pour l'application en sélectionnant *Ajouter un espace de noms* et en choisissant l'espace de noms dans la liste déroulante.
 . (Facultatif) Entrez des critères de sélection d'étiquette ou d'étiquette pour tout espace de noms supplémentaire que vous ajoutez.

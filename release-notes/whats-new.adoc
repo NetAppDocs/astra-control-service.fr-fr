@@ -141,7 +141,7 @@ Parmi les autres améliorations, Astra Control prend désormais en charge l'util
 
 +
 
-NOTE: Les crochets d'exécution avant ou après snapshot fournis par NetApp pour des applications spécifiques ont été supprimés dans cette version. Si vous ne fournissez pas vos propres crochets d'exécution pour les instantanés, Astra Control Service prendra des instantanés cohérents avec les collisions à partir du 4 août 2022. Consultez le https://["Référentiel GitHub NetApp Verda"^] pour des exemples de scripts de hook d'exécution que vous pouvez modifier en fonction de votre environnement.
+NOTE: Les crochets d'exécution avant ou après snapshot fournis par NetApp pour des applications spécifiques ont été supprimés dans cette version. Si vous ne fournissez pas vos propres crochets d'exécution pour les instantanés, Astra Control Service prendra des instantanés cohérents avec les collisions à partir du 4 août 2022. Consultez le https://github.com/NetApp/Verda["Référentiel GitHub NetApp Verda"^] pour des exemples de scripts de hook d'exécution que vous pouvez modifier en fonction de votre environnement.
 
 +
 link:../use/manage-app-execution-hooks.html["Gérer les crochets d'exécution de l'application"]
@@ -240,7 +240,7 @@ Cette version comprend de nouvelles fonctionnalités et améliorations suivantes
 
 * Astra Control Center Astra Control est désormais disponible dans un nouveau modèle de déploiement. _Astra Control Center_ est un logiciel autogéré que vous installez et utilisez dans votre data Center. Il vous permet de gérer la gestion du cycle de vie des applications Kubernetes pour les clusters Kubernetes sur site.
 +
-Pour en savoir plus, https://["Accédez à la documentation Astra Control Center"^].
+Pour en savoir plus, https://docs.netapp.com/us-en/astra-control-center["Accédez à la documentation Astra Control Center"^].
 
 * Apportez votre propre compartiment pour gérer les compartiments utilisés par Astra pour les sauvegardes et les clones, en ajoutant des compartiments supplémentaires et en modifiant le compartiment par défaut pour les clusters Kubernetes de votre fournisseur cloud.
 +
@@ -287,7 +287,7 @@ endif::azure[]
 
 * API REST l'API REST d'Astra Control est désormais disponible. Les API reposent sur les technologies modernes et les bonnes pratiques actuelles.
 +
-https://["Découvrez comment automatiser la gestion du cycle de vie des données applicatives à l'aide de l'API REST"^].
+https://docs.netapp.com/us-en/astra-automation["Découvrez comment automatiser la gestion du cycle de vie des données applicatives à l'aide de l'API REST"^].
 
 * Abonnement annuel au service Astra Control propose désormais un abonnement _Premium_.
 +
@@ -328,9 +328,9 @@ link:../use/monitor-account-activity.html["En savoir plus sur l'affichage de l'a
 
 ifdef::gcp[]
 
-Astra Control Service prend désormais en charge le https://["_CVS_ type de service"^] Avec Cloud Volumes Service pour Google Cloud. En plus de prendre déjà en charge le type de service _CVS-Performance_. À titre de rappel, Astra Control Service utilise Cloud Volumes Service pour Google Cloud comme back-end de stockage pour vos volumes persistants.
+Astra Control Service prend désormais en charge le https://cloud.google.com/solutions/partners/netapp-cloud-volumes/service-types["_CVS_ type de service"^] Avec Cloud Volumes Service pour Google Cloud. En plus de prendre déjà en charge le type de service _CVS-Performance_. À titre de rappel, Astra Control Service utilise Cloud Volumes Service pour Google Cloud comme back-end de stockage pour vos volumes persistants.
 
-Avec cette amélioration, Astra Control Service peut désormais gérer les données d'application pour les clusters Kubernetes qui s'exécutent dans _any_ https://["Région Google Cloud prise en charge du protocole Cloud Volumes Service"^].
+Avec cette amélioration, Astra Control Service peut désormais gérer les données d'application pour les clusters Kubernetes qui s'exécutent dans _any_ https://cloud.netapp.com/cloud-volumes-global-regions#cvsGcp["Région Google Cloud prise en charge du protocole Cloud Volumes Service"^].
 
 Si vous avez la possibilité de choisir entre régions Google Cloud, vous pouvez choisir CVS ou CVS-Performance, selon vos besoins en termes de performances. link:../learn/choose-class-and-size.html["En savoir plus sur le choix d'un type de service"].
 

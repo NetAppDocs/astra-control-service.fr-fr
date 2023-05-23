@@ -87,9 +87,9 @@ Astra Trident:: Vous devez utiliser Astra Trident et un contrôleur Snapshot ext
 
 [%collapsible%open]
 ====
-. https://["Installez les CRD de snapshot et le contrôleur de snapshot"^].
-. https://["Installez la dernière version d'Astra Trident"^].
-. https://["Créez une VolumeSnapshotClass"^].
+. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["Installez les CRD de snapshot et le contrôleur de snapshot"^].
+. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Installez la dernière version d'Astra Trident"^].
+. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-create-a-volumesnapshotclass["Créez une VolumeSnapshotClass"^].
 
 
 ====
@@ -101,10 +101,10 @@ Reportez-vous aux étapes pour obtenir des instructions sur l'installation du pi
 [%collapsible%open]
 ====
 .Installez un snapshots externe
-Si ce n'est déjà fait, https://["Installez les CRD de snapshot et le contrôleur de snapshot"^].
+Si ce n'est déjà fait, https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["Installez les CRD de snapshot et le contrôleur de snapshot"^].
 
 .Installez le pilote CSI en tant que module complémentaire Amazon EKS
-. Créez le rôle IAM du pilote Amazon EBS CSI pour les comptes de service. Suivez les instructions https://["Dans la documentation Amazon"^], En utilisant les commandes de l'interface de ligne de commande AWS dans les instructions.
+. Créez le rôle IAM du pilote Amazon EBS CSI pour les comptes de service. Suivez les instructions https://docs.aws.amazon.com/eks/latest/userguide/csi-iam-role.html["Dans la documentation Amazon"^], En utilisant les commandes de l'interface de ligne de commande AWS dans les instructions.
 . Ajoutez le module complémentaire Amazon EBS CSI à l'aide de la commande CLI AWS suivante, en remplaçant les informations entre parenthèses <> par des valeurs spécifiques à votre environnement. Remplacez <DRIVER_ROLE> par le nom du rôle du pilote EBS CSI que vous avez créé à l'étape précédente :
 +
 [source, console]
@@ -158,7 +158,7 @@ Vous devez voir le résultat décrivant les attributs de classe de stockage.
 Si vous n'avez pas encore de compte Amazon, vous devez en créer un pour activer la facturation pour Amazon EKS.
 
 .Étapes
-. Accédez au https://["Page d'accueil Amazon"^] , Sélectionnez *connexion* en haut à droite, puis *commencer ici*.
+. Accédez au https://www.amazon.com["Page d'accueil Amazon"^] , Sélectionnez *connexion* en haut à droite, puis *commencer ici*.
 . Suivez les invites pour créer un compte.
 
 
@@ -169,7 +169,7 @@ Si vous n'avez pas encore de compte Amazon, vous devez en créer un pour activer
 Installez l'interface de ligne de commandes AWS afin de gérer les ressources AWS à partir de la ligne de commandes.
 
 .Étape
-. Accédez à https://["Mise en route de l'interface de ligne de commandes AWS"^] Et suivez les instructions pour installer l'interface de ligne de commande.
+. Accédez à https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html["Mise en route de l'interface de ligne de commandes AWS"^] Et suivez les instructions pour installer l'interface de ligne de commande.
 
 
 
@@ -179,7 +179,7 @@ Installez l'interface de ligne de commandes AWS afin de gérer les ressources AW
 Créez un utilisateur IAM afin d'utiliser et de gérer tous les services et ressources AWS avec une sécurité renforcée. Vous pouvez également ignorer cette étape et utiliser un utilisateur IAM existant avec le service de contrôle Astra.
 
 .Étape
-. Accédez à https://["Création d'utilisateurs IAM"^] Et suivez les instructions pour créer un utilisateur IAM.
+. Accédez à https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_cliwpsapi["Création d'utilisateurs IAM"^] Et suivez les instructions pour créer un utilisateur IAM.
 
 
 

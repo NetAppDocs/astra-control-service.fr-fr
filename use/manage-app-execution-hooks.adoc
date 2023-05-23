@@ -38,7 +38,7 @@ Chaque filtre que vous ajoutez à un crochet d'exécution utilise une expression
 
 NOTE: Les expressions régulières pour les filtres utilisent la syntaxe de l'expression régulière 2 (RE2), qui ne prend pas en charge la création d'un filtre qui exclut les conteneurs de la liste des correspondances.
 
-Pour plus d'informations sur la syntaxe prise en charge par Astra Control pour les expressions régulières dans les filtres de crochet d'exécution, voir https://["Prise en charge de la syntaxe de l'expression régulière 2 (RE2)"^].
+Pour plus d'informations sur la syntaxe prise en charge par Astra Control pour les expressions régulières dans les filtres de crochet d'exécution, voir https://github.com/google/re2/wiki/Syntax["Prise en charge de la syntaxe de l'expression régulière 2 (RE2)"^].
 
 
 
@@ -147,7 +147,7 @@ Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané 
 
 == Exemples de crochet d'exécution
 
-Consultez le https://["Projet GitHub NetApp Verda"] Pour télécharger des crochets d'exécution réels pour des applications courantes telles qu'Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d'exécution personnalisés.
+Consultez le https://github.com/NetApp/Verda["Projet GitHub NetApp Verda"] Pour télécharger des crochets d'exécution réels pour des applications courantes telles qu'Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d'exécution personnalisés.
 
 
 
@@ -254,7 +254,7 @@ NOTE: Lorsque vous créez un script de shell personnalisé à utiliser comme cro
 +
 .. Sélectionnez *Ajouter filtre*.
 .. Dans la colonne Type de filtre *Hook*, choisissez un attribut sur lequel filtrer dans le menu déroulant.
-.. Dans la colonne *Regex*, entrez une expression régulière à utiliser comme filtre. Astra Control utilise le https://["Expression régulière 2 (RE2) syntaxe regex"^].
+.. Dans la colonne *Regex*, entrez une expression régulière à utiliser comme filtre. Astra Control utilise le https://github.com/google/re2/wiki/Syntax["Expression régulière 2 (RE2) syntaxe regex"^].
 +
 
 NOTE: Si vous filtrez le nom exact d'un attribut (comme un nom de pod) sans autre texte dans le champ expression régulière, une correspondance de sous-chaîne est effectuée. Pour faire correspondre un nom exact et ce nom uniquement, utilisez la syntaxe de correspondance de chaîne exacte (par exemple, `^exact_podname$`).
@@ -386,5 +386,5 @@ Vous pouvez supprimer entièrement un crochet d'exécution si vous n'en avez plu
 
 == Pour en savoir plus
 
-* https://["Projet GitHub NetApp Verda"]
+* https://github.com/NetApp/Verda["Projet GitHub NetApp Verda"]
 

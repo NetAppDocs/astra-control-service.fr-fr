@@ -24,7 +24,7 @@ Vous pouvez accéder aux options de support à partir de l'interface utilisateur
 
 Ces options sont disponibles gratuitement 24h/24, 7j/7 :
 
-* https://["Base de connaissances"^]
+* https://kb.netapp.com/Cloud/Astra/Control["Base de connaissances"^]
 +
 Recherchez des articles, des FAQ ou des renseignements sur le service de réparation liés à Astra Control.
 
@@ -32,7 +32,7 @@ Recherchez des articles, des FAQ ou des renseignements sur le service de répara
 +
 Voici le site du document que vous consultez actuellement.
 
-* https://["Obtenez de l'aide par discorde"^]
+* https://discord.gg/NetApp["Obtenez de l'aide par discorde"^]
 +
 Accédez à Astra dans la catégorie Pub pour rencontrer des pairs et des experts.
 
@@ -48,7 +48,7 @@ Envoyez un courriel à astra.feedback@netapp.com pour nous faire part de vos pen
 
 Outre les options d'auto-support mentionnées ci-dessus, vous pouvez travailler avec un ingénieur du support NetApp pour résoudre tous les problèmes après link:register-support.html["Activez le support de votre numéro de série NetApp"].
 
-Une fois que votre numéro de série Astra Control est activé, vous pouvez accéder aux ressources du support technique de NetApp en créant un https://["Ticket de support"].
+Une fois que votre numéro de série Astra Control est activé, vous pouvez accéder aux ressources du support technique de NetApp en créant un https://mysupport.netapp.com/site/cases/mine/create["Ticket de support"].
 
 Sélectionnez *Cloud Data Services > Astra*.
 

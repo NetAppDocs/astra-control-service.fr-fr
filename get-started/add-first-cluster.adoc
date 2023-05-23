@@ -26,7 +26,7 @@ Une fois votre environnement configuré, vous êtes prêt à créer un cluster K
 Si vous ne disposez pas encore d'un cluster, vous pouvez en créer un qui rencontre link:set-up-amazon-web-services.html#eks-cluster-requirements["Exigences d'Astra Control Service pour Amazon Elastic Kubernetes Service (EKS)"]. Si vous ne disposez pas encore d'un cluster, vous pouvez en créer un qui rencontre link:set-up-google-cloud.html#gke-cluster-requirements["Exigences d'Astra Control Service pour Google Kubernetes Engine (GKE)"]. Si vous ne disposez pas encore d'un cluster, vous pouvez en créer un qui rencontre link:set-up-microsoft-azure-with-anf.html#azure-kubernetes-service-cluster-requirements["Astra Control Service exigences pour Azure Kubernetes Service (AKS) avec Azure NetApp Files"] ou link:set-up-microsoft-azure-with-amd.html#azure-kubernetes-service-cluster-requirements["Astra Control Service exigences pour Azure Kubernetes Service (AKS) avec des disques gérés Azure"].
 
 
-NOTE: Astra Control Service prend en charge les clusters AKS qui utilisent Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
+NOTE: Astra Control Service prend en charge les clusters AKS qui utilisent Azure Active Directory (Azure AD) pour l'authentification et la gestion des identités. Une fois le cluster créé, suivez les instructions du https://docs.microsoft.com/en-us/azure/aks/managed-aad["documentation officielle"^] Pour configurer le cluster afin d'utiliser Azure AD. Vous devez vous assurer que vos clusters répondent aux exigences de l'intégration d'Azure AD gérée par AKS.
 
 
 
@@ -48,8 +48,8 @@ ifdef::aws[]
 .Amazon Web Services
 * Vous devez disposer du fichier JSON contenant les informations d'identification de l'utilisateur IAM qui a créé le cluster. link:../get-started/set-up-amazon-web-services.html#create-an-iam-user["Découvrez comment créer un utilisateur IAM"].
 * Astra Trident est requis pour Amazon FSX pour NetApp ONTAP. Si vous prévoyez d'utiliser Amazon FSX pour NetApp ONTAP en tant que backend de stockage de votre cluster EKS, consultez les informations d'Astra Trident dans le link:set-up-amazon-web-services.html#eks-cluster-requirements["Configuration requise pour le cluster EKS"].
-* (Facultatif) si vous devez fournir les informations nécessaires `kubectl` L'accès aux commandes d'un cluster à d'autres utilisateurs IAM qui ne sont pas le créateur du cluster, reportez-vous aux instructions de la https://["Comment puis-je fournir l'accès aux autres utilisateurs IAM et aux rôles après la création du cluster dans Amazon EKS ?"^].
-* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Amazon Web Services. Consultez le Cloud Volumes ONTAP https://["documentation de configuration"^].
+* (Facultatif) si vous devez fournir les informations nécessaires `kubectl` L'accès aux commandes d'un cluster à d'autres utilisateurs IAM qui ne sont pas le créateur du cluster, reportez-vous aux instructions de la https://aws.amazon.com/premiumsupport/knowledge-center/amazon-eks-cluster-access/["Comment puis-je fournir l'accès aux autres utilisateurs IAM et aux rôles après la création du cluster dans Amazon EKS ?"^].
+* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Amazon Web Services. Consultez le Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["documentation de configuration"^].
 
 
 endif::aws[]
@@ -62,7 +62,7 @@ ifdef::azure[]
 Vous aurez également besoin de votre ID d'abonnement Azure, si vous n'avez pas ajouté le fichier JSON.
 
 * Pour les clusters AKS privés, reportez-vous à la section link:manage-private-cluster.html["Gérer des clusters privés à partir d'Astra Control Service"^].
-* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Microsoft Azure. Consultez le Cloud Volumes ONTAP https://["documentation de configuration"^].
+* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Microsoft Azure. Consultez le Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["documentation de configuration"^].
 
 
 endif::azure[]
@@ -71,7 +71,7 @@ ifdef::gcp[]
 
 .Google Cloud
 * Vous devez disposer du fichier de clé de compte de service pour un compte de service disposant des autorisations requises. link:../get-started/set-up-google-cloud.html#create-a-service-account["Découvrez comment configurer un compte de service"].
-* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Google Cloud. Consultez le Cloud Volumes ONTAP https://["documentation de configuration"^].
+* Si vous prévoyez d'utiliser NetApp Cloud Volumes ONTAP en tant que système back-end de stockage, vous devez configurer Cloud Volumes ONTAP pour qu'il fonctionne avec Google Cloud. Consultez le Cloud Volumes ONTAP https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["documentation de configuration"^].
 
 
 endif::gcp[]
@@ -97,12 +97,12 @@ Votre cluster autogéré doit répondre aux exigences suivantes :
 * Si vous utilisez ou prévoyez d'utiliser un système de stockage NetApp, vérifiez que vous avez installé la dernière version d'Astra Trident :
 +
 
-NOTE: C'est possible https://["Déployez Astra Trident"^] Utilisation de l'opérateur Trident (manuellement ou à l'aide du graphique Helm) ou `tridentctl`. Avant d'installer ou de mettre à niveau Astra Trident, consultez le https://["systèmes front-end, systèmes back-end et configurations hôte pris en charge"^].
+NOTE: C'est possible https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html#choose-the-deployment-method["Déployez Astra Trident"^] Utilisation de l'opérateur Trident (manuellement ou à l'aide du graphique Helm) ou `tridentctl`. Avant d'installer ou de mettre à niveau Astra Trident, consultez le https://docs.netapp.com/us-en/trident/trident-get-started/requirements.html["systèmes front-end, systèmes back-end et configurations hôte pris en charge"^].
 
 +
-** *Système back-end de stockage Trident configuré* : au moins un système back-end de stockage Trident Astra doit être configuré https://["configuré"^] sur le cluster.
-** *Classes de stockage Trident configurées* : au moins une classe de stockage Astra Trident doit être https://["configuré"^] sur le cluster. Si une classe de stockage par défaut est configurée, assurez-vous qu'une seule classe de stockage possède cette annotation.
-** *Contrôleur de snapshot de volume Astra Trident et classe de snapshot de volume installés et configurés* : le contrôleur de snapshot de volume doit être https://["installé"^] Il est ainsi possible de créer des snapshots dans Astra Control. Au moins un Astra Trident `VolumeSnapshotClass` a été https://["configuration"^] par un administrateur.
+** *Système back-end de stockage Trident configuré* : au moins un système back-end de stockage Trident Astra doit être configuré https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-postdeployment.html#step-1-create-a-backend["configuré"^] sur le cluster.
+** *Classes de stockage Trident configurées* : au moins une classe de stockage Astra Trident doit être https://docs.netapp.com/us-en/trident/trident-use/manage-stor-class.html["configuré"^] sur le cluster. Si une classe de stockage par défaut est configurée, assurez-vous qu'une seule classe de stockage possède cette annotation.
+** *Contrôleur de snapshot de volume Astra Trident et classe de snapshot de volume installés et configurés* : le contrôleur de snapshot de volume doit être https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["installé"^] Il est ainsi possible de créer des snapshots dans Astra Control. Au moins un Astra Trident `VolumeSnapshotClass` a été https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-set-up-a-volumesnapshotclass["configuration"^] par un administrateur.
 
 
 * *Kubeconfig accessible*: Vous avez accès au <<kubeconfig,cluster kubeconfig>> qui ne comprend qu'un seul élément de contexte.
@@ -138,7 +138,7 @@ error: the server doesn't have a resource type "tridentversions"
 ----
 +
 
-NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Reportez-vous à la https://["Documentation Astra Trident"^] pour obtenir des instructions.
+NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions.
 
 . Assurez-vous que les pods fonctionnent :
 +
@@ -384,7 +384,7 @@ endif::gcp[]
 . *Autre*: Fournir des détails sur votre cluster auto-géré en téléchargeant un `kubeconfig.yaml` ou en collant le contenu du `kubeconfig.yaml` fichier à partir du presse-papiers.
 +
 
-NOTE: Si vous créez la vôtre `kubeconfig` fichier, vous ne devez définir que *un* élément de contexte dans celui-ci. Reportez-vous à la section https://["Documentation Kubernetes"^] pour plus d'informations sur la création `kubeconfig` fichiers.
+NOTE: Si vous créez la vôtre `kubeconfig` fichier, vous ne devez définir que *un* élément de contexte dans celui-ci. Reportez-vous à la section https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/["Documentation Kubernetes"^] pour plus d'informations sur la création `kubeconfig` fichiers.
 
 +
 .. *Nom de l'instance de Cloud* (pour les clusters gérés par le fournisseur) : indiquez un nom pour la nouvelle instance de Cloud qui sera créée lors de l'ajout de ce cluster. En savoir plus sur link:../use/manage-cloud-instances.html["instances cloud"].
@@ -452,29 +452,29 @@ Chaque classe de stockage peut utiliser l'un des services suivants :
 
 ifdef::gcp[]
 
-* https://["Cloud Volumes Service pour Google Cloud"^]
-* https://["Disque persistant Google"^]
+* https://cloud.netapp.com/cloud-volumes-service-for-gcp["Cloud Volumes Service pour Google Cloud"^]
+* https://cloud.google.com/persistent-disk/["Disque persistant Google"^]
 
 
 endif::gcp[]
 
 ifdef::azure[]
 
-* https://["Azure NetApp Files"^]
-* https://["Disques gérés Azure"^]
+* https://cloud.netapp.com/azure-netapp-files["Azure NetApp Files"^]
+* https://docs.microsoft.com/en-us/azure/virtual-machines/managed-disks-overview["Disques gérés Azure"^]
 
 
 endif::azure[]
 
 ifdef::aws[]
 
-* https://["Amazon Elastic Block Store"^]
-* https://["Amazon FSX pour NetApp ONTAP"^]
+* https://docs.aws.amazon.com/ebs/["Amazon Elastic Block Store"^]
+* https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/what-is-fsx-ontap.html["Amazon FSX pour NetApp ONTAP"^]
 
 
 endif::aws[]
 
-* https://["NetApp Cloud Volumes ONTAP"^]
+* https://www.netapp.com/cloud-services/cloud-volumes-ontap/what-is-cloud-volumes/["NetApp Cloud Volumes ONTAP"^]
 +
 En savoir plus sur link:../learn/aws-storage.html["Classes de stockage pour les clusters Amazon Web Services"]. En savoir plus sur link:../learn/azure-storage.html["Classes de stockage pour les clusters AKS"]. En savoir plus sur link:../learn/choose-class-and-size.html["Classes de stockage pour clusters GKE"].
 

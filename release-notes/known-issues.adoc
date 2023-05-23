@@ -73,7 +73,7 @@ Dans ce scénario, les sauvegardes et les instantanés échouent avec une erreur
 
 == Les snapshots finissent par échouer lorsque les snapshots externes sont utilisés version 4.2.0
 
-Lorsque vous utilisez le snapshot-contrôleur Kubernetes (également appelé External-snapshotter) version 4.2.0 avec Kubernetes 1.20 ou 1.21, les snapshots peuvent échouer. Pour éviter cela, utilisez un autre https://["version prise en charge"^] D'un snapshoter externe, comme la version 4.2.1, avec Kubernetes version 1.20 ou 1.21.
+Lorsque vous utilisez le snapshot-contrôleur Kubernetes (également appelé External-snapshotter) version 4.2.0 avec Kubernetes 1.20 ou 1.21, les snapshots peuvent échouer. Pour éviter cela, utilisez un autre https://kubernetes-csi.github.io/docs/snapshot-controller.html["version prise en charge"^] D'un snapshoter externe, comme la version 4.2.1, avec Kubernetes version 1.20 ou 1.21.
 
 
 
