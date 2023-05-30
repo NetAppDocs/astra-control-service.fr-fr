@@ -16,6 +16,21 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 
 
 
+== 30 mai 2023
+
+.Nouvelles fonctionnalités et prises en charge
+* Prise en charge des clusters Amazon EKS privés
++
+link:../get-started/manage-private-cluster.html["Gérer des clusters privés à partir d'Astra Control Service"]
+
+* Prise en charge de la sélection de la classe de stockage de destination pendant les opérations de restauration ou de clonage
++
+link:../use/restore-apps.html["Restaurez les applications"]
+
+
+
+
+
 == 15 mai 2023
 
 .Nouvelles fonctionnalités et prises en charge

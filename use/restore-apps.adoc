@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: use/restore-apps.html 
-keywords: restore app, restoring an app, restore an app, restore, migrate nas-economy 
+keywords: restore app, restoring an app, restore an app, restore, migrate storage class 
 summary: 'Astra Control permet de restaurer la configuration de vos applications et le stockage persistant à partir d"un snapshot ou d"une sauvegarde. Les sauvegardes de stockage persistant sont transférées depuis votre magasin d"objets. Ainsi, la restauration à partir d"une sauvegarde existante est effectuée le plus rapidement.' 
 ---
 = Restaurez les applications
@@ -43,7 +43,7 @@ NOTE: Si vous restaurez vers un espace de nom qui a déjà été supprimé, un n
 
 
 
-** *Restaurer vers de nouveaux espaces de noms* : utilisez cette procédure pour restaurer l'application vers un autre cluster ou avec des espaces de noms différents de la source.
+** *Restaurer vers de nouveaux espaces de noms* : utilisez cette procédure pour restaurer l'application vers un autre cluster ou avec des espaces de noms différents de la source. Vous pouvez également utiliser cette procédure pour migrer une application vers une autre classe de stockage.
 +
 ... Spécifiez le nom de l'application restaurée.
 ... Choisissez le cluster de destination pour l'application que vous souhaitez restaurer.
@@ -54,6 +54,13 @@ NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cad
 
 ... Sélectionnez *Suivant*.
 ... Sélectionnez le snapshot ou la sauvegarde à utiliser pour restaurer l'application.
+... Sélectionnez *Suivant*.
+... Options au choix :
++
+**** *Restaurer à l'aide des classes de stockage d'origine* : l'application utilise la classe de stockage associée à l'origine, sauf si elle n'existe pas sur le cluster cible. Dans ce cas, la classe de stockage par défaut du cluster sera utilisée.
+**** *Restaurer à l'aide d'une classe de stockage différente* : sélectionnez une classe de stockage qui existe sur le cluster cible. Tous les volumes d'application, quelles que soient les classes de stockage qui leur sont associées à l'origine, seront migrés vers cette classe de stockage différente dans le cadre de la restauration.
+
+
 ... Sélectionnez *Suivant*.
 
 

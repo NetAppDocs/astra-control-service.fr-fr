@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: get-started/check-astra-trident-version.html 
+keywords: astra trident, check, version 
+summary: 'Pour les clusters autogérés, vérifiez que vous utilisez la version correcte d"Astra Trident.' 
+---
+= Vérifiez la version d'Astra Trident
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/get-started/
+
+
+[role="lead"]
+Pour ajouter un cluster autogéré qui utilise Astra Trident pour les services de stockage, assurez-vous que la version installée d'Astra Trident est la plus récente.
+
+.Étapes
+. Vérifiez la version d'Astra Trident.
++
+[source, console]
+----
+kubectl get tridentversions -n trident
+----
++
+Si Astra Trident est installé, le résultat est similaire à ce qui suit :
+
++
+[listing]
+----
+NAME      VERSION
+trident   22.10.0
+----
++
+Si Astra Trident n'est pas installé, le résultat est similaire à ce qui suit :
+
++
+[listing]
+----
+error: the server doesn't have a resource type "tridentversions"
+----
++
+
+NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions.
+
+. Assurez-vous que les pods fonctionnent :
++
+[source, console]
+----
+kubectl get pods -n trident
+----
+. Vérifiez si les classes de stockage utilisent les pilotes Trident Astra pris en charge. Le nom de provisionnement doit être `csi.trident.netapp.io`. Reportez-vous à l'exemple suivant :
++
+[source, console]
+----
+kubectl get sc
+----
++
+Exemple de réponse :
+
++
+[listing]
+----
+NAME                   PROVISIONER                    RECLAIMPOLICY   VOLUMEBINDINGMODE   ALLOWVOLUMEEXPANSION   AGE
+ontap-gold (default)   csi.trident.netapp.io          Delete          Immediate           true                   5d23h
+----
+

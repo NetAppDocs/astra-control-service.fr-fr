@@ -12,7 +12,7 @@ summary: 'Astra Control Service utilise Cloud Volumes Service pour Google Cloud 
 
 
 [role="lead"]
-ASTRA Control Service prend en charge Cloud Volumes Service pour Google Cloud, le service de disque persistant Google ou NetApp Cloud Volumes ONTAP en tant qu'options back-end de stockage pour les volumes persistants.
+ASTRA Control Service prend en charge NetApp Cloud Volumes Service pour Google Cloud, le service de disque persistant Google ou NetApp Cloud Volumes ONTAP en tant qu'options back-end de stockage pour les volumes persistants.
 
 
 
@@ -33,6 +33,9 @@ Si vous avez la possibilité de choisir entre différentes régions Google Cloud
 * Pour les applications K8s qui ont des besoins de stockage de moyenne à haute performance, choisissez une région Google Cloud qui prend en charge CVS-Performance et utilise la classe de stockage Premium ou Extreme. Ces workloads incluent les pipelines IA/ML, les pipelines ci/CD, le traitement des contenus multimédias et les bases de données relationnelles, NoSQL, séries chronologiques, etc
 * K8s pour les applications dont les besoins en performance du stockage sont faible à moyen (applications Web, stockage de fichiers générique, etc.), il est donc nécessaire de choisir une région Google Cloud prenant en charge CVS ou CVS-Performance avec la classe de stockage standard.
 
+
+
+NOTE: Si vous utilisez le type de service CVS avec Astra Trident 23.01 ou version ultérieure, vous devez configurer des pools de stockage avant de pouvoir provisionner des volumes. Si vous provisionnez des volumes sans pool de stockage configuré, le provisionnement des volumes échoue. Reportez-vous à la https://cloud.google.com/architecture/partners/netapp-cloud-volumes/quickstart#create_a_volume_of_the_cvs_service_type["Documentation Cloud Volumes Service"^] pour plus d'informations sur la création de volumes.
 
 Le tableau suivant fournit une brève comparaison des informations décrites sur cette page.
 
