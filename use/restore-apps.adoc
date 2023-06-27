@@ -19,7 +19,7 @@ NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui 
 
 .Description de la tâche
 * *Protéger vos applications en premier* : il est fortement recommandé de prendre un instantané ou une sauvegarde de votre application avant de la restaurer. Cela vous permettra de cloner à partir du snapshot ou de la sauvegarde en cas d'échec de la restauration.
-* *Vérifiez les volumes de destination* : si vous restaurez sur un autre cluster, assurez-vous que le cluster utilise le même mode d'accès aux volumes persistants (par exemple, ReadWriteMany). L'opération de restauration échoue si le mode d'accès au volume persistant de destination est différent.
+* *Vérifier les volumes de destination* : si vous restaurez vers une classe de stockage différente, assurez-vous que la classe de stockage utilise le même mode d'accès au volume persistant (par exemple, ReadWriteMaly). L'opération de restauration échoue si le mode d'accès au volume persistant de destination est différent.
 * *Planifier les besoins en espace* : lorsque vous effectuez une restauration sur place d'une application utilisant un stockage NetApp ONTAP, l'espace utilisé par l'application restaurée peut doubler. Une fois la restauration sur place effectuée, supprimez les snapshots indésirables de l'application restaurée pour libérer de l'espace de stockage.
 
 

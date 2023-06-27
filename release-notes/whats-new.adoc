@@ -16,6 +16,17 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 
 
 
+== 26 juin 2023
+
+.Nouvelles fonctionnalités et prises en charge
+* Les abonnements Azure Marketplace sont désormais facturés à l'heure et non à la minute
++
+link:../use/set-up-billing.html["Configurez la facturation"]
+
+
+
+
+
 == 30 mai 2023
 
 .Nouvelles fonctionnalités et prises en charge
