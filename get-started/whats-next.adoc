@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: get-started/whats-next.html 
 keywords: get started, manage apps, manage account 
-summary: 'Maintenant que vous vous êtes connecté et que vous avez ajouté des clusters à Astra Control, vous pouvez commencer à utiliser les fonctions de gestion des données applicatives d"Astra Control.' 
+summary: 'Maintenant que vous vous êtes connecté et que vous avez ajouté des clusters à Astra Control, vous êtes prêt à utiliser les fonctionnalités de gestion des données applicatives d"Astra Control.' 
 ---
 = Et la suite ?
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: 'Maintenant que vous vous êtes connecté et que vous avez ajouté des 
 
 
 [role="lead"]
-Maintenant que vous vous êtes connecté et que vous avez ajouté un cluster à Astra Control, vous pouvez commencer à utiliser les fonctions de gestion des données applicatives d'Astra Control.
+Maintenant que vous vous êtes connecté et que vous avez ajouté un cluster à Astra Control, vous êtes prêt à utiliser les fonctionnalités de gestion des données d'application d'Astra Control.
 
 * link:../use/manage-apps.html["Commencez à gérer les applications"]
 * link:../use/protect-apps.html["Protégez vos applications"]

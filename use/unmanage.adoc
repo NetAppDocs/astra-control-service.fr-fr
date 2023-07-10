@@ -62,8 +62,8 @@ Lorsque vous dégérez un cluster :
 .Étapes
 . Sélectionnez *clusters*.
 . Cochez la case correspondant au cluster que vous ne souhaitez plus gérer.
-. Dans le menu Options de la colonne *actions*, sélectionnez *Unmanage*.
-. Confirmez que vous souhaitez annuler la gestion du cluster, puis sélectionnez *Oui, Unmanage cluster*.
+. Dans le menu Options de la colonne *actions*, sélectionnez *ne pas gérer*.
+. Confirmez que vous souhaitez annuler la gestion du cluster, puis sélectionnez *Oui, dégérer*.
 
 
 .Résultat
@@ -73,7 +73,7 @@ L'état du cluster devient *Suppression*. Ensuite, le cluster sera supprimé de 
 
 == Suppression de clusters de votre fournisseur de cloud
 
-Avant de supprimer un cluster Kubernetes contenant des volumes persistants (PV) résidant sur des classes de stockage NetApp, vous devez d'abord supprimer les demandes de volume persistant suivant l'une des méthodes ci-dessous. La suppression de la demande de volume persistant et du volume persistant avant la suppression du cluster vous permet de ne pas recevoir de factures inattendues de votre fournisseur de cloud.
+Avant de supprimer un cluster Kubernetes contenant des volumes persistants (PV) résidant sur des classes de stockage NetApp, vous devez d'abord supprimer les demandes de volume persistant suivant l'une des méthodes ci-dessous. La suppression de la demande de volume persistant et du volume persistant avant la suppression du cluster évite de recevoir des factures inattendues de votre fournisseur cloud.
 
 * *Méthode #1* : supprimez les espaces de noms de charge de travail de l'application du cluster. Do _not_ delete l'espace de noms Trident.
 * *Méthode #2* : supprimez les demandes de volume persistant et les modules, ou le déploiement où les volumes persistants sont montés.
@@ -83,4 +83,4 @@ Lorsque vous gérez un cluster Kubernetes à partir d'Astra Control, les applica
 
 L'utilisation de l'une des méthodes ci-dessus supprimera le PVS correspondant de votre cluster. Assurez-vous qu'aucun volume persistant ne réside dans les classes de stockage NetApp du cluster avant de les supprimer.
 
-Si vous n'avez pas supprimé les volumes persistants avant de supprimer le cluster, vous devrez supprimer manuellement les volumes back-end de votre fournisseur de cloud.
+Si vous n'avez pas supprimé les volumes persistants avant la suppression du cluster, vous devrez supprimer manuellement les volumes back-end de votre fournisseur de cloud.

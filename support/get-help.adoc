@@ -26,7 +26,7 @@ Ces options sont disponibles gratuitement 24h/24, 7j/7 :
 
 * https://kb.netapp.com/Cloud/Astra/Control["Base de connaissances"^]
 +
-Recherchez des articles, des FAQ ou des renseignements sur le service de réparation liés à Astra Control.
+Recherchez des articles, des FAQ ou des informations de réparation liés à Astra Control.
 
 * Documentation
 +
