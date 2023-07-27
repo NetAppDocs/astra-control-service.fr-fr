@@ -57,12 +57,6 @@ NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui 
 NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cadre de l'opération de clonage. Les espaces de noms de destination que vous spécifiez ne doivent pas être déjà présents sur le cluster de destination.
 
 ** Sélectionnez *Suivant*.
-** Indiquez si vous souhaitez créer le clone à partir d'un snapshot ou d'une sauvegarde existant. Si vous ne sélectionnez pas cette option, Astra Control crée le clone à partir de l'état actuel de l'application.
-+
-*** Si vous avez choisi de cloner à partir d'un snapshot ou d'une sauvegarde existant, choisissez le snapshot ou la sauvegarde que vous souhaitez utiliser.
-
-
-** Sélectionnez *Suivant*.
 ** Choisissez de conserver la classe de stockage d'origine associée à l'application ou de sélectionner une autre classe de stockage.
 +
 

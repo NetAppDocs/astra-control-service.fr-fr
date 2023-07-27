@@ -120,12 +120,6 @@ Un utilisateur doté de contraintes RBAC d'espace de noms ne doit pas être auto
 
 
 
-=== Un utilisateur membre avec des contraintes d'espace de noms ne peut pas accéder aux applications clonées ou restaurées tant qu'un utilisateur administrateur n'ajoute pas l'espace de noms à la contrainte
-
-Toutes `member` Les utilisateurs ayant des contraintes RBAC en fonction du nom/ID de l'espace de noms peuvent cloner ou restaurer une application vers un nouvel espace de noms sur le même cluster ou vers tout autre cluster du compte de leur entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, le compte admin/propriétaire peut modifier le `member` contraintes de compte d'utilisateur et de rôle de mise à jour pour l'utilisateur affecté pour accorder l'accès au nouvel espace de noms.
-
-
-
 === Les snapshots peuvent échouer pour les clusters Kubernetes 1.25 ou versions ultérieures disposant de certaines versions de contrôleur Snapshot
 
 Les snapshots pour les clusters Kubernetes exécutant la version 1.25 ou ultérieure peuvent échouer si la version v1beta1 des API du contrôleur de snapshot est installée sur le cluster.
