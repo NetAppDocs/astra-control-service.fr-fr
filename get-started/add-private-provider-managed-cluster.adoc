@@ -163,6 +163,14 @@ endif::gcp[]
 
 Vous pouvez maintenant ajouter le cluster privé à Astra Control Service.
 
+Lorsque vous gérez des clusters Azure Kubernetes Service et Google Kubernetes Engine, vous disposez de deux options pour l'installation et la gestion du cycle de vie d'Astra Trident :
+
+* Vous pouvez utiliser Astra Control Service pour gérer automatiquement le cycle de vie d'Astra Trident. Pour cela, assurez-vous qu'Astra Trident n'est pas installé sur le cluster que vous souhaitez gérer avec Astra Control Service. Dans ce cas, Astra Trident installe automatiquement Astra Trident lorsque vous commencez à gérer le cluster, et les mises à niveau d'Astra Trident sont gérées automatiquement.
+* Vous pouvez gérer vous-même le cycle de vie d'Astra Trident. Pour ce faire, installez Astra Trident sur le cluster avant de gérer le cluster avec Astra Control Service. Dans ce cas, Astra Control Service détecte que Astra Trident est déjà installé et ne le reinstalle pas et ne gère pas les mises à niveau d'Astra Trident. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions d'installation.
+
+
+Lorsque vous gérez des clusters Amazon Web Services avec Astra Control Service, si vous avez besoin de systèmes back-end de stockage activés par Astra Trident, vous devez installer Astra Trident manuellement sur le cluster avant de le gérer avec Astra Control Service. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions d'installation.
+
 .Avant de commencer
 [%collapsible%open]
 ====
@@ -206,6 +214,8 @@ endif::gcp[]
 
 ====
 .Étapes
+. (Facultatif) si vous ajoutez un cluster Amazon EKS ou si vous souhaitez gérer vous-même l'installation et les mises à niveau d'Astra Trident, installez Astra Trident sur le cluster. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions d'installation.
+. Ouvrez l'interface utilisateur web d'Astra Control Service dans un navigateur.
 . Dans le Tableau de bord, sélectionnez *Manage Kubernetes cluster*.
 +
 Suivez les invites pour ajouter le cluster.
