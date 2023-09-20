@@ -250,13 +250,8 @@
   <block id="18b73e29f7da6f9330f1f9e4d3b28341" category="section-title">Poser le conducteur du connecteur Astra</block>
   <block id="756856619863426af3279d53a81b018d" category="list-text">Cloner le référentiel de l'opérateur de connecteur Astra GitHub :</block>
   <block id="a968d335ed6555127f3fbdb020cecd5f" category="list-text">Modifiez les répertoires au niveau supérieur du package opérateur non compressé, afin que vous puissiez voir le<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> fichier avec le<block ref="44ba5ca65651b4f36f1927576dd35436" prefix=" " category="inline-code"></block> commande.</block>
-  <block id="37d0b0adf169e682e19c955d0cd73c29" category="list-text">Créez un espace de noms pour l'opérateur de connecteur Astra.</block>
-  <block id="38da14ec20cf0841c7dc45fab0adbf07" category="list-text">Appliquez le<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> fichier dans l'espace de noms de l'opérateur.</block>
-  <block id="48812784c9e7b02bc76402c5a0c3ca10" category="list-text">Créez un namespace pour les composants du cluster privé.</block>
   <block id="e36d851dc2ff79e16c7cfbbb4e4fbe97" category="inline-link">Documentation relative à l'automatisation d'Astra</block>
   <block id="e9c498c38ce73fcff282ff152abd7d47" category="list-text">Générez un jeton API de contrôle Astra en suivant les instructions de la section<block ref="c02899be0babfb1350e3b2576a6e8c97" category="inline-link-rx"></block>.</block>
-  <block id="f831baeb7ae8c560addc2916d8b1096e" category="list-text">Appliquer la définition de ressource personnalisée (CRD) du connecteur Astra.</block>
-  <block id="138db2318815f6b9fc7cc55dd6a6ad32" category="list-text">Vérifier l'état du connecteur Astra.</block>
   <block id="d0848afd8553c34945705222a97a4553" category="paragraph">Vous devez voir les résultats similaires à ce qui suit :</block>
   <block id="61ddd26ba79b5e63c1e52be1beb28889" category="section-title">Configuration du stockage persistant</block>
   <block id="87716101cfca255da11056a624dbce47" category="inline-link">Configuration de Microsoft Azure avec des disques gérés Azure</block>
@@ -2225,4 +2220,8 @@ RKE 2 (v1.24.x) avec Rancher 2.7</block>
   <block id="dd38f906b37d412de7d1c1dcf4cbf31c" category="paragraph"><block ref="dd38f906b37d412de7d1c1dcf4cbf31c" category="inline-link-macro-rx"></block></block>
   <block id="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-macro"><block ref="8acb58cbd50ef1b468a020ee0bd351d3" category="inline-link-rx"></block></block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
+  <block id="3c873407a87c44620e1fc922d17cba7d" category="list-text">Appliquez le<block ref="f101e04500a8c699d435a8cc7d56f891" prefix=" " category="inline-code"></block> fichier. Lorsque vous exécutez cette commande, le namespace correct pour l'opérateur Astra Connector est créé et la configuration est appliquée à l'espace de noms :</block>
+  <block id="40fcdcafdc66ab23541a6bf36b499c0f" category="list-text">Créer un namespace pour les composants du cluster privé :</block>
+  <block id="f285f679ba0c90d91ce807d87ad3a50e" category="list-text">Appliquer la définition de ressource personnalisée (CRD) d'Astra Connector :</block>
+  <block id="c642f3e0823bc0255f23532494f80829" category="list-text">Vérifier l'état du connecteur Astra :</block>
 </blocks>

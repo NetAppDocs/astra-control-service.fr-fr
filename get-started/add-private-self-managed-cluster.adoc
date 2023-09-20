@@ -72,19 +72,13 @@ Vous devez installer l'opérateur Astra Connector sur le cluster privé. Si vous
 git clone https://github.com/NetApp/astra-connector-operator.git
 ----
 . Modifiez les répertoires au niveau supérieur du package opérateur non compressé, afin que vous puissiez voir le `astraconnector_operator.yaml` fichier avec le `ls` commande.
-. Créez un espace de noms pour l'opérateur de connecteur Astra.
+. Appliquez le `astraconnector_operator.yaml` fichier. Lorsque vous exécutez cette commande, le namespace correct pour l'opérateur Astra Connector est créé et la configuration est appliquée à l'espace de noms :
 +
 [source, console]
 ----
-kubectl create ns astra-connector-operator
+kubectl apply -f astraconnector_operator.yaml
 ----
-. Appliquez le `astraconnector_operator.yaml` fichier dans l'espace de noms de l'opérateur.
-+
-[source, console]
-----
-kubectl apply -f astraconnector_operator.yaml -n astra-connector-operator
-----
-. Créez un namespace pour les composants du cluster privé.
+. Créer un namespace pour les composants du cluster privé :
 +
 [source, console]
 ----
@@ -131,13 +125,13 @@ spec:
 ----
 
 
-. Appliquer la définition de ressource personnalisée (CRD) du connecteur Astra.
+. Appliquer la définition de ressource personnalisée (CRD) d'Astra Connector :
 +
 [source, console]
 ----
 kubectl apply -f config/samples/astraconnector_v1.yaml -n astra-connector
 ----
-. Vérifier l'état du connecteur Astra.
+. Vérifier l'état du connecteur Astra :
 +
 [source, console]
 ----
