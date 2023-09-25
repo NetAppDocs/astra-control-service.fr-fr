@@ -2224,4 +2224,5 @@ RKE 2 (v1.24.x) avec Rancher 2.7</block>
   <block id="40fcdcafdc66ab23541a6bf36b499c0f" category="list-text">Créer un namespace pour les composants du cluster privé :</block>
   <block id="f285f679ba0c90d91ce807d87ad3a50e" category="list-text">Appliquer la définition de ressource personnalisée (CRD) d'Astra Connector :</block>
   <block id="c642f3e0823bc0255f23532494f80829" category="list-text">Vérifier l'état du connecteur Astra :</block>
+  <block id="dce58385777428b5d9a30460fe36730a" category="list-text">Si vous ajoutez le cluster à l'aide d'un fichier kubeconfig qui fait référence à une autorité de certification privée (CA), ajoutez la ligne suivante au<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> section du fichier kubeconfig. Cela permet à Astra Control d'ajouter le cluster :</block>
 </blocks>
