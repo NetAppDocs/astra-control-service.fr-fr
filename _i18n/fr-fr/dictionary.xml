@@ -1445,7 +1445,6 @@
   <block id="d1b9bd0c14af2ff8d25891d12987a68b" category="sidebar">Canal de discorde Astra</block>
   <block id="36910a95584c53fdc9ed97782ef3965c" category="sidebar">Blog Astra Control</block>
   <block id="a984dc296b5a86b8097f515731aee987" category="sidebar">Kubernetes Hub sur Cloud Central</block>
-  <block id="f21f22dde0e0692333a7a28cce456b08" category="sidebar">Toute la documentation Astra</block>
   <block id="e29d7c0b36af68edd13ebac84f15b44b" category="sidebar">Ou du fournisseur cloud</block>
   <block id="46aef2e5080a5347df1ce7546e1be1df" category="sidebar">Tous les fournisseurs cloud</block>
   <block id="6beccc67ff905f7da0b29dece26b0485" category="sidebar">Amazon Web Services</block>
@@ -2225,4 +2224,5 @@ RKE 2 (v1.24.x) avec Rancher 2.7</block>
   <block id="f285f679ba0c90d91ce807d87ad3a50e" category="list-text">Appliquer la définition de ressource personnalisée (CRD) d'Astra Connector :</block>
   <block id="c642f3e0823bc0255f23532494f80829" category="list-text">Vérifier l'état du connecteur Astra :</block>
   <block id="dce58385777428b5d9a30460fe36730a" category="list-text">Si vous ajoutez le cluster à l'aide d'un fichier kubeconfig qui fait référence à une autorité de certification privée (CA), ajoutez la ligne suivante au<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> section du fichier kubeconfig. Cela permet à Astra Control d'ajouter le cluster :</block>
+  <block id="f4228b9bf977f4c9a1952ea84926975f" category="section-title">2 octobre 2023</block>
 </blocks>
