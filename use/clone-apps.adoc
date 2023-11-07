@@ -27,7 +27,8 @@ NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui 
 
 .Limites des clones
 * *Classes de stockage explicites* : si vous déployez une application avec une classe de stockage définie explicitement et que vous devez cloner l'application, le cluster cible doit avoir la classe de stockage spécifiée à l'origine. Le clonage d'une application avec une classe de stockage définie explicitement dans un cluster ne disposant pas de la même classe de stockage échouera.
-* *Clones et contraintes utilisateur* : tout utilisateur membre ayant des contraintes d'espace de noms par nom/ID d'espace de noms ou par étiquette d'espace de noms peut cloner ou restaurer une application dans un nouvel espace de noms sur le même cluster ou sur tout autre cluster du compte de son organisation. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, l'administrateur/propriétaire du compte peut modifier le compte d'utilisateur membre et mettre à jour les contraintes de rôle pour l'utilisateur affecté afin d'autoriser l'accès au nouvel espace de noms.
+* *Applications économiques ontap-nas* : vous ne pouvez pas utiliser d'opérations de clonage si la classe de stockage de votre application est prise en charge par `ontap-nas-economy` conducteur. Vous pouvez cependant link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["sauvegardez et restaurez les opérations ontap-nas"].
+* *Clones et contraintes utilisateur* : tout utilisateur membre ayant des contraintes d'espace de noms par nom/ID d'espace de noms ou par étiquette d'espace de noms peut cloner ou restaurer une application dans un nouvel espace de noms sur le même cluster ou sur tout autre cluster du compte de son organisation. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après qu'une opération de clonage ou de restauration a créé un nouvel espace de noms, l'administrateur/propriétaire du compte peut modifier le compte utilisateur membre et mettre à jour les contraintes de rôle pour que l'utilisateur affecté accorde l'accès au nouvel espace de noms.
 * *Les clones utilisent des compartiments par défaut* :
 +
 ** Lors d'une sauvegarde ou d'une restauration d'application, vous pouvez spécifier un compartiment à utiliser. Vous devez spécifier un compartiment par défaut lors du clonage des clusters, mais en spécifiant un compartiment est facultatif lorsque vous effectuez le clonage au sein du même cluster.
@@ -60,6 +61,10 @@ NOTE: Astra Control crée de nouveaux espaces de noms de destination dans le cad
 ** Choisissez de conserver la classe de stockage d'origine associée à l'application ou de sélectionner une autre classe de stockage.
 +
 
+NOTE: Vous pouvez migrer la classe de stockage d'une application vers une classe de stockage de fournisseur cloud native ou vers une autre classe de stockage prise en charge, puis migrer une application à partir d'une classe de stockage prise en charge par `ontap-nas-economy` à une classe de stockage soutenue par `ontap-nas` sur le même cluster, ou copiez l'application vers un autre cluster dont la classe de stockage est prise en charge par `ontap-nas-economy` conducteur.
+
++
+
 NOTE: Si vous sélectionnez une classe de stockage différente et que cette classe de stockage n'existe pas au moment de la restauration, une erreur est renvoyée.
 
 
@@ -71,4 +76,4 @@ NOTE: Si vous sélectionnez une classe de stockage différente et que cette clas
 .Résultat
 Astra Control clone l'application en fonction des informations que vous avez fournies. L'opération de clonage a réussi lorsque le nouveau clone d'application est dans `Healthy` Indiquez la page *applications*.
 
-Après la création d'un espace de noms par une opération de clonage ou de restauration, l'administrateur/propriétaire du compte peut modifier le compte d'utilisateur membre et mettre à jour les contraintes de rôle pour l'utilisateur affecté afin d'autoriser l'accès au nouvel espace de noms.
+Après qu'une opération de clonage ou de restauration a créé un nouvel espace de noms, l'administrateur/propriétaire du compte peut modifier le compte utilisateur membre et mettre à jour les contraintes de rôle pour que l'utilisateur affecté accorde l'accès au nouvel espace de noms.

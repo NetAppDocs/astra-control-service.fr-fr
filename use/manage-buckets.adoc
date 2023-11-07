@@ -73,8 +73,8 @@ Vous pouvez ajouter les types de compartiments suivants :
 
 
 .Avant de commencer
-* Nom d'un compartiment existant.
-* Identifiants du compartiment qui fournit à Astra Control Service les autorisations dont le service IT a besoin pour gérer le compartiment.
+* Assurez-vous de connaître le nom d'un compartiment existant.
+* Assurez-vous d'avoir des identifiants pour le compartiment qui fournissent à Astra Control les autorisations dont il a besoin pour gérer le compartiment.
 
 
 ifdef::azure[]
@@ -147,8 +147,13 @@ NOTE: Astra Control n'attribue pas automatiquement de compartiment par défaut �
 
 Il est possible de retirer un godet qui n'est plus utilisé ou qui n'est pas en bon état. Pour simplifier et à jour la configuration du magasin d'objets,
 
-Vous ne pouvez pas supprimer un compartiment par défaut. Si vous souhaitez retirer ce compartiment, sélectionnez tout d'abord un autre compartiment comme valeur par défaut.
+[NOTE]
+====
+* Vous ne pouvez pas supprimer un compartiment par défaut. Si vous souhaitez retirer ce compartiment, sélectionnez tout d'abord un autre compartiment comme valeur par défaut.
+* Vous ne pouvez pas supprimer un compartiment WORM (Write Once, Read Many) avant l'expiration de la période de conservation du fournisseur cloud du compartiment. Les godets À VIS SANS FIN sont signalés par « verrouillé » à côté du nom du compartiment.
 
+
+====
 .Avant de commencer
 * Avant de commencer, assurez-vous qu'aucune sauvegarde n'est en cours d'exécution ou terminée pour ce compartiment.
 * Vérifiez que le compartiment n'est pas utilisé pour les sauvegardes planifiées.

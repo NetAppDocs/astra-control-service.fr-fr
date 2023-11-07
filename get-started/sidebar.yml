@@ -27,6 +27,8 @@ entries:
 - title: Ajouter un cluster
   url: "/get-started/add-first-cluster.html"
   entries:
+  - title: Installez Astra Connector pour les clusters privés
+    url: "/get-started/install-astra-connector.html"
   - title: Ajoutez un cluster géré par le fournisseur
     entries:
     - title: Ajoutez un cluster géré par un fournisseur public

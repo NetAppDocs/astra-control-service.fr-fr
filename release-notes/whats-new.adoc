@@ -4,7 +4,7 @@ permalink: release-notes/whats-new.html
 keywords: 'what"s new, bugs, bug fixes, new features, enhancements' 
 summary: NetApp met régulièrement à jour le service Astra Control afin de vous apporter de nouvelles fonctionnalités, des améliorations et des correctifs. 
 ---
-= Nouveautés du service de contrôle Astra
+= Nouveautés d'Astra Control Service
 :hardbreaks:
 :allow-uri-read: 
 :icons: font
@@ -13,6 +13,44 @@ summary: NetApp met régulièrement à jour le service Astra Control afin de vou
 
 [role="lead"]
 NetApp met régulièrement à jour le service Astra Control afin de vous apporter de nouvelles fonctionnalités, des améliorations et des correctifs.
+
+
+
+== 7 novembre 2023
+
+[[nas-eco-backup-restore]]
+.Nouvelles fonctionnalités et prises en charge
+* *Fonctionnalités de sauvegarde et de restauration pour les applications avec les systèmes back-end de stockage ontap-nas économiques à base de pilotes* : activez les opérations de sauvegarde et de restauration `ontap-nas-economy` avec certains link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["étapes simples"^].
+* *Prise en charge d'Astra Control Service pour les clusters Red Hat OpenShift Container Platform sur site*
++
+link:../use/restore-apps.html["Ajouter un cluster"^]
+
+* *Sauvegardes immuables* : Astra Control prend désormais en charge link:../concepts/data-protection.html#immutable-backups["sauvegardes inaltérables et en lecture seule"^] en tant que couche de sécurité supplémentaire contre les programmes malveillants et autres menaces.
+* *Présentation d'Astra Control provisionner*
++
+Avec la version 23.10, Astra Control présente un nouveau composant logiciel appelé Astra Control Provisioner qui sera disponible pour tous les utilisateurs d'Astra Control sous licence. ASTRA Control Provisioner offre un accès à un ensemble complet de fonctionnalités de gestion et de provisionnement du stockage avancées qui vont au-delà de celles d'Astra Trident. Ces fonctionnalités sont disponibles sans frais supplémentaires pour tous les clients d'Astra Control.
+
++
+** *Commencez avec Astra Control Provisioner*
+C'est possible link:../use/enable-acp.html["Activez le mécanisme de provisionnement Astra Control"^] Si vous avez installé et configuré votre environnement pour utiliser Astra Trident 23.10.
+** *Fonctionnalité Astra Control Provisioner*
++
+Les fonctions suivantes sont disponibles avec l'Astra Control Provisioner 23.10 :
+
++
+*** *Sécurité renforcée du back-end de stockage avec le cryptage Kerberos 5* : vous pouvez améliorer la sécurité du stockage par link:../use-acp/configure-storage-backend-encryption.html["activation du chiffrement"^] pour le trafic entre votre cluster géré et le back-end de stockage. ASTRA Control Provisioner prend en charge le chiffrement Kerberos 5 sur connexions NFSv4.1 des clusters Red Hat OpenShift aux volumes Azure NetApp Files et ONTAP sur site.
+*** *Récupérer des données à l'aide d'un snapshot* : Astra Control provisionner offre une restauration rapide de volume sur place à partir d'un snapshot à l'aide du `TridentActionSnapshotRestore` (TASR) CR.
+*** *Fonctionnalités de sauvegarde et de restauration pour les applications avec `ontap-nas-economy` Systèmes back-end avec sauvegarde par pilote* : comme décrit <<nas-eco-backup-restore,ci-dessus>>.
+
+
+
+
+* *Prise en charge d'Astra Control Service pour les clusters Red Hat OpenShift Service sur AWS (ROSA)*
++
+link:../use/restore-apps.html["Ajouter un cluster"^]
+
+* *Crochets d'exécution désactivés par défaut* : à partir de cette version, la fonctionnalité crochets d'exécution peut être link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["activé"] ou désactivé pour une sécurité supplémentaire (il est désactivé par défaut). Si vous n'avez pas encore créé de crochets d'exécution pour une utilisation avec Astra Control, vous devez le faire link:../use/manage-app-execution-hooks.html#enable-the-execution-hooks-feature["activez la fonction crochets d'exécution"^] pour commencer à créer des crochets. Si vous avez créé des crochets d'exécution avant cette version, la fonctionnalité crochets d'exécution reste activée et vous pouvez utiliser des crochets comme vous le feriez normalement.
+
 
 
 

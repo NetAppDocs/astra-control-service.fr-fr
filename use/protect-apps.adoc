@@ -21,6 +21,8 @@ Vous pouvez effectuer les tâches suivantes liées à la protection de vos donn�
 * <<Configurer une règle de protection>>
 * <<Créer un snapshot>>
 * <<Créer une sauvegarde>>
+* <<Sauvegardez et restaurez les opérations ontap-nas>>
+* <<Créez une sauvegarde immuable>>
 * <<Afficher les snapshots et les sauvegardes>>
 * <<Supprimer les instantanés>>
 * <<Annuler les sauvegardes>>
@@ -34,6 +36,9 @@ Vous pouvez effectuer les tâches suivantes liées à la protection de vos donn�
 Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver.
 
 Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
+
+
+NOTE: Si vous définissez une règle de protection qui crée des sauvegardes immuables dans des compartiments WORM (Write Once, Read Many), assurez-vous que la durée de conservation des sauvegardes ne soit pas plus courte que la période de conservation configurée pour le compartiment.
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application gérée.
@@ -65,6 +70,9 @@ Astra Control implémente la règle de protection des données en créant et en 
 
 Vous pouvez créer un snapshot à la demande à tout moment.
 
+
+IMPORTANT: Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` pilote, les snapshots ne peuvent pas être créés. Utilisez une autre classe de stockage pour les snapshots.
+
 .Étapes
 . Sélectionnez *applications*.
 . Dans le menu Options de la colonne *actions* de l'application souhaitée, sélectionnez *instantané*.
@@ -90,6 +98,11 @@ Soyez conscient du traitement de l'espace de stockage lors de la sauvegarde d'un
 ====
 endif::azure[]
 
+.Description de la tâche
+Les compartiments d'Astra Control ne signalent pas la capacité disponible. Avant de sauvegarder ou de cloner des applications gérées par Astra Control, vérifiez les informations du compartiment dans le système de gestion du stockage approprié.
+
+Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` pilote, vous devez <<Sauvegardez et restaurez les opérations ontap-nas,activer la sauvegarde et la restauration>> fonctionnalité. Assurez-vous d'avoir défini un `backendType` dans votre https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objet de stockage Kubernetes"^] avec une valeur de `ontap-nas-economy` avant d'effectuer toute opération de protection.
+
 .Étapes
 . Sélectionnez *applications*.
 . Dans le menu Options de la colonne *actions* de l'application souhaitée, sélectionnez *Sauvegarder*.
@@ -103,14 +116,135 @@ endif::azure[]
 .Résultat
 Astra Control crée une sauvegarde de l'application.
 
+[NOTE]
+====
+* Si votre réseau est en panne ou anormalement lent, une opération de sauvegarde risque d'être terminée. Ceci entraîne l'échec de la sauvegarde.
+* Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section <<Annuler les sauvegardes>>. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <<Supprimer les sauvegardes>>.
+* Après une opération de protection des données (clonage, sauvegarde, restauration) et après le redimensionnement du volume persistant, il y a vingt minutes de retard avant que la nouvelle taille du volume ne s'affiche dans l'interface utilisateur. La protection des données fonctionne avec succès en quelques minutes et vous pouvez utiliser le logiciel de gestion pour le système back-end pour confirmer la modification de la taille du volume.
 
-NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section <<Annuler les sauvegardes>>. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez les instructions de la section <<Supprimer les sauvegardes>>.
 
+====
+
+
+== Sauvegardez et restaurez les opérations ontap-nas
+
+ASTRA Control Provisioner offre des fonctionnalités de sauvegarde et de restauration qui peuvent être activées pour les systèmes back-end qui utilisent le `ontap-nas-economy` classe de stockage.
+
+.Avant de commencer
+* Vous avez activé Astra Control Provisioner.
+* Vous avez défini une application dans Astra Control. Cette application aura une fonctionnalité de protection limitée jusqu'à ce que vous ayez terminé cette procédure.
+* Vous avez `ontap-nas-economy` sélectionné comme classe de stockage par défaut pour votre système back-end de stockage.
+
+
+.Développez pour les étapes de configuration
+[%collapsible]
+====
+. Effectuez les opérations suivantes sur le back-end de stockage ONTAP :
++
+.. Trouver le SVM qui héberge `ontap-nas-economy`volumes de l'application basés sur.
+.. Connectez-vous à un terminal connecté à ONTAP où les volumes sont créés.
+.. Masquer le répertoire Snapshot pour le SVM :
++
+
+NOTE: Cette modification concerne l'ensemble du SVM. Le répertoire caché continuera d'être accessible.
+
++
+[source, console]
+----
+nfs modify -vserver <svm name> -v3-hide-snapshot enabled
+----
++
+
+IMPORTANT: Vérifiez que le répertoire de snapshot sur le back-end de stockage ONTAP est masqué. Si ce répertoire n'est pas masqué, l'accès à votre application risque d'être perdu, en particulier s'il utilise NFSv3.
+
+
+
+. Effectuez les opérations suivantes dans Astra Trident :
++
+.. Activez le répertoire Snapshot pour chaque volume persistant reposant sur ontap-nas-Economy et associé à l'application :
++
+[source, console]
+----
+tridentctl update volume <pv name> --snapshot-dir=true --pool-level=true -n trident
+----
+.. Vérifiez que le répertoire de snapshot a été activé pour chaque PV associé :
++
+[source, console]
+----
+tridentctl get volume <pv name> -n trident -o yaml | grep snapshotDir
+----
++
+Réponse :
+
++
+[listing]
+----
+snapshotDirectory: "true"
+----
+
+
+. Dans Astra Control, actualisez l'application après avoir activé tous les répertoires de snapshots associés afin qu'Astra Control reconnaisse la valeur modifiée.
+
+
+.Résultat
+L'application est prête à effectuer des sauvegardes et des restaurations à l'aide d'Astra Control. Chaque demande de volume persistant est également disponible pour être utilisée par d'autres applications à des fins de sauvegarde et de restauration.
+
+====
+
+
+== Créez une sauvegarde immuable
+
+Une sauvegarde immuable ne peut pas être modifiée, supprimée ou écrasée tant que la stratégie de conservation sur le compartiment qui stocke la sauvegarde l'interdit. Vous pouvez créer des sauvegardes immuables en sauvegardant les applications dans des compartiments dont une stratégie de conservation est configurée. Reportez-vous à la section link:../learn/data-protection.html#immutable-backups["Protection des données"^] pour obtenir des informations importantes sur l'utilisation de sauvegardes immuables.
+
+.Avant de commencer
+Vous devez configurer le compartiment de destination avec une règle de conservation. Cette procédure varie en fonction du fournisseur de stockage que vous utilisez. Pour plus d'informations, reportez-vous à la documentation du fournisseur de stockage :
+
+* *Amazon Web Services* : https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock-console.html["Activez le verrouillage objet S3 lors de la création du compartiment et définissez un mode de conservation par défaut de « gouvernance » avec une période de conservation par défaut"^].
+* *Google Cloud* : https://cloud.google.com/storage/docs/using-bucket-lock["Configurez un compartiment avec une règle de conservation et spécifiez une période de conservation"^].
+* *Microsoft Azure* : https://learn.microsoft.com/en-us/azure/storage/blobs/immutable-policy-configure-container-scope?tabs=azure-portal["Configuration d'un compartiment de stockage d'objets blob avec une règle de conservation basée sur le temps concernant l'étendue au niveau du conteneur"^].
+* *NetApp StorageGRID* : https://docs.netapp.com/us-en/storagegrid-117/tenant/creating-s3-bucket.html["Activez le verrouillage objet S3 lors de la création du compartiment et définissez un mode de conservation par défaut de « conformité » avec une période de conservation par défaut"^].
+
+
+
+NOTE: Les compartiments d'Astra Control ne signalent pas la capacité disponible. Avant de sauvegarder ou de cloner des applications gérées par Astra Control, vérifiez les informations du compartiment dans le système de gestion du stockage approprié.
+
+
+IMPORTANT: Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` vérifiez que vous avez défini un `backendType` dans votre https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objet de stockage Kubernetes"^] avec une valeur de `ontap-nas-economy` avant d'effectuer toute opération de protection.
+
+.Étapes
+. Sélectionnez *applications*.
+. Dans le menu Options de la colonne *actions* de l'application souhaitée, sélectionnez *Sauvegarder*.
+. Personnaliser le nom de la sauvegarde.
+. Choisissez de sauvegarder l'application à partir d'un snapshot existant. Si vous sélectionnez cette option, vous pouvez choisir parmi une liste de snapshots existants.
+. Choisir un compartiment de destination pour la sauvegarde dans la liste des compartiments de stockage. Un compartiment WORM (Write Once Read Many) est indiqué par l'état « LOCKED » (verrouillé) à côté du nom du compartiment.
++
+
+NOTE: Si le type de godet n'est pas pris en charge, cela est indiqué lorsque vous survolez ou sélectionnez le godet.
+
+. Sélectionnez *Suivant*.
+. Passez en revue le résumé des sauvegardes et sélectionnez *Sauvegarder*.
+
+
+.Résultat
+ASTRA Control crée une sauvegarde immuable de l'application.
+
+[NOTE]
+====
+* Si votre réseau est en panne ou anormalement lent, une opération de sauvegarde risque d'être terminée. Ceci entraîne l'échec de la sauvegarde.
+* Si vous essayez de créer deux sauvegardes immuables d'une même application dans le même compartiment en même temps, Astra Control empêche le démarrage de la deuxième sauvegarde. Attendez que la première sauvegarde soit terminée avant de commencer une autre sauvegarde.
+* Vous ne pouvez pas annuler une sauvegarde immuable en cours d'exécution.
+* Après une opération de protection des données (clonage, sauvegarde, restauration) et après le redimensionnement du volume persistant, il y a vingt minutes de retard avant que la nouvelle taille du volume ne s'affiche dans l'interface utilisateur. La protection des données fonctionne avec succès en quelques minutes et vous pouvez utiliser le logiciel de gestion pour le système back-end pour confirmer la modification de la taille du volume.
+
+
+====
 
 
 == Afficher les snapshots et les sauvegardes
 
 Vous pouvez afficher les instantanés et les sauvegardes d'une application à partir de l'onglet protection des données.
+
+
+NOTE: Une sauvegarde immuable est indiquée avec l'état « verrouillé » à côté du compartiment qu'elle utilise.
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application gérée.
@@ -146,6 +280,9 @@ Vous pouvez annuler une sauvegarde en cours.
 
 TIP: Pour annuler une sauvegarde, la sauvegarde doit être dans `Running` état. Vous ne pouvez pas annuler une sauvegarde dans `Pending` état.
 
+
+NOTE: Vous ne pouvez pas annuler une sauvegarde immuable en cours d'exécution.
+
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application.
 . Sélectionnez *protection des données*.
@@ -162,6 +299,9 @@ Supprimez les sauvegardes planifiées ou à la demande qui ne vous sont plus né
 
 
 NOTE: Si vous devez annuler une sauvegarde en cours d'exécution, suivez les instructions de la section <<Annuler les sauvegardes>>. Pour supprimer la sauvegarde, attendez qu'elle soit terminée, puis suivez ces instructions.
+
+
+NOTE: Vous ne pouvez pas supprimer une sauvegarde immuable avant l'expiration de la période de conservation.
 
 .Étapes
 . Sélectionnez *applications*, puis le nom d'une application.

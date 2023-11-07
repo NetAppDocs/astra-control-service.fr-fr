@@ -23,6 +23,9 @@ Les problèmes connus suivants ont une incidence sur la version actuelle :
 .Sauvegarde, restauration et clonage
 * <<Les clones d'applications échouent à l'aide d'une version spécifique de PostgreSQL>>
 * <<Les sauvegardes d'applications et les snapshots échouent si la classe volumesnapshotclass est ajoutée après la gestion d'un cluster>>
+* <<Les opérations de restauration sur place pour les classes de stockage ontap-nas échouent>>
+* <<La restauration à partir d'une sauvegarde lors de l'utilisation du chiffrement à la volée Kerberos peut échouer>>
+* <<Les données de sauvegarde restent dans le compartiment après leur suppression pour les compartiments dont la règle de conservation a expiré>>
 
 
 .Autres questions
@@ -46,6 +49,30 @@ Les clones d'applications au sein du même cluster échouent systématiquement a
 == Les sauvegardes d'applications et les snapshots échouent si la classe volumesnapshotclass est ajoutée après la gestion d'un cluster
 
 Dans ce scénario, les sauvegardes et les instantanés échouent avec une erreur UI 500. Pour contourner ce problème, actualisez la liste des applications.
+
+
+
+== Les opérations de restauration sur place pour les classes de stockage ontap-nas échouent
+
+Si vous effectuez une restauration sur place d'une application (restaurez-la dans son espace de noms d'origine) et que la classe de stockage de l'application utilise le `ontap-nas-economy` pilote, l'opération de restauration peut échouer si le répertoire de snapshot n'est pas masqué. Avant de remettre le produit en place, suivez les instructions de la section link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Sauvegardez et restaurez les opérations ontap-nas"^] pour masquer le répertoire d'instantanés.
+
+
+
+== La restauration à partir d'une sauvegarde lors de l'utilisation du chiffrement à la volée Kerberos peut échouer
+
+Lorsque vous restaurez une application à partir d'une sauvegarde vers un back-end de stockage utilisant le chiffrement à la volée Kerberos, l'opération de restauration peut échouer. Ce problème n'affecte pas la restauration à partir d'un snapshot ni la réplication des données d'application à l'aide de NetApp SnapMirror.
+
+
+NOTE: Lors de l'utilisation du chiffrement à la volée Kerberos avec les volumes NFSv4, vérifiez que les volumes NFSv4 utilisent les paramètres corrects. Reportez-vous à la section Configuration du domaine NetApp NFSv4 (page 13) du https://www.netapp.com/media/16398-tr-3580.pdf["Guide des améliorations et des bonnes pratiques de NetApp NFSv4"^].
+
+
+
+== Les données de sauvegarde restent dans le compartiment après leur suppression pour les compartiments dont la règle de conservation a expiré
+
+Si vous supprimez la sauvegarde immuable d'une application après l'expiration de la politique de conservation du compartiment, la sauvegarde est supprimée d'Astra Control, mais pas du compartiment. Pour contourner ce problème, si vous devez supprimer les sauvegardes les plus récentes ou toutes les sauvegardes d'une application, supprimez manuellement les sauvegardes du back-end de stockage.
+
+
+NOTE: Si vous avez plusieurs sauvegardes pour une application, supprimez les sauvegardes les plus récentes ou toutes les sauvegardes de l'application. Si vous supprimez des sauvegardes incrémentielles intermédiaires, vous ne pourrez pas récupérer l'application à partir de la dernière sauvegarde.
 
 
 

@@ -22,12 +22,6 @@ Voici quelques restrictions qui affectent la gestion des clusters Kubernetes par
 
 
 
-=== Astra Trident n'est pas désinstallé d'un cluster
-
-Lorsque vous dégérez un cluster depuis Astra Control Service, Astra Trident n'est pas automatiquement désinstallé du cluster. Pour désinstaller Astra Trident, vous devez https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Suivez ces étapes dans la documentation d'Astra Trident"^].
-
-
-
 === Les connexions existantes à un pod Postgres provoquent des défaillances
 
 Lorsque vous exécutez des opérations sur les modules Postgres, vous ne devez pas vous connecter directement dans le pod pour utiliser la commande psql. Astra Control Service requiert un accès psql pour geler et dégeler les bases de données. S'il existe une connexion existante, le snapshot, la sauvegarde ou le clone échoueront.
@@ -45,14 +39,6 @@ ifdef::gcp[]
 == Limitations de la gestion des clusters GKE
 
 Les limites suivantes s'appliquent à la gestion des clusters Kubernetes dans Google Kubernetes Engine (GKE).
-
-
-
-=== Les applications Google Marketplace n'ont pas été validées
-
-NetApp n'a pas validé les applications déployées depuis Google Marketplace. Certains utilisateurs ont signalé des problèmes de découverte ou de sauvegarde des applications Postgres, MariaDB et MySQL déployées à partir de Google Marketplace.
-
-Quel que soit le type d'application que vous utilisez avec Astra Control Service, vous devez toujours tester vous-même le flux de travail de sauvegarde et de restauration afin de vous assurer que vous respectez vos exigences de reprise après incident.
 
 endif::gcp[]
 
@@ -122,7 +108,7 @@ Un utilisateur doté de contraintes RBAC d'espace de noms ne doit pas être auto
 
 === Un utilisateur membre avec des contraintes d'espace de noms ne peut pas accéder aux applications clonées ou restaurées tant qu'un utilisateur administrateur n'ajoute pas l'espace de noms à la contrainte
 
-Toutes `member` Les utilisateurs ayant des contraintes RBAC en fonction du nom/ID de l'espace de noms peuvent cloner ou restaurer une application vers un nouvel espace de noms sur le même cluster ou vers tout autre cluster du compte de leur entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un espace de noms par une opération de clonage ou de restauration, le compte admin/propriétaire peut modifier le `member` contraintes de compte d'utilisateur et de rôle de mise à jour pour l'utilisateur affecté pour accorder l'accès au nouvel espace de noms.
+Toutes `member` Les utilisateurs ayant des contraintes RBAC en fonction du nom/ID de l'espace de noms peuvent cloner ou restaurer une application vers un nouvel espace de noms sur le même cluster ou vers tout autre cluster du compte de leur entreprise. Cependant, le même utilisateur ne peut pas accéder à l'application clonée ou restaurée dans le nouvel espace de noms. Après la création d'un clone ou d'une opération de restauration, l'administrateur/propriétaire du compte peut modifier le `member` contraintes de compte d'utilisateur et de rôle de mise à jour pour l'utilisateur affecté pour accorder l'accès au nouvel espace de noms.
 
 
 
