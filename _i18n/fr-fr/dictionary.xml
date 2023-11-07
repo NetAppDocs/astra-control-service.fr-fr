@@ -2162,9 +2162,6 @@ RKE 2 (v1.24.x) avec Rancher 2.7</block>
   <block id="2352c4e1f4d0024ade0869e00e6243f4" category="paragraph"><block ref="2352c4e1f4d0024ade0869e00e6243f4" category="inline-link-macro-rx"></block></block>
   <block id="dce58385777428b5d9a30460fe36730a" category="list-text">Si vous ajoutez le cluster à l'aide d'un fichier kubeconfig qui fait référence à une autorité de certification privée (CA), ajoutez la ligne suivante au<block ref="06b2d4b91b5c9eaa8c20a1c270f95b3c" prefix=" " category="inline-code"></block> section du fichier kubeconfig. Cela permet à Astra Control d'ajouter le cluster :</block>
   <block id="f4228b9bf977f4c9a1952ea84926975f" category="section-title">2 octobre 2023</block>
-  <block id="33a97eec462a14258b6a1fe63f943ec5" category="list-text">kubectl v1.25 ou version ultérieure installée</block>
-  <block id="3b34edb55fd85d9b0636e2533b140b9f" category="list-text">Accès kubectl au cluster que vous souhaitez ajouter et gérer avec Astra Control Center</block>
-  <block id="d5b7f62a909e346c0e1cd08be571c54f" category="admonition">Pour cette procédure, il n'est pas nécessaire d'avoir un accès kubectl au cluster qui exécute Astra Control Center.</block>
   <block id="c49be33f592950e78d23dd417a4a75e5" category="list-text">Un kubeconfig actif pour le cluster que vous avez l'intention de gérer avec des droits d'administrateur de cluster pour le contexte actif</block>
   <block id="565bfe8a9451afd10f3c41fe9fa4cf22" category="list-text">Créer un compte de service :</block>
   <block id="5a20342984ee9d605acb505095dbcd0a" category="list-text">Créez l'un des rôles de cluster suivants avec des autorisations suffisantes pour qu'un cluster soit géré par Astra Control :</block>
@@ -2555,4 +2552,5 @@ C'est possible <block ref="34554017affcf2d95a6dc49ac60c5b22" category="inline-li
   <block id="b518803a746e06a4f19197ae81406970" category="paragraph">Si vous supprimez la sauvegarde immuable d'une application après l'expiration de la politique de conservation du compartiment, la sauvegarde est supprimée d'Astra Control, mais pas du compartiment. Pour contourner ce problème, si vous devez supprimer les sauvegardes les plus récentes ou toutes les sauvegardes d'une application, supprimez manuellement les sauvegardes du back-end de stockage.</block>
   <block id="f318002a693e78e0cf366be52609a528" category="admonition">Si vous avez plusieurs sauvegardes pour une application, supprimez les sauvegardes les plus récentes ou toutes les sauvegardes de l'application. Si vous supprimez des sauvegardes incrémentielles intermédiaires, vous ne pourrez pas récupérer l'application à partir de la dernière sauvegarde.</block>
   <block id="03281739854e4951c0f98529e54a24f2" category="sidebar">Utilisez Astra Control Provisioner</block>
+  <block id="49219ed727d5145cd828958ebce847fa" category="list-text">kubectl v1.26 ou version ultérieure installée</block>
 </blocks>
