@@ -2522,9 +2522,7 @@ Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochet
   <block id="d19668a1d8d1bd385693755af3a4d795" category="inline-link-macro">étapes simples</block>
   <block id="bc6535c6d6068b18ecf4b4c5c01c8d16" category="list-text">*Fonctionnalités de sauvegarde et de restauration pour les applications avec les systèmes back-end de stockage ontap-nas économiques à base de pilotes* : activez les opérations de sauvegarde et de restauration<block ref="caafdf62a2c609bfa5316118231a1007" prefix=" " category="inline-code"></block> avec certains <block ref="5c67f35967a41efab494aadfd6ca6dff" category="inline-link-macro-rx"></block>.</block>
   <block id="1f6dc20a3ec1623fb44899872279643e" category="list-text">*Prise en charge d'Astra Control Service pour les clusters Red Hat OpenShift Container Platform sur site*</block>
-  <block id="3a1aaab6dcb181e61008309324075e63" category="paragraph"><block ref="3a1aaab6dcb181e61008309324075e63" category="inline-link-macro-rx"></block></block>
   <block id="5eadb99098f006f9c32869481704480a" category="inline-link-macro">sauvegardes inaltérables et en lecture seule</block>
-  <block id="a630fe80f58480c62f875cc147ba8a94" category="list-text">*Sauvegardes immuables* : Astra Control prend désormais en charge <block ref="64c93f29dbc4dc78bd1b2562147eccbb" category="inline-link-macro-rx"></block> en tant que couche de sécurité supplémentaire contre les programmes malveillants et autres menaces.</block>
   <block id="9736ef1f9882cacf5ab2e28d88d9e5a6" category="list-text">*Présentation d'Astra Control provisionner*</block>
   <block id="6620a1148fc74ef20fba3425d00efe86" category="paragraph">Avec la version 23.10, Astra Control présente un nouveau composant logiciel appelé Astra Control Provisioner qui sera disponible pour tous les utilisateurs d'Astra Control sous licence. ASTRA Control Provisioner offre un accès à un ensemble complet de fonctionnalités de gestion et de provisionnement du stockage avancées qui vont au-delà de celles d'Astra Trident. Ces fonctionnalités sont disponibles sans frais supplémentaires pour tous les clients d'Astra Control.</block>
   <block id="b8012be7d7bd1ed72622391312c910b2" category="list-text">*Commencez avec Astra Control Provisioner*
@@ -2552,4 +2550,8 @@ C'est possible <block ref="34554017affcf2d95a6dc49ac60c5b22" category="inline-li
   <block id="03281739854e4951c0f98529e54a24f2" category="sidebar">Utilisez Astra Control Provisioner</block>
   <block id="49219ed727d5145cd828958ebce847fa" category="list-text">kubectl v1.26 ou version ultérieure installée</block>
   <block id="3c4db63c6115c69942c67f6b04d8e645" category="paragraph">Si vous supprimez la sauvegarde immuable d'une application après l'expiration de la politique de conservation du compartiment, la sauvegarde est supprimée d'Astra Control, mais pas du compartiment. Ce problème sera corrigé dans une prochaine version.</block>
+  <block id="9d7917a6e561386b201cda34e605d752" category="paragraph"><block ref="9d7917a6e561386b201cda34e605d752" category="inline-link-macro-rx"></block></block>
+  <block id="3fcb22d3c98c7c79f0727de1eb084b1e" category="list-text">*Sauvegardes immuables* : Astra Control prend désormais en charge <block ref="fe44ae92696e57533e10ffb7636ff94a" category="inline-link-macro-rx"></block> en tant que couche de sécurité supplémentaire contre les programmes malveillants et autres menaces.</block>
+  <block id="ac4da6c6894a7c36281036138b93deac" category="list-text">*Prise en charge de la gestion des applications qui utilisent le stockage NVMe/TCP*
+ASTRA Control peut désormais gérer des applications sauvegardées par des volumes persistants et connectés via NVMe/TCP.</block>
 </blocks>
