@@ -30,7 +30,7 @@ Lorsque vous exécutez des opérations sur les modules Postgres, vous ne devez p
 
 === La page activité affiche jusqu'à 100,000 événements
 
-La page activité Astra Control peut afficher jusqu'à 100,000 événements. Pour afficher tous les événements consignés, récupérez-les à l'aide du link:../rest-api/api-intro.html["API REST Astra Control"^].
+La page activité Astra Control peut afficher jusqu'à 100,000 événements. Pour afficher tous les événements consignés, récupérez-les à l'aide du https://docs.netapp.com/us-en/astra-automation/["API REST Astra Control"^].
 
 ifdef::gcp[]
 

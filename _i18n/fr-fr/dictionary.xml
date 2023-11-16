@@ -1901,7 +1901,6 @@
   <block id="b909803838dd775bd8b8dcfbaf82fb87" category="list-text">Prise en charge de la gestion des applications données uniquement</block>
   <block id="5b8f884e708de51fd4946164326e802c" category="section-title">La page activité affiche jusqu'à 100,000 événements</block>
   <block id="676bd50e0f10e6725dc7a68e3041cfed" category="inline-link-macro">API REST Astra Control</block>
-  <block id="474be14e965990f35641a82fd1940bd1" category="paragraph">La page activité Astra Control peut afficher jusqu'à 100,000 événements. Pour afficher tous les événements consignés, récupérez-les à l'aide du <block ref="65b0251af1492433290d52a893eea83e" category="inline-link-macro-rx"></block>.</block>
   <block id="92994eff0d2e1bf73c01841823660ef5" category="list-text">*Licence* : pour gérer plus de 10 espaces de noms, vous avez besoin d'un abonnement à Astra Control.</block>
   <block id="135b308ed83c53f1516b7c754566d1c4" category="list-title">Avant de commencer</block>
   <block id="63d526831e75bdfe2a1b18d7e1752ca3" category="list-text">Choisissez de conserver la classe de stockage d'origine associée à l'application ou de sélectionner une autre classe de stockage.</block>
@@ -2554,4 +2553,5 @@ ASTRA Control peut désormais gérer des applications sauvegardées par des volu
   <block id="d5bd450a47d2497dc5f133703c0fab95" category="list-text">Clusters sur site :</block>
   <block id="00ae925249b1dcd734cdb679b48bf8f7" category="list-text">NetApp ONTAP Select</block>
   <block id="488eba069a2619d48659ff6ffa6f538a" category="paragraph">Les versions 23.10 et ultérieures d'Astra Trident incluent la possibilité d'utiliser Astra Control Provisioner qui permet aux utilisateurs d'Astra Control sous licence d'accéder à des fonctionnalités avancées de provisionnement du stockage. ASTRA Control Provisioner offre cette fonctionnalité étendue en plus des fonctionnalités standard d'Astra Trident CSI. Vous pouvez utiliser cette procédure pour activer et installer Astra Control Provisioner.</block>
+  <block id="3296ea02e6ef8200a85b529d14dc6282" category="paragraph">La page activité Astra Control peut afficher jusqu'à 100,000 événements. Pour afficher tous les événements consignés, récupérez-les à l'aide du<block ref="3f49e9a4af0b49133601252075c9bc37" category="inline-link-rx"></block>.</block>
 </blocks>
