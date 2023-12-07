@@ -14,6 +14,8 @@ summary: 'Une fois que vous avez ajouté des clusters Kubernetes à Astra Contro
 [role="lead"]
 Après vous link:../get-started/add-first-cluster.html["Ajoutez un cluster Kubernetes à Astra Control"], Vous pouvez installer des applications sur le cluster (en dehors d'Astra Control), puis aller à la page applications d'Astra Control pour définir les applications.
 
+Vous pouvez définir et gérer des applications qui incluent des ressources de stockage avec des pods en cours d'exécution ou des applications qui incluent des ressources de stockage sans aucun pod en cours d'exécution. Les applications qui ne disposent pas de pods en cours d'exécution sont connues sous le nom d'applications exclusivement basées sur les données.
+
 
 
 == Besoins en termes de gestion des applications
