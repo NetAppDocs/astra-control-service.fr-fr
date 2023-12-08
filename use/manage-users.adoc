@@ -21,7 +21,7 @@ Invitez les utilisateurs à rejoindre votre compte Astra Control et supprimez le
 Les propriétaires et administrateurs de comptes peuvent inviter d'autres utilisateurs à rejoindre le compte Astra Control.
 
 .Étapes
-. Assurez-vous que l'utilisateur dispose d'un link:../get-started/register.html["Connexion à Cloud Central"].
+. Assurez-vous que l'utilisateur dispose d'un link:../get-started/register.html["Connexion BlueXP"].
 . Sélectionnez *compte*.
 . Dans l'onglet *utilisateurs*, sélectionnez *inviter*.
 . Entrez le nom, l'adresse e-mail et le rôle de l'utilisateur.
@@ -29,7 +29,7 @@ Les propriétaires et administrateurs de comptes peuvent inviter d'autres utilis
 Notez ce qui suit :
 
 +
-** L'adresse e-mail doit correspondre à l'adresse que l'utilisateur a utilisée pour s'inscrire à Cloud Central.
+** L'adresse e-mail doit correspondre à l'adresse que l'utilisateur a utilisée pour s'inscrire à BlueXP.
 ** Chaque rôle offre les autorisations suivantes :
 +
 *** Un *propriétaire* possède des autorisations d'administration et peut supprimer des comptes.

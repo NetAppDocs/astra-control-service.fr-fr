@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: get-started/register.html 
-keywords: cloud central, sign up, log in, login, register, register for cloud central, create account, sign up for account, get an account, account, accounts 
-summary: 'Astra Control Service est intégré au service d"authentification de NetApp Cloud Central. Inscrivez-vous à Cloud Central pour accéder à Astra Control Service et aux autres services cloud de NetApp.' 
+keywords: BlueXP, sign up, log in, login, register, register for BlueXP, create account, sign up for account, get an account, account, accounts 
+summary: 'ASTRA Control Service est intégré au service d"authentification de NetApp BlueXP. Inscrivez-vous à BlueXP pour accéder à Astra Control Service et aux autres services cloud de NetApp.' 
 ---
 = Créez un compte de service Astra Control
 :hardbreaks:
@@ -12,7 +12,7 @@ summary: 'Astra Control Service est intégré au service d"authentification de N
 
 
 [role="lead"]
-Pour utiliser Astra Control Service, vous devez disposer d'un compte Astra Control Service associé à votre compte NetApp Cloud Central. Suivez le processus d'inscription à Astra Control Service et, si vous ne disposez pas déjà d'un compte Cloud Central, inscrivez-vous à Cloud Central pour accéder au service Astra Control.
+Pour utiliser Astra Control Service, vous devez disposer d'un compte Astra Control Service associé à votre compte NetApp BlueXP. Effectuez le processus d'enregistrement d'Astra Control Service, puis, si vous ne possédez pas encore de compte BlueXP, inscrivez-vous à BlueXP pour accéder à Astra Control Service.
 
 
 
@@ -23,12 +23,8 @@ Avant de pouvoir vous connecter au service Astra Control, vous devez effectuer u
 Lorsque vous utilisez Astra Control Service, vous gérerez vos applications à partir d'un compte. Un compte comprend les utilisateurs qui peuvent afficher et gérer les applications du compte, ainsi que vos détails de facturation.
 
 .Étapes
-. https://cloud.netapp.com/astra["Accédez à la page Astra Control sur Cloud Central"^].
-. Sélectionnez *commencez avec Astra Control*.
-. Sélectionnez l'onglet *PLAN LIBRE*.
-+
-image:acs-registration-free-plan.png["Capture d'écran de l'onglet de sélection du plan de formulaire d'inscription dans lequel vous devez sélectionner L'option DE PLAN GRATUIT."]
-
+. https://cloud.netapp.com/astra["Accédez à la page Astra Control sur BlueXP"^].
+. Sélectionnez *commencer maintenant*.
 . Fournissez les informations requises dans le formulaire.
 +
 Quelques points importants à prendre en compte lorsque vous remplissez le formulaire :
@@ -36,41 +32,39 @@ Quelques points importants à prendre en compte lorsque vous remplissez le formu
 +
 ** Votre nom d'entreprise et votre adresse doivent être précis car nous les vérifions afin de répondre aux exigences de la conformité aux règlements du commerce international.
 ** Le *Nom de compte Astra* est le nom du compte de service de contrôle Astra de votre entreprise. Vous verrez ce nom dans l'interface utilisateur du service de contrôle Astra. Notez que vous pouvez créer des comptes supplémentaires (jusqu'à 5), si nécessaire.
-** Dans le champ *adresse e-mail professionnelle*, si vous disposez d'un compte NetApp Cloud Central, saisissez l'adresse e-mail que vous utilisez pour ce compte ici. Si vous ne possédez pas encore de compte NetApp Cloud Central, utilisez l'adresse e-mail que vous saisissez ici lorsque vous vous inscrivez à Cloud Central.
+** Dans le champ *adresse e-mail professionnelle*, si vous disposez d'un compte NetApp BlueXP, saisissez ici l'adresse e-mail que vous utilisez pour ce compte. Si vous ne possédez pas encore de compte NetApp BlueXP, utilisez l'adresse e-mail que vous entrez ici lorsque vous vous inscrivez à BlueXP.
 
 
-. Sélectionnez *soumettre*.
+. Sélectionnez *Créer un compte*.
 
 
 
 
-== Inscrivez-vous à Cloud Central
+== Inscrivez-vous à BlueXP
 
-Si vous ne possédez pas encore de compte NetApp Cloud Central, inscrivez-vous à Cloud Central pour accéder à Astra Control Service et aux autres services cloud de NetApp. Astra Control Service est intégré au service d'authentification de NetApp Cloud Central. Si vous êtes déjà titulaire d'un compte Cloud Central et que vous avez terminé votre inscription, vous pouvez y accéder https://astra.netapp.io["Service Astra Control"^] En utilisant directement vos identifiants Cloud Central.
+ASTRA Control Service est intégré au service d'authentification de NetApp BlueXP. Vous pouvez vous connecter à NetApp BlueXP à l'aide de vos identifiants BlueXP ou du site de support NetApp. Si vous ne possédez pas encore de compte NetApp BlueXP ou sur le site de support NetApp, inscrivez-vous à BlueXP pour accéder à Astra Control Service et aux autres services cloud de NetApp. Si vous possédez déjà un compte BlueXP ou sur le site de support NetApp et que vous avez terminé votre inscription, vous pouvez accéder à https://astra.netapp.io["Service Astra Control"^] Directement à l'aide de vos identifiants BlueXP ou du site de support NetApp.
 
 
-TIP: Vous pouvez utiliser l'authentification unique pour vous connecter à Cloud Central à l'aide des identifiants de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://cloud.netapp.com/help-center["Centre d'aide de Cloud Central"^] Puis sélectionnez *Options de connexion à Cloud Central*.
+TIP: Vous pouvez également utiliser l'authentification unique pour vous connecter à BlueXP à l'aide d'identifiants de votre annuaire d'entreprise (identité fédérée). Pour en savoir plus, consultez le https://cloud.netapp.com/help-center["Centre d'assistance"^] Puis sélectionnez *Options de connexion à Cloud Central*.
 
 .Étapes
-. Accédez à https://cloud.netapp.com["NetApp Cloud Central"^].
-. Dans le coin supérieur droit, sélectionnez *s'inscrire*.
+. Accédez à https://cloud.netapp.com["NetApp BlueXP"^].
+. En haut à droite, sélectionnez *commencer*.
+. Sélectionnez *s'inscrire*.
 . Remplissez le formulaire.
 +
-Assurez-vous que le numéro de téléphone et l'adresse e-mail que vous entrez ici sont identiques à ceux que vous avez utilisés dans le formulaire d'inscription au régime gratuit précédent.
+Assurez-vous que le numéro de téléphone et l'adresse e-mail que vous avez saisis sont les mêmes que ceux que vous avez utilisés dans le formulaire d'inscription à Astra Control précédent.
 
 . Sélectionnez *s'inscrire*.
 +
 
-TIP: L'adresse e-mail que vous saisissez dans ces formulaires correspond à votre identifiant d'utilisateur NetApp Cloud Central. Utilisez cet identifiant d'utilisateur Cloud Central lorsque vous vous inscrivez à un nouveau compte de service de contrôle Astra ou lorsqu'un administrateur du service de contrôle Astra vous invite à créer un compte de service Astra Control.
+TIP: L'adresse e-mail que vous saisissez dans ces formulaires est destinée à votre identifiant utilisateur NetApp BlueXP. Utilisez cet ID d'utilisateur BlueXP lorsque vous créez un compte Astra Control ou lorsqu'un administrateur Astra Control vous invite à un compte Astra Control existant.
 
-+
-image:screenshot-cloud-central-signup.gif["Capture d'écran de la page d'inscription de Cloud Central, dans laquelle vous devez saisir votre adresse e-mail, votre mot de passe, votre nom, votre entreprise et votre numéro de téléphone (facultatif)."]
-
-. Attendez qu'un e-mail soit envoyé par NetApp Cloud Central. L'e-mail provient de l'adresse saas.support@netapp.com et peut prendre plusieurs minutes. Assurez-vous de vérifier votre dossier de courrier indésirable.
+. Attendez la réception d'un e-mail depuis NetApp BlueXP. L'e-mail provient de l'adresse saas.support@netapp.com et peut prendre plusieurs minutes. Assurez-vous de vérifier votre dossier de courrier indésirable.
 . Une fois l'e-mail reçu, sélectionnez le lien dans l'e-mail pour vérifier votre adresse e-mail.
 
 
 .Résultat
-Vous disposez désormais d'un utilisateur Cloud Central actif.
+Vous disposez désormais d'un identifiant BlueXP actif.
 
-Maintenant que vous êtes inscrit, vous pouvez accéder au service Astra Control directement à l'aide de vos identifiants Cloud Central de https://astra.netapp.io[].
+Maintenant que vous êtes enregistré, vous pouvez accéder à Astra Control directement à l'aide de vos identifiants BlueXP depuis https://astra.netapp.io[].
