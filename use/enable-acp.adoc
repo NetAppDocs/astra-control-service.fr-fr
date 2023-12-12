@@ -67,7 +67,7 @@ crane auth login cr.astra.netapp.io -u <account-id> -p <api-token>
 
 
 ====
-. Suivez les étapes de votre méthode préférée pour déplacer l'image vers votre registre personnalisé. Si vous n'utilisez pas de registre, suivez les étapes de l'opérateur Trident pour configurer un code secret.
+. Si vous disposez d'un registre personnalisé, procédez comme suit pour déplacer l'image vers votre registre personnalisé. Si vous n'utilisez pas de registre, suivez les étapes de l'opérateur Trident dans le <<no-registry,section suivante>>.
 +
 
 NOTE: Vous pouvez utiliser Podman à la place de Docker pour les commandes suivantes. Si vous utilisez un environnement Windows, PowerShell est recommandé.
@@ -85,7 +85,15 @@ NOTE: L'image extraite ne prend pas en charge plusieurs plates-formes et ne pren
 +
 [source, console]
 ----
-docker pull cr.astra.netapp.io/astra/trident-acp:23.10.0
+docker pull cr.astra.netapp.io/astra/trident-acp:23.10.0 --platform <cluster platform>
+----
++
+Exemple :
+
++
+[listing]
+----
+docker pull cr.astra.netapp.io/astra/trident-acp:23.10.0 --platform linux/amd64
 ----
 .. Marquer l'image :
 +
@@ -106,49 +114,9 @@ docker push <my_custom_registry>/trident-acp:23.10.0
 --
 .. Copiez le manifeste Astra Control Provisioner dans votre registre personnalisé :
 +
-[listing]
+[source, crane]
 ----
 crane copy cr.astra.netapp.io/astra/trident-acp:23.10.0 <my_custom_registry>/trident-acp:23.10.0
-----
-
-
---
-.Opérateur Astra Trident
---
-.. Assurez-vous que ce bloc est présent dans votre configuration Docker :
-+
-[listing]
-----
-{
-    "auths": {
-        "https://cr.astra.netapp.io/": {
-            "auth": "c3R...zE2"
-        }
-    }
-}
-----
-.. [[Pull-secrets]]Créez un secret dans le `trident` espace de noms :
-+
-[listing]
-----
-kubectl create secret -n <trident namespace> generic <secret name> \
-    --from-file=.dockerconfigjson=<path/to/.docker/config.json> \
-    --type=kubernetes.io/dockerconfigjson
-----
-.. Ajoutez le secret à TORC (Astra Trident orchestrator) :
-+
-[listing]
-----
-apiVersion: trident.netapp.io/v1
-kind: TridentOrchestrator
-metadata:
-  name: trident
-spec:
-  debug: true
-  namespace: trident
-  tridentImage: netapp/trident:23.10.0
-  imagePullSecrets:
-  - <secret name>
 ----
 
 
@@ -164,14 +132,65 @@ WARNING: N'utilisez pas HHelm pour activer le mécanisme de provisionnement Astr
 ====
 .Opérateur Astra Trident
 --
+.. [[no-registry]]si vous avez supprimé l'opérateur de votre déploiement d'origine, créez à nouveau Astra Trident orchestrator CRD :
++
+... https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Téléchargez le programme d'installation et extrayez-le"^].
+... Créez à nouveau le CRD :
++
+[source, console]
+----
+kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
+----
+... Créer le `trident` le cas échéant, réutilisez l'espace de noms :
++
+[source, console]
+----
+kubectl create namespace trident
+----
+
+
+.. Mettez à jour Astra Trident vers la version 23.10.0 :
++
+
+NOTE: Pour les clusters exécutant Kubernetes 1.24 ou version antérieure, utilisez `bundle_pre_1_25.yaml`. Pour les clusters exécutant Kubernetes 1.25 ou version ultérieure, utilisez `bundle_post_1_25.yaml`.
+
++
+[source, console]
+----
+kubectl -n trident apply -f trident-installer-23.10.0/deploy/<bundle-name.yaml>
+----
+.. Vérifiez que Astra Trident est en cours d'exécution :
++
+[source, console]
+----
+kubectl get torc -n trident
+----
++
+Réponse :
+
++
+[listing]
+----
+NAME      AGE
+trident   21m
+----
+.. [[Pull-secrets]]si vous avez un registre qui utilise des secrets, créez un secret à utiliser pour extraire l'image Astra Control Provisioner :
++
+[source, console]
+----
+kubectl create secret docker-registry <secret_name> -n trident --docker-server=<my_custom_registry> --docker-username=<username> --docker-password=<token>
+----
 .. Modifiez la CR TridentOrchestrator et apportez les modifications suivantes :
 +
-*** Activez le mécanisme de provisionnement Astra Control (`enableACP: true`)
-*** Définissez l'emplacement du registre pour l'image Astra Control Provisioner (`acpImage: <my_custom_registry>/trident-acp:v23.10.0`).
+[source, console]
+----
+kubectl edit torc trident
+----
 +
-
-NOTE: Si vous avez établi <<pull-secrets,secrets d'extraction d'image>> plus tôt dans cette procédure, vous pouvez les utiliser ici (`cr.astra.netapp.io/astra/trident-acp:23.10.0 imagePullSecrets: - <secret name>`)
-
+... Définissez un emplacement de Registre personnalisé pour l'image Astra Trident ou extrayez-le du Registre Astra Control (`tridentImage: <my_custom_registry>/trident:23.10.0` ou `tridentImage: netapp/trident:23.10.0`).
+... Activez le mécanisme de provisionnement Astra Control (`enableACP: true`).
+... Définissez l'emplacement de registre personnalisé pour l'image Astra Control Provisioner ou extrayez-le du registre Astra Control (`acpImage: <my_custom_registry>/trident-acp:23.10.0` ou `acpImage: cr.astra.netapp.io/astra/trident-acp:23.10.0`).
+... Si vous avez établi <<pull-secrets,secrets d'extraction d'image>> plus tôt dans cette procédure, vous pouvez les définir ici (`imagePullSecrets: - <secret_name>`). Utilisez le même nom secret que celui que vous avez établi lors des étapes précédentes.
 
 
 +
@@ -184,30 +203,18 @@ metadata:
 spec:
   debug: true
   namespace: trident
+  *tridentImage: <registry>/trident:23.10.0*
   *enableACP: true*
-  *acpImage: <my_custom_registry>/trident-acp:v23.10.0*
+  *acpImage: <registry>/trident-acp:23.10.0*
+  *imagePullSecrets:
+  - <secret_name>*
 ----
-.. Appliquer les modifications :
+.. Enregistrez et quittez le fichier. Le processus de déploiement commence automatiquement.
+.. Vérifiez que l'opérateur, le déploiement et les réplicateurs sont créés.
 +
-[listing]
+[source, console]
 ----
-kubectl -n trident apply -f tridentorchestrator_cr.yaml
-----
-.. Mettez à jour la configuration d'Astra Trident afin que le nouveau `trident-acp` le conteneur est déployé :
-+
-
-NOTE: Pour les clusters exécutant Kubernetes 1.24 ou version antérieure, utilisez `bundle_pre_1_25.yaml`. Pour les clusters exécutant Kubernetes 1.25 ou version ultérieure, utilisez `bundle_post_1_25.yaml`.
-
-+
-[listing]
-----
-kubectl -n trident apply -f trident-installer-23.10.0/deploy/<bundle-name.yaml>
-----
-.. Vérifiez que l'opérateur, le déploiement et les réplicateurs ont été créés.
-+
-[listing]
-----
-kubectl get all -n <operator-namespace>
+kubectl get all -n trident
 ----
 +
 
@@ -215,7 +222,7 @@ IMPORTANT: Il ne doit y avoir que *une instance* de l'opérateur dans un cluster
 
 .. Vérifiez le `trident-acp` le conteneur est en cours d'exécution `acpVersion` est `23.10.0` avec un état de `Installed`:
 +
-[listing]
+[source, console]
 ----
 kubectl get torc -o yaml
 ----
@@ -229,7 +236,7 @@ status:
   acpVersion: 23.10.0
   currentInstallationParams:
     ...
-    acpImage: <my_custom_registry>/trident-acp:v23.10.0
+    acpImage: <registry>/trident-acp:v23.10.0
     enableACP: "true"
     ...
   ...
@@ -243,13 +250,13 @@ status:
 .. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["Désinstaller Astra Trident"^].
 .. Réinstallez Astra Trident avec Astra Control Provisioner activé (`--enable-acp=true`) :
 +
-[listing]
+[source, console]
 ----
 ./tridentctl -n trident install --enable-acp=true --acp-image=mycustomregistry/trident-acp:v23.10
 ----
 .. Vérifiez que le mécanisme de provisionnement Astra Control a été activé :
 +
-[listing]
+[source, console]
 ----
 ./tridentctl -n trident version
 ----
