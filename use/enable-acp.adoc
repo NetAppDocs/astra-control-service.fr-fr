@@ -35,7 +35,7 @@ image:ac-acp-eligibility.png["Capture d'écran illustrant l'éligibilité d'un c
 .Avant d'activer Astra Control Provisioner
 Si vous disposez d'une Astra Trident sans Astra Control Provisioner et que vous souhaitez activer Astra Control Provisioner, effectuez d'abord les opérations suivantes :
 
-* *Confirmez que votre version d'Astra Trident se trouve dans une fenêtre à quatre versions* : vous pouvez effectuer une mise à niveau directe vers Astra Trident 23.10 avec Astra Control Provisioner si votre Astra Trident se trouve dans une fenêtre à quatre versions de la version 23.10. Par exemple, vous pouvez effectuer une mise à niveau directe d'Astra Trident 22.10 vers la version 23.10.
+* *Si vous avez installé Astra Trident, vérifiez que sa version se trouve dans une fenêtre à quatre versions*: Vous pouvez effectuer une mise à niveau directe vers Astra Trident 23.10 avec Astra Control Provisioner si votre Astra Trident se trouve dans une fenêtre à quatre versions de la version 23.10. Par exemple, vous pouvez effectuer une mise à niveau directe d'Astra Trident 22.10 vers la version 23.10.
 * *Confirmez que votre cluster a une architecture système AMD64* : l'image Astra Control Provisioner est fournie dans les architectures CPU AMD64 et ARM64, mais seul AMD64 est pris en charge par Astra Control.
 
 
@@ -132,21 +132,16 @@ WARNING: N'utilisez pas HHelm pour activer le mécanisme de provisionnement Astr
 ====
 .Opérateur Astra Trident
 --
-.. [[no-registry]]si vous avez supprimé l'opérateur de votre déploiement d'origine, créez à nouveau Astra Trident orchestrator CRD :
+.. [[pas de registre]]https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Téléchargez le programme d'installation d'Astra Trident et extrayez-le"^].
+.. Si vous n'avez pas encore installé Astra Trident ou si vous avez supprimé l'opérateur de votre déploiement Astra Trident d'origine :
 +
-... https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-operator.html#step-1-download-the-trident-installer-package["Téléchargez le programme d'installation et extrayez-le"^].
-... Créez à nouveau le CRD :
+... Créez le CRD :
 +
 [source, console]
 ----
 kubectl create -f deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
 ----
-... Créer le `trident` le cas échéant, réutilisez l'espace de noms :
-+
-[source, console]
-----
-kubectl create namespace trident
-----
+... Créer l'espace de nom trident (`kubectl create namespace trident`) ou confirmez que l'espace de nom trident existe toujours (`kubectl get all -n trident`). Si l'espace de noms a été supprimé, créez-le à nouveau.
 
 
 .. Mettez à jour Astra Trident vers la version 23.10.0 :
@@ -247,8 +242,9 @@ status:
 --
 .tridentctl
 --
-.. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["Désinstaller Astra Trident"^].
-.. Réinstallez Astra Trident avec Astra Control Provisioner activé (`--enable-acp=true`) :
+.. https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy-tridentctl.html#step-1-download-the-trident-installer-package["Téléchargez le programme d'installation d'Astra Trident et extrayez-le"^].
+.. https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-tridentctl.html["Si vous disposez d'une Astra Trident, désinstallez-la du cluster qui l'héberge"^].
+.. Installez Astra Trident avec Astra Control Provisioner activé (`--enable-acp=true`) :
 +
 [source, console]
 ----
