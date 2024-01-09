@@ -41,6 +41,7 @@ NOTE: Si vous effectuez un snapshot ou une sauvegarde, mais que l'opération éc
 
 === Sauvegardes immuables
 
+Une sauvegarde immuable est une sauvegarde qui ne peut pas être modifiée ou supprimée au cours d'une période spécifiée. Lorsque vous créez une sauvegarde immuable, Astra Control vérifie que le compartiment que vous utilisez est un compartiment WORM (Write Once, Read Many) et, si oui, vérifie que la sauvegarde est immuable depuis Astra Control.
 ASTRA Control Service prend en charge la création de sauvegardes immuables avec les plateformes et les types de compartiments suivants :
 
 * Amazon Web Services utilisant un compartiment Amazon S3 avec le verrouillage objet S3 configuré
@@ -51,7 +52,7 @@ ASTRA Control Service prend en charge la création de sauvegardes immuables avec
 
 Notez les points suivants lorsque vous travaillez avec des sauvegardes immuables :
 
-* Si vous effectuez une sauvegarde vers un compartiment WORM (Write Once, Read Many) sur une plateforme non prise en charge ou un type de compartiment non pris en charge, vous risquez d'obtenir des résultats imprévisibles, comme la suppression de la sauvegarde, même si le temps de conservation est écoulé.
+* Si vous effectuez une sauvegarde vers un compartiment WORM sur une plateforme non prise en charge ou vers un type de compartiment non pris en charge, vous risquez d'obtenir des résultats imprévisibles, comme la suppression de la sauvegarde, même si le temps de conservation est écoulé.
 * ASTRA Control ne prend pas en charge les politiques de gestion du cycle de vie des données ni la suppression manuelle d'objets dans les compartiments que vous utilisez avec des sauvegardes immuables. Assurez-vous que votre système back-end de stockage n'est pas configuré pour gérer le cycle de vie des snapshots Astra Control ou des données sauvegardées.
 
 
