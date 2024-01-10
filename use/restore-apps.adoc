@@ -21,6 +21,14 @@ NOTE: Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui 
 * *Protéger vos applications en premier* : il est fortement recommandé de prendre un instantané ou une sauvegarde de votre application avant de la restaurer. Vous pourrez ainsi cloner à partir de l'instantané ou de la sauvegarde si la restauration échoue.
 * *Vérifier les volumes de destination* : si vous restaurez vers une classe de stockage différente, assurez-vous que la classe de stockage utilise le même mode d'accès au volume persistant (par exemple, ReadWriteMaly). L'opération de restauration échoue si le mode d'accès au volume persistant de destination est différent. Par exemple, si votre volume persistant source utilise le mode d'accès RWX, en sélectionnant une classe de stockage de destination qui ne peut pas fournir RWX, comme les disques gérés Azure, AWS EBS, Google persistent Disk ou `ontap-san`, provoque l'échec de l'opération de restauration. Pour plus d'informations sur les modes d'accès aux volumes persistants, reportez-vous au https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes["Kubernetes"^] documentation :
 * *Planifier les besoins en espace* : lorsque vous effectuez une restauration sur place d'une application utilisant un stockage NetApp ONTAP, l'espace utilisé par l'application restaurée peut doubler. Une fois la restauration sur place effectuée, supprimez les snapshots indésirables de l'application restaurée pour libérer de l'espace de stockage.
+* *Pilotes de classe de stockage pris en charge* : Astra Control prend en charge la restauration des sauvegardes à l'aide de classes de stockage soutenues par les pilotes suivants :
++
+** `ontap-nas`
+** `ontap-nas-economy`
+** `ontap-san`
+** `ontap-san-economy`
+
+
 * * (Pilote ontap-nas-Economy uniquement) sauvegardes et restaurations* : avant de sauvegarder ou de restaurer une application qui utilise une classe de stockage sauvegardée par `ontap-nas-economy` pilote, vérifiez que link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Le répertoire Snapshot du système back-end de stockage ONTAP est masqué"]. Si ce répertoire n'est pas masqué, l'accès à votre application risque d'être perdu, en particulier s'il utilise NFSv3.
 
 

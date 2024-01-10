@@ -70,6 +70,14 @@ Astra Control implémente la règle de protection des données en créant et en 
 
 Vous pouvez créer un snapshot à la demande à tout moment.
 
+.Description de la tâche
+ASTRA Control prend en charge la création de snapshots à l'aide de classes de stockage basées sur les pilotes suivants :
+
+* `ontap-nas`
+* `ontap-san`
+* `ontap-san-economy`
+
+
 
 IMPORTANT: Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` pilote, les snapshots ne peuvent pas être créés. Utilisez une autre classe de stockage pour les snapshots.
 
@@ -98,6 +106,17 @@ Soyez conscient du traitement de l'espace de stockage lors de la sauvegarde d'un
 ====
 endif::azure[]
 
+[NOTE]
+====
+ASTRA Control prend en charge la création de sauvegardes à l'aide de classes de stockage basées sur les pilotes suivants :
+
+* `ontap-nas`
+* `ontap-nas-economy`
+* `ontap-san`
+* `ontap-san-economy`
+
+
+====
 .Description de la tâche
 Les compartiments d'Astra Control ne signalent pas la capacité disponible. Avant de sauvegarder ou de cloner des applications gérées par Astra Control, vérifiez les informations du compartiment dans le système de gestion du stockage approprié.
 
