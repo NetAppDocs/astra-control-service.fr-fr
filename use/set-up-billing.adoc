@@ -30,12 +30,7 @@ Le service Astra Control propose trois plans :
 
 Plan gratuit:: Gérer jusqu'à 10 espaces de noms gratuits.
 Prime à l'utilisation:: Gérez un nombre illimité d'espaces de noms à un taux spécifique, par espace de noms.
-Abonnement Premium:: Prépayez à un tarif réduit avec un abonnement annuel qui vous permet de gérer jusqu'à 10 espaces de noms par _Namespace pack_. Contactez le service commercial NetApp pour acheter autant de packs que nécessaire à votre entreprise. Par exemple, achetez 3 paquets pour gérer 30 espaces de noms auprès d'Astra Control Service. Si vous gérez plus de espaces de noms que ceux autorisés par votre abonnement annuel, vous serez facturé au taux de dépassement dépendant de l'abonnement par espace de noms supplémentaire.
-+
---
-Si vous n'avez pas encore de compte Astra Control, l'achat de l'abonnement Premium crée automatiquement un compte Astra Control pour vous. Si vous disposez d'un plan gratuit existant, vous êtes automatiquement converti en abonnement Premium.
-
---
+Abonnement Premium:: Prépayez à un tarif réduit avec un abonnement annuel qui vous permet de gérer jusqu'à 20 espaces de noms par _pack d'espace de noms_. Contactez le service commercial NetApp pour acheter autant de packs que nécessaire à votre entreprise. Par exemple, vous pouvez acheter 3 packs pour gérer 60 espaces de noms auprès d'Astra Control Service. Si vous gérez plus de espaces de noms que ceux autorisés par votre abonnement annuel, vous serez facturé au taux de dépassement dépendant de l'abonnement par espace de noms supplémentaire. Si vous n'avez pas encore de compte Astra Control, l'achat de l'abonnement Premium crée automatiquement un compte Astra Control pour vous. Si vous disposez d'un plan gratuit existant, vous êtes automatiquement converti en abonnement Premium.
 
 
 Lorsque vous créez un compte Astra Control, vous êtes automatiquement abonné au Plan gratuit. Le tableau de bord d'Astra Control vous indique le nombre d'espaces de noms que vous gérez actuellement à partir des 10 espaces de noms gratuits que vous êtes autorisé. La facturation commence pour un espace de noms lorsque la première application contenant l'espace de noms est gérée et s'arrête pour cet espace de noms lorsque la dernière application contenant l'espace de noms n'est pas gérée.
