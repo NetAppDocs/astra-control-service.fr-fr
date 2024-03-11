@@ -22,6 +22,7 @@ Un cluster autogéré est un cluster que vous provisionnez et gérez directement
 
 Vous pouvez utiliser Astra Control Service pour gérer les types suivants de clusters privés et autogérés :
 
+[cols="2*"]
 |===
 | Distribution Kubernetes | Versions prises en charge 
 

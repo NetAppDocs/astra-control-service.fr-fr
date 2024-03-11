@@ -22,11 +22,12 @@ Un cluster autogéré est un cluster que vous provisionnez et gérez directement
 
 Vous pouvez utiliser Astra Control Service pour gérer les types suivants de clusters publics et autogérés :
 
+[cols="2*"]
 |===
 | Distribution Kubernetes | Versions prises en charge 
 
 
-| Kubernetes (en amont) | 1.24 à 1.26 (Astra Trident 22.10 ou version ultérieure requise pour Kubernetes 1.25 ou version ultérieure) 
+| Kubernetes (en amont) | 1.26 à 1.28 (avec Astra Trident 23.04 ou version ultérieure) 
 
 
 | Rancher Kubernetes Engine (RKE) | RKE 1.3 avec Rancher 2.6
@@ -35,7 +36,7 @@ RKE 2 (v1.23.x) avec Rancher 2.6
 RKE 2 (v1.24.x) avec Rancher 2.7 
 
 
-| Plateforme de conteneurs Red Hat OpenShift | 4.10 à 4.12 
+| Plateforme de conteneurs Red Hat OpenShift | 4.11 à 4.14 
 |===
 Ces instructions supposent que vous avez déjà créé un cluster autogéré.
 

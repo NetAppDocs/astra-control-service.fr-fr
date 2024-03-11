@@ -59,6 +59,7 @@ Vous pouvez configurer l'une des trois versions différentes du cryptage Kerbero
 
 Configurez la règle d'export ONTAP avec les autorisations d'accès appropriées. Par exemple, si les clusters montant les volumes NFS avec un mélange de cryptage Kerberos 5i et Kerberos 5p, utilisez les paramètres d'accès suivants :
 
+[cols="4*"]
 |===
 | Type | Accès en lecture seule | Accès en lecture/écriture | Accès superutilisateur 
 

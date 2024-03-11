@@ -112,6 +112,7 @@ Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané 
 
 
 ====
+[cols="9*"]
 |===
 | Scénario | Fonctionnement | Snapshot existant | Sauvegarde existante | Espace de noms | Cluster | Les crochets de snapshot sont exécutés | Les crochets de secours sont en place | Restaurer la course des crochets 
 
