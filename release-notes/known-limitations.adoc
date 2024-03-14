@@ -120,7 +120,7 @@ Pour contourner ce problème, procédez comme suit lorsque vous mettez à niveau
 
 . Supprimez tous les CRD de snapshot existants et tout contrôleur de snapshot existant.
 . https://docs.netapp.com/us-en/trident/trident-managing-k8s/uninstall-trident.html["Désinstaller Astra Trident"^].
-. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploying-a-volume-snapshot-controller["Installez les CRD de snapshot et le contrôleur de snapshot"^].
+. https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#deploy-a-volume-snapshot-controller["Installez les CRD de snapshot et le contrôleur de snapshot"^].
 . https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Installez la dernière version d'Astra Trident"^].
 . https://docs.netapp.com/us-en/trident/trident-use/vol-snapshots.html#step-1-create-a-volumesnapshotclass["Créez une VolumeSnapshotClass"^].
 

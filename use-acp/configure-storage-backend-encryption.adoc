@@ -32,7 +32,7 @@ Vous pouvez activer le chiffrement Kerberos sur le trafic de stockage entre votr
 NOTE: Le chiffrement Kerberos pour le trafic NFS avec les systèmes back-end de stockage ONTAP sur site n'est pris en charge que par le `ontap-nas` pilote de stockage
 
 .Avant de commencer
-* Assurez-vous d'avoir activé Astra Control Provisioner sur le cluster géré. Reportez-vous à la section link:../use/enable-acp.html["Activez le mécanisme de provisionnement Astra Control"^] pour obtenir des instructions.
+* Vérifiez que vous avez link:../use/enable-acp.html["Mécanisme de provisionnement Astra Control activé"^] sur le cluster géré.
 * Assurez-vous d'avoir accès au `tridentctl` informatique.
 * Assurez-vous de disposer d'un accès administrateur au système back-end de stockage ONTAP.
 * Assurez-vous de connaître le nom du ou des volumes que vous allez partager à partir du back-end de stockage ONTAP.
@@ -196,7 +196,7 @@ Vous devez voir les résultats similaires à ce qui suit :
 +
 [listing]
 ----
-NAME         PROVISIONER             AGE
+NAME            PROVISIONER             AGE
 ontap-nas-sc    csi.trident.netapp.io   15h
 ----
 
@@ -205,7 +205,7 @@ ontap-nas-sc    csi.trident.netapp.io   15h
 
 === Provisionner les volumes
 
-Une fois que vous avez créé un système back-end et une classe de stockage, vous pouvez provisionner un volume. Pour obtenir des instructions, reportez-vous à la section https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Provisionner un volume"^].
+Une fois que vous avez créé un système back-end et une classe de stockage, vous pouvez provisionner un volume. Reportez-vous à ces instructions pour https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["le provisionnement d'un volume"^].
 
 
 
@@ -390,4 +390,4 @@ anf-sc-nfs    csi.trident.netapp.io   15h
 
 === Provisionner les volumes
 
-Une fois que vous avez créé un système back-end et une classe de stockage, vous pouvez provisionner un volume. Pour obtenir des instructions, reportez-vous à la section https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["Provisionner un volume"^].
+Une fois que vous avez créé un système back-end et une classe de stockage, vous pouvez provisionner un volume. Reportez-vous à ces instructions pour https://docs.netapp.com/us-en/trident/trident-use/vol-provision.html["le provisionnement d'un volume"^].

@@ -35,7 +35,7 @@ Si vous avez la possibilité de choisir entre différentes régions Google Cloud
 
 
 
-NOTE: Si vous utilisez le type de service CVS avec Astra Trident 23.01 ou version ultérieure, vous devez configurer des pools de stockage avant de pouvoir provisionner des volumes. Si vous provisionnez des volumes sans pool de stockage configuré, le provisionnement des volumes échoue. Reportez-vous à la https://cloud.google.com/architecture/partners/netapp-cloud-volumes/quickstart#create_a_volume_of_the_cvs_service_type["Documentation Cloud Volumes Service"^] pour plus d'informations sur la création de volumes.
+NOTE: Si vous utilisez le type de service CVS avec Astra Control Provisioner, vous devez configurer des pools de stockage avant de pouvoir provisionner des volumes. Si vous provisionnez des volumes sans pool de stockage configuré, le provisionnement des volumes échoue. Reportez-vous à la https://cloud.google.com/architecture/partners/netapp-cloud-volumes/quickstart#create_a_volume_of_the_cvs_service_type["Documentation Cloud Volumes Service"^] pour plus d'informations sur la création de volumes.
 
 Le tableau suivant fournit une brève comparaison des informations décrites sur cette page.
 

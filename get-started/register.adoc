@@ -24,7 +24,7 @@ Lorsque vous utilisez Astra Control Service, vous gérerez vos applications à p
 
 .Étapes
 . https://cloud.netapp.com/astra["Accédez à la page Astra Control sur BlueXP"^].
-. Sélectionnez *commencer maintenant*.
+. Sélectionnez *s'inscrire pour le plan gratuit*.
 . Fournissez les informations requises dans le formulaire.
 +
 Quelques points importants à prendre en compte lorsque vous remplissez le formulaire :

@@ -1,0 +1,26 @@
+---
+sidebar: sidebar 
+permalink: use/deploy-astra-control-center.html 
+keywords: get started, manage apps, manage account 
+summary: 'Déployez une instance autonome et autogérée d"Astra Control.' 
+---
+= Déployez une instance autogérée d'Astra Control
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/use/
+
+
+[role="lead"]
+Si vous voulez une instance autogérée d'Astra Control qui réside dans votre réseau, vous pouvez déployer Astra Control Center directement à partir d'Astra Control Service.
+
+.Étapes
+. Dans la zone mise en route du tableau de bord, sélectionnez *Deploy a autogéré instance d'Astra Control*.
+. Effectuez l'une des opérations suivantes :
++
+** Générez un nouveau jeton d'API en sélectionnant *Generate*.
+** Collez-le dans un jeton d'API REST Astra Control existant. Reportez-vous à la https://docs.netapp.com/us-en/astra-automation/get-started/get_api_token.html["Documentation relative à l'automatisation d'Astra"^] Pour obtenir des conseils sur la génération d'un jeton d'API.
+
+
+. Suivez les instructions de la fenêtre *Deploy Astra Control Center*.
+

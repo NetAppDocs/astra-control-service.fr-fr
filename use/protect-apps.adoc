@@ -150,7 +150,7 @@ Astra Control crée une sauvegarde de l'application.
 ASTRA Control Provisioner offre des fonctionnalités de sauvegarde et de restauration qui peuvent être activées pour les systèmes back-end qui utilisent le `ontap-nas-economy` classe de stockage.
 
 .Avant de commencer
-* Vous avez activé Astra Control Provisioner.
+* Vous avez activé Astra Control Provisioner ou Astra Trident.
 * Vous avez défini une application dans Astra Control. Cette application aura une fonctionnalité de protection limitée jusqu'à ce que vous ayez terminé cette procédure.
 * Vous avez `ontap-nas-economy` sélectionné comme classe de stockage par défaut pour votre système back-end de stockage.
 
@@ -178,7 +178,7 @@ IMPORTANT: Vérifiez que le répertoire de snapshot sur le back-end de stockage 
 
 
 
-. Effectuez les opérations suivantes dans Astra Trident :
+. Effectuez les opérations suivantes dans Astra Control Provisioner ou Astra Trident :
 +
 .. Activez le répertoire Snapshot pour chaque volume persistant reposant sur ontap-nas-Economy et associé à l'application :
 +

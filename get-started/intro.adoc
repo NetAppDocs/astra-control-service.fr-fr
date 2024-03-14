@@ -24,7 +24,8 @@ Astra Control offre des fonctionnalités stratégiques pour la gestion du cycle 
 * Création de copies Snapshot et de sauvegardes à la demande intégrant la cohérence applicative
 * Automatisation des opérations de sauvegarde et de snapshots basées sur des règles
 * Migrez des applications et des données d'un cluster Kubernetes vers un autre
-* Cloner une application de la phase intermédiaire à la production
+* Réplication d'applications sur un système distant à l'aide de la technologie NetApp SnapMirror (Astra Control Center)
+* Clonage d'applications de la phase de transfert à la production
 * Visualiser l'état de santé et de protection des applications
 * Implémentation de vos workflows de sauvegarde et de migration à l'aide d'une interface utilisateur web ou d'une API
 
@@ -59,45 +60,76 @@ Vous gérez toutes les mises à jour
 
 
 
+| Quelles sont les distributions Kubernetes prises en charge ?  a| 
+* *Fournisseurs de cloud*
++
+** Amazon Web Services
++
+*** Amazon Elastic Kubernetes Service (EKS)
+
+
+** Google Cloud
++
+*** Google Kubernetes Engine (GKE)
+
+
+** Microsoft Azure
++
+*** Azure Kubernetes Service (AKS)
+
+
+
+
+* *Clusters autogérés*
++
+** Kubernetes (en amont)
+** Rancher Kubernetes Engine (RKE)
+** Plateforme de conteneurs Red Hat OpenShift
+
+
+* *Clusters sur site*
++
+** Red Hat OpenShift Container Platform sur site
+
+
+
+ a| 
+* Azure Kubernetes Service sur Azure Stack HCI
+* Anthos de Google
+* Kubernetes (en amont)
+* Rancher Kubernetes Engine (RKE)
+* Plateforme de conteneurs Red Hat OpenShift
+
+
+
+
 | Quels sont les systèmes back-end pris en charge ?  a| 
-* Amazon Web Services :
+* *Fournisseurs de cloud*
 +
-** Amazon EBS
-** Amazon FSX pour NetApp ONTAP
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-aws.html["Cloud Volumes ONTAP"^]
-
-
-
-
-endif::aws[]
-
-ifdef::gcp[]
-
-* Google Cloud :
+** Amazon Web Services
 +
-** Disque persistant Google
-** NetApp Cloud Volumes Service
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
+*** Amazon EBS
+*** Amazon FSX pour NetApp ONTAP
+*** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
 
 
-
-
-endif::gcp[]
-
-ifdef::azure[]
-
-* Microsoft Azure :
+** Google Cloud
 +
-** Disques gérés Azure
-** Azure NetApp Files
-** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
+*** Disque persistant Google
+*** NetApp Cloud Volumes Service
+*** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-gcp.html["Cloud Volumes ONTAP"^]
+
+
+** Microsoft Azure
++
+*** Disques gérés Azure
+*** Azure NetApp Files
+*** https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/task-getting-started-azure.html["Cloud Volumes ONTAP"^]
 
 
 
 
-endif::azure[]
-
-* Clusters autogérés :
+* *Clusters autogérés*
 +
 ** Amazon EBS
 ** Disques gérés Azure
@@ -107,7 +139,7 @@ endif::azure[]
 ** https://longhorn.io/["Longhorn"^]
 
 
-* Clusters sur site :
+* *Clusters sur site*
 +
 ** NetApp MetroCluster
 ** Systèmes NetApp ONTAP AFF et FAS
@@ -121,6 +153,7 @@ endif::azure[]
 * Systèmes NetApp ONTAP AFF et FAS
 * NetApp ONTAP Select
 * https://docs.netapp.com/us-en/cloud-manager-cloud-volumes-ontap/["Cloud Volumes ONTAP"^]
+* https://longhorn.io/["Longhorn"^]
 
 
 |===
@@ -167,8 +200,8 @@ ifdef::azure[]
 endif::azure[]
 
 * Crée un nouveau rôle d'administrateur et un compte de service Kubernetes sur le cluster.
-* Utilise ce nouveau rôle d'administrateur pour l'installation https://docs.netapp.com/us-en/trident/index.html["Astra Trident"^] sur le cluster et pour créer une ou plusieurs classes de stockage.
-* Si vous utilisez une offre de stockage de service cloud NetApp comme système back-end de stockage, Astra Control Service utilise Astra Trident pour provisionner des volumes persistants pour vos applications. Si vous utilisez des disques gérés Amazon EBS ou Azure comme système de stockage principal, vous devez installer un pilote CSI spécifique au fournisseur. Les instructions d'installation sont fournies dans le link:set-up-amazon-web-services.html["Configurer Amazon Web Services"^] et link:set-up-microsoft-azure-with-amd.html["Configuration de Microsoft Azure avec des disques gérés Azure"^].
+* Utilise ce nouveau rôle d'administration pour installer le lien../concepts/architecture#astra-control-components[astra Control Provisioner] sur le cluster et pour créer une ou plusieurs classes de stockage.
+* Si vous utilisez une offre de stockage de service cloud NetApp comme système back-end de stockage, Astra Control Service utilise Astra Control provisionner pour provisionner des volumes persistants pour vos applications. Si vous utilisez des disques gérés Amazon EBS ou Azure comme système de stockage principal, vous devez installer un pilote CSI spécifique au fournisseur. Les instructions d'installation sont fournies dans le link:set-up-amazon-web-services.html["Configurer Amazon Web Services"^] et link:set-up-microsoft-azure-with-amd.html["Configuration de Microsoft Azure avec des disques gérés Azure"^].
 +
 ** À ce stade, vous pouvez définir des applications à partir de votre cluster. Les volumes persistants seront provisionnés sur le back-end de stockage via la nouvelle classe de stockage par défaut.
 ** Utilisez ensuite le service Astra Control pour gérer ces applications, et commencez à créer des copies Snapshot, des sauvegardes et des clones.
@@ -184,7 +217,7 @@ Le plan gratuit d'Astra Control vous permet de gérer jusqu'à 10 espaces de nom
 
 Astra Control Center fonctionne localement dans votre propre cloud privé.
 
-Astra Control Center prend en charge les clusters Kubernetes avec un système de stockage basé sur Trident avec un système ONTAP 9.5 et supérieur.
+ASTRA Control Center prend en charge des clusters Kubernetes avec une classe de stockage configurée par Astra Control Provisioner et un système de stockage back-end ONTAP.
 
 Dans un environnement connecté au cloud, Astra Control Center utilise Cloud Insights pour fournir des fonctionnalités avancées de surveillance et de télémétrie. En l'absence de connexion Cloud Insights, un contrôle et une télémétrie limités (7 jours de metrics) sont disponibles dans Astra Control Center, mais aussi exportés vers les outils de surveillance natifs de Kubernetes (comme Prometheus et Grafana) via des points de terminaison ouverts.
 
@@ -215,11 +248,10 @@ Vous pouvez ajouter des applications à votre cluster. Si certaines applications
 
 == Pour en savoir plus
 
-* https://docs.netapp.com/us-en/astra-family/["Documentation relative à la gamme de produits NetApp Astra"^]
-* https://docs.netapp.com/us-en/astra/index.html["Documentation relative au service après-vente Astra Control"^]
+* https://docs.netapp.com/us-en/astra-family/["Documentation de la gamme de produits NetApp Astra"^]
 * https://docs.netapp.com/us-en/astra-control-center/index.html["Documentation Astra Control Center"^]
+* https://docs.netapp.com/us-en/astra-automation/index.html["Documentation de l'API Astra Control"^]
 * https://docs.netapp.com/us-en/trident/index.html["Documentation Astra Trident"^]
-* https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^]
 * https://docs.netapp.com/us-en/cloudinsights/["Documentation Cloud Insights"^]
 * https://docs.netapp.com/us-en/ontap/index.html["Documentation ONTAP"^]
 

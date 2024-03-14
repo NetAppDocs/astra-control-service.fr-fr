@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: get-started/check-astra-trident-version.html 
-keywords: astra trident, check, version 
+keywords: astra trident, check, version, astra control provisioner 
 summary: 'Pour les clusters autogérés, vérifiez que vous utilisez la version correcte d"Astra Trident.' 
 ---
 = Vérifiez la version d'Astra Trident
@@ -12,10 +12,10 @@ summary: 'Pour les clusters autogérés, vérifiez que vous utilisez la version 
 
 
 [role="lead"]
-Pour ajouter un cluster autogéré qui utilise Astra Trident pour les services de stockage, assurez-vous que la version installée d'Astra Trident est la plus récente.
+Pour ajouter un cluster autogéré qui utilise Astra Control Provisioner ou Astra Trident pour les services de stockage, assurez-vous que la version installée d'Astra Trident est la version 23.10 ou la plus récente.
 
 .Étapes
-. Vérifiez la version d'Astra Trident.
+. Déterminez la version d'Astra Trident que vous exécutez :
 +
 [source, console]
 ----
@@ -28,7 +28,7 @@ Si Astra Trident est installé, le résultat est similaire à ce qui suit :
 [listing]
 ----
 NAME      VERSION
-trident   22.10.0
+trident   24.02.0
 ----
 +
 Si Astra Trident n'est pas installé, le résultat est similaire à ce qui suit :
@@ -38,9 +38,11 @@ Si Astra Trident n'est pas installé, le résultat est similaire à ce qui suit 
 ----
 error: the server doesn't have a resource type "tridentversions"
 ----
+. Effectuez l'une des opérations suivantes :
 +
+** Si vous exécutez Astra Trident 23.01 ou une version antérieure, utilisez-les https://docs.netapp.com/us-en/trident/trident-managing-k8s/upgrade-trident.html["instructions"^] Pour effectuer une mise à niveau vers une version plus récente d'Astra Trident avant de passer à Astra Control Provisioner. C'est possible link:../use/enable-acp.html["effectuer une mise à niveau directe"] Vers Astra Control Provisioner 24.02 si votre Astra Trident se trouve dans une fenêtre à quatre versions de la version 24.02. Par exemple, vous pouvez effectuer une mise à niveau directe d'Astra Trident 23.04 vers Astra Control Provisioner 24.02.
+** Si vous exécutez Astra Trident 23.10 ou version ultérieure, vérifiez que le mécanisme de provisionnement Astra Control a été utilisé link:../use/faq.html#running-acp-check["activé"]. ASTRA Control Provisioner ne fonctionnera pas avec les versions d'Astra Control Center antérieures à 23.10. link:../get-started/enable-acp.html["Mettez à niveau votre mécanisme de provisionnement Astra Control"] De sorte qu'il dispose de la même version que l'Astra Control Center que vous mettez à niveau pour accéder aux dernières fonctionnalités.
 
-NOTE: Si Astra Trident n'est pas installé ou n'est pas à jour et que vous souhaitez que votre cluster utilise Astra Trident pour les services de stockage, vous devez installer la dernière version d'Astra Trident avant de poursuivre. Reportez-vous à la https://docs.netapp.com/us-en/trident/trident-get-started/kubernetes-deploy.html["Documentation Astra Trident"^] pour obtenir des instructions.
 
 . Assurez-vous que les pods fonctionnent :
 +

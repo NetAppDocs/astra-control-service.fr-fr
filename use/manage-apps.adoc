@@ -97,7 +97,7 @@ Astra Control peut ne pas être en mesure de cloner un opérateur conçu avec un
 
 Après vous l'avez link:../get-started/add-first-cluster.html["a ajouté votre cluster"] Avec Astra Control, vous pouvez installer des applications ou gérer des applications existantes sur le cluster. Toute application dont la portée est étendue à un ou plusieurs espaces de noms peut être gérée.
 
-Astra Control ne gère les applications avec état que si le stockage est placé sur une classe de stockage prise en charge par Astra Control. Astra Control Service prend en charge toutes les classes de stockage prises en charge par Astra Trident ou un pilote CSI générique.
+Astra Control ne gère les applications avec état que si le stockage est placé sur une classe de stockage prise en charge par Astra Control. ASTRA Control Service prend en charge toute classe de stockage prise en charge par Astra Control Provisioner ou un pilote CSI générique.
 
 ifdef::gcp[]
 

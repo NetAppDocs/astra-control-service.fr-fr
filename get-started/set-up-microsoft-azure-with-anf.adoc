@@ -82,7 +82,7 @@ Par défaut, les compartiments Astra Control Service utilisent pour stocker les 
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service.
 
-Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.23 à 1.25.
+Version Kubernetes:: Les clusters doivent exécuter Kubernetes version 1.26 à 1.28.
 Type d'image:: Le type d'image pour tous les pools de nœuds doit être Linux.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 Région Azure:: Les clusters doivent se trouver dans une région où Azure NetApp Files est disponible. https://azure.microsoft.com/en-us/global-infrastructure/services/?products=netapp["Afficher les produits Azure par région"^].

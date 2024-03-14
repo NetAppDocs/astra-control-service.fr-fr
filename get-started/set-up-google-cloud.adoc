@@ -107,7 +107,7 @@ Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que
 
 Un cluster Kubernetes doit respecter les exigences suivantes pour que vous puissiez découvrir et gérer Astra Control Service. Notez que certaines de ces exigences s'appliquent uniquement si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end.
 
-Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.24 et 1.25.
+Version Kubernetes:: Un cluster doit exécuter une version Kubernetes comprise entre 1.26 et 1.28.
 Type d'image:: Le type d'image de chaque nœud de travail doit être `COS_CONTAINERD`.
 État du cluster:: Les clusters doivent être exécutés en état de fonctionnement et avoir au moins un nœud de travail en ligne sans nœuds de travail en panne.
 Région Google Cloud:: Si vous prévoyez d'utiliser Cloud Volumes Service pour Google Cloud en tant que système de stockage back-end, les clusters doivent être exécutés dans un https://cloud.netapp.com/cloud-volumes-global-regions#cvsGc["Région Google Cloud prise en charge de Cloud Volumes Service pour Google Cloud"] Notez qu'Astra Control Service prend en charge les deux types de service : CVS et CVS-Performance. Il est recommandé de choisir une région qui prend en charge Cloud Volumes Service pour Google Cloud, même si vous ne l'utilisez pas comme système de stockage principal. Il est ainsi plus facile d'utiliser Cloud Volumes Service pour Google Cloud comme système de stockage back-end, à l'avenir si vos besoins en performance évoluent.

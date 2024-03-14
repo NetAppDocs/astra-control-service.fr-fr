@@ -21,4 +21,5 @@ Maintenant que vous vous êtes connecté et que vous avez ajouté un cluster à 
 * link:../use/manage-users.html["Inviter et gérer des utilisateurs"]
 * link:../use/manage-credentials.html["Gérez les identifiants du fournisseur cloud"]
 * link:../use/manage-notifications.html["Gérer les notifications"]
+* link:../use/deploy-astra-control-center.html["Déployez une instance autogérée d'Astra Control"]
 
