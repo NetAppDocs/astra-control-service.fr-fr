@@ -2596,4 +2596,83 @@ ASTRA Control Provisioner a remplacé Astra Trident en tant que mécanisme de pr
   <block id="d09a3f23170df63b9065e78b7eb80224" category="paragraph">Si vous rencontrez des problèmes pour déployer Trident à l'aide d'Helm, exécutez cette commande pour désinstaller complètement Astra Trident :</block>
   <block id="3897d04922674a762953f58e38463cb0" category="inline-link">Retirez complètement les CRD Astra Trident</block>
   <block id="98709e6abe377fa2083cb4a36ba22ddc" category="paragraph">*Ne pas*<block ref="d47e0c203a38c85d577cb0ed29c7fad1" category="inline-link-rx"></block> Dans le cadre de votre désinstallation avant de tenter à nouveau d'activer Astra Control Provisioner.</block>
+  <block id="5220375a520b7758aa31b8b43ce717fe" category="summary">ASTRA Control Provisioner prend en charge la création de relations de miroir entre les volumes source et de destination pour répliquer des volumes à des fins de reprise d'activité.</block>
+  <block id="50e2eea9ba53d70147772db1c5d25f79" category="doc">Réplication de volumes à l'aide de SnapMirror</block>
+  <block id="d0182feabbbe0987e5c6aed407b4c2a7" category="paragraph">À l'aide d'Astra Control Provisioner, vous pouvez créer des relations de miroir entre un volume source sur un cluster et le volume de destination sur le cluster peering pour la réplication des données pour la reprise après incident. Vous pouvez utiliser une définition de ressource personnalisée (CRD) avec un espace de nom pour effectuer les opérations suivantes :</block>
+  <block id="a682d8ef86abcae6c5a1db6186c5f02b" category="list-text">Création de relations de symétrie entre les volumes (ESV)</block>
+  <block id="31a8f98d3378661a5b8abf15438f0bca" category="list-text">Supprimez les relations de symétrie entre les volumes</block>
+  <block id="a6349012892be516e5729d501a9649a7" category="list-text">Rompez les relations de symétrie</block>
+  <block id="2597cb6d27f572bb6d7d2fd15f414795" category="list-text">Promotion du volume secondaire en cas d'incident (basculements)</block>
+  <block id="40f7c55be912a395aed2502927d3fcfa" category="list-text">Transition sans perte des applications d'un cluster à un autre (en cas de basculements ou de migrations planifiés)</block>
+  <block id="d193cd9a2432eca22e5cf0d06dcee1e6" category="section-title">Conditions préalables à la réplication</block>
+  <block id="55be807bf2be012ff44a04449cc5e8a8" category="paragraph">Assurez-vous que les conditions préalables suivantes sont remplies avant de commencer :</block>
+  <block id="3404cce75db90acf6a9d52860721a139" category="list-title">Clusters ONTAP</block>
+  <block id="5764ffcba90184d76761806e7e8395b9" category="list-text">*Astra Control Provisioner* : Astra Control Provisioner version 23.10 ou ultérieure doit exister sur les clusters Kubernetes source et de destination qui utilisent ONTAP en tant que backend.</block>
+  <block id="ba84728ffba482ceb12371a53be2f636" category="inline-link">Présentation des licences SnapMirror dans ONTAP</block>
+  <block id="b677eb65f7f869d18b845725a133a8d5" category="list-text">*Licences* : les licences asynchrones de SnapMirror ONTAP utilisant le bundle protection des données doivent être activées sur les clusters ONTAP source et cible. Reportez-vous à la section<block ref="a7b9425cefc4a3715b38951f4b2b6b35" category="inline-link-rx"></block> pour en savoir plus.</block>
+  <block id="5cc8ada79224d850ecd22fd22e550c47" category="list-title">Peering</block>
+  <block id="9fecd08b776fdfca7b33426363edf913" category="inline-link">Présentation du cluster et de SVM peering</block>
+  <block id="02b05cdd8f0a8c426f307085cc1004f7" category="list-text">*Cluster et SVM* : les systèmes back-end de stockage ONTAP doivent être peering. Reportez-vous à la section<block ref="60333a598df416e49fbceb5a88dce370" category="inline-link-rx"></block> pour en savoir plus.</block>
+  <block id="94ac6b3955eab183cb88ab17c91000eb" category="admonition">S'assurer que les noms de SVM utilisés dans la relation de réplication entre deux clusters ONTAP sont uniques.</block>
+  <block id="11b4eae81775a6d26d41d2ca42309c91" category="list-text">*Astra Control Provisioner et SVM* : les SVM distants à peering doivent être disponibles pour Astra Control Provisioner sur le cluster de destination.</block>
+  <block id="0c5e1b5bc54261ccadd2a72af1047ded" category="list-title">Pilotes pris en charge</block>
+  <block id="57601c13c06c6ac6e23efaab44ced427" category="list-text">La réplication de volume est prise en charge pour les pilotes ontap-nas et ontap-san.</block>
+  <block id="3ce5b83f8896ef0d2e356d3972ec8898" category="section-title">Créer une demande de volume persistant en miroir</block>
+  <block id="427a1ab7f39ee4f2dd7a0b7e35f572da" category="paragraph">Suivez ces étapes et utilisez les exemples CRD pour créer une relation miroir entre les volumes principal et secondaire.</block>
+  <block id="4dc69f665f0d76c17a577a352dd15b25" category="list-text">Effectuez les étapes suivantes sur le cluster Kubernetes principal :</block>
+  <block id="cffc5263be00a76539edeeff72190d54" category="list-text">Créez un objet StorageClass avec le<block ref="23041ca302bab724a5a0a4ee923c745d" prefix=" " category="inline-code"></block> paramètre.</block>
+  <block id="0a52730597fb4ffa01fc117d9e71e3a9" category="listing-title">Exemple</block>
+  <block id="f1fe26832c26eb686c85bd72da8a62f1" category="list-text">Créez une demande de volume persistant avec une classe de stockage précédemment créée.</block>
+  <block id="a306778c7affcc4dd2329c7f1e9a6389" category="list-text">Créez une demande de modification MirrorRelationship avec des informations locales.</block>
+  <block id="f55994c0c11fac6e31cbb70581f696f0" category="paragraph">ASTRA Control Provisioner récupère les informations internes du volume et l'état actuel de la protection des données (DP) du volume, puis remplit le champ d'état de MirrorRelationship.</block>
+  <block id="7e36329a511f28054ceb0cb2aba7de3a" category="list-text">Obtenir le CR TridentMirrorRelationship pour obtenir le nom interne et la SVM du PVC.</block>
+  <block id="ce01c03f932076e82348fc5aaefacc7d" category="list-text">Effectuez les étapes suivantes sur le cluster Kubernetes secondaire :</block>
+  <block id="dbe7fac150e57be9bc0d8e046792f4c3" category="list-text">Créez une classe de stockage avec le paramètre trident.netapp.io/replication: true.</block>
+  <block id="01d68e0f9630c032dc8a33358e46e65b" category="list-text">Créez une demande de modification MirrorRelationship avec les informations de destination et de source.</block>
+  <block id="960441627a9e57f3614bc5e5fce9a5ff" category="paragraph">ASTRA Control Provisioner crée une relation SnapMirror avec le nom de la stratégie de relation configurée (ou par défaut pour ONTAP) et l'initialise.</block>
+  <block id="4ba5d2a91c95149a7ad924ebd0d9503d" category="list-text">Créez une demande de volume persistant avec une classe de stockage précédemment créée pour agir en tant que classe secondaire (destination SnapMirror).</block>
+  <block id="efe874c809f0fe07e9ccbe31c010017a" category="paragraph">ASTRA Control Provisioner vérifiera le CRD TridentMirrorRelationship et ne créera pas le volume si la relation n'existe pas. Si la relation existe, Astra Control Provisioner s'assurera que le nouveau volume FlexVol est placé sur un SVM peering avec le SVM distant défini dans le MirrorRelationship.</block>
+  <block id="e71d1a5cbaac30e63ed507e4b62c705f" category="section-title">États de réplication des volumes</block>
+  <block id="35a5ab9faaa73d6bfb24393f7b676624" category="paragraph">Une relation de miroir Trident (TMR) est une relation CRD qui représente une extrémité d'une relation de réplication entre les ESV. La TMR de destination a un état qui indique à Astra Control provisionner l'état souhaité. La TMR de destination a les États suivants :</block>
+  <block id="546afd3b22376f948ae8d790e441d7da" category="list-text">*Établi* : le PVC local est le volume de destination d'une relation miroir, et il s'agit d'une nouvelle relation.</block>
+  <block id="724cfb5ec8bac42a80699bb79c4eccb9" category="list-text">*Promu*: Le PVC local est ReadWrite et montable, sans relation de miroir actuellement en vigueur.</block>
+  <block id="d323366aa32e60d08a0f93bda543af47" category="list-text">*Rétabli*: Le PVC local est le volume de destination d'une relation miroir et était également auparavant dans cette relation miroir.</block>
+  <block id="4c3cd5b62a43e82e03fffa6b238ed918" category="list-text">L'état rétabli doit être utilisé si le volume de destination était déjà en relation avec le volume source car il écrase le contenu du volume de destination.</block>
+  <block id="b2e7dc07859cd924ca5706b299986e57" category="list-text">L'état rétabli échouera si le volume n'était pas auparavant dans une relation avec la source.</block>
+  <block id="93f9c6ccc7d85e709509db31891ae5eb" category="section-title">Promotion de la demande de volume persistant secondaire en cas de basculement non planifié</block>
+  <block id="4a76c8d930ec18b5aedc26b5d8e5246f" category="paragraph">Effectuez l'étape suivante sur le cluster Kubernetes secondaire :</block>
+  <block id="78ac02218b5a9367bdcb4881538477cc" category="list-text">Mettez à jour le champ _spec.state_ de TridentMirrorRelationship vers<block ref="1fe57d6202c7cfbb0ee344b1e0a6fb37" prefix=" " category="inline-code"></block>.</block>
+  <block id="ffe4cfc202d643b50342b93a4a11a82f" category="section-title">Promotion de la demande de volume persistant secondaire lors d'un basculement planifié</block>
+  <block id="1d60b89a076d7f30b8efdef50e842f68" category="paragraph">Lors d'un basculement planifié (migration), effectuez les étapes suivantes pour promouvoir la demande de volume persistant secondaire :</block>
+  <block id="3310d9a60c164accb7c262ab6e9fbc65" category="list-text">Sur le cluster Kubernetes principal, créez un snapshot de la demande de volume persistant et attendez que le snapshot soit créé.</block>
+  <block id="8b17b79902950942165541a8ab704363" category="list-text">Sur le cluster Kubernetes principal, créez la CR SnapshotInfo pour obtenir des informations internes.</block>
+  <block id="678346d79faaa65b2da52e6d7ddce845" category="list-text">Sur le cluster Kubernetes secondaire, mettez à jour le champ _spec.state_ du _TridentMirrorRelationship_ CR en _promu_ et _spec.promotedSnapshotHandle_ en tant que nom interne du snapshot.</block>
+  <block id="7b007b14980acd66e9301e02a5670f47" category="list-text">Sur le cluster Kubernetes secondaire, confirmez l'état (champ status.state) de TridentMirrorRelationship à promu.</block>
+  <block id="f69101c0107c4bbf8f0ccc9141beb68b" category="section-title">Restaurer une relation de miroir après un basculement</block>
+  <block id="9a023cbe1d3be933d8edb6228f9901ce" category="paragraph">Avant de restaurer une relation de symétrie, choisissez le côté que vous voulez faire comme nouveau principal.</block>
+  <block id="1c7011adbcc0afa258396aff4f10266b" category="list-text">Sur le cluster Kubernetes secondaire, assurez-vous que les valeurs du champ _spec.remoteVolumeHandle_ du champ TridentMirrorRelationship sont mises à jour.</block>
+  <block id="ffb25f01fda2538ae98bc0c4b4d465a6" category="list-text">Sur le cluster Kubernetes secondaire, mettez à jour le champ _spec.mirror_ de TridentMirrorRelationship vers<block ref="036bbe13de7250844b100bc381b59214" prefix=" " category="inline-code"></block>.</block>
+  <block id="41a593c0bede63aac2726a18e4599087" category="section-title">Opérations supplémentaires</block>
+  <block id="429ffe8f0aaccc8922acaae0bea825a8" category="paragraph">ASTRA Control Provisioner prend en charge les opérations suivantes sur les volumes principal et secondaire :</block>
+  <block id="253093d00b66ff2357df5085c04b2758" category="section-title">Répliquer la demande de volume persistant primaire sur une nouvelle demande de volume secondaire</block>
+  <block id="301dcece9e67241c29ebbbac8a94274e" category="paragraph">Assurez-vous que vous avez déjà un PVC primaire et un PVC secondaire.</block>
+  <block id="7f1c32cba6b98d1db7f3dfda1df76189" category="list-text">Supprimez les CRD PersistentVolumeClaim et TridentMirrorRelationship du cluster secondaire (destination) établi.</block>
+  <block id="e655fd5342cff178f54ae5f5b2a3b7b6" category="list-text">Supprimez le CRD TridentMirrorRelationship du cluster principal (source).</block>
+  <block id="3eb69a135044d3f308d140dccb1dbe5e" category="list-text">Créez un nouveau CRD TridentMirrorRelationship sur le cluster principal (source) pour le nouveau PVC secondaire (destination) que vous souhaitez établir.</block>
+  <block id="92c650dfb6284b5d24ed0e83a2338fa0" category="section-title">Redimensionner une PVC en miroir, principale ou secondaire</block>
+  <block id="66990a43216d28b5b6818b021d397574" category="paragraph">La demande de volume persistant peut être redimensionnée normalement, ONTAP étendra automatiquement les flevxols de destination si la quantité de données dépasse la taille actuelle.</block>
+  <block id="4e2626fed5da19a4be8255f16a331609" category="section-title">Supprimer la réplication d'une demande de volume persistant</block>
+  <block id="e1abf7fa65d845d34c33d593ed070453" category="paragraph">Pour supprimer la réplication, effectuez l'une des opérations suivantes sur le volume secondaire actuel :</block>
+  <block id="b3dd2c563dffb09f03c72bc16a72be62" category="list-text">Supprimez MirrorRelationship sur le PVC secondaire. Cela interrompt la relation de réplication.</block>
+  <block id="413ab8e64d0d4ccb3f08ef2a8653a525" category="list-text">Ou, mettez à jour le champ spec.state à _promu_.</block>
+  <block id="c00cff9971607d7a0409066a0ecc3bcd" category="section-title">Suppression d'une demande de volume persistant (qui était auparavant mise en miroir)</block>
+  <block id="21c248e83f23afe590db7c4471350f23" category="paragraph">Le mécanisme de provisionnement Astra Control vérifie si des demandes de volume persistant sont répliquées et libère la relation de réplication avant toute tentative de suppression du volume.</block>
+  <block id="8ec9c60105332c1be8facc42b496e14b" category="section-title">Supprimer une TMR</block>
+  <block id="b4d20a51885b1a7645c486448d720b7e" category="paragraph">La suppression d'une TMR d'un côté d'une relation symétrique entraîne la transition de la TMR restante vers l'état _promu_ avant que Astra Control Provisioner ne termine la suppression. Si la TMR sélectionnée pour la suppression est déjà à l'état _promoted_, il n'y a pas de relation miroir existante et la TMR sera supprimée et Astra Control Provisioner promouvra le PVC local à _ReadWrite_. Cette suppression libère les métadonnées SnapMirror pour le volume local dans ONTAP. Si ce volume est utilisé dans une relation miroir à l'avenir, il doit utiliser une nouvelle TMR avec un état de réplication _établi_ volume lors de la création de la nouvelle relation miroir.</block>
+  <block id="d41660149eb8930ad76a1dfe3dc5f2e3" category="section-title">Mettre à jour les relations miroir lorsque ONTAP est en ligne</block>
+  <block id="7079164c5ba86439b0719782591106dd" category="paragraph">Les relations miroir peuvent être mises à jour à tout moment après leur établissement. Vous pouvez utiliser le<block ref="abb3a949c6d70e3e5d92f4ad2bf143a3" prefix=" " category="inline-code"></block> ou<block ref="ff0b4e3d4dfe8f6074b6943947345d4d" prefix=" " category="inline-code"></block> champs permettant de mettre à jour les relations.
+Lors de la promotion d'un volume de destination en volume ReadWrite standard, vous pouvez utiliser _promotedSnapshotHandle_ pour spécifier un snapshot spécifique dans lequel restaurer le volume actuel.</block>
+  <block id="4eecab048a7c90cfb92e0f04884686e8" category="section-title">Mettre à jour les relations en miroir lorsque ONTAP est hors ligne</block>
+  <block id="e3b68b1c19a14af5fcb94e147290aec6" category="paragraph">Vous pouvez utiliser un CRD pour effectuer une mise à jour SnapMirror sans qu'Astra Control ne dispose d'une connectivité directe au cluster ONTAP. Reportez-vous à l'exemple de format de TridentActionMirrorUpdate suivant :</block>
+  <block id="bc08468157c4a9e3a30eed7ba64cc309" category="paragraph"><block ref="1f9dfae8a369525bce4996df40963532" prefix="" category="inline-code"></block> Reflète l'état du CRD TridentActionMirrorUpdate. Il peut prendre une valeur de _succeed_, _In Progress_ ou _FAILED_.</block>
 </blocks>
