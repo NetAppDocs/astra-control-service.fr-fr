@@ -1,0 +1,2903 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head class="at-element-marker">
+  <title>Gérer les crochets d'exécution de l'application | NetApp Documentation</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1">
+  <meta http-equiv="language" content="en">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="Gérer les crochets d'exécution de l'application | NetApp Documentation" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-app-execution-hooks.html" />
+	<meta property="og:description" content="Un crochet d"exécution est un script personnalisé que vous pouvez exécuter avant ou après un instantané d"une application gérée." />
+  <meta property="og:image" content="https://docs.netapp.com/fr-fr/astra-control-service/images/logo-tophat-social.png" />
+  <meta property="og:image:alt" content="NetApp Logo" />
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="encoding" content="utf-8">
+  <meta http-equiv="nss-type" content="Product Documentation"/>
+  <meta http-equiv="nss-subtype" content="User Guide"/><meta name="description" content="Un crochet d"exécution est un script personnalisé que vous pouvez exécuter avant ou après un instantané d"une application gérée.">
+  <meta name="keywords" content=" execution hook, hook, script, snapshot, backup, freeze, thaw, database"><!-- Icons -->
+  <link rel="icon" href="/fr-fr/astra-control-service/images/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Feed --><link rel="alternate" type="application/rss+xml" title="NetApp Documentation" href="/fr-fr/astra-control-service/feed.xml"><!-- CSS Definitions: NetApp CSS should be defined after generic css -->
+
+
+  <!-- Combined CSS -->
+  <link rel="stylesheet" type="text/css" href="/fr-fr/astra-control-service/css/ie-netappdocs.css">
+
+  
+  <link rel="stylesheet" href="/fr-fr/astra-control-service/css/ie-landing-page.css" type="text/css">
+  <link rel="stylesheet" href="/fr-fr/astra-control-service/css/ie-tabbed-blocks.css" type="text/css">
+  <!-- Canonical url -->
+  <link rel="canonical" href="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="x-default" href="https://docs.netapp.com/us-en/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="fr" href="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="en" href="https://docs.netapp.com/us-en/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="ja" href="https://docs.netapp.com/ja-jp/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="ko" href="https://docs.netapp.com/ko-kr/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="zh-Hans" href="https://docs.netapp.com/zh-cn/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://docs.netapp.com/zh-tw/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="de" href="https://docs.netapp.com/de-de/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="es" href="https://docs.netapp.com/es-es/astra-control-service/use/manage-app-execution-hooks.html" />
+  <link rel="alternate" hreflang="it" href="https://docs.netapp.com/it-it/astra-control-service/use/manage-app-execution-hooks.html" />
+  <!-- Top level site integrations -->
+<script type="text/javascript" src="https://cdn.cookielaw.org/consent/72570c5c-fe30-465f-b0e0-b77f7fb4ae34/OtAutoBlock.js"></script>
+    <script type="text/javascript" src="https://cdn.cookielaw.org/scripttemplates/otSDKStub.js" charset="UTF-8" data-document-language="true" data-domain-script="72570c5c-fe30-465f-b0e0-b77f7fb4ae34"></script>
+    <script type="text/javascript">function OptanonWrapper() { }</script>
+    <script type="text/plain" class="optanon-category-C0002" src="https://assets.adobedtm.com/60287eadf1ee/c284da483c83/launch-e9ff3acac59f.min.js"></script>
+    <script class="optanon-category-C0001">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.setAttributeNode(d.createAttribute('data-ot-ignore'));j.setAttribute('class','optanon-category-C0001');j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'';f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-MD73T9M');</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+      const MASTHEAD_OFFSET = 65;
+      const SECTIONS = $("main h2, main h3");
+      // PAGE NAV - Init
+      if (SECTIONS.length == 0) {
+        // remove if there is no elements
+        /*
+        $("#ie-right-navbar").remove();
+        $("#ie-right-navbar-collapse").remove();
+        */
+      } else {
+        $(".page-nav-title").css('display', 'block');
+        for (var i = 0; i < SECTIONS.length; i++) {
+          var sectionId = $(SECTIONS[i]).attr('id');
+          var sectionName = $(SECTIONS[i]).text();
+          var subClass = $(SECTIONS[i]).is("h3") ? ' page-nav__sublink' : '';
+          $("#page-menu").append('<li class="page-nav-item"><a href="#' + sectionId + '" class="page-nav__link' + subClass + '">' + sectionName + '</a></li>');
+        }
+      }
+    });
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+  <!-- Used for Product Family Page Sidebar Visibility --><!-- Used to import Promise for IE. Required for SearchKit -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script><script src='/fr-fr/astra-control-service/js/na-search.js'></script><script src='/fr-fr/astra-control-service/js/ie-clouddocs.js'></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><script>
+    /*
+      $(document).ready(function() {
+          $("#tg-sb-link").click(function() {
+              $("#tg-sb-sidebar").toggle();
+              $("#tg-sb-content").toggleClass('col-md-9');
+              $("#tg-sb-content").toggleClass('col-md-12');
+              $("#tg-sb-icon").toggleClass('fa-toggle-on');
+              $("#tg-sb-icon").toggleClass('fa-toggle-off');
+          });
+      });
+      */
+  </script>
+  <script src='/fr-fr/astra-control-service/js/custom-dropdown.js'></script>
+  <script src='/fr-fr/astra-control-service/js/FileSaver.min.js'></script>
+  <script src='/fr-fr/astra-control-service/js/jszip-utils.min.js'></script>
+  <script src='/fr-fr/astra-control-service/js/jszip.min.js'></script><script src='/fr-fr/astra-control-service/js/ie-pdf-ux.js'></script></head>
+
+
+  <body class role="document" data-flavor="azure">
+    <div class="skip-to-main">
+      <a href="#main" >Skip to main content</a>
+    </div><noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD73T9M"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript><div id="page" class="">
+      <div id="ie-phone-menu" class=""></div>
+      <div id="ie-content-wrap" class="">
+        <nav id="ie-new-header">
+    <ul>
+        <li id="ie-phone-menu-button">
+            <a href="#">
+                <image id="" src="/fr-fr/astra-control-service/images/hamburger.svg" alt="menu" />
+            </a>
+        </li>
+
+        <li>
+            <a href="https://www.netapp.com/fr">
+                <image id="ie-header-logo" src="/fr-fr/astra-control-service/images/netapp_logo.svg" alt="netapp" />
+            </a>
+        </li>
+        <li id="ie-header-docs">
+            <a href="https://www.netapp.com/fr/support-and-training/documentation/">Documents</a>
+        </li>
+
+        <!-- Empty container to push header left with or without lang selector -->
+        <li id="empty-container" style="margin-left: auto">
+        </li>
+        <!-- Start Language Selector --><li id="ie-language-dropdown">
+            <div id="language-dropdown" class="custom-dropdown custom-dropdown-lang">
+                <div class="custom-dropdown-select custom-dropdown-select-lang">
+                    <img src="/fr-fr/astra-control-service/images/language_white_24dp.svg" class="n-globe__icon" />
+                    <span class="lang-name">Français</span>
+                    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu"><li>
+                        <a href="https://docs.netapp.com/fr-fr/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">Français</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/us-en/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">English</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ja-jp/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">日本語</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/ko-kr/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">한국어</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-cn/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">简体中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/zh-tw/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">繁體中文</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/de-de/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">Deutsch</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/es-es/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">Español</span></a>
+                    </li><li>
+                        <a href="https://docs.netapp.com/it-it/astra-control-service/use/manage-app-execution-hooks.html"
+                            target="_self"><span translate="no" class="notranslate">Italiano</span></a>
+                    </li></ul>
+            </div>
+            </li>
+        <!-- End Language Selector -->
+
+
+        <li id="ie-allnetapp">
+            <div id="allnetapp-dropdown" class="custom-dropdown custom-dropdown-allnetapp">
+                <div class="custom-dropdown-select custom-dropdown-select-allnetapp">
+                    <img src="/fr-fr/astra-control-service/images/apps_white_24dp.svg" alt="" class="allnetapp-icon" />
+                    <span class="allnetapp-name">Tout NetApp</span>
+                    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown header invisible" />
+                    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup header" />
+                    </button>
+                </div>
+
+                <ul class="custom-dropdown-menu allnetapp-dropdown">
+                    <li>
+                        <a href="https://bluexp.netapp.com/fr/"
+                            target="_self"><span translate="no" class="notranslate">BlueXP</span></a>
+                    </li>
+                    <li>
+                        <a href="https://mysupport.netapp.com/site/"
+                            target="_self"><span translate="no" class="notranslate">Support</span></a>
+                    </li>
+                    <li>
+                        <a href="https://kb.netapp.com/"
+                            target="_self"><span translate="no" class="notranslate">Base de connaissances</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.netapp.com/fr/support-and-training/netapp-learning-services/"
+                            target="_self"><span translate="no" class="notranslate">Formation</span></a>
+                    </li>
+                </ul>
+            </div>
+
+        </li>
+
+    </ul>
+</nav>
+
+        <main id="n-main-content" class="n-main-content">
+          <!-- Start Documentation Content -->
+<div class="ie-main">
+
+<div id="ie-new-sidebar-collapse" style="display: none">
+    <img id="sidebar-expand" class="ie-searchbox-icon" src="/fr-fr/astra-control-service/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-new-sidebar">
+    <div id="ie-product-identity-lockup">
+        <div id="sidebar-collapse" class="">
+            <img src="/fr-fr/astra-control-service/images/double_arrow.svg" alt="" />
+        </div>
+        <div id="ie-breadcrumb" class="">
+  <ul class="ie-breadcrumb">
+    <li class="">
+      <a href="https://docs.netapp.com">Tous les documents</a>
+    </li>
+    
+    
+    <li class="">
+      <a href="https://docs.netapp.com/us-en/cloud/">Documents sur le cloud</a>
+    </li>
+    
+
+    
+    <li class="">
+      <a href="https://docs.netapp.com/fr-fr/astra-family/">
+        Astra
+      </a>
+    </li>
+    
+  </ul>
+  
+  <div class="ie-product-name" >
+    <!--<a href="/fr-fr/astra-control-service/">-->
+      Astra Control Service
+    <!--</a>-->
+  </div>
+</div>
+
+            
+<div id="ie-selectors">
+<div id="flavor-dropdown" class="custom-dropdown" data-url="/fr-fr/astra-control-service/use/manage-app-execution-hooks.html">
+  
+  
+  <div class="custom-dropdown-select selected" title="Azure">
+    <label>Ou du fournisseur cloud</label>
+    <div>Azure</div>  
+    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown flavor invisible" />
+    <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup flavor" />
+    <!--<img src="/fr-fr/astra-control-service/images/dismiss.svg" class="custom-icon selected" id="remove-flavor" alt="" />-->
+  </div>
+  
+
+  <ul class="custom-dropdown-menu">
+    
+    
+    <li data-value="aws" data-url="/fr-fr/astra-control-service/aws/use/manage-app-execution-hooks.html">Amazon Web Services
+    </li>
+    
+    
+    
+    <li data-value="gcp" data-url="/fr-fr/astra-control-service/gcp/use/manage-app-execution-hooks.html">Google Cloud
+    </li>
+    
+    
+    
+    <li data-value="azure" data-url="/fr-fr/astra-control-service/azure/use/manage-app-execution-hooks.html">Microsoft Azure
+    </li>
+    
+    
+    <li data-url="/fr-fr/astra-control-service/use/manage-app-execution-hooks.html">Tous les fournisseurs cloud</li>
+  </ul>
+</div>
+</div>
+        
+        
+
+<div id="ie-searchbox" class="ie-searchbox-sidebar ">
+    <img class="ie-searchbox-icon" src="/fr-fr/astra-control-service/images/loupe.svg" alt=""/>
+    <div id="react-search" 
+        data-search-html="/fr-fr/astra-control-service/azure/search.html" 
+        data-type="widget"
+        data-placeholder="Rechercher dans la documentation"
+        data-no-results-found="Aucun résultat trouvé pour : {query}"
+        data-did-you-mean="Rechercher {suggestion}."
+        data-no-results-found-did-you-mean="Aucun résultat n'a été trouvé pour {query}. Voulez-vous dire {suggestion} ?"
+        data-results-found="{hitCount} résultats"
+        data-error-message="Une erreur s'est produite. Merci de réessayer."
+        data-error-reset="Réinitialiser la recherche"
+        data-sk-es-pf-indexes="" 
+        data-flavor="azure">
+    </div>
+</div>
+        
+    </div>
+    <div id="ie-new-toc"><script>
+  let sidebarAccordion = true;
+
+  /* specific css rules for Mac */
+  if(navigator.platform.match('Mac') !== null) {
+    document.body.setAttribute('class', 'OSX');
+  }
+
+</script>
+
+<div id="ie-sidebar-container">
+  <ul id="ie-sidebar-list" ><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Documentation sur le service Astra Control"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/index.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/astra-control-service/azure/index.html">
+        Documentation sur le service Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Notes de mise à jour"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Notes de mise à jour</div>-->
+         Notes de mise à jour
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Quoi de neuf"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/release-notes/whats-new.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/release-notes/whats-new.html">
+        Quoi de neuf
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Problèmes connus"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/release-notes/known-issues.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/release-notes/known-issues.html">
+        Problèmes connus
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Limites connues"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/release-notes/known-limitations.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/release-notes/known-limitations.html">
+        Limites connues
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Commencez</div>-->
+         Commencez
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Découvrez Astra Control"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/intro.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/intro.html">
+        Découvrez Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Déploiements Kubernetes pris en charge"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/supported-deployments.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/supported-deployments.html">
+        Déploiements Kubernetes pris en charge
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Démarrage rapide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/quick-start.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/quick-start.html">
+        Démarrage rapide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez votre fournisseur cloud"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Configurez votre fournisseur cloud</div>-->
+         Configurez votre fournisseur cloud
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuration de Microsoft Azure avec Azure NetApp Files"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/set-up-microsoft-azure-with-anf.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/get-started/set-up-microsoft-azure-with-anf.html">
+        Configuration de Microsoft Azure avec Azure NetApp Files
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configuration de Microsoft Azure avec des disques gérés Azure"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/set-up-microsoft-azure-with-amd.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/get-started/set-up-microsoft-azure-with-amd.html">
+        Configuration de Microsoft Azure avec des disques gérés Azure
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créez un compte"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/register.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/register.html">
+        Créez un compte
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajouter un cluster"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/add-first-cluster.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/add-first-cluster.html">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ajouter un cluster</div>-->
+         Ajouter un cluster
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Installez Astra Connector pour les clusters privés"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/install-astra-connector.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/get-started/install-astra-connector.html">
+        Installez Astra Connector pour les clusters privés
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster géré par le fournisseur"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ajoutez un cluster géré par le fournisseur</div>-->
+         Ajoutez un cluster géré par le fournisseur
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster géré par un fournisseur public"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/add-public-provider-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/add-public-provider-managed-cluster.html">
+        Ajoutez un cluster géré par un fournisseur public
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster privé géré par un fournisseur"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/add-private-provider-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/add-private-provider-managed-cluster.html">
+        Ajoutez un cluster privé géré par un fournisseur
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster autogéré"
+      data-li-level="3" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-3  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Ajoutez un cluster autogéré</div>-->
+         Ajoutez un cluster autogéré
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster public autogéré"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/add-public-self-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/add-public-self-managed-cluster.html">
+        Ajoutez un cluster public autogéré
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Ajoutez un cluster privé autogéré"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/add-private-self-managed-cluster.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/add-private-self-managed-cluster.html">
+        Ajoutez un cluster privé autogéré
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vérifiez la version d'Astra Trident"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/check-astra-trident-version.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/check-astra-trident-version.html">
+        Vérifiez la version d'Astra Trident
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Créez un fichier kubeconfig"
+      data-li-level="4#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/create-kubeconfig.html" 
+    ><a class="ie-sidebar-menuitem-4 " href="/fr-fr/astra-control-service/azure/get-started/create-kubeconfig.html">
+        Créez un fichier kubeconfig
+      </a></li></ul></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Et la suite ?"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/whats-next.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/whats-next.html">
+        Et la suite ?
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Vidéos"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/videos.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/videos.html">
+        Vidéos
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="FAQ"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/get-started/faq.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/get-started/faq.html">
+        FAQ
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Concepts"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Concepts</div>-->
+         Concepts
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Architecture et composants"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/learn/architecture.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/learn/architecture.html">
+        Architecture et composants
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protection des données"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/learn/data-protection.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/learn/data-protection.html">
+        Protection des données
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Stockage pour clusters AKS"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/learn/azure-storage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/learn/azure-storage.html">
+        Stockage pour clusters AKS
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion des applications"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/learn/app-management.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/learn/app-management.html">
+        Gestion des applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Rôles et espaces de noms d'utilisateur"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/learn/user-roles-namespaces.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/learn/user-roles-namespaces.html">
+        Rôles et espaces de noms d'utilisateur
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilisez le service Astra Control"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Utilisez le service Astra Control</div>-->
+         Utilisez le service Astra Control
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connectez-vous"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/log-in.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/log-in.html">
+        Connectez-vous
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion et protection des applications"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Gestion et protection des applications</div>-->
+         Gestion et protection des applications
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Commencez à gérer les applications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-apps.html">
+        Commencez à gérer les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Protégez vos applications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/protect-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/protect-apps.html">
+        Protégez vos applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurez les applications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/restore-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/restore-apps.html">
+        Restaurez les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Cloner et migrer les applications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/clone-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/clone-apps.html">
+        Cloner et migrer les applications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les crochets d'exécution de l'application"
+      data-li-level="3#" 
+      class="  ie-sidebar-selected    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-app-execution-hooks.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-app-execution-hooks.html">
+        Gérer les crochets d'exécution de l'application
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Affichez l'état des applications et des ressources de calcul"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Affichez l'état des applications et des ressources de calcul</div>-->
+         Affichez l'état des applications et des ressources de calcul
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Récapitulatif du tableau de bord"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/view-dashboard.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/view-dashboard.html">
+        Récapitulatif du tableau de bord
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="État de santé et détails du cluster"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/view-clusters.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/view-clusters.html">
+        État de santé et détails du cluster
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="État de santé et détails des applications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/view-apps.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/view-apps.html">
+        État de santé et détails des applications
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gestion des compartiments"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-buckets.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/manage-buckets.html">
+        Gestion des compartiments
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Surveillez les tâches en cours d'exécution"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/monitor-running-tasks.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/monitor-running-tasks.html">
+        Surveillez les tâches en cours d'exécution
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez votre compte"
+      data-li-level="2" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-2  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Gérez votre compte</div>-->
+         Gérez votre compte
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurez la facturation"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/set-up-billing.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/set-up-billing.html">
+        Configurez la facturation
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Inviter et gérer des utilisateurs"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-users.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-users.html">
+        Inviter et gérer des utilisateurs
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les rôles"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-roles.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-roles.html">
+        Gérez les rôles
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérez les identifiants du fournisseur cloud"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-credentials.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-credentials.html">
+        Gérez les identifiants du fournisseur cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Surveillez l'activité des comptes"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/monitor-account-activity.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/monitor-account-activity.html">
+        Surveillez l'activité des comptes
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les notifications"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-notifications.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/manage-notifications.html">
+        Gérer les notifications
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Fermez votre compte"
+      data-li-level="3#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/close-account.html" 
+    ><a class="ie-sidebar-menuitem-3 " href="/fr-fr/astra-control-service/azure/use/close-account.html">
+        Fermez votre compte
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Gérer les instances cloud"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/manage-cloud-instances.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/manage-cloud-instances.html">
+        Gérer les instances cloud
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Activez le mécanisme de provisionnement Astra Control"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/enable-acp.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/enable-acp.html">
+        Activez le mécanisme de provisionnement Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Annuler la gestion des applications et des clusters"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/unmanage.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/unmanage.html">
+        Annuler la gestion des applications et des clusters
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Déployez une instance autogérée d'Astra Control"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use/deploy-astra-control-center.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use/deploy-astra-control-center.html">
+        Déployez une instance autogérée d'Astra Control
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Utilisez Astra Control Provisioner"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Utilisez Astra Control Provisioner</div>-->
+         Utilisez Astra Control Provisioner
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Configurer le chiffrement du système back-end de stockage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use-acp/configure-storage-backend-encryption.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use-acp/configure-storage-backend-encryption.html">
+        Configurer le chiffrement du système back-end de stockage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Restaurer les données de volume à l'aide d'un snapshot"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use-acp/acp-snap-restore.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use-acp/acp-snap-restore.html">
+        Restaurer les données de volume à l'aide d'un snapshot
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Réplication de volumes à l'aide de SnapMirror"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/use-acp/acp-volume-replicate.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/use-acp/acp-volume-replicate.html">
+        Réplication de volumes à l'aide de SnapMirror
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Automatisez avec l'API REST Astra Control"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/automation.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/astra-control-service/azure/automation.html">
+        Automatisez avec l'API REST Astra Control
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Connaissances et support"
+      data-li-level="1" 
+      class=" sidebar-folder    "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="" 
+    ><a class="ie-sidebar-menuitem-1  ie-sidebar-button " href="#">
+        <img class="ie-sidebar-icon ie-sidebar-button open" src="/fr-fr/astra-control-service/images/link_expand.svg" alt="" />
+        <img class="ie-sidebar-icon ie-sidebar-button close" src="/fr-fr/astra-control-service/images/link_collapse.svg" alt="" />
+        <!--<div class="" style="display: inline;"> Connaissances et support</div>-->
+         Connaissances et support
+      </a>
+      <ul class="">
+        <li 
+      data-pdf-exists="true" 
+      data-pdf-filename="S'inscrire pour obtenir de l'aide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/support/register-support.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/support/register-support.html">
+        S'inscrire pour obtenir de l'aide
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Dépannage"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/support/troubleshooting.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/support/troubleshooting.html">
+        Dépannage
+      </a></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Obtenez de l'aide"
+      data-li-level="2#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/support/get-help.html" 
+    ><a class="ie-sidebar-menuitem-2 " href="/fr-fr/astra-control-service/azure/support/get-help.html">
+        Obtenez de l'aide
+      </a></li></ul></li><li 
+      data-pdf-exists="true" 
+      data-pdf-filename="Mentions légales"
+      data-li-level="1#" 
+      class="   "
+      dale-page-url="/use/manage-app-execution-hooks.html" 
+      dale-entry-url="/legal-notices.html" 
+    ><a class="ie-sidebar-menuitem-1 " href="/fr-fr/astra-control-service/azure/legal-notices.html">
+        Mentions légales
+      </a></li></ul>
+</div>
+<script>
+
+  $(".ie-sidebar-button").click(function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    expandedLI = $('li.ie-sidebar-expand')
+
+    const li = $(this).closest("li");
+
+    const parentsLI = $(li).parents('li');
+
+    expandedLI.map(element => {
+      if (sidebarAccordion && !li.hasClass('ie-sidebar-expand') && jQuery.inArray(expandedLI[element], parentsLI) == -1) {
+        $(expandedLI[element]).toggleClass('ie-sidebar-expand');
+        $(expandedLI[element]).children("ul").animate({ height: 'toggle' }, 400, function () {
+          $(li).children("ul").toggleClass('ie-sidebar-open');
+
+        })
+      }
+
+    })
+
+    $(li).toggleClass('ie-sidebar-expand');
+    $(li).children("ul").animate({ height: 'toggle' }, 400, function () {
+      $(li).children("ul").toggleClass('ie-sidebar-open');
+    })
+  });
+
+
+  
+    $("li.ie-sidebar-selected").parents('ul').toggleClass("ie-sidebar-open");
+    $("li.ie-sidebar-selected").toggleClass("ie-sidebar-expand")
+    $("ul.ie-sidebar-open").parent().toggleClass("ie-sidebar-expand");
+    $("li.ie-sidebar-selected").children('ul').toggleClass("ie-sidebar-open")
+  
+  
+</script>
+    </div>
+</div>
+<script>
+
+    
+    let sidebarScrollTopPosition = 0;
+    $("#ie-new-toc").on("scroll", function () {
+        if (sidebarScrollTopPosition == 0) {
+            $.cookie("sidebarScroll", $("#ie-new-toc").scrollTop(), {
+                path: "/fr-fr/astra-control-service"
+            });
+        }
+
+        if ($("#ie-new-toc").scrollTop() > 0) {
+            $('#ie-product-identity-lockup').addClass('ie-addShadow');
+        } else {
+            $('#ie-product-identity-lockup').removeClass('ie-addShadow');
+        }
+    });
+
+    $(function () {
+        if ($.cookie("sidebarScroll")) {
+            $("#ie-new-toc").scrollTop($.cookie("sidebarScroll"));
+        }
+    });
+
+    function setSidebarBottom() {
+        const footerGap = PXinViewport($(".n-footer"));
+        document.getElementById("ie-new-sidebar").style.bottom = Math.max(0, footerGap) + "px";
+    }
+
+    window.onscroll = () => {
+        setSidebarBottom();
+    };
+
+    $("#sidebar-collapse").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        if ($.cookie("sidebarScroll")) {
+            sidebarScrollTopPosition = $.cookie("sidebarScroll");
+        }
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 350, function () {
+            $("#ie-new-sidebar-collapse").show();
+            $("#ie-new-sidebar").removeClass("open")
+            $("#ie-new-sidebar").addClass("close")
+            $("#ie-new-sidebar").removeAttr("style")
+        });
+        $(".ie-content-pane").animate({ width: (width + sidebarWidth), marginLeft: (marginLeft - sidebarWidth) }, 350, function () {
+            resizeContent()
+        })
+
+    });
+    $("#sidebar-expand").click(function (e) {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        e.preventDefault();
+        const width = $(".ie-content-pane").width();
+        const marginLeft = parseInt($(".ie-content-pane").css('marginLeft'));
+
+        $("#ie-new-sidebar").animate({ width: 'toggle' }, 250, function () {
+            $('#ie-new-sidebar').css('display', 'flex');
+            $("#ie-new-sidebar-collapse").hide();
+            $("#ie-new-sidebar").removeClass("close")
+            $("#ie-new-sidebar").addClass("open")
+            setSidebarBottom();
+
+            if (sidebarScrollTopPosition != 0) {
+                $.cookie("sidebarScroll", sidebarScrollTopPosition, {
+                    path: "/fr-fr/astra-control-service"
+                })
+                $("#ie-new-toc").scrollTop(sidebarScrollTopPosition);
+                sidebarScrollTopPosition = 0;
+            }
+        });
+        $(".ie-content-pane").animate({ width: (width - sidebarWidth), 'marginLeft': (marginLeft + sidebarWidth) }, 250, function () {
+            resizeContent()
+        })
+    });
+    function resizeContent() {
+        const sidebarWidth = $("#ie-new-sidebar").width() - $("#ie-new-sidebar-collapse").width();
+        const rightNavbarVisible =  $("#ie-right-navbar").css('display') && $("#ie-right-navbar").css('display') != 'none';
+        const sidebarVisible = $("#ie-new-sidebar").css('display') != 'none';
+        const rightNavbarWidth = $("#ie-right-navbar").width();
+        const rightNavbarCollapseWidth = $("#ie-right-navbar-collapse").width();
+        const rightNavbarCollapseVisible = $("#ie-right-navbar-collapse").css('display') && $("#ie-right-navbar-collapse").css('display') != 'none';
+        
+        if (rightNavbarVisible && sidebarVisible) {
+            $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarWidth}px)`)
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+        } else if (sidebarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${sidebarWidth}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${sidebarWidth + rightNavbarCollapseWidth}px)`)
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar").width()}px)`)
+            }
+
+        } else if (rightNavbarVisible) {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            $(".ie-content-pane").width(`calc(100% - ${rightNavbarWidth}px)`)
+        } else {
+            $(".ie-content-pane").css('marginLeft', `${$("#ie-new-sidebar-collapse").width()}px`)
+            if (rightNavbarCollapseVisible) {
+                $(".ie-content-pane").width(`calc(100% - ${rightNavbarCollapseWidth}px)`);
+            } else {
+                $(".ie-content-pane").width(`calc(100% - ${$("#ie-new-sidebar-collapse").width()}px) `);
+            }
+            
+        }
+    }
+    $(window).on("resize load", function () {
+        setSidebarBottom();
+        resizeContent()
+    });
+
+
+</script>
+
+<div class="ie-content-pane ie-component-detail-content ie-component-detail-content--show-code">
+    <!-- Begin of page container --><article class="page-content" id="main">
+      <!-- include utility.html -->
+      <div class="ie-info-disclaimer">
+    <span>
+      <div class="ie-info-disclaimer-container">
+        <div class="ie-info-disclaimer-icon">
+          <img src="/fr-fr/astra-control-service/images/notification-icons.svg" class="luci-icon" alt="" />
+        </div>
+        <div class="ie-info-disclaimer-content">
+          <span> La version française est une traduction automatique. La version anglaise prévaut sur la française en cas de divergence. </span>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+    </span>
+  </div><div class="ie-component-detail-heading-wrap">
+  <h1 class="ie-component-detail-heading">Gérer les crochets d'exécution de l'application</h1>
+</div>
+
+<div id="ie-byline">
+  
+<div class="page-details">
+    
+        
+            <time datetime="2024-03-11 22:38:03 +0000">03/11/2024</time>
+        
+    
+    
+        <span>Contributeurs
+        </span>
+    
+    
+</div>
+<div class="page-controls">
+    <div id="contribute-dropdown" class="custom-dropdown custom-dropdown-contrib" >
+        <div class="custom-dropdown-select custom-dropdown-select-contrib">
+        <span class="contrib-name"><img src="/fr-fr/astra-control-service/images/discuss-sm.svg" alt="" class="github-icon" />Suggérer des modifications</span>
+        <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevrondown invisible" />
+        <img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" alt="" class="custom-icon chevronup" />
+        </div>
+        <ul class="custom-dropdown-menu suggested-changes-dropdown"><li>
+                <a target="_blank" href="https://github.com/NetAppDocs/astra-control-service.fr-fr/issues/new?template=new-from-page.yml&page-url=https://docs.netapp.com/fr-fr/astra-control-service/use/manage-app-execution-hooks.html&page-title=Gérer les crochets d'exécution de l'application" class="page-nav-contribute-link" role="button">Demander des modifications de la documentation</a>
+            </li><li> 
+                <a target="_blank" href="https://github.com/NetAppDocs/astra-control-service/blob/main/use/manage-app-execution-hooks.adoc" class="page-nav-contribute-link" role="button">Modifier cette page</a>
+            </li><li><a target="_blank" href="https://docs.netapp.com/us-en/contribute/" class="page-nav-contribute-link"  >En savoir plus sur les contributions</a></li>
+        </ul>
+    </div>
+    <div id="pdf-control-container">
+        <div class="n-pdf-header">
+            <a id="toggleButtonPdf" class="n-pdf-button" type="button">
+                <img class="adobe-icon" src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>PDF<img src="/fr-fr/astra-control-service/images/dropdown-arrow.svg" class="custom-icon" alt="" />
+            </a>
+        </div>
+        <div class="n-pdf-body-container">
+            <ul id="toggleContainerPdf" class="n-pdf-body" style="display:none;"><li class="pdf-ux-container">
+                    
+                    
+                    
+                    <a target="_blank" class="pdf-download-link" href="/fr-fr/astra-control-service/pdfs/azure/fullsite-sidebar/Documentation_relative_au_service_après_vente_Astra_Control.pdf" >
+                    <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>Un fichier PDF de toute la documentation</a>
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Notes_de_mise_à_jour.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Notes de mise à jour
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Commencez.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Commencez
+          </a>
+          
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Configurez_votre_fournisseur_cloud.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Configurez votre fournisseur cloud
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Ajouter_un_cluster.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ajouter un cluster
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Ajoutez_un_cluster_géré_par_le_fournisseur.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ajoutez un cluster géré par le fournisseur
+          </a>
+          
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Ajoutez_un_cluster_autogéré.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Ajoutez un cluster autogéré
+          </a>
+          
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Concepts.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Concepts
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Utilisez_le_service_Astra_Control.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Utilisez le service Astra Control
+          </a>
+          
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gestion_et_protection_des_applications.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Gestion et protection des applications
+          </a>
+          
+
+
+
+
+
+
+
+
+    <ul class="subfolders" id="pdf-remove" style="display:none;"><li class="active"></li></ul>
+  
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Affichez_l_état_des_applications_et_des_ressources_de_calcul.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Affichez l'état des applications et des ressources de calcul
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Gérez_votre_compte.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Gérez votre compte
+          </a>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Utilisez_Astra_Control_Provisioner.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Utilisez Astra Control Provisioner
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+
+
+    
+      <ul class="subfolders" style="display:none;">
+        <li class="pdf-ux-container">
+          
+          
+          
+          <a target="_blank" class="pdf-download-link"
+            
+              href="/fr-fr/astra-control-service/pdfs/azure/sidebar/Connaissances_et_support.pdf" 
+            
+          >
+            <img src="/fr-fr/astra-control-service/images/pdf-icon.png" alt="" width="16" height="16"/>
+            Connaissances et support
+          </a>
+          
+
+
+
+
+
+
+        </li>
+      </ul>
+    
+
+  
+
+
+
+</li></ul>
+            <div class="zip-pdf-link-container" style="display: none;">   
+                <a href="#" id="zipPdf">
+                <img src="/fr-fr/astra-control-service/images/pdf-zip.png" alt="" width="16" height="16"/>
+                <pre>Plusieurs fichiers PDF<span class="zip-size"></span></pre>
+                </a><div id="zip-link-popup" class="hide">
+    <div class="inner-modal">
+        <div class="downloading-progress">
+            <div class="spinner"></div>
+            <h1>Creating your file...</h1>
+            <div>This may take a few minutes. Thanks for your patience.</div>
+            <button class="cancel-download-btn" type="button">Cancel</button>
+        </div>
+        <div class="download-complete hide">
+            <div class="done-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>
+            </div>
+            <div>Your file is ready</div>
+            <button class="cancel-download-btn" type="button">OK</button>
+        </div>
+    </div>
+</div>
+<script>
+    $(".cancel-download-btn").click(function(){
+        $("#zip-link-popup").addClass("hide");
+        $("#zip-link-popup .downloading-progress").removeClass("hide");
+        $("#zip-link-popup .download-complete").addClass("hide");
+    });
+</script></div>
+        </div>
+    </div>        
+<script>
+$("#toggleContainerPdf li.active:last-child").parents('ul.subfolders').toggle('display');
+$("#toggleButtonPdf").on('click', function(e){ 
+    e.stopPropagation();
+    $("#toggleContainerPdf").toggle('display');
+    $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+});
+
+//hide is by clicking outside pdfcontainer
+$(document).on('click', function (e) {
+    if ($('#toggleContainerPdf').is(':visible') && !$('.n-pdf-body-container').is(e.target) && !$('.n-pdf-body-container').has(e.target).length)  {
+        
+        $("#toggleContainerPdf").toggle('display');
+        $(".n-pdf-body-container .zip-pdf-link-container").toggle('display');
+        $("#toggleButtonPdf").removeClass("active");
+    }
+});
+</script>
+<script>
+    function getPdfLocation() {
+        const pdfLocation = window.scrollX + document.querySelector('#pdf-control-container').getBoundingClientRect().left
+        if (pdfLocation < 450) {
+            $(".n-pdf-body-container").addClass("block")
+        } else {
+            $(".n-pdf-body-container").removeClass("block")
+        }
+    
+    }
+    $( window ).on( "resize", function() {
+        getPdfLocation()
+} );
+</script>
+<script>
+    const pdfButtonWidth =  $(".n-pdf-header").width();
+    const pdfMenuWidth = $(".n-pdf-body-container").width();
+    $(".n-pdf-body-container").css('margin-left', `calc(${pdfButtonWidth - pdfMenuWidth}px)`);
+</script>
+</div>
+
+    
+
+</div>
+
+
+
+
+<div class="content-to-index">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph lead">
+<p>Un crochet d'exécution est une action personnalisée que vous pouvez configurer pour s'exécuter conjointement avec une opération de protection des données d'une application gérée. Par exemple, si vous disposez d'une application de base de données, vous pouvez utiliser un crochet d'exécution pour suspendre toutes les transactions de base de données avant un instantané et reprendre les transactions une fois l'instantané terminé. Les snapshots sont ainsi cohérents au niveau des applications.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="types-de-crochets-dexécution">Types de crochets d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ASTRA Control Service prend en charge les types de crochets d'exécution suivants, selon le moment où ils peuvent être exécutés :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Pré-instantané</p>
+</li>
+<li>
+<p>Post-snapshot</p>
+</li>
+<li>
+<p>Avant sauvegarde</p>
+</li>
+<li>
+<p>Post-sauvegarde</p>
+</li>
+<li>
+<p>Post-restauration</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filtres-de-crochet-dexécution">Filtres de crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorsque vous ajoutez ou modifiez un crochet d'exécution à une application, vous pouvez ajouter des filtres à un crochet d'exécution pour gérer les conteneurs auxquels le crochet correspond. Les filtres sont utiles pour les applications qui utilisent la même image de conteneur sur tous les conteneurs, mais ils peuvent utiliser chaque image à des fins différentes (comme Elasticsearch). Les filtres vous permettent de créer des scénarios dans lesquels des crochets d'exécution s'exécutent sur certains conteneurs, mais pas nécessairement tous identiques. Si vous créez plusieurs filtres pour un seul crochet d'exécution, ils sont combinés avec un opérateur ET logique. Vous pouvez avoir jusqu'à 10 filtres actifs par crochet d'exécution.</p>
+</div>
+<div class="paragraph">
+<p>Chaque filtre que vous ajoutez à un crochet d'exécution utilise une expression régulière pour faire correspondre les conteneurs de votre cluster. Lorsqu'un crochet correspond à un conteneur, le crochet exécute son script associé sur ce conteneur. Les expressions régulières pour les filtres utilisent la syntaxe de l'expression régulière 2 (RE2), qui ne prend pas en charge la création d'un filtre qui exclut les conteneurs de la liste des correspondances. Pour plus d'informations sur la syntaxe prise en charge par Astra Control pour les expressions régulières dans les filtres de crochet d'exécution, voir <a href="https://github.com/google/re2/wiki/Syntax" target="_blank" rel="noopener">"Prise en charge de la syntaxe de l'expression régulière 2 (RE2)"</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Si vous ajoutez un filtre d'espace de noms à un crochet d'exécution qui s'exécute après une opération de restauration ou de clonage et que la source et la destination de restauration ou de clonage sont dans des espaces de noms différents, le filtre d'espace de noms est appliqué uniquement à l'espace de noms de destination.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="remarques-importantes-sur-les-crochets-dexécution-personnalisés">Remarques importantes sur les crochets d'exécution personnalisés</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lors de la planification de crochets d'exécution pour vos applications, tenez compte des points suivants.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Puisque les crochets d'exécution réduisent ou désactivent complètement la fonctionnalité de l'application contre laquelle ils s'exécutent, vous devez toujours essayer de réduire le temps d'exécution de vos crochets personnalisés.<br>
+Si vous démarrez une opération de sauvegarde ou d'instantané avec les crochets d'exécution associés, mais que vous l'annulez, les crochets sont toujours autorisés à s'exécuter si l'opération de sauvegarde ou d'instantané a déjà commencé. Cela signifie que la logique utilisée dans un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde a été effectuée.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>La fonction crochets d'exécution est désactivée par défaut pour les nouveaux déploiements d'Astra Control.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Vous devez activer la fonction crochets d'exécution avant de pouvoir utiliser les crochets d'exécution.</p>
+</li>
+<li>
+<p>Les utilisateurs propriétaires ou administrateurs peuvent activer ou désactiver la fonction crochets d'exécution pour tous les utilisateurs définis dans le compte Astra Control actuel. Reportez-vous à la section <a href="#activez-la-fonction-crochets-dexécution">Activez la fonction crochets d'exécution</a> et <a href="#désactivez-la-fonction-crochets-dexécution">Désactivez la fonction crochets d'exécution</a> pour obtenir des instructions.</p>
+</li>
+<li>
+<p>Le statut d'activation de la fonctionnalité est conservé pendant les mises à niveau d'Astra Control.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Un crochet d'exécution doit utiliser un script pour effectuer des actions. De nombreux crochets d'exécution peuvent référencer le même script.</p>
+</li>
+<li>
+<p>Astra Control exige que les scripts utilisés par les crochets d'exécution soient écrits au format de scripts shell exécutables.</p>
+</li>
+<li>
+<p>La taille du script est limitée à 96 Ko.</p>
+</li>
+<li>
+<p>Astra Control utilise les paramètres de crochet d'exécution et tout critère de correspondance pour déterminer quels crochets s'appliquent à une opération de snapshot, de sauvegarde ou de restauration.</p>
+</li>
+<li>
+<p>Toutes les défaillances de crochet d'exécution sont des pannes logicielles ; d'autres crochets et l'opération de protection des données sont toujours tentées même en cas de défaillance d'un crochet. Cependant, lorsqu'un crochet échoue, un événement d'avertissement est enregistré dans le journal des événements de la page <strong>activité</strong>.</p>
+</li>
+<li>
+<p>Pour créer, modifier ou supprimer des crochets d'exécution, vous devez être un utilisateur disposant des autorisations propriétaire, administrateur ou membre.</p>
+</li>
+<li>
+<p>Si l'exécution d'un crochet d'exécution prend plus de 25 minutes, le crochet échoue, créant une entrée de journal d'événements avec un code retour « N/A ». Tout instantané affecté expire et sera marqué comme ayant échoué, avec une entrée du journal des événements qui en résulte indiquant le délai d'attente.</p>
+</li>
+<li>
+<p>Pour les opérations de protection des données ad hoc, tous les événements hook sont générés et enregistrés dans le journal des événements de la page <strong>Activity</strong>. Cependant, pour les opérations planifiées de protection des données, seuls les événements de défaillance de type « hook » sont enregistrés dans le journal des événements (les événements générés par les opérations de protection des données planifiées sont toujours enregistrés).</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="ordre-dexécution">Ordre d'exécution</h3>
+<div class="paragraph">
+<p>Lors de l'exécution d'une opération de protection des données, les événements de hook d'exécution ont lieu dans l'ordre suivant :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Tous les crochets d'exécution de pré-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets de pré-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets avant que l'opération ne soit ni garantie ni configurable.</p>
+</li>
+<li>
+<p>L'opération de protection des données est effectuée.</p>
+</li>
+<li>
+<p>Tous les crochets d'exécution de post-opération personnalisés applicables sont exécutés sur les conteneurs appropriés. Vous pouvez créer et exécuter autant de crochets post-opération personnalisés que vous le souhaitez, mais l'ordre d'exécution de ces crochets après l'opération n'est ni garanti ni configurable.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Si vous créez plusieurs crochets d'exécution du même type (par exemple, pré-instantané), l'ordre d'exécution de ces crochets n'est pas garanti. Cependant, l'ordre d'exécution des crochets de différents types est garanti. Par exemple, l'ordre d'exécution d'une configuration ayant tous les types de crochets se présente comme suit :</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Crochets de pré-secours exécutés</p>
+</li>
+<li>
+<p>Crochets pré-instantanés exécutés</p>
+</li>
+<li>
+<p>Crochets post-snapshot exécutés</p>
+</li>
+<li>
+<p>Crochets post-secours exécutés</p>
+</li>
+<li>
+<p>Crochets post-restauration exécutés</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Vous pouvez voir un exemple de cette configuration dans le scénario numéro 2 dans le tableau de la <a href="#déterminez-si-un-crochet-va-courir">Déterminez si un crochet va courir</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Vous devez toujours tester vos scripts d'exécution avant de les activer dans un environnement de production. Vous pouvez utiliser la commande 'kubectl exec' pour tester aisément les scripts. Une fois que vous avez activé les crochets d'exécution dans un environnement de production, testez les snapshots et les sauvegardes obtenus pour vous assurer qu'ils sont cohérents. Pour ce faire, vous pouvez cloner l'application dans un espace de noms temporaire, restaurer le snapshot ou la sauvegarde, puis tester l'application.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="déterminez-si-un-crochet-va-courir">Déterminez si un crochet va courir</h3>
+<div class="paragraph">
+<p>Utilisez le tableau suivant pour déterminer si un crochet d'exécution personnalisé sera exécuté pour votre application.</p>
+</div>
+<div class="paragraph">
+<p>Notez que toutes les opérations générales liées aux applications consistent à exécuter l'une des opérations de base de la copie Snapshot, de la sauvegarde ou de la restauration. Selon le scénario, une opération de clonage peut se composer de différentes combinaisons de ces opérations, de sorte que les crochets d'exécution d'une opération de clonage varient.</p>
+</div>
+<div class="paragraph">
+<p>Les opérations de restauration sur place requièrent un snapshot ou une sauvegarde existante. Elles n'exécutent donc pas de snapshot ni de crochets de sauvegarde.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Si vous démarrez mais annulez ensuite une sauvegarde qui inclut un instantané et qu'il y a des crochets d'exécution associés, certains crochets peuvent s'exécuter, et d'autres peuvent ne pas. Autrement dit, un crochet d'exécution post-sauvegarde ne peut pas présumer que la sauvegarde est terminée. Gardez à l'esprit les points suivants pour les sauvegardes annulées avec les crochets d'exécution associés :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Les crochets de pré-secours et post-secours sont toujours exécutés.</p>
+</li>
+<li>
+<p>Si la sauvegarde inclut un nouvel instantané et que l'instantané a démarré, les crochets pré-instantané et post-instantané sont exécutés.</p>
+</li>
+<li>
+<p>Si la sauvegarde est annulée avant le démarrage de l'instantané, les crochets pré-instantané et post-instantané ne sont pas exécutés.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1111%;">
+<col style="width: 11.1112%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Scénario</th>
+<th class="tableblock halign-left valign-top">Fonctionnement</th>
+<th class="tableblock halign-left valign-top">Snapshot existant</th>
+<th class="tableblock halign-left valign-top">Sauvegarde existante</th>
+<th class="tableblock halign-left valign-top">Espace de noms</th>
+<th class="tableblock halign-left valign-top">Cluster</th>
+<th class="tableblock halign-left valign-top">Les crochets de snapshot sont exécutés</th>
+<th class="tableblock halign-left valign-top">Les crochets de secours sont en place</th>
+<th class="tableblock halign-left valign-top">Restaurer la course des crochets</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clonage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clonage</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Différente</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloner ou restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloner ou restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloner ou restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Différente</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cloner ou restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nouveau</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Différente</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Restaurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Existant</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identique</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Snapshot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sauvegarde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sauvegarde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">S/O</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="exemples-de-crochet-dexécution">Exemples de crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Consultez le <a href="https://github.com/NetApp/Verda">"Projet GitHub NetApp Verda"</a> Pour télécharger des crochets d'exécution réels pour des applications courantes telles qu'Apache Cassandra et Elasticsearch. Vous pouvez également voir des exemples et obtenir des idées pour structurer vos propres crochets d'exécution personnalisés.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="activez-la-fonction-crochets-dexécution">Activez la fonction crochets d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si vous êtes propriétaire ou administrateur, vous pouvez activer la fonction crochets d'exécution. Lorsque vous activez la fonctionnalité, tous les utilisateurs définis dans ce compte Astra Control peuvent utiliser des crochets d'exécution et afficher des crochets d'exécution et des scripts hook existants.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Accédez à <strong>applications</strong>, puis sélectionnez le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Activer les crochets d'exécution</strong>.</p>
+<div class="paragraph">
+<p>L'onglet <strong>compte</strong> &gt; <strong>paramètres de fonction</strong> s'affiche.</p>
+</div>
+</li>
+<li>
+<p>Dans le volet <strong>crochets d'exécution</strong>, sélectionnez le menu Paramètres.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Activer</strong>.</p>
+</li>
+<li>
+<p>Notez l'avertissement de sécurité qui s'affiche.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Oui, activer les crochets d'exécution</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="désactivez-la-fonction-crochets-dexécution">Désactivez la fonction crochets d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Si vous êtes propriétaire ou administrateur, vous pouvez désactiver la fonction crochets d'exécution pour tous les utilisateurs définis dans ce compte Astra Control. Vous devez supprimer tous les crochets d'exécution existants avant de pouvoir désactiver la fonction crochets d'exécution. Reportez-vous à la section <a href="#supprimer-un-crochet-dexécution">Supprimer un crochet d'exécution</a> pour obtenir des instructions sur la suppression d'un crochet d'exécution existant.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Accédez à <strong>compte</strong>, puis sélectionnez l'onglet <strong>Paramètres de fonction</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Dans le volet <strong>crochets d'exécution</strong>, sélectionnez le menu Paramètres.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Désactiver</strong>.</p>
+</li>
+<li>
+<p>Notez l'avertissement qui s'affiche.</p>
+</li>
+<li>
+<p>Type <code>disable</code> pour confirmer que vous souhaitez désactiver la fonction pour tous les utilisateurs.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Oui, désactiver</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="afficher-les-crochets-dexécution-existants">Afficher les crochets d'exécution existants</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez afficher les crochets d'exécution personnalisés existants pour une application.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Accédez à <strong>applications</strong>, puis sélectionnez le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+<div class="paragraph">
+<p>Vous pouvez afficher tous les crochets d'exécution activés ou désactivés dans la liste résultante. Vous pouvez voir l'état d'un crochet, le nombre de conteneurs correspondant, le temps de création et le moment où il s'exécute (pré ou post-opération). Vous pouvez sélectionner le <code>+</code> icône en regard du nom du crochet pour développer la liste des conteneurs sur lequel il sera exécuté. Pour afficher les journaux d'événements entourant les crochets d'exécution de cette application, accédez à l'onglet <strong>activité</strong>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="afficher-les-scripts-existants">Afficher les scripts existants</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez afficher les scripts chargés existants. Vous pouvez également voir quels scripts sont en cours d'utilisation, et quels crochets les utilisent, sur cette page.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Accédez à <strong>compte</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>scripts</strong>.</p>
+<div class="paragraph">
+<p>Cette page affiche la liste des scripts chargés existants. La colonne <strong>utilisé par</strong> indique les crochets d'exécution qui utilisent chaque script.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ajouter-un-script">Ajouter un script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Chaque crochet d'exécution doit utiliser un script pour effectuer des actions. Vous pouvez ajouter un ou plusieurs scripts que les crochets d'exécution peuvent référencer. De nombreux crochets d'exécution peuvent référencer le même script ; ceci vous permet de mettre à jour de nombreux crochets d'exécution en modifiant un seul script.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Assurez-vous que la fonction crochets d'exécution est <a href="#activez-la-fonction-crochets-dexécution">activé</a>.</p>
+</li>
+<li>
+<p>Accédez à <strong>compte</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>scripts</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Ajouter</strong>.</p>
+</li>
+<li>
+<p>Effectuez l'une des opérations suivantes :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Charger un script personnalisé.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Sélectionnez l'option <strong>Télécharger le fichier</strong>.</p>
+</li>
+<li>
+<p>Accédez à un fichier et téléchargez-le.</p>
+</li>
+<li>
+<p>Donnez un nom unique au script.</p>
+</li>
+<li>
+<p>(Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Enregistrer le script</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Coller dans un script personnalisé à partir du presse-papiers.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Sélectionnez l'option <strong>Coller ou type</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le champ de texte et collez le texte du script dans le champ.</p>
+</li>
+<li>
+<p>Donnez un nom unique au script.</p>
+</li>
+<li>
+<p>(Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Enregistrer le script</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<div class="title">Résultat</div>
+<p>Le nouveau script apparaît dans la liste de l'onglet <strong>scripts</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="supprimer-un-script">Supprimer un script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez supprimer un script du système s'il n'est plus nécessaire et s'il n'est pas utilisé par les crochets d'exécution.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Accédez à <strong>compte</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>scripts</strong>.</p>
+</li>
+<li>
+<p>Choisissez un script à supprimer et sélectionnez le menu dans la colonne <strong>actions</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Supprimer</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Si le script est associé à un ou plusieurs crochets d'exécution, l'action <strong>Delete</strong> n'est pas disponible. Pour supprimer le script, modifiez d'abord les crochets d'exécution associés et associez-les à un autre script.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="créer-un-crochet-dexécution-personnalisé">Créer un crochet d'exécution personnalisé</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez créer un crochet d'exécution personnalisé pour une application et l'ajouter à Astra Control. Reportez-vous à la section <a href="#exemples-de-crochet-dexécution">Exemples de crochet d'exécution</a> pour des exemples de crochet. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour créer des crochets d'exécution.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Lorsque vous créez un script de shell personnalisé à utiliser comme crochet d'exécution, n'oubliez pas de spécifier le shell approprié au début du fichier, sauf si vous exécutez des commandes spécifiques ou fournissez le chemin complet à un exécutable.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Assurez-vous que la fonction crochets d'exécution est <a href="#activez-la-fonction-crochets-dexécution">activé</a>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>applications</strong>, puis le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Ajouter</strong>.</p>
+</li>
+<li>
+<p>Dans la zone <strong>Détails du crochet</strong> :</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Déterminez quand le crochet doit fonctionner en sélectionnant un type d'opération dans le menu déroulant <strong>opération</strong>.</p>
+</li>
+<li>
+<p>Saisissez un nom unique pour le crochet.</p>
+</li>
+<li>
+<p>(Facultatif) saisissez les arguments à transmettre au crochet pendant l'exécution, en appuyant sur la touche entrée après chaque argument que vous entrez pour enregistrer chacun.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>(Facultatif) dans la zone <strong>Détails du filtre de crochet</strong>, vous pouvez ajouter des filtres pour contrôler les conteneurs sur lesquels le crochet d'exécution s'exécute :</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Sélectionnez <strong>Ajouter filtre</strong>.</p>
+</li>
+<li>
+<p>Dans la colonne Type de filtre <strong>Hook</strong>, choisissez un attribut sur lequel filtrer dans le menu déroulant.</p>
+</li>
+<li>
+<p>Dans la colonne <strong>Regex</strong>, entrez une expression régulière à utiliser comme filtre. Astra Control utilise le <a href="https://github.com/google/re2/wiki/Syntax" target="_blank" rel="noopener">"Expression régulière 2 (RE2) syntaxe regex"</a>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Si vous filtrez le nom exact d'un attribut (comme un nom de pod) sans autre texte dans le champ expression régulière, une correspondance de sous-chaîne est effectuée. Pour faire correspondre un nom exact et ce nom uniquement, utilisez la syntaxe de correspondance de chaîne exacte (par exemple, <code>^exact_podname$</code>).
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Pour ajouter d'autres filtres, sélectionnez <strong>Ajouter filtre</strong>.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/astra-control-service/images/note.svg" alt="Remarque">
+</td>
+<td class="content">
+Plusieurs filtres pour un crochet d'exécution sont combinés à un opérateur ET logique. Vous pouvez avoir jusqu'à 10 filtres actifs par crochet d'exécution.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Lorsque vous avez terminé, sélectionnez <strong>Suivant</strong>.</p>
+</li>
+<li>
+<p>Dans la zone <strong>script</strong>, effectuez l'une des opérations suivantes :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Ajouter un nouveau script.</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Sélectionnez <strong>Ajouter</strong>.</p>
+</li>
+<li>
+<p>Effectuez l'une des opérations suivantes :</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Charger un script personnalisé.</p>
+<div class="olist upperroman">
+<ol class="upperroman" type="I">
+<li>
+<p>Sélectionnez l'option <strong>Télécharger le fichier</strong>.</p>
+</li>
+<li>
+<p>Accédez à un fichier et téléchargez-le.</p>
+</li>
+<li>
+<p>Donnez un nom unique au script.</p>
+</li>
+<li>
+<p>(Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Enregistrer le script</strong>.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Coller dans un script personnalisé à partir du presse-papiers.</p>
+<div class="olist upperroman">
+<ol class="upperroman" type="I">
+<li>
+<p>Sélectionnez l'option <strong>Coller ou type</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le champ de texte et collez le texte du script dans le champ.</p>
+</li>
+<li>
+<p>Donnez un nom unique au script.</p>
+</li>
+<li>
+<p>(Facultatif) Entrez toutes les notes que les autres administrateurs doivent connaître au sujet du script.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Sélectionnez un script existant dans la liste.</p>
+<div class="paragraph">
+<p>Cela indique au crochet d'exécution d'utiliser ce script.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Sélectionnez <strong>Suivant</strong>.</p>
+</li>
+<li>
+<p>Vérifiez la configuration du crochet d'exécution.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Ajouter</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="vérifier-létat-dun-crochet-dexécution">Vérifier l'état d'un crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Une fois qu'une opération de snapshot, de sauvegarde ou de restauration a terminé, vous pouvez vérifier l'état des crochets d'exécution qui ont été exécutés dans le cadre de l'opération. Vous pouvez utiliser ces informations d'état pour déterminer si vous souhaitez maintenir le crochet d'exécution, le modifier ou le supprimer.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>applications</strong>, puis le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>protection des données</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>snapshots</strong> pour voir exécution de snapshots ou <strong>sauvegardes</strong> pour voir exécution de sauvegardes.</p>
+<div class="paragraph">
+<p>L'état <strong>Hook</strong> indique l'état de la séquence de crochet d'exécution une fois l'opération terminée. Vous pouvez passer le curseur de la souris sur l'état pour plus de détails. Par exemple, si des échecs de crochet d'exécution se produisent au cours d'un snapshot, le fait de passer le curseur sur l'état de crochet pour ce snapshot donne une liste des crochets d'exécution ayant échoué. Pour voir les raisons de chaque échec, vous pouvez consulter la page <strong>activité</strong> dans la zone de navigation de gauche.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="afficher-lutilisation-du-script">Afficher l'utilisation du script</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez voir quels crochets d'exécution utilisent un script particulier dans l'interface utilisateur Web Astra Control.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>compte</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>scripts</strong>.</p>
+<div class="paragraph">
+<p>La colonne <strong>utilisé par</strong> de la liste des scripts contient des détails sur les crochets qui utilisent chaque script de la liste.</p>
+</div>
+</li>
+<li>
+<p>Sélectionnez les informations de la colonne <strong>utilisé par</strong> pour un script qui vous intéresse.</p>
+<div class="paragraph">
+<p>Une liste plus détaillée s'affiche, avec les noms des crochets qui utilisent le script et le type d'opération avec lesquels ils sont configurés pour s'exécuter.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="modifier-un-crochet-dexécution">Modifier un crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez modifier un crochet d'exécution si vous souhaitez modifier ses attributs, filtres ou le script qu'il utilise. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour modifier les crochets d'exécution.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>applications</strong>, puis le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le menu Options dans la colonne <strong>actions</strong> pour un crochet que vous souhaitez modifier.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Modifier</strong>.</p>
+</li>
+<li>
+<p>Apportez les modifications nécessaires en sélectionnant <strong>Suivant</strong> après avoir terminé chaque section.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Enregistrer</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="désactivez-un-crochet-dexécution">Désactivez un crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez désactiver un crochet d'exécution si vous souhaitez l'empêcher temporairement de s'exécuter avant ou après un instantané d'une application. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour désactiver les crochets d'exécution.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>applications</strong>, puis le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le menu Options dans la colonne <strong>actions</strong> pour un crochet que vous souhaitez désactiver.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Désactiver</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="supprimer-un-crochet-dexécution">Supprimer un crochet d'exécution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vous pouvez supprimer entièrement un crochet d'exécution si vous n'en avez plus besoin. Vous devez disposer d'autorisations propriétaire, administrateur ou membre pour supprimer les crochets d'exécution.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Étapes</div>
+<ol class="arabic">
+<li>
+<p>Sélectionnez <strong>applications</strong>, puis le nom d'une application gérée.</p>
+</li>
+<li>
+<p>Sélectionnez l'onglet <strong>crochets d'exécution</strong>.</p>
+</li>
+<li>
+<p>Sélectionnez le menu Options dans la colonne <strong>actions</strong> pour un crochet que vous souhaitez supprimer.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Supprimer</strong>.</p>
+</li>
+<li>
+<p>Dans la boîte de dialogue qui s'affiche, tapez « Supprimer » pour confirmer.</p>
+</li>
+<li>
+<p>Sélectionnez <strong>Oui, supprimez le crochet d'exécution</strong>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pour-en-savoir-plus">Pour en savoir plus</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/NetApp/Verda">"Projet GitHub NetApp Verda"</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+    </article>
+    <!-- Page Container -->
+  </div>
+
+  
+  <!-- Start Page Toolbar -->
+<div id="ie-right-navbar-collapse" class="close">
+  <img id="navbar-expand" class="ie-searchbox-icon" src="/fr-fr/astra-control-service/images/double_arrow.svg" alt="" />
+</div>
+<div id="ie-right-navbar" class="open">
+  <div id="right-navbar-collapse">
+    <img src="/fr-fr/astra-control-service/images/double_arrow.svg" alt="" />
+  </div>
+  <div class="page-nav-container">
+    <nav class="page-nav-fixed">
+      <div class="page-nav-title">Sur cette page</div>
+      <div class="page-nav-links">
+        <ul class="page-nav-inner" id="page-menu"></ul>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script>
+  resizeContent();
+  function setRightBarHeight() {
+    var h = 0;
+
+    // header 1
+    h += PXinViewport($('.n-footer'));
+    h += PXinViewport($('#ie-new-header'));
+
+    if ($('#ie-right-navbar').length) {
+      $('#ie-right-navbar').css({ height: `calc(100vh - ${h}px)` });
+    }
+    if ($('.page-nav-links').length) {
+      h += 98;
+      $('.page-nav-links').css({ height: `calc(100vh - ${h}px)` });
+    }
+  }
+
+  $(document).ready(function () {
+    // PAGE NAV - Click
+    const MASTHEAD_OFFSET = 65;
+    const SECTIONS = $("main h2, main h3");
+    let calculateActiveSection = false;
+    setTimeout(() => {
+      calculateActiveSection = true;
+    }, 100)
+
+    $(".page-nav__link").click(function (event) {
+      calculateActiveSection = false;
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      var target = $(event.target);
+      target.addClass('page-nav__link--active');
+      location.hash = event.target.hash;
+      setTimeout(() => {
+        calculateActiveSection = true;
+      }, 100)
+
+    });
+
+    // PAGE NAV - Scroll
+    $(window).on('resize scroll', function () {
+      if (calculateActiveSection) {
+        var activeSection = getActiveSection(SECTIONS, MASTHEAD_OFFSET);
+        if (activeSection) {
+          var activeHref = $(activeSection).attr('id');
+          $(".page-nav__link").removeClass('page-nav__link--active');
+          $("#page-menu a[href=#" + activeHref + "]").addClass('page-nav__link--active');
+          if (location.hash != "#" + activeHref) {
+            if (history.replaceState) {
+              history.replaceState(null, null, "#" + activeHref);
+            }
+          }
+        }
+      }
+    });
+
+    $(".n-pdf-button").click(function () {
+      $(this).toggleClass("active");
+    });
+
+    $.fn.isVisibleAndInViewport = function () {
+      var elementTop = $(this).offset().top;
+      var elementBottom = elementTop + $(this).outerHeight();
+
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+
+      return elementBottom > viewportTop && elementTop < viewportBottom && $(this).is(":visible");
+    };
+
+
+    $(window).on('resize scroll', function () {
+      setRightBarHeight();
+    });
+
+    $(window).trigger('resize');
+
+
+  });
+
+  $("#right-navbar-collapse").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 350, function () {
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+    });
+    $(".ie-content-pane").animate({ width: (width + rightNavbarWidth) }, 350, function () {
+      resizeContent()
+      setSidebarBottom();
+    })
+
+  });
+  $("#navbar-expand").click(function (e) {
+    const rightNavbarWidth = $("#ie-right-navbar").width() - $("#ie-right-navbar-collapse").width();
+    e.preventDefault();
+    const width = $(".ie-content-pane").width();
+    $("#ie-right-navbar").animate({ width: 'toggle' }, 250, function () {
+      $("#ie-right-navbar-collapse").removeClass("open")
+      $("#ie-right-navbar-collapse").addClass("close")
+      $("#ie-right-navbar").removeClass("close")
+      $("#ie-right-navbar").addClass("open")
+      setRightBarHeight();
+      setSidebarBottom();
+    });
+    $(".ie-content-pane").animate({ width: (width - rightNavbarWidth) }, 250, function () {
+      resizeContent()
+    })
+  });
+
+  function navbarResize() {
+    const rightNavbarResized = $("#ie-right-navbar-collapse").hasClass('resized');
+    if (window.innerWidth < 1024) {
+      $("#ie-right-navbar").removeClass("open")
+      $("#ie-right-navbar").addClass("close")
+      $("#ie-right-navbar").removeAttr("style")
+      $("#ie-right-navbar-collapse").removeClass("close")
+      $("#ie-right-navbar-collapse").addClass("open")
+      $("#ie-right-navbar-collapse").addClass("resized")
+    } else {
+      if (rightNavbarResized) {
+        $('#ie-right-navbar').removeClass('close');
+        $('#ie-right-navbar').addClass('open');
+        $("#ie-right-navbar-collapse").removeClass("resized")
+        $("#ie-right-navbar-collapse").removeClass("open")
+        $("#ie-right-navbar-collapse").addClass("close")
+      }
+    }
+    resizeContent()
+  }
+  navbarResize();
+  $(window).on('resize load', function () {
+    navbarResize()
+  });
+
+  function getActiveSection(sections, offset) {
+    var scrollPosition = $(window).scrollTop() + offset + 5;
+    var activeSection;
+    for (var i = 0; i < sections.length; i++) {
+      var el = $(sections[i]);
+      var activePosition = el.offset().top;
+      if (activePosition > scrollPosition) {
+        break;
+      }
+
+      activeSection = sections[i];
+    }
+
+    return activeSection;
+  }
+
+  $("a[href*=#]:not([href=#])").click(function () {
+    setTimeout(() => {
+      $(window).trigger('scroll');
+    }, 105)
+  })
+
+  const hashOnLoad = location.href.split("#")[1];
+  setTimeout(function () {
+    if (hashOnLoad) {
+      $(".page-nav__link").removeClass('page-nav__link--active');
+      $("#page-menu a[href=#" + hashOnLoad + "]").addClass('page-nav__link--active');
+    }
+  }, 100)
+
+</script>
+
+
+  <div style="clear: both"></div><!-- Main needs to have height --></div>
+
+        </main>
+
+        <footer class="n-footer">
+  <div class="n-footer__bottom">
+    <div class="n-container">
+        <div class="n-footer__left">
+          <li class="n-footer__copyright-link">
+                    <a href="https://www.netapp.com/company/legal/copyright/">© 2024 NetApp, Inc.</a>
+          </li>
+        </div>
+        <div class="n-footer__center">
+          <ul class="n-footer__copyright-list">
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/terms-of-use/">Conditions d'utilisation</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/privacy-policy/">Déclaration de confidentialité</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a href="https://www.netapp.com/company/legal/cookie-policy/">Déclaration sur les cookies</a>
+            </li>
+            <li class="n-footer__copyright-link">
+              <a class="ot-sdk-show-settings">Paramètres des cookies</a>
+            </li>
+          </ul>
+       </div>
+        <div class="n-footer__right">
+              <li class="n-footer__copyright-link">
+                <a target="_self" href="javascript:netapp_mailto()">Envoyer des commentaires à propos de cette page</a>
+              </li>
+        </div>
+     </div>
+  </div>
+</footer>
+
+      </div><!-- Elasticsearch JS -->
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/bundle.js'></script>
+
+      <!-- Syntax Highlighting -->
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/prism.js'></script>
+      <script type="text/javascript" src='/fr-fr/astra-control-service/js/prism-curl.js'></script>
+    </div>
+    <script>
+      document.body.offsetWidth=1903;
+      cookieLaw = {}
+      cookieLaw.euCountry = "US";
+      cookieLaw.invoke = function(){return false;}
+    </script>
+    <script src='/fr-fr/astra-control-service/js/ie-tabbed-blocks.js'></script>
+    <script src='/fr-fr/astra-control-service/js/ie-sidebar.js'></script>
+  </body>
+
+</html>
