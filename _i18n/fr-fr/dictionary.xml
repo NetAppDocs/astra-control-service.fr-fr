@@ -803,7 +803,6 @@
   <block id="0dac49ef5536e90243a4926670f88ef6" category="list-text">Sélectionnez *support*.</block>
   <block id="29405bfce5da0c57cd6629b8db602a10" category="list-text">Consultez le champ État du support.</block>
   <block id="f761ff65b80a8b63b42c13cb7a7cf4f7" category="paragraph">Le statut du support commence par « non enregistré », puis passe à « en cours » et enfin à « enregistré » une fois terminé.</block>
-  <block id="8adaa56acabfa4c4f66e68cb72de4c4d" category="paragraph">Cet état d'enregistrement de support est interrogé toutes les 15 minutes. Les nouveaux clients NetApp pourraient bénéficier d'un jour ouvrable suivant pour procéder à l'intégration et au support. Si le numéro de série n'affiche pas « enregistré » dans les 48 heures, vous pouvez contacter NetApp en utilisant astra.feedback@netapp.com ou vous inscrire manuellement à partir de<block ref="25901fb2084c068b072ad2e600cb7393" category="inline-link-rx"></block>.</block>
   <block id="26630f5c4526843dd047a7b98e30c87e" category="section-title">Obtenir votre numéro de série</block>
   <block id="9af9e89edd9437582caaae9b5cd0d87b" category="paragraph">Lorsque vous vous inscrivez à un compte, Astra Control utilise les informations que vous avez fournies sur votre entreprise pour générer un numéro de série NetApp à 20 chiffres qui commence avec « 941 ».</block>
   <block id="63b997f8e23e75b8819decf19a2b9406" category="paragraph">Le numéro de série NetApp correspond à votre compte Astra Control. Vous devrez utiliser ce numéro de série lors de l'ouverture d'un ticket Web.</block>
@@ -814,26 +813,15 @@
   <block id="63b11526307884ce31efc524f509c090" category="list-text">Nouveau client NetApp sans compte SSO existant sur le site de support NetApp (NSS)</block>
   <block id="0564257c8c53a18e2ae2558b30fd1326" category="section-title">Option 1 : client NetApp actuel avec un compte sur le site de support NetApp (NSS) existant</block>
   <block id="8e2e894a8f2d0c798eda10b04a6aae2c" category="inline-link">Inscription au support Services de données cloud</block>
-  <block id="d15ddd92716258916f2997a149c0e1c9" category="list-text">Accédez au<block ref="2151d866808a52a3eadb15c242a47970" category="inline-link-rx"></block> Pour créer un compte NSS.</block>
   <block id="732ba767fce4bd62cecb026f6781e1a4" category="list-text">Sélectionnez *je suis déjà enregistré en tant que client NetApp*.</block>
   <block id="db687a348749c84241a38c70c993840c" category="list-text">Entrez vos identifiants du site du support NetApp pour vous connecter.</block>
-  <block id="e43f3861c61e13a957b05a49f4232f75" category="paragraph">La page enregistrement client existant s'affiche.</block>
-  <block id="0c74bd4a97dcfedb588165e8bb276977" category="inline-image-macro">Formulaire d'enregistrement de client existant</block>
-  <block id="7a19998317d4f7657b3d9519c2dc94d0" category="paragraph"><block ref="7a19998317d4f7657b3d9519c2dc94d0" category="inline-image-macro-rx" type="image"></block></block>
   <block id="ee364f11fd7d245e4d69ec062eb83cb8" category="list-text">Remplissez les informations requises sur le formulaire :</block>
   <block id="e9445c82c61abbe731858b68bc6ef334" category="list-text">Entrez votre nom, votre entreprise et votre adresse e-mail.</block>
-  <block id="0207fbb6e6ab362c66c2b1c0726353c5" category="list-text">Sélectionnez *Astra* comme gamme de produits.</block>
   <block id="c5e190db7965b0aa2ed323bdec1c2c6d" category="list-text">Saisissez votre numéro de série.</block>
-  <block id="ddcfd610f74c256985ea230159f499b4" category="list-text">Sélectionnez *soumettre l'inscription*.</block>
   <block id="1adcde846f51b1edfaf40ba5a6db3d4f" category="paragraph">Vous devez être redirigé vers une page « enregistrement soumis avec succès ». L'adresse e-mail associée à votre inscription recevra un e-mail dans les quelques minutes indiquant que « votre produit est désormais éligible pour une assistance ».</block>
   <block id="c00608f756de9922b31b80e79feefbdf" category="paragraph">Il s'agit d'une inscription unique au support qui concerne le numéro de série applicable.</block>
   <block id="f3568553211b1a65f5a05f906c626719" category="section-title">Option 2 : nouveau client NetApp sans compte sur le site de support NetApp (NSS)</block>
   <block id="0786589eb7392bc413e898e8782cef99" category="list-text">Sélectionnez *je ne suis pas un client NetApp enregistré*.</block>
-  <block id="2557d6c5569c5a3a7e8432c5de6f609f" category="paragraph">La page enregistrement du nouveau client s'affiche.</block>
-  <block id="13057fbeba6fc2ea452df672598620da" category="inline-image-macro">Formulaire d'inscription du nouveau client</block>
-  <block id="2116b097be21cf33cf250f6f4dea05ee" category="paragraph"><block ref="2116b097be21cf33cf250f6f4dea05ee" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="cddef93549327dd0dc967c3c80b4f3e9" category="list-text">Entrez votre nom et les informations relatives à votre entreprise.</block>
-  <block id="9bfff919ad044e305f1c311a78a7ecec" category="list-text">Sélectionnez *Astra* comme gamme de produits.</block>
   <block id="d04e93a4d5398bfd6548e3e1925cb1e0" category="paragraph">Votre inscription envoyée vous enverra un e-mail de confirmation. Si aucune erreur ne se produit, vous serez redirigé vers une page « enregistrement soumis avec succès ». Vous recevrez également un e-mail d'une heure indiquant que « votre produit est désormais éligible pour l'assistance ».</block>
   <block id="d96b5fa4d8229bcf45a5dfba3e784078" category="list-text">En tant que nouveau client NetApp, vous devez également créer un compte utilisateur sur le site de support NetApp (NSS) pour les prochaines activations de support et pour accéder au portail de support pour le chat et la création de tickets en ligne.</block>
   <block id="fbf62905ff14cf2944029e8b9424e045" category="inline-link">Site d'inscription au support NetApp</block>
@@ -2683,4 +2671,15 @@ Lors de la promotion d'un volume de destination en volume ReadWrite standard, vo
   <block id="a40c084314b74a686572312dc71c4738" category="list-text">Créer un<block ref="3d3f9b7a5974a7898593a3d2f5549f15" prefix=" " category="inline-code"></block> fichier.</block>
   <block id="23ed633c6130c18f08608b6efce84dc4" category="list-text">Remplacement<block ref="089d02fba2ffcdb49a91320ff506dfa3" prefix=" " category="inline-code"></block> au début du script suivant avec la valeur correcte.</block>
   <block id="1e402f84b3c57afa8aaf19779147556d" category="list-text">Définissez l'emplacement de registre personnalisé pour l'image Astra Control Provisioner ou extrayez-le du registre Astra Control <block ref="6fd47d0a38cf5afec555b659aaed6104" prefix="(" category="inline-code"></block> ou<block ref="e419be77a3ebdbec678982ec1d2d40b2" prefix=" " category="inline-code"></block>).</block>
+  <block id="f840f3450a2de3d2159f8e98e8d1b6ad" category="paragraph">Cet état d'enregistrement de support est interrogé toutes les 15 minutes. Les nouveaux clients NetApp peuvent prendre jusqu'au jour ouvrable suivant pour terminer l'inscription à l'intégration et au support. Si le numéro de série n'affiche pas « enregistré » dans les 48 heures, vous pouvez contacter NetApp en utilisant astra.feedback@netapp.com ou vous inscrire manuellement à partir de<block ref="25901fb2084c068b072ad2e600cb7393" category="inline-link-rx"></block>.</block>
+  <block id="3591a1f5ccffeba19e21047100fe43b1" category="list-text">Accédez au<block ref="2151d866808a52a3eadb15c242a47970" category="inline-link-rx"></block> page.</block>
+  <block id="4501879906d5ad1040b26cbba93bd49d" category="paragraph">La page d'enregistrement du client existant s'affiche.</block>
+  <block id="69a9a798beb8ba8c71e96413ecd8f3a4" category="list-text">Sélectionnez *Astra Control Service* comme gamme de produits.</block>
+  <block id="de1c240b231af9d9534b05367f20e396" category="list-text">Sélectionnez un fournisseur de facturation.</block>
+  <block id="b623e6ded9a852f4e7cd9765578d0c08" category="list-text">Sélectionnez *soumettre*.</block>
+  <block id="6294635853dcb1aa39d5c03b3a071505" category="paragraph">La page enregistrement du nouveau client s'affiche.</block>
+  <block id="deb1f1ce269d9c97fdfb1d332a33506d" category="list-text">Entrez votre nom, les informations relatives à votre entreprise et vos coordonnées.</block>
+  <block id="a34b088697717e6985d362f6f34cb3cd" category="list-text">Sélectionnez *Astra Control Service* comme gamme de produits.</block>
+  <block id="e41e554158031f0f3160a545e232ed02" category="list-text">Entrez la valeur captcha.</block>
+  <block id="6ea2f3e9291aa9fe05308c7ef844a5f2" category="list-text">Cochez la case pour confirmer que vous avez lu la Déclaration de confidentialité de NetApp.</block>
 </blocks>
