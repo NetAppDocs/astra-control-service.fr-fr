@@ -1399,7 +1399,6 @@
   <block id="879701946bb2bc7241d0f85fd843455a" category="paragraph">endif::azure[]</block>
   <block id="6e1e9c83b80f4d22d34cbdf60a71383b" category="paragraph">ifdef::gcp[]</block>
   <block id="310c228207a0f8446bbe4c5d16978cb7" category="paragraph">endif::gcp[]</block>
-  <block id="6ef5565e71b748d07e8a7b0699a73b5a" category="paragraph"><block ref="6ef5565e71b748d07e8a7b0699a73b5a" category="inline-image-macro-rx" type="image"></block></block>
   <block id="305b39af5cd987a6208b64358f967be3" category="list-text">Une application individuelle déployée au sein d'un ou plusieurs espaces de noms (Helm 3 est utilisé dans cet exemple)</block>
   <block id="5200a678b94ac14cf371f3073027246a" category="list-text">Groupe de ressources identifié par une étiquette Kubernetes dans un ou plusieurs espaces de noms</block>
   <block id="e7ee212d9bc4dca7907f427fe053cfd0" category="paragraph">*J'ai mis à niveau le Plan Premium PayGo à partir du Plan gratuit. Est-ce que je serai chargé pour les 10 premiers espaces de noms?*</block>
@@ -2683,4 +2682,5 @@ Lors de la promotion d'un volume de destination en volume ReadWrite standard, vo
   <block id="df3d75a39182fab8d217744cdb76529e" category="list-text">*Sécurité renforcée du back-end de stockage avec le cryptage Kerberos 5* : vous pouvez améliorer la sécurité du stockage par <block ref="63a1519b1e13a139789d4589996b0d00" category="inline-link-macro-rx"></block> pour le trafic entre votre cluster géré et le back-end de stockage. ASTRA Control provisionner prend en charge le chiffrement Kerberos 5 sur connexions NFSv4.1 des clusters Red Hat OpenShift aux volumes Azure NetApp Files et ONTAP sur site.</block>
   <block id="931459f37abea3d820afa0fcf0ecfef7" category="list-text">Centre de contrôle Astra
 ASTRA Control est désormais disponible dans un nouveau modèle de déploiement. _Astra Control Center_ est un logiciel autogéré que vous installez et exploitez dans votre data Center pour pouvoir gérer la gestion du cycle de vie des applications Kubernetes pour les clusters Kubernetes sur site.</block>
+  <block id="b4cdc34d8767d1d4b7a24fbb97a1d8a7" category="paragraph"><block ref="b4cdc34d8767d1d4b7a24fbb97a1d8a7" category="inline-image-macro-rx" type="image"></block></block>
 </blocks>
