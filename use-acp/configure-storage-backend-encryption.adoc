@@ -16,7 +16,7 @@ Avec Astra Control Provisioner, vous pouvez améliorer la sécurité d'accès au
 
 ASTRA Control Provisioner prend en charge le chiffrement Kerberos pour deux types de systèmes back-end de stockage :
 
-* *ONTAP* sur site - Astra Control Provisioner prend en charge le chiffrement Kerberos sur les connexions NFSv3 et NFSv4 depuis les clusters Red Hat OpenShift et Kubernetes en amont vers les volumes ONTAP sur site.
+* *ONTAP* sur site - Astra Control provisionner prend en charge le chiffrement Kerberos sur les connexions NFSv3 et NFSv4 depuis les clusters Red Hat OpenShift et Kubernetes en amont vers les volumes ONTAP sur site.
 * *Azure NetApp Files* - Astra Control Provisioner prend en charge le chiffrement Kerberos sur les connexions NFSv4.1 à partir de clusters Kubernetes en amont vers des volumes Azure NetApp Files.
 
 
