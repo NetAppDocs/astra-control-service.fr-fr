@@ -35,7 +35,6 @@
   <block id="a3b5183ae6f5c3f1d6644448f795b5cb" category="inline-link">NetApp Cloud Volumes Service pour Google Cloud</block>
   <block id="4b6ccd94421822eaaf7bd027992018af" category="inline-link">Amazon Elastic Block Store</block>
   <block id="4d82a1ec1af02725042c8c785564ee7a" category="inline-link">Amazon FSX pour NetApp ONTAP</block>
-  <block id="415ba7b6a21fb373d9c5b72207313c1c" category="list-text">*Cloud Insights* : un outil NetApp de surveillance de l'infrastructure cloud, Cloud Insights vous permet de surveiller les performances et l'utilisation de vos clusters Kubernetes gérés par Astra Control Center. Cloud Insights met en corrélation l'utilisation du stockage avec les charges de travail. Lorsque vous activez la connexion Cloud Insights dans le centre de contrôle Astra, les informations de télémétrie s'affichent dans les pages de l'interface utilisateur du centre de contrôle Astra.</block>
   <block id="de0c45e94d4b178203631d55e65d1b62" category="section-title">Interfaces de contrôle Astra</block>
   <block id="d015aca78df45458ee1d6533c5246919" category="paragraph">Vous pouvez effectuer des tâches à l'aide de différentes interfaces :</block>
   <block id="085434e07821849d9d71c59516ad591f" category="list-text">*Interface utilisateur Web (UI)* : Astra Control Service et Astra Control Center utilisent la même interface utilisateur Web où vous pouvez gérer, migrer et protéger des applications. Utilisez également l'interface utilisateur pour gérer les comptes utilisateur et les paramètres de configuration.</block>
@@ -48,8 +47,6 @@
   <block id="4a2ab62188738135163aaaaeab1d6cfe" category="list-text"><block ref="4a2ab62188738135163aaaaeab1d6cfe" category="inline-link-rx"></block></block>
   <block id="d418042930eb178009f4c27360b349f6" category="inline-link">Utilisez l'API de contrôle Astra</block>
   <block id="35e127abdc4e59a01dd3fd4f63603bf1" category="list-text"><block ref="35e127abdc4e59a01dd3fd4f63603bf1" category="inline-link-rx"></block></block>
-  <block id="5858ee4031acd7b896faa2d3d2c1a299" category="inline-link">Documentation Cloud Insights</block>
-  <block id="2b93b48daf034e4100d00b85950e109d" category="list-text"><block ref="2b93b48daf034e4100d00b85950e109d" category="inline-link-rx"></block></block>
   <block id="eb75aeb3b4b2b9734ba3e52f5483f0b2" category="inline-link">Documentation ONTAP</block>
   <block id="8217522f2b9eea86f1099a2aba54aebd" category="list-text"><block ref="8217522f2b9eea86f1099a2aba54aebd" category="inline-link-rx"></block></block>
   <block id="bd5cde8fc544622a3633d73962bcd705" category="summary">Astra Control Service utilise Cloud Volumes Service pour Google Cloud comme système de stockage back-end pour les volumes persistants. Comprenez comment le choix d'un niveau de service, d'une classe de stockage et d'une taille de volume persistant peut vous aider à atteindre vos objectifs de performance.</block>
@@ -251,7 +248,6 @@
   <block id="3f1d9fb87fc33f3d4ce9b5dd75395968" category="inline-link">Commencez à gérer les clusters Kubernetes à partir d'Astra Control Service</block>
   <block id="b1151aae9531d2f5e85d085e8878cea6" category="summary">Cette FAQ peut vous aider si vous cherchez juste une réponse rapide à une question.</block>
   <block id="8de7ff5f7f2186929bf88ea5dcfc0fb3" category="doc">Foire aux questions concernant le service Astra Control</block>
-  <block id="47de31b9013ca59e1620936759a1c481" category="paragraph">Astra Control a pour objectif de simplifier les opérations de gestion du cycle de vie des données d'application pour les applications natives Kubernetes. Astra Control Service prend en charge les clusters Kubernetes qui s'exécutent sur plusieurs environnements de fournisseurs cloud.</block>
   <block id="7138c9866f92caa6559eeb16dedcead9" category="paragraph">Les sections suivantes fournissent des réponses à des questions supplémentaires que vous pourriez vous poser lorsque vous utilisez Astra Control. Pour plus de précisions, veuillez contacter astra.feedback@netapp.com</block>
   <block id="3783e7bdb365c30dbefc88440e625d44" category="section-title">Accès à Astra Control</block>
   <block id="03069a991fdd2077c62785ce41219767" category="paragraph">*Pourquoi dois-je fournir autant de détails lors de l'inscription à Astra Control?*</block>
@@ -1611,7 +1607,6 @@
   <block id="934c5edffa8e732ecb866cb319c8454a" category="doc">Gestion des applications</block>
   <block id="516729a7c0562425406a22cfe6a2c163" category="list-text">Amazon EBS</block>
   <block id="79c9c43a409053927cc323915dbf1c06" category="list-text">Disques gérés Azure</block>
-  <block id="43e71b094d6e4df1d87b41898754d340" category="paragraph">Dans un environnement connecté au cloud, Astra Control Center utilise Cloud Insights pour fournir des fonctionnalités avancées de surveillance et de télémétrie. En l'absence de connexion Cloud Insights, un contrôle et une télémétrie limités (7 jours de metrics) sont disponibles dans Astra Control Center, mais aussi exportés vers les outils de surveillance natifs de Kubernetes (comme Prometheus et Grafana) via des points de terminaison ouverts.</block>
   <block id="736df34727d37ee0029df106be139889" category="paragraph">Vous pouvez ajouter des applications à votre cluster. Si certaines applications sont déjà gérées dans le cluster, vous pouvez aussi utiliser Astra Control Center pour les gérer. Utilisez ensuite Astra Control Center pour créer des copies Snapshot, des sauvegardes, des clones et des relations de réplication.</block>
   <block id="8eea62084ca7e541d918e823422bd82e" category="paragraph-title">Résultat</block>
   <block id="06c2cea18679d64399783748fa367bdd" category="inline-image-macro">Une seule</block>
@@ -2709,4 +2704,5 @@ ASTRA Control est désormais disponible dans un nouveau modèle de déploiement.
   <block id="b68db3e0a56f3b8c81ba53790b675138" category="list-text"><block ref="b68db3e0a56f3b8c81ba53790b675138" category="inline-link-rx"></block></block>
   <block id="df3bb36ac44fafa7502c4bf87e8770ea" category="list-text">Pour configurer et installer la boîte à outils,<block ref="ce6ac21e909840a69102ba43afa6cfb6" category="inline-link-rx"></block>.</block>
   <block id="6a96f7d929fa0abae3976fe12471f4f9" category="sidebar">Protégez l'ensemble du cluster</block>
+  <block id="c6549ebb7cd213e64b91aa2f6576c5f6" category="paragraph">ASTRA Control a pour objectif de simplifier les opérations de gestion du cycle de vie des données d'applications pour les applications Kubernetes natives. Astra Control Service prend en charge les clusters Kubernetes qui s'exécutent sur plusieurs environnements de fournisseurs cloud.</block>
 </blocks>
