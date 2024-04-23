@@ -33,20 +33,27 @@ Vous pouvez effectuer les tâches suivantes liées à la protection de vos donn�
 
 == Configurer une règle de protection
 
-Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver.
+Une règle de protection protège une application en créant des snapshots, des sauvegardes ou les deux à un calendrier défini. Vous pouvez choisir de créer des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines et tous les mois, et vous pouvez spécifier le nombre de copies à conserver. Vous pouvez définir une règle de protection à l'aide de l'interface utilisateur Web d'Astra Control ou d'un fichier de ressource personnalisée (CR).
 
 Si vous avez besoin de sauvegardes ou de snapshots pour qu'ils s'exécutent plus fréquemment qu'une fois par heure, vous pouvez https://docs.netapp.com/us-en/astra-automation/workflows/workflows_before.html["Utilisez l'API REST Astra Control pour créer des snapshots et des sauvegardes"^].
 
 
 NOTE: Si vous définissez une règle de protection qui crée des sauvegardes immuables dans des compartiments WORM (Write Once, Read Many), assurez-vous que la durée de conservation des sauvegardes ne soit pas plus courte que la période de conservation configurée pour le compartiment.
 
+
+TIP: Décaler les plannings de sauvegarde et de réplication pour éviter les chevauchements de planification. Par exemple, effectuez des sauvegardes en haut de l'heure toutes les heures et planifiez la réplication pour qu'elle commence avec un décalage de 5 minutes et un intervalle de 10 minutes.
+
+[role="tabbed-block"]
+====
+.Configurez une stratégie de protection à l'aide de l'interface utilisateur Web
+--
 .Étapes
-. Sélectionnez *applications*, puis le nom d'une application gérée.
+. Sélectionnez *applications*, puis le nom d'une application.
 . Sélectionnez *protection des données*.
 . Sélectionnez *configurer la stratégie de protection*.
 . Définissez un planning de protection en choisissant le nombre de snapshots et de sauvegardes à conserver pour les horaires, quotidiens, hebdomadaires et mensuels.
 +
-Vous pouvez définir les horaires horaires, quotidiens, hebdomadaires et mensuels simultanément. Un programme ne sera pas activé tant que vous n'aurez pas défini un niveau de rétention pour les snapshots et les sauvegardes.
+Vous pouvez définir les horaires horaires, quotidiens, hebdomadaires et mensuels simultanément. Un programme ne s'active pas tant que vous n'avez pas défini de niveau de rétention.
 
 +
 Lorsque vous définissez un niveau de conservation pour les sauvegardes, vous pouvez choisir le compartiment dans lequel vous souhaitez stocker les sauvegardes.
@@ -55,12 +62,67 @@ Lorsque vous définissez un niveau de conservation pour les sauvegardes, vous po
 L'exemple suivant illustre quatre planifications de protection : toutes les heures, tous les jours, toutes les semaines et tous les mois pour les snapshots et les sauvegardes.
 
 +
-image:screenshot-protection-policy.png["Capture d'écran d'un exemple de stratégie de configuration dans laquelle vous pouvez choisir de réaliser des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines ou tous les mois."]
+image:screenshot-config-protection-policy.png["Capture d'écran d'un exemple de stratégie de configuration dans laquelle vous pouvez choisir de réaliser des snapshots et des sauvegardes toutes les heures, tous les jours, toutes les semaines ou tous les mois."]
 
+. [*Tech Preview*] Choisissez un compartiment de destination pour les sauvegardes ou les instantanés dans la liste des compartiments de stockage.
 . Sélectionnez *Revue*.
-. Sélectionnez *définir la stratégie de protection*.
+. Sélectionnez *définir la stratégie de protection.*
 
 
+--
+.[Aperçu technique] configurez une stratégie de protection à l'aide d'une CR
+--
+.Étapes
+. Créez le fichier de ressource personnalisée (CR) et nommez-le `astra-control-schedule-cr.yaml`. Mettez à jour les valeurs entre parenthèses <> pour répondre à vos besoins en matière d'environnement Astra Control, de configuration de cluster et de protection des données :
++
+** <CR_NAME> : nom de cette ressource personnalisée ; choisissez un nom unique et sensible pour votre environnement.
+** <APPLICATION_NAME> : nom Kubernetes de l'application à sauvegarder.
+** <APPVAULT_NAME> : nom du coffre-fort dans lequel le contenu de la sauvegarde doit être stocké.
+** <BACKUPS_RETAINED> : nombre de sauvegardes à conserver. Zéro indique qu'aucune sauvegarde ne doit être créée.
+** <SNAPSHOTS_RETAINED> : nombre de snapshots à conserver. Zéro indique qu'aucun snapshot ne doit être créé.
+** <GRANULARITY> : fréquence à laquelle le programme doit être exécuté. Valeurs possibles, ainsi que les champs associés obligatoires :
++
+*** `hourly` (nécessite que vous spécifiiez `spec.minute`)
+*** `daily` (nécessite que vous spécifiiez `spec.minute` et `spec.hour`)
+*** `weekly` (nécessite que vous spécifiiez `spec.minute`, `spec.hour`, et `spec.dayOfWeek`)
+*** `monthly` (nécessite que vous spécifiiez `spec.minute`, `spec.hour`, et `spec.dayOfMonth`)
+
+
+** <DAY_OF_MONTH> : _(Facultatif)_ le jour du mois (1 - 31) que l'horaire doit exécuter. Ce champ est obligatoire si la granularité est définie sur `monthly`.
+** <DAY_OF_WEEK> : _(Facultatif)_ le jour de la semaine (0 - 7) que l'horaire doit exécuter. Les valeurs 0 ou 7 indiquent dimanche. Ce champ est obligatoire si la granularité est définie sur `weekly`.
+** <HOUR_OF_DAY> : _(Facultatif)_ l'heure du jour (0 - 23) que le programme doit exécuter. Ce champ est obligatoire si la granularité est définie sur `daily`, `weekly`, ou `monthly`.
+** <MINUTE_OF_HOUR> : _(Facultatif)_ la minute de l'heure (0 - 59) que le programme doit exécuter. Ce champ est obligatoire si la granularité est définie sur `hourly`, `daily`, `weekly`, ou `monthly`.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Schedule
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+  backupRetention: "<BACKUPS_RETAINED>"
+  snapshotRetention: "<SNAPSHOTS_RETAINED>"
+  granularity: <GRANULARITY>
+  dayOfMonth: "<DAY_OF_MONTH>"
+  dayOfWeek: "<DAY_OF_WEEK>"
+  hour: "<HOUR_OF_DAY>"
+  minute: "<MINUTE_OF_HOUR>"
+----
+
+
+. Après avoir renseigné le `astra-control-schedule-cr.yaml` Fichier avec les valeurs correctes, appliquer la CR :
++
+[source, console]
+----
+kubectl apply -f astra-control-schedule-cr.yaml
+----
+
+
+--
+====
 .Résultat
 Astra Control implémente la règle de protection des données en créant et en conservant des snapshots et des sauvegardes à l'aide du calendrier et de la règle de conservation que vous avez définis.
 
@@ -81,13 +143,58 @@ ASTRA Control prend en charge la création de snapshots à l'aide de classes de 
 
 IMPORTANT: Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` pilote, les snapshots ne peuvent pas être créés. Utilisez une autre classe de stockage pour les snapshots.
 
+[role="tabbed-block"]
+====
+.Créez un instantané à l'aide de l'interface utilisateur Web
+--
 .Étapes
 . Sélectionnez *applications*.
 . Dans le menu Options de la colonne *actions* de l'application souhaitée, sélectionnez *instantané*.
 . Personnalisez le nom du snapshot, puis sélectionnez *Suivant*.
+. [*Tech Preview*] Choisissez un compartiment de destination pour le snapshot dans la liste des compartiments de stockage.
 . Examinez le résumé de l'instantané et sélectionnez *instantané*.
 
 
+--
+.[Aperçu technique] Créez un instantané à l'aide d'une CR
+--
+.Étapes
+. Créez le fichier de ressource personnalisée (CR) et nommez-le `astra-control-snapshot-cr.yaml`. Mettez à jour les valeurs entre parenthèses <> pour correspondre à votre environnement Astra Control et à la configuration du cluster :
++
+** <CR_NAME> : nom de cette ressource personnalisée ; choisissez un nom unique et sensible pour votre environnement.
+** <APPLICATION_NAME> : nom Kubernetes de l'application à snapshot.
+** <APPVAULT_NAME> : nom du coffre-fort d'applications où le contenu de l'instantané doit être stocké.
+** <RECLAIM_POLICY> : _(Facultatif)_ définit ce qui arrive à un instantané lorsque le snapshot CR est supprimé. Options valides :
++
+*** `Retain`
+*** `Delete` (valeur par défaut)
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Snapshot
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+  reclaimPolicy: <RECLAIM_POLICY>
+----
+
+
+
+
+. Après avoir renseigné le `astra-control-snapshot-cr.yaml` Fichier avec les valeurs correctes, appliquer la CR :
++
+[source, console]
+----
+kubectl apply -f astra-control-snapshot-cr.yaml
+----
+
+
+--
+====
 .Résultat
 Le processus d'instantané commence. Un instantané a réussi lorsque l'état est *Healthy* dans la colonne *State* de la page *Data protection* > *snapshots*.
 
@@ -122,16 +229,53 @@ Les compartiments d'Astra Control ne signalent pas la capacité disponible. Avan
 
 Si votre application utilise une classe de stockage soutenue par `ontap-nas-economy` pilote, vous devez <<Sauvegardez et restaurez les opérations ontap-nas,activer la sauvegarde et la restauration>> fonctionnalité. Assurez-vous d'avoir défini un `backendType` dans votre https://docs.netapp.com/us-en/trident/trident-reference/objects.html#kubernetes-storageclass-objects["Objet de stockage Kubernetes"^] avec une valeur de `ontap-nas-economy` avant d'effectuer toute opération de protection.
 
+[role="tabbed-block"]
+====
+.Créez une sauvegarde à l'aide de l'interface utilisateur Web
+--
 .Étapes
 . Sélectionnez *applications*.
 . Dans le menu Options de la colonne *actions* de l'application souhaitée, sélectionnez *Sauvegarder*.
 . Personnaliser le nom de la sauvegarde.
 . Choisissez de sauvegarder l'application à partir d'un snapshot existant. Si vous sélectionnez cette option, vous pouvez choisir parmi une liste de snapshots existants.
-. Choisir un compartiment de destination pour la sauvegarde dans la liste des compartiments de stockage.
+. [*Tech Preview*] Choisissez un compartiment de destination pour la sauvegarde dans la liste des compartiments de stockage.
 . Sélectionnez *Suivant*.
 . Passez en revue le résumé des sauvegardes et sélectionnez *Sauvegarder*.
 
 
+--
+.[Aperçu technique] Créez une sauvegarde à l'aide d'une CR
+--
+.Étapes
+. Créez le fichier de ressource personnalisée (CR) et nommez-le `astra-control-backup-cr.yaml`. Mettez à jour les valeurs entre parenthèses <> pour correspondre à votre environnement Astra Control et à la configuration du cluster :
++
+** <CR_NAME> : nom de cette ressource personnalisée ; choisissez un nom unique et sensible pour votre environnement.
+** <APPLICATION_NAME> : nom Kubernetes de l'application à sauvegarder.
+** <APPVAULT_NAME> : nom du coffre-fort dans lequel le contenu de la sauvegarde doit être stocké.
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Backup
+metadata:
+  namespace: astra-connector
+  name: <CR_NAME>
+spec:
+  applicationRef: <APPLICATION_NAME>
+  appVaultRef: <APPVAULT_NAME>
+----
+
+
+. Après avoir renseigné le `astra-control-backup-cr.yaml` Fichier avec les valeurs correctes, appliquer la CR :
++
+[source, console]
+----
+kubectl apply -f astra-control-backup-cr.yaml
+----
+
+
+--
+====
 .Résultat
 Astra Control crée une sauvegarde de l'application.
 

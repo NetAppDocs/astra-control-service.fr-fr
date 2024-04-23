@@ -265,6 +265,106 @@ Une fois le processus terminé, les applications associées à l'espace de noms 
 
 
 
+=== [Aperçu technique] définissez une application à l'aide d'une ressource personnalisée Kubernetes
+
+Vous pouvez spécifier les ressources Kubernetes que vous souhaitez gérer avec Astra Control en les définissant comme une application à l'aide d'une ressource personnalisée (CR). Vous pouvez ajouter des ressources définies dans le cluster si vous souhaitez gérer ces ressources individuellement ou toutes les ressources Kubernetes d'un namespace si, par exemple, vous avez l'intention de gérer et de protéger toutes les ressources d'un namespace spécifique de la même manière et à intervalles réguliers.
+
+.Étapes
+. Créer le fichier de ressource personnalisée (CR) et le nommer (par exemple, `astra_mysql_app.yaml`).
+. Nommez l'application dans `metadata.name`.
+. Définissez les ressources d'application à gérer :
++
+[role="tabbed-block"]
+====
+.spec.includedClusterScopedResources
+--
+Incluez les types de ressources cluster-scoped en plus de celles qu'Astra Control inclut automatiquement :
+
+** *spec.includedClusterScopedResources*: _(Facultatif)_ Une liste des types de ressource cluster-scoped à inclure.
++
+*** *GroupVersionKind*: _(Facultatif)_ identifie sans ambiguïté un type.
++
+**** *Group*: _(requis si groupVersionKind est utilisé)_ groupe API de la ressource à inclure.
+**** *Version*: _(requis si groupVersionKind est utilisé)_ version API de la ressource à inclure.
+**** *Kind*: _(requis si groupVersionKind est utilisé)_ type de la ressource à inclure.
+
+
+*** *LabelSelector*: _(Facultatif)_ Une requête d'étiquette pour un ensemble de ressources. Il est utilisé pour récupérer uniquement les ressources correspondant à l'étiquette. Si vous ne fournissez pas d'étiquette, Astra Control collecte toutes les instances du type de ressource spécifié pour ce groupe. Le résultat des matchLabels et des expressions matchExpressions est ANDed.
++
+**** *MatchLabels*: _(Facultatif)_ Une carte de {key,value} paires. Un {key,value} unique dans la carte matchLabels est équivalent à un élément de matchExpressions qui a un champ clé de "key", un opérateur de "in" et un tableau de valeurs contenant uniquement "Value". Les exigences sont ANDed.
+**** *MatchExpressions*: _(Facultatif)_ Une liste des exigences du sélecteur d'étiquettes. Les exigences sont ANDed.
++
+***** *Key*: _(requis si matchExpressions est utilisé)_ la clé de libellé associée au sélecteur de libellé.
+***** *Operator*: _(requis si matchExpressions est utilisé)_ représente la relation d'une clé à un ensemble de valeurs. Les opérateurs valides sont `In`, `NotIn`, `Exists` et `DoesNotExist`.
+***** *Valeurs*: _(obligatoire si matchExpressions est utilisé)_un tableau de valeurs de chaîne. Si l'opérateur est `In` ou `NotIn`, le tableau de valeurs doit être _not_ vide. Si l'opérateur est `Exists` ou `DoesNotExist`, le tableau de valeurs doit être vide.
+
+
+
+
+
+
+
+
+--
+.spec.includedNamespaces
+--
+Inclure les espaces de noms et les ressources dans ces ressources dans l'application :
+
+** *spec.includedNamespaces*: _(required)_définit l'espace de noms et les filtres facultatifs pour la sélection des ressources.
++
+*** *Namespace*: _(obligatoire)_ l'espace de noms qui contient les ressources d'applications que vous souhaitez gérer avec Astra Control.
+*** *LabelSelector*: _(Facultatif)_ Une requête d'étiquette pour un ensemble de ressources. Il est utilisé pour récupérer uniquement les ressources correspondant à l'étiquette. Si vous ne fournissez pas d'étiquette, Astra Control collecte toutes les instances du type de ressource spécifié pour ce groupe. Le résultat des matchLabels et des expressions matchExpressions est ANDed.
++
+**** *MatchLabels*: _(Facultatif)_ Une carte de {key,value} paires. Un {key,value} unique dans la carte matchLabels est équivalent à un élément de matchExpressions qui a un champ clé de "key", un opérateur de "in" et un tableau de valeurs contenant uniquement "Value". Les exigences sont ANDed.
+**** *MatchExpressions*: _(Facultatif)_ Une liste des exigences du sélecteur d'étiquettes. `key` et `operator` sont obligatoires. Les exigences sont ANDed.
++
+***** *Key*: _(requis si matchExpressions est utilisé)_ la clé de libellé associée au sélecteur de libellé.
+***** *Operator*: _(requis si matchExpressions est utilisé)_ représente la relation d'une clé à un ensemble de valeurs. Les opérateurs valides sont `In`, `NotIn`, `Exists` et `DoesNotExist`.
+***** *Valeurs*: _(obligatoire si matchExpressions est utilisé)_ un tableau de valeurs de chaîne. Si l'opérateur est `In` ou `NotIn`, le tableau de valeurs doit être _not_ vide. Si l'opérateur est `Exists` ou `DoesNotExist`, le tableau de valeurs doit être vide.
+
+
+
+
+
+
+
+
+--
+====
++
+Exemple YAML :
+
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: Application
+metadata:
+  name: astra_mysql_app
+spec:
+  includedNamespaces:
+    - namespace: astra_mysql_app
+      labelSelector:
+        matchLabels:
+          app: nginx
+          env: production
+        matchExpressions:
+          - key: tier
+            operator: In
+            values:
+              - frontend
+              - backend
+----
+. Après avoir renseigné le `astra_mysql_app.yaml` Fichier avec les valeurs correctes, appliquer la CR :
++
+[source, console]
+----
+kubectl apply -f astra_mysql_app.yaml -n astra-connector
+----
+
+
+
+
 == Qu'en est-il des espaces de noms système
 
 Astra Control détecte également les espaces de noms système sur un cluster Kubernetes. Nous ne vous montrons pas ces espaces de noms système par défaut, car il est rare qu'il soit nécessaire de sauvegarder les ressources d'applications système.

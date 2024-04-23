@@ -174,6 +174,94 @@ NOTE: Astra Control veille à l'absence de règles de planification qui utilise 
 
 
 
+== [Aperçu technique] Gérez un compartiment à l'aide d'une ressource personnalisée
+
+Vous pouvez ajouter un compartiment à l'aide d'une ressource personnalisée Astra Control (CR) sur le cluster d'applications. Il est essentiel d'ajouter des fournisseurs de compartiments de stockage objet pour sauvegarder les applications et le stockage persistant ou pour cloner les applications entre les clusters. Astra Control stocke les sauvegardes ou les clones dans les compartiments de magasin d'objets que vous définissez. Si vous utilisez la méthode de ressources personnalisées, la fonctionnalité de snapshots d'applications requiert un compartiment.
+
+Si vous clonez la configuration de vos applications et le stockage persistant vers le même cluster, il n'est pas nécessaire d'utiliser un compartiment dans Astra Control.
+
+La ressource personnalisée du compartiment pour Astra Control est appelée AppVault. Ce CR contient les configurations nécessaires à l'utilisation d'un godet dans les opérations de protection.
+
+.Avant de commencer
+* Assurez-vous que vous disposez d'un compartiment accessible depuis vos clusters gérés par Astra Control Center.
+* Vérifiez que vous disposez des informations d'identification pour le compartiment.
+* S'assurer que le godet est de l'un des types suivants :
++
+** NetApp ONTAP S3
+** NetApp StorageGRID S3
+** Microsoft Azure
+** S3 générique
+
+
+
+
+
+NOTE: Amazon Web Services (AWS) et Google Cloud Platform (GCP) utilisent le type de compartiment S3 générique.
+
+
+NOTE: Bien qu'Astra Control Center prenne en charge Amazon S3 en tant que fournisseur de compartiments génériques, Astra Control Center peut ne pas prendre en charge tous les fournisseurs de magasins d'objets qui affirment la prise en charge d'Amazon S3.
+
+.Étapes
+. Créer le fichier de ressource personnalisée (CR) et le nommer (par exemple, `astra-appvault.yaml`).
+. Configurez les attributs suivants :
++
+** *metadata.name*: _(obligatoire)_ le nom de la ressource personnalisée AppVault.
+** *Spec.prefix*: _(Facultatif)_ chemin précédé des noms de toutes les entités stockées dans le AppVault.
+** *spec.providerConfig*: _(obligatoire)_ stocke la configuration nécessaire pour accéder à AppVault à l'aide du fournisseur spécifié.
+** *spec.providerCredentials*: _(obligatoire)_ stocke les références à toute information d'identification requise pour accéder à AppVault à l'aide du fournisseur spécifié.
++
+*** *spec.providerCredentials.valueFromSecret*: _(Facultatif)_ indique que la valeur d'identification doit provenir d'un secret.
++
+**** *Key*: _(requis si valueFromSecret est utilisé)_ la clé valide du secret à sélectionner.
+**** *Nom*: _(requis si valueFromSecret est utilisé)_ Nom du secret contenant la valeur de ce champ. Doit être dans le même espace de noms.
+
+
+
+
+** *spec.providerType*: _(obligatoire)_ détermine ce qui fournit la sauvegarde, par exemple, NetApp ONTAP S3 ou Microsoft Azure.
++
+Exemple YAML :
+
++
+[source, yaml]
+----
+apiVersion: astra.netapp.io/v1
+kind: AppVault
+metadata:
+  name: astra-appvault
+spec:
+  providerType: generic-s3
+  providerConfig:
+    path: testpath
+    endpoint: 192.168.1.100:80
+    bucketName: bucket1
+    secure: "false"
+  providerCredentials:
+    accessKeyID:
+      valueFromSecret:
+        name: s3-creds
+        key: accessKeyID
+    secretAccessKey:
+      valueFromSecret:
+        name: s3-creds
+        key: secretAccessKey
+----
+
+
+. Après avoir renseigné le `astra-appvault.yaml` Fichier avec les valeurs correctes, appliquer la CR :
++
+[source, console]
+----
+kubectl apply -f astra-appvault.yaml -n astra-connector
+----
++
+
+NOTE: Lorsque vous ajoutez un godet, Astra Control marque un godet avec l'indicateur de compartiment par défaut. Le premier compartiment que vous créez devient le compartiment par défaut. Au fur et à mesure que vous ajoutez des compartiments, vous pourrez décider plus tard link:../use/manage-buckets.html#set-the-default-bucket["définir un autre compartiment par défaut"^].
+
+
+
+
+
 == Trouvez plus d'informations
 
 * https://docs.netapp.com/us-en/astra-automation/index.html["Utilisez l'API de contrôle Astra"^]
