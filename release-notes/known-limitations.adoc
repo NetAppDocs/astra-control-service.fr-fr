@@ -50,6 +50,12 @@ Les restrictions suivantes affectent la gestion des applications par le service 
 
 
 
+=== Les opérations de restauration sur place pour les classes de stockage ontap-nas échouent
+
+Si vous effectuez une restauration sur place d'une application (restaurez-la dans son espace de noms d'origine) et que la classe de stockage de l'application utilise le `ontap-nas-economy` pilote, l'opération de restauration peut échouer si le répertoire de snapshot n'est pas masqué. Avant de remettre le produit en place, suivez les instructions de la section link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Sauvegardez et restaurez les opérations ontap-nas"^] pour masquer le répertoire d'instantanés.
+
+
+
 === De même, vous ne pouvez pas restaurer collectivement plusieurs applications qui utilisent le même namespace
 
 Si vous gérez plusieurs applications qui utilisent le même espace de noms (en créant plusieurs définitions d'applications dans Astra Control), vous ne pouvez pas restaurer toutes les applications dans un espace de noms différent. Chaque application doit être restaurée dans son propre espace de noms distinct.

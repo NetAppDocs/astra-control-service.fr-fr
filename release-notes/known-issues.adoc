@@ -23,7 +23,6 @@ Les problèmes connus suivants ont une incidence sur la version actuelle :
 .Sauvegarde, restauration et clonage
 * <<Les clones d'applications échouent à l'aide d'une version spécifique de PostgreSQL>>
 * <<Les sauvegardes d'applications et les snapshots échouent si la classe volumesnapshotclass est ajoutée après la gestion d'un cluster>>
-* <<Les opérations de restauration sur place pour les classes de stockage ontap-nas échouent>>
 * <<La restauration à partir d'une sauvegarde lors de l'utilisation du chiffrement à la volée Kerberos peut échouer>>
 * <<Les données de sauvegarde restent dans le compartiment après leur suppression pour les compartiments dont la règle de conservation a expiré>>
 
@@ -49,12 +48,6 @@ Les clones d'applications au sein du même cluster échouent systématiquement a
 == Les sauvegardes d'applications et les snapshots échouent si la classe volumesnapshotclass est ajoutée après la gestion d'un cluster
 
 Dans ce scénario, les sauvegardes et les instantanés échouent avec une erreur UI 500. Pour contourner ce problème, actualisez la liste des applications.
-
-
-
-== Les opérations de restauration sur place pour les classes de stockage ontap-nas échouent
-
-Si vous effectuez une restauration sur place d'une application (restaurez-la dans son espace de noms d'origine) et que la classe de stockage de l'application utilise le `ontap-nas-economy` pilote, l'opération de restauration peut échouer si le répertoire de snapshot n'est pas masqué. Avant de remettre le produit en place, suivez les instructions de la section link:../use/protect-apps.html#enable-backup-and-restore-for-ontap-nas-economy-operations["Sauvegardez et restaurez les opérations ontap-nas"^] pour masquer le répertoire d'instantanés.
 
 
 
