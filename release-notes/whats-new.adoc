@@ -19,7 +19,7 @@ NetApp met régulièrement à jour le service Astra Control afin de vous apporte
 == 14 mars 2024
 
 .(Préversion technique) workflows Kubernetes déclaratifs
-Cette version d'Astra Control Center contient une fonctionnalité Kubernetes déclarative qui permet d'effectuer une gestion des données à partir d'une ressource personnalisée Kubernetes native.
+Cette version d'Astra Control Service contient une fonctionnalité Kubernetes déclarative qui permet d'effectuer une gestion des données à partir d'une ressource personnalisée Kubernetes native.
 
 Cette fonctionnalité n'est disponible que dans l'instance du programme EAP (Early Adopter Program) d'Astra Control Service. Pour plus d'informations sur l'adhésion au programme EAP, contactez votre ingénieur commercial NetApp.
 
